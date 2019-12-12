@@ -68,5 +68,49 @@ namespace InventoryManagement.UserControls
 
 
         }
+
+        private void btn_SearchProduct_Click(object sender, EventArgs e)
+        {
+            string searchValue = tb_searchProduct.Text;
+            productDataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                bool valueResult = false;
+                foreach (DataGridViewRow row in productDataView.Rows)
+                {
+                    var count = row.Cells.Count;
+                    for (int i = 0; i < row.Cells.Count; i++)
+                    {
+                        if (row.Cells[i].Value != null && row.Cells[i].Value.ToString().ToLower().Contains(searchValue.ToLower()))
+                        {
+                            int rowIndex = row.Index;
+                            productDataView.Rows[rowIndex].Selected = true;
+                            productDataView.FirstDisplayedScrollingRowIndex = rowIndex;
+                            valueResult = true;
+                            break;
+                        }
+                    }
+                    if (valueResult)
+                        break;
+                }
+                if (!valueResult)
+                {
+                    MessageBox.Show("Unable to find " + tb_searchProduct.Text, "Not Found");
+                    return;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void tb_searchProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_SearchProduct_Click(this, new EventArgs());
+            }
+        }
     }
 }
