@@ -73,12 +73,11 @@ namespace InventoryManagement.Models
 
         public int WholeSalePrice { get; set; }
 
-        public int CategoryID { get; set; }
     }
 
     public class ProductPost : ProductBase
     {
-        //public int CategoryID { get; set; }
+        public int CategoryID { get; set; }
     }
 
     public class ProductGet : ProductBase
