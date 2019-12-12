@@ -15,6 +15,40 @@ namespace InventoryManagement.UI.Product
         public AddProduct()
         {
             InitializeComponent();
+            cb_Category.DataSource = new List<string>() { "c1", "c2", "c3", "category4", "category5" };
         }
+
+        private void btn_ResetProduct_Click(object sender, EventArgs e)
+        {
+            tb_Name.Text = string.Empty;
+            tb_description.Text = string.Empty;
+            tb_retailPrice.Text = string.Empty;
+            tb_wholeSalePrice.Text = string.Empty;
+        }
+
+        private void btn_saveProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_browseImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                InitialDirectory = @"D:\",
+                Title = "Browse Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+                RestoreDirectory = true,
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
     }
 }

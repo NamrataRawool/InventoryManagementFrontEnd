@@ -35,22 +35,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(485, 206);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(364, 167);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 29);
+            this.label1.Size = new System.Drawing.Size(189, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Transaction control";
             // 
             // TransactionControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TransactionControl";
-            this.Size = new System.Drawing.Size(1102, 531);
+            this.Size = new System.Drawing.Size(1042, 563);
             this.ResumeLayout(false);
             this.PerformLayout();
 

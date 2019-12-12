@@ -1,5 +1,4 @@
-﻿using InventoryManagement.UI.Product;
-using InventoryManagement.UserControls;
+﻿using InventoryManagement.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,28 +16,37 @@ namespace InventoryManagement.UI
         public Dashboard()
         {
             InitializeComponent();
-            homeControl1.BringToFront();
-        }
-
-        private void btn_Category_Click(object sender, EventArgs e)
-        {
-
+            //  homeControl.BringToFront();
+            productControl.BringToFront();
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
-            homeControl1.BringToFront();
+            homeControl.BringToFront();
         }
 
         private void btn_Product_Click(object sender, EventArgs e)
         {
-            AddProduct add = new AddProduct();
-            add.ShowDialog();
+            productControl.BringToFront();
+        }
+        private void btn_Category_Click(object sender, EventArgs e)
+        {
+            categoryControl.BringToFront();
         }
 
-        private void btn_Home_Click_1(object sender, EventArgs e)
+        private void btn_Transaction_Click(object sender, EventArgs e)
         {
+            transactionControl.BringToFront();
+        }
 
+        private void btn_Customer_Click(object sender, EventArgs e)
+        {
+            customerControl.BringToFront();
+        }
+
+        private void btn_Stock_Click(object sender, EventArgs e)
+        {
+            stockControl.BringToFront();
         }
     }
 }

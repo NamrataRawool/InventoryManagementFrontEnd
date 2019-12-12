@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace InventoryManagement.Models
     {
         [Key]
         [JsonProperty]
+        [DisplayName("Bar Code")]
         public int ID
         {
             get;
@@ -35,6 +37,7 @@ namespace InventoryManagement.Models
 
         [Required]
         [JsonProperty]
+        [DisplayName("Retail Price")]
         public int RetailPrice
         {
             get;
@@ -42,23 +45,18 @@ namespace InventoryManagement.Models
         }
         [Required]
         [JsonProperty]
+        [DisplayName("Whole Sale Price")]
         public int WholeSalePrice
         {
             get;
             set;
         }
-        [Required]
+
         [JsonProperty]
-        public int CategoryID
+        public string Category
         {
             get;
             set;
         }
-     //   [JsonProperty]
-        //public List<IFormFile> Images
-        //{
-        //    get;
-        //    set;
-        //}
     }
 }
