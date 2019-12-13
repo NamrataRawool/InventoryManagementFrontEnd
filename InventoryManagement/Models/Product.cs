@@ -59,4 +59,34 @@ namespace InventoryManagement.Models
             set;
         }
     }
+
+    public class ProductBase
+    {
+
+        public int ID { get; set; }
+        
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public int RetailPrice { get; set; }
+
+        public int WholeSalePrice { get; set; }
+
+    }
+
+    public class ProductPost : ProductBase
+    {
+        public int CategoryID { get; set; }
+    }
+
+    public class ProductGet : ProductBase
+    {
+        public string ImagePath { get; set; }
+
+        public int Quantity { get; set; }
+
+        public CategoryGet Category { get; set; }
+    }
+
 }
