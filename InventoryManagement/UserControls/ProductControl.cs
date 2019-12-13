@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventoryManagement.Models;
 using InventoryManagement.UI.Product;
+using InventoryManagement.Services.HTTP;
 
 namespace InventoryManagement.UserControls
 {
@@ -16,26 +17,8 @@ namespace InventoryManagement.UserControls
     {
         public ProductControl()
         {
-
             InitializeComponent();
-            productDataView.DataSource = GetProducts();
-        }
-        private List<Product> GetProducts()
-        {
-            var prlist = new List<Product>();
-            for (int i = 1; i <= 100; i++)
-            {
-                prlist.Add(new Product
-                {
-                    ID = i,
-                    Name = "product" + i,
-                    Description = "Description" + i,
-                    RetailPrice = 120,
-                    WholeSalePrice = 130,
-                    Category = "c" + i
-                });
-            }
-            return prlist;
+            productDataView.DataSource = HTTPService.GET<List<ProductGet>>("products");
         }
 
         private void btn_addProduct_Click(object sender, EventArgs e)
@@ -67,8 +50,6 @@ namespace InventoryManagement.UserControls
             }
 
             editProduct.ShowDialog();
-
-
         }
 
         private void btn_SearchProduct_Click(object sender, EventArgs e)

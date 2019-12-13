@@ -12,47 +12,42 @@ namespace InventoryManagement.Models
 {
     public class Product
     {
-        [Key]
-        [JsonProperty]
+      
         [DisplayName("Bar Code")]
         public int ID
         {
             get;
             set;
         }
-        [Required]
-        [JsonProperty]
+      
         public string Name
         {
             get;
             set;
         }
 
-        [JsonProperty]
+     
         public string Description
         {
             get;
             set;
         }
 
-        [Required]
-        [JsonProperty]
+      
         [DisplayName("Retail Price")]
         public int RetailPrice
         {
             get;
             set;
         }
-        [Required]
-        [JsonProperty]
-        [DisplayName("Whole Sale Price")]
+      
+        [DisplayName("Wholesale Price")]
         public int WholeSalePrice
         {
             get;
             set;
         }
-
-        [JsonProperty]
+       
         public string Category
         {
             get;
