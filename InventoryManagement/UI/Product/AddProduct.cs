@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.UI.Product
 {
-    public partial class AddProduct : Form
+    public partial class form_ProductDetails : Form
     {
-        public AddProduct()
+        public form_ProductDetails()
         {
             InitializeComponent();
             cb_Category.DataSource = new List<string>() { "c1", "c2", "c3", "category4", "category5" };
@@ -46,9 +46,13 @@ namespace InventoryManagement.UI.Product
             };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-
+                tb_imageName.Text = openFileDialog.FileName;
             }
         }
 
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

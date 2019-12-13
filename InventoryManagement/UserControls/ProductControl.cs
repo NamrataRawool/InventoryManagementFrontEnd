@@ -40,13 +40,15 @@ namespace InventoryManagement.UserControls
 
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
-            AddProduct addProduct = new AddProduct();
+            form_ProductDetails addProduct = new form_ProductDetails();
+            addProduct.Text = "Add Product";
             addProduct.ShowDialog();
         }
 
         private void btn_editProduct_Click(object sender, EventArgs e)
         {
-            AddProduct editProduct = new AddProduct();
+            form_ProductDetails editProduct = new form_ProductDetails();
+            editProduct.Text = "Edit Product";
             var rows = productDataView.SelectedRows;
             if (rows.Count > 0)
             {
