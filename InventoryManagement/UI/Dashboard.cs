@@ -1,4 +1,6 @@
-﻿using InventoryManagement.UserControls;
+﻿using InventoryManagement.Models;
+using InventoryManagement.Services.HTTP;
+using InventoryManagement.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +18,8 @@ namespace InventoryManagement.UI
         public Dashboard()
         {
             InitializeComponent();
-            //  homeControl.BringToFront();
+            homeControl.BringToFront();
             ChangeButtonBackColor(btn_Home);
-            productControl.BringToFront();
         }
 
         private void btn_Home_Click(object sender, EventArgs e)

@@ -74,6 +74,7 @@
             this.productDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productDataView.GridColor = System.Drawing.Color.Black;
             this.productDataView.Location = new System.Drawing.Point(34, 87);
+            this.productDataView.MultiSelect = false;
             this.productDataView.Name = "productDataView";
             this.productDataView.ReadOnly = true;
             this.productDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -210,7 +211,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView productDataView;
+        public System.Windows.Forms.DataGridView productDataView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btn_addProduct;

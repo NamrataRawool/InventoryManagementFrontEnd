@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventoryManagement.Models;
+using InventoryManagement.Services.HTTP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,15 +17,27 @@ namespace InventoryManagement.UI.Product
         public form_ProductDetails()
         {
             InitializeComponent();
-            cb_Category.DataSource = new List<string>() { "c1", "c2", "c3", "category4", "category5" };
+            cb_Category.DataSource = GetCategories();
         }
 
+        private List<string> GetCategories()
+        {
+            var categories = HTTPService.GET<List<CategoryGet>>("categories");
+            var categoryDataSource = new List<string>();
+            foreach (var category in categories)
+            {
+                categoryDataSource.Add(category.Name);
+            }
+            return categoryDataSource;
+        }
         private void btn_ResetProduct_Click(object sender, EventArgs e)
         {
             tb_Name.Text = string.Empty;
             tb_description.Text = string.Empty;
             tb_retailPrice.Text = string.Empty;
             tb_wholeSalePrice.Text = string.Empty;
+            cb_Category.Text = string.Empty;
+            tb_imageName.Text = string.Empty;
         }
 
         private void btn_saveProduct_Click(object sender, EventArgs e)

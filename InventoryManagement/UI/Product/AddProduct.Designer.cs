@@ -119,7 +119,7 @@
             // 
             this.tb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Name.Location = new System.Drawing.Point(174, 86);
-            this.tb_Name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_Name.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Name.Multiline = true;
             this.tb_Name.Name = "tb_Name";
             this.tb_Name.Size = new System.Drawing.Size(200, 33);
@@ -130,7 +130,7 @@
             this.tb_description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_description.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_description.Location = new System.Drawing.Point(174, 148);
-            this.tb_description.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_description.Margin = new System.Windows.Forms.Padding(2);
             this.tb_description.Multiline = true;
             this.tb_description.Name = "tb_description";
             this.tb_description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -141,7 +141,7 @@
             // 
             this.tb_retailPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_retailPrice.Location = new System.Drawing.Point(174, 284);
-            this.tb_retailPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_retailPrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_retailPrice.Multiline = true;
             this.tb_retailPrice.Name = "tb_retailPrice";
             this.tb_retailPrice.Size = new System.Drawing.Size(200, 33);
@@ -151,7 +151,7 @@
             // 
             this.tb_wholeSalePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_wholeSalePrice.Location = new System.Drawing.Point(174, 346);
-            this.tb_wholeSalePrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_wholeSalePrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_wholeSalePrice.Multiline = true;
             this.tb_wholeSalePrice.Name = "tb_wholeSalePrice";
             this.tb_wholeSalePrice.Size = new System.Drawing.Size(200, 33);
@@ -159,10 +159,12 @@
             // 
             // cb_Category
             // 
+            this.cb_Category.DropDownHeight = 80;
             this.cb_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Category.FormattingEnabled = true;
+            this.cb_Category.IntegralHeight = false;
             this.cb_Category.Location = new System.Drawing.Point(174, 227);
-            this.cb_Category.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_Category.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Category.Name = "cb_Category";
             this.cb_Category.Size = new System.Drawing.Size(200, 24);
             this.cb_Category.TabIndex = 10;
@@ -191,7 +193,7 @@
             this.btn_saveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saveProduct.ForeColor = System.Drawing.Color.White;
             this.btn_saveProduct.Location = new System.Drawing.Point(268, 499);
-            this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveProduct.Name = "btn_saveProduct";
             this.btn_saveProduct.Size = new System.Drawing.Size(88, 36);
             this.btn_saveProduct.TabIndex = 20;
@@ -206,7 +208,7 @@
             this.btn_ResetProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ResetProduct.ForeColor = System.Drawing.Color.Black;
             this.btn_ResetProduct.Location = new System.Drawing.Point(54, 499);
-            this.btn_ResetProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_ResetProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ResetProduct.Name = "btn_ResetProduct";
             this.btn_ResetProduct.Size = new System.Drawing.Size(88, 36);
             this.btn_ResetProduct.TabIndex = 21;
@@ -220,7 +222,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(426, 43);
             this.panel1.TabIndex = 22;

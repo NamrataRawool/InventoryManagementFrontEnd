@@ -18,7 +18,18 @@ namespace InventoryManagement.UserControls
         public ProductControl()
         {
             InitializeComponent();
-            productDataView.DataSource = HTTPService.GET<List<ProductGet>>("products");
+            productDataView.DataSource = GetProducts();
+        }
+
+        private List<ProductUI> GetProducts()
+        {
+            var products = HTTPService.GET<List<ProductGet>>("products");
+            var productDataSource = new List<ProductUI>();
+            foreach (var product in products)
+            {
+                productDataSource.Add(new ProductUI(product));
+            }
+            return productDataSource;
         }
 
         private void btn_addProduct_Click(object sender, EventArgs e)
@@ -46,7 +57,7 @@ namespace InventoryManagement.UserControls
                 editProduct.tb_description.Text = description;
                 editProduct.tb_retailPrice.Text = retailPrice;
                 editProduct.tb_wholeSalePrice.Text = wholeSalePrice;
-                editProduct.cb_Category.SelectedText = category;
+                editProduct.cb_Category.Text = category;
             }
 
             editProduct.ShowDialog();
@@ -54,28 +65,30 @@ namespace InventoryManagement.UserControls
 
         private void btn_SearchProduct_Click(object sender, EventArgs e)
         {
-            string searchValue = tb_searchProduct.Text;
+            string searchValue = tb_searchProduct.Text.Trim();
+
             productDataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            CurrencyManager currencyManager = (CurrencyManager)BindingContext[productDataView.DataSource];
+            currencyManager.SuspendBinding();
             try
             {
                 bool valueResult = false;
                 foreach (DataGridViewRow row in productDataView.Rows)
                 {
-                    var count = row.Cells.Count;
-                    for (int i = 0; i < row.Cells.Count; i++)
+                    int rowIndex = row.Index;
+                    if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().ToLower().StartsWith(searchValue.ToLower()))
                     {
-                        if (row.Cells[i].Value != null && row.Cells[i].Value.ToString().ToLower().Contains(searchValue.ToLower()))
-                        {
-                            int rowIndex = row.Index;
-                            productDataView.Rows[rowIndex].Selected = true;
-                            productDataView.FirstDisplayedScrollingRowIndex = rowIndex;
-                            valueResult = true;
-                            break;
-                        }
+                        productDataView.Rows[rowIndex].Visible = true;
+                        productDataView.FirstDisplayedScrollingRowIndex = rowIndex;
+                        valueResult = true;
                     }
-                    if (valueResult)
-                        break;
+                    else
+                    {
+                        productDataView.Rows[rowIndex].Visible = false;
+                    }
+
                 }
+                currencyManager.ResumeBinding();
                 if (!valueResult)
                 {
                     MessageBox.Show("Unable to find " + tb_searchProduct.Text, "Not Found");

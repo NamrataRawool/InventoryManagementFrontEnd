@@ -93,6 +93,7 @@
             this.categoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryDataView.GridColor = System.Drawing.Color.Black;
             this.categoryDataView.Location = new System.Drawing.Point(34, 87);
+            this.categoryDataView.MultiSelect = false;
             this.categoryDataView.Name = "categoryDataView";
             this.categoryDataView.ReadOnly = true;
             this.categoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
