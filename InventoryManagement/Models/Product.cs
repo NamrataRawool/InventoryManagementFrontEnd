@@ -23,45 +23,19 @@ namespace InventoryManagement.Models
         }
 
         [DisplayName("Bar Code")]
-        public int ID
-        {
-            get;
-            set;
-        }
+        public int ID { get; set; }
 
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
-
-        public string Description
-        {
-            get;
-            set;
-        }
-
+        public string Description { get; set; }
 
         [DisplayName("Retail Price")]
-        public int RetailPrice
-        {
-            get;
-            set;
-        }
+        public int RetailPrice { get; set; }
 
         [DisplayName("Wholesale Price")]
-        public int WholeSalePrice
-        {
-            get;
-            set;
-        }
+        public int WholeSalePrice { get; set; }
 
-        public string Category
-        {
-            get;
-            set;
-        }
+        public string Category { get; set; }
     }
 
     public class ProductBase

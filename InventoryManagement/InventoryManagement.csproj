@@ -93,6 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />
@@ -128,6 +129,12 @@
     </Compile>
     <Compile Include="UI\Product\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\BillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\BillControl.Designer.cs">
+      <DependentUpon>BillControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
@@ -188,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Product\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\BillControl.resx">
+      <DependentUpon>BillControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
