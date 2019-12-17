@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.UserControls
+﻿namespace InventoryManagement.UI.UserControls
 {
     partial class HomeControl
     {

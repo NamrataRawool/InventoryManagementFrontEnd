@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.UserControls
+﻿namespace InventoryManagement.UI.UserControls
 {
     partial class CategoryControl
     {
@@ -55,12 +55,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1042, 563);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1389, 693);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // categoryDataView
@@ -92,7 +93,8 @@
             this.categoryDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.categoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryDataView.GridColor = System.Drawing.Color.Black;
-            this.categoryDataView.Location = new System.Drawing.Point(34, 87);
+            this.categoryDataView.Location = new System.Drawing.Point(46, 107);
+            this.categoryDataView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.categoryDataView.MultiSelect = false;
             this.categoryDataView.Name = "categoryDataView";
             this.categoryDataView.ReadOnly = true;
@@ -108,7 +110,7 @@
             this.categoryDataView.RowHeadersVisible = false;
             this.categoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.categoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.categoryDataView.Size = new System.Drawing.Size(932, 388);
+            this.categoryDataView.Size = new System.Drawing.Size(1242, 477);
             this.categoryDataView.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -125,13 +127,14 @@
             this.tableLayoutPanel2.Controls.Add(this.tb_searchCategory, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_searchCategory, 4, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(34, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.58974F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 78);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1242, 95);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // btn_addCategory
@@ -142,9 +145,10 @@
             this.btn_addCategory.FlatAppearance.BorderSize = 2;
             this.btn_addCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_addCategory.Image")));
-            this.btn_addCategory.Location = new System.Drawing.Point(3, 22);
+            this.btn_addCategory.Location = new System.Drawing.Point(4, 27);
+            this.btn_addCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_addCategory.Name = "btn_addCategory";
-            this.btn_addCategory.Size = new System.Drawing.Size(76, 27);
+            this.btn_addCategory.Size = new System.Drawing.Size(101, 33);
             this.btn_addCategory.TabIndex = 1;
             this.btn_addCategory.UseVisualStyleBackColor = false;
             this.btn_addCategory.Click += new System.EventHandler(this.btn_addCategory_Click);
@@ -157,9 +161,10 @@
             this.btn_editCategory.FlatAppearance.BorderSize = 2;
             this.btn_editCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_editCategory.Image")));
-            this.btn_editCategory.Location = new System.Drawing.Point(85, 22);
+            this.btn_editCategory.Location = new System.Drawing.Point(113, 27);
+            this.btn_editCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_editCategory.Name = "btn_editCategory";
-            this.btn_editCategory.Size = new System.Drawing.Size(75, 27);
+            this.btn_editCategory.Size = new System.Drawing.Size(100, 33);
             this.btn_editCategory.TabIndex = 2;
             this.btn_editCategory.UseVisualStyleBackColor = false;
             this.btn_editCategory.Click += new System.EventHandler(this.btn_editCategory_Click);
@@ -168,9 +173,10 @@
             // 
             this.tb_searchCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchCategory.Location = new System.Drawing.Point(371, 22);
+            this.tb_searchCategory.Location = new System.Drawing.Point(494, 27);
+            this.tb_searchCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_searchCategory.Name = "tb_searchCategory";
-            this.tb_searchCategory.Size = new System.Drawing.Size(271, 28);
+            this.tb_searchCategory.Size = new System.Drawing.Size(361, 34);
             this.tb_searchCategory.TabIndex = 3;
             // 
             // btn_searchCategory
@@ -181,23 +187,25 @@
             this.btn_searchCategory.FlatAppearance.BorderSize = 2;
             this.btn_searchCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_searchCategory.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchCategory.Location = new System.Drawing.Point(648, 22);
-            this.btn_searchCategory.MaximumSize = new System.Drawing.Size(0, 28);
-            this.btn_searchCategory.MinimumSize = new System.Drawing.Size(0, 28);
+            this.btn_searchCategory.Location = new System.Drawing.Point(863, 27);
+            this.btn_searchCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_searchCategory.MaximumSize = new System.Drawing.Size(0, 34);
+            this.btn_searchCategory.MinimumSize = new System.Drawing.Size(0, 34);
             this.btn_searchCategory.Name = "btn_searchCategory";
-            this.btn_searchCategory.Size = new System.Drawing.Size(72, 28);
+            this.btn_searchCategory.Size = new System.Drawing.Size(96, 34);
             this.btn_searchCategory.TabIndex = 4;
             this.btn_searchCategory.Text = "Search";
             this.btn_searchCategory.UseVisualStyleBackColor = false;
             // 
             // CategoryControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CategoryControl";
-            this.Size = new System.Drawing.Size(1042, 563);
+            this.Size = new System.Drawing.Size(1389, 693);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

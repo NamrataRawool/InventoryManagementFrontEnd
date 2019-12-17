@@ -1,6 +1,6 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
-using InventoryManagement.UserControls;
+using InventoryManagement.UI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

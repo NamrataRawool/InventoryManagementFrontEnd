@@ -1,4 +1,4 @@
-﻿namespace InventoryManagement.UserControls
+﻿namespace InventoryManagement.UI.UserControls
 {
     partial class ProductControl
     {
@@ -73,7 +73,8 @@
             this.productDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.productDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productDataView.GridColor = System.Drawing.Color.Black;
-            this.productDataView.Location = new System.Drawing.Point(34, 87);
+            this.productDataView.Location = new System.Drawing.Point(46, 107);
+            this.productDataView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.productDataView.MultiSelect = false;
             this.productDataView.Name = "productDataView";
             this.productDataView.ReadOnly = true;
@@ -89,7 +90,7 @@
             this.productDataView.RowHeadersVisible = false;
             this.productDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.productDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productDataView.Size = new System.Drawing.Size(932, 388);
+            this.productDataView.Size = new System.Drawing.Size(1242, 477);
             this.productDataView.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -103,12 +104,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1042, 563);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1389, 693);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -125,13 +127,14 @@
             this.tableLayoutPanel2.Controls.Add(this.tb_searchProduct, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_SearchProduct, 4, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(34, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.58974F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 78);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1242, 95);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // btn_addProduct
@@ -142,9 +145,10 @@
             this.btn_addProduct.FlatAppearance.BorderSize = 2;
             this.btn_addProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addProduct.Image = ((System.Drawing.Image)(resources.GetObject("btn_addProduct.Image")));
-            this.btn_addProduct.Location = new System.Drawing.Point(3, 22);
+            this.btn_addProduct.Location = new System.Drawing.Point(4, 27);
+            this.btn_addProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_addProduct.Name = "btn_addProduct";
-            this.btn_addProduct.Size = new System.Drawing.Size(76, 27);
+            this.btn_addProduct.Size = new System.Drawing.Size(101, 33);
             this.btn_addProduct.TabIndex = 1;
             this.btn_addProduct.UseVisualStyleBackColor = false;
             this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
@@ -157,9 +161,10 @@
             this.btn_editProduct.FlatAppearance.BorderSize = 2;
             this.btn_editProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editProduct.Image = ((System.Drawing.Image)(resources.GetObject("btn_editProduct.Image")));
-            this.btn_editProduct.Location = new System.Drawing.Point(85, 22);
+            this.btn_editProduct.Location = new System.Drawing.Point(113, 27);
+            this.btn_editProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_editProduct.Name = "btn_editProduct";
-            this.btn_editProduct.Size = new System.Drawing.Size(75, 27);
+            this.btn_editProduct.Size = new System.Drawing.Size(100, 33);
             this.btn_editProduct.TabIndex = 2;
             this.btn_editProduct.UseVisualStyleBackColor = false;
             this.btn_editProduct.Click += new System.EventHandler(this.btn_editProduct_Click);
@@ -168,9 +173,10 @@
             // 
             this.tb_searchProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_searchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchProduct.Location = new System.Drawing.Point(371, 22);
+            this.tb_searchProduct.Location = new System.Drawing.Point(494, 27);
+            this.tb_searchProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_searchProduct.Name = "tb_searchProduct";
-            this.tb_searchProduct.Size = new System.Drawing.Size(271, 28);
+            this.tb_searchProduct.Size = new System.Drawing.Size(361, 34);
             this.tb_searchProduct.TabIndex = 3;
             this.tb_searchProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_searchProduct_KeyDown);
             // 
@@ -182,11 +188,12 @@
             this.btn_SearchProduct.FlatAppearance.BorderSize = 2;
             this.btn_SearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SearchProduct.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SearchProduct.Location = new System.Drawing.Point(648, 22);
-            this.btn_SearchProduct.MaximumSize = new System.Drawing.Size(0, 28);
-            this.btn_SearchProduct.MinimumSize = new System.Drawing.Size(0, 28);
+            this.btn_SearchProduct.Location = new System.Drawing.Point(863, 27);
+            this.btn_SearchProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_SearchProduct.MaximumSize = new System.Drawing.Size(0, 34);
+            this.btn_SearchProduct.MinimumSize = new System.Drawing.Size(0, 34);
             this.btn_SearchProduct.Name = "btn_SearchProduct";
-            this.btn_SearchProduct.Size = new System.Drawing.Size(72, 28);
+            this.btn_SearchProduct.Size = new System.Drawing.Size(96, 34);
             this.btn_SearchProduct.TabIndex = 4;
             this.btn_SearchProduct.Text = "Search";
             this.btn_SearchProduct.UseVisualStyleBackColor = false;
@@ -194,13 +201,13 @@
             // 
             // ProductControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProductControl";
-            this.Size = new System.Drawing.Size(1042, 563);
+            this.Size = new System.Drawing.Size(1389, 693);
             ((System.ComponentModel.ISupportInitialize)(this.productDataView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

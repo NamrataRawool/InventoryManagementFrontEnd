@@ -40,12 +40,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.homeControl = new InventoryManagement.UserControls.HomeControl();
-            this.productControl = new InventoryManagement.UserControls.ProductControl();
-            this.categoryControl = new InventoryManagement.UserControls.CategoryControl();
-            this.transactionControl = new InventoryManagement.UserControls.TransactionControl();
-            this.customerControl = new InventoryManagement.UserControls.CustomerControl();
-            this.stockControl = new InventoryManagement.UserControls.StockControl();
+            this.homeControl = new InventoryManagement.UI.UserControls.HomeControl();
+            this.productControl = new InventoryManagement.UI.UserControls.ProductControl();
+            this.categoryControl = new InventoryManagement.UI.UserControls.CategoryControl();
+            this.transactionControl = new InventoryManagement.UI.UserControls.TransactionControl();
+            this.customerControl = new InventoryManagement.UI.UserControls.CustomerControl();
+            this.stockControl = new InventoryManagement.UI.UserControls.StockControl();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();

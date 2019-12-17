@@ -11,7 +11,7 @@ using InventoryManagement.Models;
 using InventoryManagement.UI.Product;
 using InventoryManagement.Services.HTTP;
 
-namespace InventoryManagement.UserControls
+namespace InventoryManagement.UI.UserControls
 {
     public partial class ProductControl : UserControl
     {

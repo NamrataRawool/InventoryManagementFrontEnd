@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
 
-namespace InventoryManagement.UserControls
+namespace InventoryManagement.UI.UserControls
 {
     public partial class CategoryControl : UserControl
     {

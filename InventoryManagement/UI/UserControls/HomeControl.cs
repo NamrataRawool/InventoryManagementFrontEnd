@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventoryManagement.UserControls
+namespace InventoryManagement.UI.UserControls
 {
-    public partial class TransactionControl : UserControl
+    public partial class HomeControl : UserControl
     {
-        public TransactionControl()
+        public HomeControl()
         {
             InitializeComponent();
         }

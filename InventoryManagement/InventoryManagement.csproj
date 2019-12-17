@@ -111,40 +111,40 @@
     <Compile Include="UI\Product\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ProductControl.cs">
+    <Compile Include="UI\UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ProductControl.Designer.cs">
+    <Compile Include="UI\UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CategoryControl.cs">
+    <Compile Include="UI\UserControls\CategoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\CategoryControl.Designer.cs">
+    <Compile Include="UI\UserControls\CategoryControl.Designer.cs">
       <DependentUpon>CategoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CustomerControl.cs">
+    <Compile Include="UI\UserControls\CustomerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\CustomerControl.Designer.cs">
+    <Compile Include="UI\UserControls\CustomerControl.Designer.cs">
       <DependentUpon>CustomerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HomeControl.cs">
+    <Compile Include="UI\UserControls\HomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\HomeControl.Designer.cs">
+    <Compile Include="UI\UserControls\HomeControl.Designer.cs">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\StockControl.cs">
+    <Compile Include="UI\UserControls\StockControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\StockControl.Designer.cs">
+    <Compile Include="UI\UserControls\StockControl.Designer.cs">
       <DependentUpon>StockControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TransactionControl.cs">
+    <Compile Include="UI\UserControls\TransactionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\TransactionControl.Designer.cs">
+    <Compile Include="UI\UserControls\TransactionControl.Designer.cs">
       <DependentUpon>TransactionControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -162,22 +162,22 @@
     <EmbeddedResource Include="UI\Product\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ProductControl.resx">
+    <EmbeddedResource Include="UI\UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\CategoryControl.resx">
+    <EmbeddedResource Include="UI\UserControls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\CustomerControl.resx">
+    <EmbeddedResource Include="UI\UserControls\CustomerControl.resx">
       <DependentUpon>CustomerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\HomeControl.resx">
+    <EmbeddedResource Include="UI\UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\StockControl.resx">
+    <EmbeddedResource Include="UI\UserControls\StockControl.resx">
       <DependentUpon>StockControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\TransactionControl.resx">
+    <EmbeddedResource Include="UI\UserControls\TransactionControl.resx">
       <DependentUpon>TransactionControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">

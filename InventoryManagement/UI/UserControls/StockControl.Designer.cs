@@ -1,6 +1,6 @@
-﻿namespace InventoryManagement.UserControls
+﻿namespace InventoryManagement.UI.UserControls
 {
-    partial class CustomerControl
+    partial class StockControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,16 +31,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockControl));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.customerDataView = new System.Windows.Forms.DataGridView();
+            this.stockDataView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_addCustomer = new System.Windows.Forms.Button();
-            this.btn_editCustomer = new System.Windows.Forms.Button();
+            this.btn_addStock = new System.Windows.Forms.Button();
+            this.btn_editStock = new System.Windows.Forms.Button();
             this.tb_searchCategory = new System.Windows.Forms.TextBox();
-            this.btn_searchCustomer = new System.Windows.Forms.Button();
+            this.btn_searchStock = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customerDataView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockDataView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.023758F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.9928F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.909789F));
-            this.tableLayoutPanel1.Controls.Add(this.customerDataView, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.stockDataView, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -63,14 +63,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1042, 563);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // customerDataView
+            // stockDataView
             // 
-            this.customerDataView.AllowUserToAddRows = false;
-            this.customerDataView.AllowUserToDeleteRows = false;
-            this.customerDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.customerDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.customerDataView.BackgroundColor = System.Drawing.Color.White;
-            this.customerDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.stockDataView.AllowUserToAddRows = false;
+            this.stockDataView.AllowUserToDeleteRows = false;
+            this.stockDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.stockDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.stockDataView.BackgroundColor = System.Drawing.Color.White;
+            this.stockDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -79,8 +79,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customerDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.customerDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.stockDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.stockDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -89,14 +89,14 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(175)))), ((int)(((byte)(183)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customerDataView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.customerDataView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customerDataView.GridColor = System.Drawing.Color.Black;
-            this.customerDataView.Location = new System.Drawing.Point(34, 87);
-            this.customerDataView.MultiSelect = false;
-            this.customerDataView.Name = "customerDataView";
-            this.customerDataView.ReadOnly = true;
-            this.customerDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.stockDataView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.stockDataView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stockDataView.GridColor = System.Drawing.Color.Black;
+            this.stockDataView.Location = new System.Drawing.Point(34, 87);
+            this.stockDataView.MultiSelect = false;
+            this.stockDataView.Name = "stockDataView";
+            this.stockDataView.ReadOnly = true;
+            this.stockDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,12 +104,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.customerDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.customerDataView.RowHeadersVisible = false;
-            this.customerDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.customerDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customerDataView.Size = new System.Drawing.Size(932, 388);
-            this.customerDataView.TabIndex = 2;
+            this.stockDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.stockDataView.RowHeadersVisible = false;
+            this.stockDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.stockDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.stockDataView.Size = new System.Drawing.Size(932, 388);
+            this.stockDataView.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
@@ -120,10 +120,10 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.476395F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.3176F));
-            this.tableLayoutPanel2.Controls.Add(this.btn_addCustomer, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btn_editCustomer, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_addStock, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_editStock, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.tb_searchCategory, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btn_searchCustomer, 4, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_searchStock, 4, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(34, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -134,33 +134,33 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 78);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
-            // btn_addCustomer
+            // btn_addStock
             // 
-            this.btn_addCustomer.BackColor = System.Drawing.Color.White;
-            this.btn_addCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_addCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_addCustomer.FlatAppearance.BorderSize = 2;
-            this.btn_addCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_addCustomer.Image")));
-            this.btn_addCustomer.Location = new System.Drawing.Point(3, 22);
-            this.btn_addCustomer.Name = "btn_addCustomer";
-            this.btn_addCustomer.Size = new System.Drawing.Size(76, 27);
-            this.btn_addCustomer.TabIndex = 1;
-            this.btn_addCustomer.UseVisualStyleBackColor = false;
+            this.btn_addStock.BackColor = System.Drawing.Color.White;
+            this.btn_addStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_addStock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.btn_addStock.FlatAppearance.BorderSize = 2;
+            this.btn_addStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addStock.Image = ((System.Drawing.Image)(resources.GetObject("btn_addStock.Image")));
+            this.btn_addStock.Location = new System.Drawing.Point(3, 22);
+            this.btn_addStock.Name = "btn_addStock";
+            this.btn_addStock.Size = new System.Drawing.Size(76, 27);
+            this.btn_addStock.TabIndex = 1;
+            this.btn_addStock.UseVisualStyleBackColor = false;
             // 
-            // btn_editCustomer
+            // btn_editStock
             // 
-            this.btn_editCustomer.BackColor = System.Drawing.Color.White;
-            this.btn_editCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_editCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_editCustomer.FlatAppearance.BorderSize = 2;
-            this.btn_editCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_editCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_editCustomer.Image")));
-            this.btn_editCustomer.Location = new System.Drawing.Point(85, 22);
-            this.btn_editCustomer.Name = "btn_editCustomer";
-            this.btn_editCustomer.Size = new System.Drawing.Size(75, 27);
-            this.btn_editCustomer.TabIndex = 2;
-            this.btn_editCustomer.UseVisualStyleBackColor = false;
+            this.btn_editStock.BackColor = System.Drawing.Color.White;
+            this.btn_editStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_editStock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.btn_editStock.FlatAppearance.BorderSize = 2;
+            this.btn_editStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editStock.Image = ((System.Drawing.Image)(resources.GetObject("btn_editStock.Image")));
+            this.btn_editStock.Location = new System.Drawing.Point(85, 22);
+            this.btn_editStock.Name = "btn_editStock";
+            this.btn_editStock.Size = new System.Drawing.Size(75, 27);
+            this.btn_editStock.TabIndex = 2;
+            this.btn_editStock.UseVisualStyleBackColor = false;
             // 
             // tb_searchCategory
             // 
@@ -171,34 +171,33 @@
             this.tb_searchCategory.Size = new System.Drawing.Size(271, 28);
             this.tb_searchCategory.TabIndex = 3;
             // 
-            // btn_searchCustomer
+            // btn_searchStock
             // 
-            this.btn_searchCustomer.BackColor = System.Drawing.Color.White;
-            this.btn_searchCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_searchCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_searchCustomer.FlatAppearance.BorderSize = 2;
-            this.btn_searchCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_searchCustomer.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchCustomer.Location = new System.Drawing.Point(648, 22);
-            this.btn_searchCustomer.MaximumSize = new System.Drawing.Size(0, 28);
-            this.btn_searchCustomer.MinimumSize = new System.Drawing.Size(0, 28);
-            this.btn_searchCustomer.Name = "btn_searchCustomer";
-            this.btn_searchCustomer.Size = new System.Drawing.Size(72, 28);
-            this.btn_searchCustomer.TabIndex = 4;
-            this.btn_searchCustomer.Text = "Search";
-            this.btn_searchCustomer.UseVisualStyleBackColor = false;
+            this.btn_searchStock.BackColor = System.Drawing.Color.White;
+            this.btn_searchStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_searchStock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.btn_searchStock.FlatAppearance.BorderSize = 2;
+            this.btn_searchStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_searchStock.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchStock.Location = new System.Drawing.Point(648, 22);
+            this.btn_searchStock.MaximumSize = new System.Drawing.Size(0, 28);
+            this.btn_searchStock.MinimumSize = new System.Drawing.Size(0, 28);
+            this.btn_searchStock.Name = "btn_searchStock";
+            this.btn_searchStock.Size = new System.Drawing.Size(72, 28);
+            this.btn_searchStock.TabIndex = 4;
+            this.btn_searchStock.Text = "Search";
+            this.btn_searchStock.UseVisualStyleBackColor = false;
             // 
-            // CustomerControl
+            // StockControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "CustomerControl";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Name = "StockControl";
             this.Size = new System.Drawing.Size(1042, 563);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.customerDataView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockDataView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -208,11 +207,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView customerDataView;
+        private System.Windows.Forms.DataGridView stockDataView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btn_addCustomer;
-        private System.Windows.Forms.Button btn_editCustomer;
+        private System.Windows.Forms.Button btn_addStock;
+        private System.Windows.Forms.Button btn_editStock;
         private System.Windows.Forms.TextBox tb_searchCategory;
-        private System.Windows.Forms.Button btn_searchCustomer;
+        private System.Windows.Forms.Button btn_searchStock;
     }
 }
