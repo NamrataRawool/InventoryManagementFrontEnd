@@ -18,7 +18,7 @@ namespace InventoryManagement.UI
         public Dashboard()
         {
             InitializeComponent();
-            homeControl.BringToFront();
+            transactionControl.BringToFront();
             ChangeButtonBackColor(btn_Home);
         }
 

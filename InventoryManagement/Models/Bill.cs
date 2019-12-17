@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Models
 {
-    public class Bill
+    public class BillRowEntry
     {
         [DisplayName("Name")]
         public string ProductName { get; set; }
