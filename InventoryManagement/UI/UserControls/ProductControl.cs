@@ -48,16 +48,11 @@ namespace InventoryManagement.UI.UserControls
             {
                 int selectedRowIndex = productDataView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = productDataView.Rows[selectedRowIndex];
-                var name = selectedRow.Cells["Name"].Value.ToString();
-                var description = selectedRow.Cells["Description"].Value.ToString();
-                var retailPrice = selectedRow.Cells["RetailPrice"].Value.ToString();
-                var wholeSalePrice = selectedRow.Cells["WholeSalePrice"].Value.ToString();
-                var category = selectedRow.Cells["Category"].Value.ToString();
-                editProduct.tb_Name.Text = name;
-                editProduct.tb_description.Text = description;
-                editProduct.tb_retailPrice.Text = retailPrice;
-                editProduct.tb_wholeSalePrice.Text = wholeSalePrice;
-                editProduct.cb_Category.Text = category;
+                editProduct.tb_Name.Text = selectedRow.Cells["Name"].Value.ToString();
+                editProduct.tb_description.Text = selectedRow.Cells["Description"].Value.ToString();
+                editProduct.tb_retailPrice.Text = selectedRow.Cells["RetailPrice"].Value.ToString();
+                editProduct.tb_wholeSalePrice.Text = selectedRow.Cells["WholeSalePrice"].Value.ToString();
+                editProduct.cb_Category.Text = selectedRow.Cells["Category"].Value.ToString();
             }
 
             editProduct.ShowDialog();

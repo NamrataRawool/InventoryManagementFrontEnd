@@ -46,16 +46,11 @@ namespace InventoryManagement.UI.UserControls
             {
                 int selectedRowIndex = customerDataView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = customerDataView.Rows[selectedRowIndex];
-                var name = selectedRow.Cells["Name"].Value.ToString();
-                var mobileNumber = selectedRow.Cells["MobileNumber"].Value.ToString();
-                var emailId = selectedRow.Cells["Email"].Value.ToString();
-                var totalAmount = selectedRow.Cells["TotalAmount"].Value.ToString();
-                var pendingAmount = selectedRow.Cells["PendingAmount"].Value.ToString();
-                editCustomer.tb_editCustomerName.Text = name;
-                editCustomer.tb_editCustomerMobile.Text = mobileNumber;
-                editCustomer.tb_editCustomerEmail.Text = emailId;
-                editCustomer.tb_editCustomerTotalAmount.Text = totalAmount;
-                editCustomer.tb_editCustomerPendingAmount.Text = pendingAmount;
+                editCustomer.tb_editCustomerName.Text = selectedRow.Cells["Name"].Value.ToString();
+                editCustomer.tb_editCustomerMobile.Text = selectedRow.Cells["MobileNumber"].Value.ToString();
+                editCustomer.tb_editCustomerEmail.Text = selectedRow.Cells["Email"].Value.ToString();
+                editCustomer.tb_editCustomerTotalAmount.Text = selectedRow.Cells["TotalAmount"].Value.ToString();
+                editCustomer.tb_editCustomerPendingAmount.Text = selectedRow.Cells["PendingAmount"].Value.ToString();
             }
 
             editCustomer.ShowDialog();
