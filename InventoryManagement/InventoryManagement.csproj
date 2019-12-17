@@ -99,6 +99,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HTTP\HTTPService.cs" />
+    <Compile Include="UI\Customer\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Customer\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Customer\EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Customer\EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +168,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Customer\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Customer\EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Category\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
