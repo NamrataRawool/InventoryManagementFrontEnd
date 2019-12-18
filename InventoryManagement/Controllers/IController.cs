@@ -4,6 +4,7 @@ using InventoryManagement.EventHandlers.Bill;
 using InventoryManagement.Events;
 using InventoryManagement.Listeners;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace InventoryManagement.Controllers
 {
@@ -22,7 +23,7 @@ namespace InventoryManagement.Controllers
         {
             if (m_EventHandlers.ContainsKey(type))
             {
-                // should raise an assert
+                Debug.Assert(false, "Event Handler already Registered!");
                 return;
             }
 
@@ -37,7 +38,7 @@ namespace InventoryManagement.Controllers
             EventType type = e.Type();
             if (!m_EventHandlers.ContainsKey(type))
             {
-                // TODO: raise and assert
+                Debug.Assert(false, "Event Handler must be Registered!");
                 return;
             }
 

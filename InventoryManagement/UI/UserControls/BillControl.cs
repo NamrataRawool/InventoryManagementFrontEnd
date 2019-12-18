@@ -42,11 +42,16 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            Event_TransactionAddProduct Event = new Event_TransactionAddProduct();
-            EventBroadcaster.Get().BroadcastEvent(Event);
+            BillRowEntry Entry = new BillRowEntry();
+            Entry.ProductName = this.cb_Products.Text;
+            Entry.Price = int.Parse(this.tb_price.Text);
+            Entry.Discount = int.Parse(this.tb_discount.Text);
+            Entry.Quantity = int.Parse(this.tb_quantity.Text);
+
+            Controller.OnAddProduct(Entry);
         }
 
-        private void cb_Products_KeyDown(object sender, KeyEventArgs e)
+        private void Cb_Products_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

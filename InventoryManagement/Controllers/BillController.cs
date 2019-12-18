@@ -1,5 +1,7 @@
-﻿using InventoryManagement.EventHandlers.Bill;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.EventHandlers.Bill;
 using InventoryManagement.Events;
+using InventoryManagement.Models;
 
 namespace InventoryManagement.Controllers
 {
@@ -13,8 +15,12 @@ namespace InventoryManagement.Controllers
 
         protected override void RegisterEventHandlers()
         {
-            RegisterEvent(EventType.UI_Transaction_AddProduct, new EH_TransactionAddProduct(this));
         }
 
+        public void OnAddProduct(BillRowEntry Entry)
+        {
+            Event_TransactionAddProduct Event = new Event_TransactionAddProduct(Entry);
+            EventBroadcaster.Get().BroadcastEvent(Event);
+        }
     }
 }

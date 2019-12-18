@@ -10,26 +10,19 @@ using System.Windows.Forms;
 using InventoryManagement.Models;
 using InventoryManagement.Events;
 using InventoryManagement.Broadcaster;
+using InventoryManagement.Controllers;
 
 namespace InventoryManagement.UI.UserControls
 {
     public partial class TransactionControl : UserControl
     {
-        List<BillRowEntry> billingItems = new List<BillRowEntry>
-        {
-            new BillRowEntry()
-            {
-                ProductName = "Test",
-                Discount =0,
-                Price = 0,
-                Quantity =0
-            }
-        };
+        TransactionController m_Controller;
 
         public TransactionControl()
         {
+            m_Controller = new TransactionController(this);
+
             InitializeComponent();
-            billDataView.DataSource = billingItems;
         }
 
     }

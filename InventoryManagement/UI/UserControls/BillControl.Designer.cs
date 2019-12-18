@@ -105,7 +105,7 @@
             this.cb_Products.Name = "cb_Products";
             this.cb_Products.Size = new System.Drawing.Size(244, 24);
             this.cb_Products.TabIndex = 7;
-            this.cb_Products.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_Products_KeyDown);
+            this.cb_Products.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cb_Products_KeyDown);
             // 
             // label5
             // 

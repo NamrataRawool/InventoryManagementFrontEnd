@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.EventHandlers.Bill
 {
-    class EH_TransactionAddProduct : IEventHandler<BillController>
+    class EH_TransactionAddProduct : IEventHandler<TransactionController>
     {
-        public EH_TransactionAddProduct(BillController Controller) : base(Controller)
-        {
-        }
+        public EH_TransactionAddProduct(TransactionController Controller) : base(Controller) { }
 
         public override void OnEvent(IEvent e)
         {
-            throw new NotImplementedException();
+            var evnt = (Event_TransactionAddProduct)e;
+            m_Controller.AddProductRowToTable(evnt.GetBillRowEntry());
         }
     }
 }
