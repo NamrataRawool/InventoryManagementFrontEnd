@@ -8,29 +8,12 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Broadcaster
 {
-
-    public class Singleton<T> where T : new()
-    {
-
-        protected Singleton() { }
-        protected Singleton(Singleton<T> s) { }
-
-        public static T Get()
-        {
-            if (m_Instance == null)
-                m_Instance = new T();
-
-            return m_Instance;
-        }
-
-        protected static T m_Instance;
-    }
-
-    public class EventBroadcaster : Singleton<EventBroadcaster>
+    // SINGLETON
+    public class EventBroadcaster
     {
         Dictionary<EventType, List<IEventListener>> m_EventListeners;
 
-        public EventBroadcaster()
+        private EventBroadcaster()
         {
             m_EventListeners = new Dictionary<EventType, List<IEventListener>>();
         }
@@ -68,6 +51,16 @@ namespace InventoryManagement.Broadcaster
             }
 
         }
+
+        public static EventBroadcaster Get()
+        {
+            if (m_Instance == null)
+                m_Instance = new EventBroadcaster();
+
+            return m_Instance;
+        }
+
+        private static EventBroadcaster m_Instance;
 
     }
 }

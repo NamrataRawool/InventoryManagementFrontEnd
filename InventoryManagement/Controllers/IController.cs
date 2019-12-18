@@ -8,17 +8,19 @@ using System.Diagnostics;
 namespace InventoryManagement.Controllers
 {
 
-    public class IController<UICONTROL> : IController
+    public abstract class IController<UICONTROL> : IController
     {
         protected IController(UICONTROL UIControl)
         {
             m_UIControl = UIControl;
+
+            RegisterEvents();
         }
 
         protected UICONTROL m_UIControl;
     }
 
-    public class IController : IEventListener
+    public abstract class IController : IEventListener
     {
 
         private List<EventType> m_RegisteredEvents;
@@ -28,6 +30,8 @@ namespace InventoryManagement.Controllers
         {
             m_RegisteredEvents = new List<EventType>();
         }
+
+        protected abstract void RegisterEvents();
 
         protected void RegisterEvent(EventType type)
         {

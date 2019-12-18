@@ -13,12 +13,6 @@ namespace InventoryManagement.Controllers
             : base(UIControl)
         {
             SetEventHandler(new EventHandler_Transaction(this));
-            RegisterEvents();
-        }
-
-        protected void RegisterEvents()
-        {
-            RegisterEvent(EventType.UI_Transaction_AddProduct);
         }
 
         public void AddProductRowToTable(BillRowEntry Entry)
@@ -32,5 +26,9 @@ namespace InventoryManagement.Controllers
             NewRow.Cells["BillTable_Quantity"].Value = Entry.Quantity;
         }
 
+        protected override void RegisterEvents()
+        {
+            RegisterEvent(EventType.UI_Transaction_AddProduct);
+        }
     }
 }

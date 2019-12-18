@@ -10,13 +10,19 @@ using System.Windows.Forms;
 using InventoryManagement.Models;
 using InventoryManagement.UI.Product;
 using InventoryManagement.Services.HTTP;
+using InventoryManagement.Controllers;
 
 namespace InventoryManagement.UI.UserControls
 {
     public partial class ProductControl : UserControl
     {
+
+        ProductController m_Controller;
+
         public ProductControl()
         {
+            m_Controller = new ProductController(this);
+
             InitializeComponent();
             productDataView.DataSource = GetProducts();
         }
@@ -34,9 +40,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
-            form_ProductDetails addProduct = new form_ProductDetails();
-            addProduct.Text = "Add Product";
-            addProduct.ShowDialog();
+            m_Controller.OnAddNewProductClicked();
         }
 
         private void btn_editProduct_Click(object sender, EventArgs e)

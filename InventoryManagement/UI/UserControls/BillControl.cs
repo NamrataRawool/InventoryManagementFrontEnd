@@ -18,13 +18,15 @@ namespace InventoryManagement.UI.UserControls
     public partial class BillControl : UserControl
     {
 
-        BillController Controller = new BillController();
+        BillController m_Controller;
 
         List<ProductGet> products;
         List<BillRowEntry> billingItems = new List<BillRowEntry>();
 
         public BillControl()
         {
+            m_Controller = new BillController(this);
+
             InitializeComponent();
             cb_Products.DataSource = GetProducts();
         }
@@ -48,7 +50,7 @@ namespace InventoryManagement.UI.UserControls
             Entry.Discount = int.Parse(this.tb_discount.Text);
             Entry.Quantity = int.Parse(this.tb_quantity.Text);
 
-            Controller.OnAddProduct(Entry);
+            m_Controller.OnAddProduct(Entry);
         }
 
         private void Cb_Products_KeyDown(object sender, KeyEventArgs e)
