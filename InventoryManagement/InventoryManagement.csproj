@@ -96,11 +96,13 @@
     <Compile Include="Broadcaster\EventBroadcaster.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
-    <Compile Include="EventHandlers\Bill\EH_TransactionAddProduct.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
+    <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />
     <Compile Include="Events\Event_TransactionAddProduct.cs" />
     <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\Product\Event_AddProduct.cs" />
     <Compile Include="Listeners\IEventListerner.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />

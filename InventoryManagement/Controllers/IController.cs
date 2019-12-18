@@ -1,6 +1,5 @@
 ﻿using InventoryManagement.Broadcaster;
 using InventoryManagement.EventHandlers;
-using InventoryManagement.EventHandlers.Bill;
 using InventoryManagement.Events;
 using InventoryManagement.Listeners;
 using System.Collections.Generic;
@@ -8,41 +7,44 @@ using System.Diagnostics;
 
 namespace InventoryManagement.Controllers
 {
+
+    public class IController<UICONTROL> : IController
+    {
+        protected IController(UICONTROL UIControl)
+        {
+            m_UIControl = UIControl;
+        }
+
+        protected UICONTROL m_UIControl;
+    }
+
     public class IController : IEventListener
     {
-        protected Dictionary<EventType, IEventHandler> m_EventHandlers;
+
+        private List<EventType> m_RegisteredEvents;
+        private IEventHandler m_Handler;
 
         protected IController()
         {
-            m_EventHandlers = new Dictionary<EventType, IEventHandler>();
+            m_RegisteredEvents = new List<EventType>();
         }
 
-        protected virtual void RegisterEventHandlers() { }
-
-        protected void RegisterEvent(EventType type, IEventHandler handler)
+        protected void RegisterEvent(EventType type)
         {
-            if (m_EventHandlers.ContainsKey(type))
-            {
-                Debug.Assert(false, "Event Handler already Registered!");
-                return;
-            }
-
-            m_EventHandlers.Add(type, handler);
+            m_RegisteredEvents.Add(type);
 
             // register with the Broadcaster
             EventBroadcaster.Get().RegisterListener(type, this);
         }
 
+        protected void SetEventHandler(IEventHandler Handler)
+        {
+            m_Handler = Handler;
+        }
+
         public override void OnEvent(IEvent e)
         {
-            EventType type = e.Type();
-            if (!m_EventHandlers.ContainsKey(type))
-            {
-                Debug.Assert(false, "Event Handler must be Registered!");
-                return;
-            }
-
-            m_EventHandlers[type].OnEvent(e);
+            m_Handler.OnEvent(e);
         }
 
     }   

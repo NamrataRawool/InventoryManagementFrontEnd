@@ -9,6 +9,11 @@ namespace InventoryManagement.Events
 
     public enum EventType
     {
+
+        // Product
+        UI_Product_AddNewProduct,
+
+        // Transaction
         UI_Transaction_AddProduct,
     }
 

@@ -1,5 +1,4 @@
 ﻿using InventoryManagement.Broadcaster;
-using InventoryManagement.EventHandlers.Bill;
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 
@@ -9,11 +8,6 @@ namespace InventoryManagement.Controllers
     {
 
         public BillController()
-        {
-            RegisterEventHandlers();
-        }
-
-        protected override void RegisterEventHandlers()
         {
         }
 

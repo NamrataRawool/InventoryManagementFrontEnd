@@ -1,26 +1,20 @@
-﻿using InventoryManagement.Controllers;
-using InventoryManagement.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InventoryManagement.Events;
 
 namespace InventoryManagement.EventHandlers
 {
 
-    public class IEventHandler
+    public abstract class IEventHandler
     {
-        public virtual void OnEvent(IEvent e) { }
+        public abstract void OnEvent(IEvent e);
     }
 
-    public abstract class IEventHandler<Controller> : IEventHandler
+    public abstract class IEventHandler<CONTROLLER> : IEventHandler
     {
-        public IEventHandler(Controller Controller)
+        protected IEventHandler(CONTROLLER Controller)
         {
             m_Controller = Controller;
         }
 
-        protected Controller m_Controller;
+        protected CONTROLLER m_Controller;
     }
 }

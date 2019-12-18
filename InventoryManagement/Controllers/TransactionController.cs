@@ -1,28 +1,24 @@
-﻿using InventoryManagement.EventHandlers.Bill;
+﻿using InventoryManagement.EventHandlers.Transaction;
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 using InventoryManagement.UI.UserControls;
-using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers
 {
 
-    class TransactionController : IController
+    public class TransactionController : IController<TransactionControl>
     {
-
-        TransactionControl m_UIControl;
-
-        public TransactionController(TransactionControl UIControl)
+        public TransactionController(TransactionControl UIControl) 
+            : base(UIControl)
         {
-            m_UIControl = UIControl;
-            RegisterEventHandlers();
+            SetEventHandler(new EventHandler_Transaction(this));
+            RegisterEvents();
         }
 
-        protected override void RegisterEventHandlers()
+        protected void RegisterEvents()
         {
-            RegisterEvent(EventType.UI_Transaction_AddProduct, new EH_TransactionAddProduct(this));
+            RegisterEvent(EventType.UI_Transaction_AddProduct);
         }
 
         public void AddProductRowToTable(BillRowEntry Entry)
