@@ -24,6 +24,7 @@ namespace InventoryManagement.UI.UserControls
             m_Controller = new ProductController(this);
 
             InitializeComponent();
+            TextBoxAutoSearch();
             productDataView.DataSource = GetProducts();
         }
 
@@ -107,5 +108,18 @@ namespace InventoryManagement.UI.UserControls
                 btn_SearchProduct_Click(this, new EventArgs());
             }
         }
+        void TextBoxAutoSearch()
+        {
+            tb_searchProduct.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tb_searchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+
+            var products = GetProducts();
+            foreach (var product in products)
+            {
+                collection.Add(product.Name);
+            }
+            tb_searchProduct.AutoCompleteCustomSource = collection;
+        }    
     }
 }

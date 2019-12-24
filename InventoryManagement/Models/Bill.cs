@@ -14,5 +14,7 @@ namespace InventoryManagement.Models
         public int Quantity { get; set; }
         public int Price { get; set; }
         public int Discount { get; set; }
+        [DisplayName("Total Price")]
+        public int TotalPrice { get; set; }
     }
 }

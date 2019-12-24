@@ -28,7 +28,7 @@ namespace InventoryManagement.UI.UserControls
             m_Controller = new BillController(this);
 
             InitializeComponent();
-            cb_Products.DataSource = GetProducts();
+            TextBoxAutoSearch();
         }
 
         private List<string> GetProducts()
@@ -42,24 +42,57 @@ namespace InventoryManagement.UI.UserControls
             return productDataSource;
         }
 
+        private void TextBoxAutoSearch()
+        {
+            tb_productName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tb_productName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+
+            var products = GetProducts();
+            foreach (var product in products)
+            {
+                collection.Add(product);
+            }
+            tb_productName.AutoCompleteCustomSource = collection;
+        }
+
         private void btn_add_Click(object sender, EventArgs e)
         {
             BillRowEntry Entry = new BillRowEntry();
-            Entry.ProductName = this.cb_Products.Text;
+            Entry.ProductName = this.tb_productName.Text;
             Entry.Price = int.Parse(this.tb_price.Text);
             Entry.Discount = int.Parse(this.tb_discount.Text);
             Entry.Quantity = int.Parse(this.tb_quantity.Text);
 
             m_Controller.OnAddProduct(Entry);
+
+            ResetTextBox();
         }
 
-        private void Cb_Products_KeyDown(object sender, KeyEventArgs e)
+        void ResetTextBox()
+        {
+            tb_productName.Text = string.Empty;
+            tb_quantity.Text = string.Empty;
+            tb_discount.Text = string.Empty;
+            tb_barcode.Text = string.Empty;
+            tb_price.Text = string.Empty;
+        }
+
+        private void tb_quantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_add_Click(sender, e);
+            }
+        }
+
+        private void tb_productName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 foreach (var product in products)
                 {
-                    if (product.Name.Equals(cb_Products.SelectedText))
+                    if (product.Name.Equals(tb_productName.Text))
                     {
                         tb_price.Text = product.RetailPrice.ToString();
                         tb_discount.Text = tb_price.Text = product.RetailPrice.ToString();
@@ -69,22 +102,22 @@ namespace InventoryManagement.UI.UserControls
             }
         }
 
-        private void tb_quantity_KeyDown(object sender, KeyEventArgs e)
+        private void tb_barcode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                TransactionControl transactionControl = new TransactionControl();
-                var item = new BillRowEntry()
+                foreach (var product in products)
                 {
-                    ProductName = cb_Products.Text,
-                    Quantity = Convert.ToInt32(tb_quantity.Text.Trim()),
-                    Discount = Convert.ToInt32(tb_discount.Text.Trim()),
-                    Price = Convert.ToInt32(tb_price.Text.Trim()),
-                };
-
-
+                    var id = Convert.ToInt32(tb_barcode.Text.Trim());
+                    if (product.ID == id)
+                    {
+                        tb_productName.Text = product.Name;
+                        tb_price.Text = product.RetailPrice.ToString();
+                        tb_discount.Text = product.Category.Discount.ToString();
+                        return;
+                    }
+                }
             }
         }
-
     }
 }
