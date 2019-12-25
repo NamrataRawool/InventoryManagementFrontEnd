@@ -1,6 +1,7 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Export;
 using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI;
 using System;
 using System.Collections.Generic;
@@ -88,12 +89,20 @@ namespace InventoryManagement
 
         }
 
+        private static void Initialize()
+        {
+            Assert.Disable();
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
+            Initialize();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Dashboard());

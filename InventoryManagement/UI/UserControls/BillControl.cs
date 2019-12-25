@@ -12,6 +12,7 @@ using InventoryManagement.Models;
 using InventoryManagement.Events;
 using InventoryManagement.Broadcaster;
 using InventoryManagement.Controllers;
+using InventoryManagement.Services.Misc.Assert;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -35,6 +36,12 @@ namespace InventoryManagement.UI.UserControls
         {
             products = HTTPService.GET<List<ProductGet>>("products");
             var productDataSource = new List<string>();
+            if (products == null)
+            {
+                Assert.Do("HTTPService not Working!");
+                return null;
+            }
+
             foreach (var product in products)
             {
                 productDataSource.Add(product.Name);
@@ -49,6 +56,12 @@ namespace InventoryManagement.UI.UserControls
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
             var products = GetProducts();
+            if(products == null)
+            {
+                Assert.Do("HTTPService not working!");
+                return;
+            }
+
             foreach (var product in products)
             {
                 collection.Add(product);

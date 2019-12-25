@@ -128,6 +128,7 @@
     <Compile Include="Services\Export\ExportManager.cs" />
     <Compile Include="Services\Export\Exporters\IExporter.cs" />
     <Compile Include="Services\HTTP\HTTPService.cs" />
+    <Compile Include="Services\Misc\Assert\Assert.cs" />
     <Compile Include="UI\Category\AddCategory.cs">
       <SubType>Form</SubType>
     </Compile>

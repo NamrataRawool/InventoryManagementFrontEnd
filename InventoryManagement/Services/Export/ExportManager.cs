@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Services.Export.Exporters.Excel;
+using InventoryManagement.Services.Misc.Assert;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace InventoryManagement.Services.Export
                     return CreateExcelExporter(export_entity);
             }
 
-            Debug.Assert(false, "Export Type not supported yet!");
+            Assert.Do("Export Type not supported yet!");
             return null;
         }
 
@@ -39,7 +40,7 @@ namespace InventoryManagement.Services.Export
                     return new ExcelExporter_Stocks();
             }
 
-            Debug.Assert(false, "Invalid Exporter Name");
+            Assert.Do("Invalid Exporter Name");
             return null;
         }
 
