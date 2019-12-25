@@ -4,11 +4,6 @@ using InventoryManagement.Events;
 using InventoryManagement.Events.Product;
 using InventoryManagement.UI.Product;
 using InventoryManagement.UI.UserControls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryManagement.Controllers
 {

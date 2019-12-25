@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using InventoryManagement.Services.Export;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI;
 using System;
@@ -69,6 +70,22 @@ namespace InventoryManagement
                 var PostResponse = HTTPService.POST("customer", cPost);
                 Console.WriteLine(PostResponse.Name);
             }
+        }
+
+        private static void TestEXPORT()
+        {
+            var products_exporter = ExportManager.Get().CreateExporter(ExportType.EXCEL, ExportEntity.PRODUCTS);
+            products_exporter.Export("C:/Users/Aditya.Bhende/Desktop/inventory.xlsx");
+
+            var customer_exporter = ExportManager.Get().CreateExporter(ExportType.EXCEL, ExportEntity.CUSTOMERS);
+            customer_exporter.Export("C:/Users/Aditya.Bhende/Desktop/inventory.xlsx");
+
+            var categories_exporter = ExportManager.Get().CreateExporter(ExportType.EXCEL, ExportEntity.TRANSACTIONS);
+            categories_exporter.Export("C:/Users/Aditya.Bhende/Desktop/inventory.xlsx");
+
+            var stocks_exporter = ExportManager.Get().CreateExporter(ExportType.EXCEL, ExportEntity.STOCKS);
+            stocks_exporter.Export("C:/Users/Aditya.Bhende/Desktop/inventory.xlsx");
+
         }
 
         /// <summary>
