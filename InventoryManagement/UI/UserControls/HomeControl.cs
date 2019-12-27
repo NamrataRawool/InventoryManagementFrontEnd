@@ -16,5 +16,10 @@ namespace InventoryManagement.UI.UserControls
         {
             InitializeComponent();
         }
+
+        private void HomeControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

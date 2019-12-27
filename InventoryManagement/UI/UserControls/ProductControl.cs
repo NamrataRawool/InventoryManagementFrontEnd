@@ -21,17 +21,21 @@ namespace InventoryManagement.UI.UserControls
 
         public ProductControl()
         {
-            m_Controller = new ProductController(this);
-
             InitializeComponent();
+            m_Controller = new ProductController(this);
+        }
+
+        private void ProductControl_Load(object sender, EventArgs e)
+        {
             TextBoxAutoSearch();
             productDataView.DataSource = GetProducts();
         }
-
         private List<ProductUI> GetProducts()
         {
             var products = HTTPService.GET<List<ProductGet>>("products");
             var productDataSource = new List<ProductUI>();
+            if (products == null)
+                return null;
             foreach (var product in products)
             {
                 productDataSource.Add(new ProductUI(product));
@@ -115,11 +119,14 @@ namespace InventoryManagement.UI.UserControls
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
             var products = GetProducts();
+            if (products == null)
+                return;
             foreach (var product in products)
             {
                 collection.Add(product.Name);
             }
             tb_searchProduct.AutoCompleteCustomSource = collection;
-        }    
+        }
+
     }
 }

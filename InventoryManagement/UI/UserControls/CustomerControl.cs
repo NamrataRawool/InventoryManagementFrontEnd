@@ -18,12 +18,18 @@ namespace InventoryManagement.UI.UserControls
         public CustomerControl()
         {
             InitializeComponent();
+
+        }
+        private void CustomerControl_Load(object sender, EventArgs e)
+        {
             customerDataView.DataSource = GetCustomers();
         }
         private List<CustomerGet> GetCustomers()
         {
             var customers = HTTPService.GET<List<CustomerGet>>("customers");
             var customerDataSource = new List<CustomerGet>();
+            if (customers == null)
+                return null;
             foreach (var customer in customers)
             {
                 customerDataSource.Add(customer);
@@ -55,5 +61,6 @@ namespace InventoryManagement.UI.UserControls
 
             editCustomer.ShowDialog();
         }
+
     }
 }
