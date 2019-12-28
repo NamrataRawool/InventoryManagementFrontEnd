@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.Controllers.Product;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,14 +20,15 @@ namespace InventoryManagement.UI.Product
 
     public partial class Form_ProductDetails : Form
     {
-        public Form_ProductDetails()
+
+        private FormController_ProductDetails m_Controller;
+
+        public Form_ProductDetails(int productID)
         {
             InitializeComponent();
+
+            m_Controller = new FormController_ProductDetails(productID, this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

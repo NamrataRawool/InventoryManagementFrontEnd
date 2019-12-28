@@ -27,20 +27,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void ProductControl_Load(object sender, EventArgs e)
         {
-            TextBoxAutoSearch();
-            productDataView.DataSource = GetProducts();
-        }
-        private List<ProductUI> GetProducts()
-        {
-            var products = HTTPService.GET<List<ProductGet>>("products");
-            var productDataSource = new List<ProductUI>();
-            if (products == null)
-                return null;
-            foreach (var product in products)
-            {
-                productDataSource.Add(new ProductUI(product));
-            }
-            return productDataSource;
+            m_Controller.Initialize();
         }
 
         private void btn_addProduct_Click(object sender, EventArgs e)
@@ -50,21 +37,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_editProduct_Click(object sender, EventArgs e)
         {
-            form_ProductDetails editProduct = new form_ProductDetails();
-            editProduct.Text = "Edit Product";
-            var rows = productDataView.SelectedRows;
-            if (rows.Count > 0)
-            {
-                int selectedRowIndex = productDataView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = productDataView.Rows[selectedRowIndex];
-                editProduct.tb_Name.Text = selectedRow.Cells["Name"].Value.ToString();
-                editProduct.tb_description.Text = selectedRow.Cells["Description"].Value.ToString();
-                editProduct.tb_retailPrice.Text = selectedRow.Cells["RetailPrice"].Value.ToString();
-                editProduct.tb_wholeSalePrice.Text = selectedRow.Cells["WholeSalePrice"].Value.ToString();
-                editProduct.cb_Category.Text = selectedRow.Cells["Category"].Value.ToString();
-            }
-
-            editProduct.ShowDialog();
+            m_Controller.OpenForm_ProductDetails();
         }
 
         private void btn_SearchProduct_Click(object sender, EventArgs e)
@@ -114,18 +87,7 @@ namespace InventoryManagement.UI.UserControls
         }
         void TextBoxAutoSearch()
         {
-            tb_searchProduct.AutoCompleteMode = AutoCompleteMode.Suggest;
-            tb_searchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
-            var products = GetProducts();
-            if (products == null)
-                return;
-            foreach (var product in products)
-            {
-                collection.Add(product.Name);
-            }
-            tb_searchProduct.AutoCompleteCustomSource = collection;
         }
 
     }
