@@ -22,55 +22,55 @@ namespace InventoryManagement.UI
         }
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Home.Height;
-            homeControl.BringToFront();
+            UpdateSidePanel(btn_Home);
+            productControl.BringToFront();
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Home.Height;
-            SidePanel.Top = btn_Home.Top;
+            UpdateSidePanel(btn_Home);
             homeControl.BringToFront();
         }
 
         private void btn_Product_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Product.Height;
-            SidePanel.Top = btn_Product.Top;
+            UpdateSidePanel(btn_Product);
             productControl.BringToFront();
         }
 
         private void btn_Category_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Category.Height;
-            SidePanel.Top = btn_Category.Top;
+            UpdateSidePanel(btn_Category);
             categoryControl.BringToFront();
         }
         private void btn_Transaction_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Transaction.Height;
-            SidePanel.Top = btn_Transaction.Top;
+            UpdateSidePanel(btn_Transaction);
             transactionControl.BringToFront();
         }
 
         private void btn_Customer_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Customer.Height;
-            SidePanel.Top = btn_Customer.Top;
+            UpdateSidePanel(btn_Customer);
             customerControl.BringToFront();
         }
 
         private void btn_Stock_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_Stock.Height;
-            SidePanel.Top = btn_Stock.Top;
+            UpdateSidePanel(btn_Stock);
             stockControl.BringToFront();
         }
 
         private void btn_AboutUs_Click(object sender, EventArgs e)
         {
-            SidePanel.Height = btn_AboutUs.Height;
-            SidePanel.Top = btn_AboutUs.Top;
+            UpdateSidePanel(btn_AboutUs);
         }
+
+        public void UpdateSidePanel(Control control)
+        {
+            SidePanel.Height    = control.Height;
+            SidePanel.Top       = control.Top;
+        }
+
     }
 }

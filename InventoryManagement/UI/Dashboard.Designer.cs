@@ -64,19 +64,19 @@
             this.panel1.Controls.Add(this.btn_Product);
             this.panel1.Controls.Add(this.btn_Home);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 31);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 866);
+            this.panel1.Size = new System.Drawing.Size(236, 704);
             this.panel1.TabIndex = 2;
             // 
             // SidePanel
             // 
             this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.SidePanel.Location = new System.Drawing.Point(0, 98);
-            this.SidePanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.SidePanel.Location = new System.Drawing.Point(0, 80);
+            this.SidePanel.Margin = new System.Windows.Forms.Padding(4);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(17, 84);
+            this.SidePanel.Size = new System.Drawing.Size(13, 68);
             this.SidePanel.TabIndex = 4;
             // 
             // btn_AboutUs
@@ -86,10 +86,10 @@
             this.btn_AboutUs.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AboutUs.ForeColor = System.Drawing.Color.White;
             this.btn_AboutUs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_AboutUs.Location = new System.Drawing.Point(1, 762);
-            this.btn_AboutUs.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_AboutUs.Location = new System.Drawing.Point(1, 619);
+            this.btn_AboutUs.Margin = new System.Windows.Forms.Padding(4);
             this.btn_AboutUs.Name = "btn_AboutUs";
-            this.btn_AboutUs.Size = new System.Drawing.Size(311, 81);
+            this.btn_AboutUs.Size = new System.Drawing.Size(233, 66);
             this.btn_AboutUs.TabIndex = 8;
             this.btn_AboutUs.Text = "About Us";
             this.btn_AboutUs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -103,10 +103,10 @@
             this.btn_Stock.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Stock.ForeColor = System.Drawing.Color.White;
             this.btn_Stock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Stock.Location = new System.Drawing.Point(1, 642);
-            this.btn_Stock.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_Stock.Location = new System.Drawing.Point(1, 522);
+            this.btn_Stock.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Stock.Name = "btn_Stock";
-            this.btn_Stock.Size = new System.Drawing.Size(311, 81);
+            this.btn_Stock.Size = new System.Drawing.Size(233, 66);
             this.btn_Stock.TabIndex = 8;
             this.btn_Stock.Text = "Stock";
             this.btn_Stock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -119,9 +119,9 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(0, -1);
-            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(316, 98);
+            this.panel3.Size = new System.Drawing.Size(237, 80);
             this.panel3.TabIndex = 2;
             // 
             // label2
@@ -129,10 +129,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(63, 53);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(47, 43);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 23);
+            this.label2.Size = new System.Drawing.Size(108, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "Management";
             // 
@@ -141,10 +141,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(64, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(48, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 23);
+            this.label1.Size = new System.Drawing.Size(76, 18);
             this.label1.TabIndex = 4;
             this.label1.Text = "Inventory";
             // 
@@ -155,10 +155,10 @@
             this.btn_Customer.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Customer.ForeColor = System.Drawing.Color.White;
             this.btn_Customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Customer.Location = new System.Drawing.Point(1, 533);
-            this.btn_Customer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_Customer.Location = new System.Drawing.Point(1, 433);
+            this.btn_Customer.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Customer.Name = "btn_Customer";
-            this.btn_Customer.Size = new System.Drawing.Size(311, 81);
+            this.btn_Customer.Size = new System.Drawing.Size(233, 66);
             this.btn_Customer.TabIndex = 7;
             this.btn_Customer.Text = "Customer";
             this.btn_Customer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -172,10 +172,10 @@
             this.btn_Transaction.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Transaction.ForeColor = System.Drawing.Color.White;
             this.btn_Transaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Transaction.Location = new System.Drawing.Point(1, 425);
-            this.btn_Transaction.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_Transaction.Location = new System.Drawing.Point(1, 345);
+            this.btn_Transaction.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Transaction.Name = "btn_Transaction";
-            this.btn_Transaction.Size = new System.Drawing.Size(311, 81);
+            this.btn_Transaction.Size = new System.Drawing.Size(233, 66);
             this.btn_Transaction.TabIndex = 6;
             this.btn_Transaction.Text = "Transaction";
             this.btn_Transaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -189,10 +189,10 @@
             this.btn_Category.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Category.ForeColor = System.Drawing.Color.White;
             this.btn_Category.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Category.Location = new System.Drawing.Point(1, 315);
-            this.btn_Category.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_Category.Location = new System.Drawing.Point(1, 256);
+            this.btn_Category.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Category.Name = "btn_Category";
-            this.btn_Category.Size = new System.Drawing.Size(311, 81);
+            this.btn_Category.Size = new System.Drawing.Size(233, 66);
             this.btn_Category.TabIndex = 5;
             this.btn_Category.Text = "Category";
             this.btn_Category.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -206,10 +206,10 @@
             this.btn_Product.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Product.ForeColor = System.Drawing.Color.White;
             this.btn_Product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Product.Location = new System.Drawing.Point(1, 206);
-            this.btn_Product.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_Product.Location = new System.Drawing.Point(1, 167);
+            this.btn_Product.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Product.Name = "btn_Product";
-            this.btn_Product.Size = new System.Drawing.Size(311, 81);
+            this.btn_Product.Size = new System.Drawing.Size(233, 66);
             this.btn_Product.TabIndex = 4;
             this.btn_Product.Text = "   Product";
             this.btn_Product.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -222,11 +222,10 @@
             this.btn_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Home.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Home.ForeColor = System.Drawing.Color.White;
-            this.btn_Home.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Home.Location = new System.Drawing.Point(5, 101);
-            this.btn_Home.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btn_Home.Location = new System.Drawing.Point(4, 82);
+            this.btn_Home.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Home.Name = "btn_Home";
-            this.btn_Home.Size = new System.Drawing.Size(311, 81);
+            this.btn_Home.Size = new System.Drawing.Size(233, 66);
             this.btn_Home.TabIndex = 3;
             this.btn_Home.Text = "    Home";
             this.btn_Home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -238,79 +237,79 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1800, 31);
+            this.panel2.Size = new System.Drawing.Size(1350, 25);
             this.panel2.TabIndex = 3;
             // 
             // homeControl
             // 
             this.homeControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.homeControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeControl.Location = new System.Drawing.Point(315, 31);
-            this.homeControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.homeControl.Location = new System.Drawing.Point(236, 25);
+            this.homeControl.Margin = new System.Windows.Forms.Padding(4);
             this.homeControl.Name = "homeControl";
             this.homeControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.homeControl.Size = new System.Drawing.Size(1485, 866);
+            this.homeControl.Size = new System.Drawing.Size(1114, 704);
             this.homeControl.TabIndex = 4;
             // 
             // productControl
             // 
             this.productControl.BackColor = System.Drawing.Color.Gainsboro;
             this.productControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productControl.Location = new System.Drawing.Point(315, 31);
-            this.productControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.productControl.Location = new System.Drawing.Point(236, 25);
+            this.productControl.Margin = new System.Windows.Forms.Padding(2);
             this.productControl.Name = "productControl";
-            this.productControl.Size = new System.Drawing.Size(1485, 866);
+            this.productControl.Size = new System.Drawing.Size(1114, 704);
             this.productControl.TabIndex = 5;
             // 
             // stockControl
             // 
             this.stockControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.stockControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stockControl.Location = new System.Drawing.Point(315, 31);
-            this.stockControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.stockControl.Location = new System.Drawing.Point(236, 25);
+            this.stockControl.Margin = new System.Windows.Forms.Padding(4);
             this.stockControl.Name = "stockControl";
-            this.stockControl.Size = new System.Drawing.Size(1485, 866);
+            this.stockControl.Size = new System.Drawing.Size(1114, 704);
             this.stockControl.TabIndex = 6;
             // 
             // categoryControl
             // 
             this.categoryControl.BackColor = System.Drawing.Color.Gainsboro;
             this.categoryControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoryControl.Location = new System.Drawing.Point(315, 31);
-            this.categoryControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.categoryControl.Location = new System.Drawing.Point(236, 25);
+            this.categoryControl.Margin = new System.Windows.Forms.Padding(4);
             this.categoryControl.Name = "categoryControl";
-            this.categoryControl.Size = new System.Drawing.Size(1485, 866);
+            this.categoryControl.Size = new System.Drawing.Size(1114, 704);
             this.categoryControl.TabIndex = 7;
             // 
             // customerControl
             // 
             this.customerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.customerControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customerControl.Location = new System.Drawing.Point(315, 31);
-            this.customerControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.customerControl.Location = new System.Drawing.Point(236, 25);
+            this.customerControl.Margin = new System.Windows.Forms.Padding(4);
             this.customerControl.Name = "customerControl";
             this.customerControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.customerControl.Size = new System.Drawing.Size(1485, 866);
+            this.customerControl.Size = new System.Drawing.Size(1114, 704);
             this.customerControl.TabIndex = 8;
             // 
             // transactionControl
             // 
             this.transactionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.transactionControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transactionControl.Location = new System.Drawing.Point(315, 31);
-            this.transactionControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.transactionControl.Location = new System.Drawing.Point(236, 25);
+            this.transactionControl.Margin = new System.Windows.Forms.Padding(4);
             this.transactionControl.Name = "transactionControl";
-            this.transactionControl.Size = new System.Drawing.Size(1485, 866);
+            this.transactionControl.Size = new System.Drawing.Size(1114, 704);
             this.transactionControl.TabIndex = 9;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1800, 897);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.transactionControl);
             this.Controls.Add(this.customerControl);
             this.Controls.Add(this.categoryControl);
@@ -319,7 +318,6 @@
             this.Controls.Add(this.homeControl);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";

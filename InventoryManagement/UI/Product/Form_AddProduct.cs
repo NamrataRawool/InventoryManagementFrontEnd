@@ -1,4 +1,5 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Controllers.Product;
+using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,15 @@ namespace InventoryManagement.UI.Product
 {
     public partial class Form_AddProduct : Form
     {
+
+        FormController_AddProduct m_Controller;
+
         public Form_AddProduct()
         {
             InitializeComponent();
+
+            m_Controller = new FormController_AddProduct(this);
+
             cb_Category.DataSource = GetCategories();
         }
 
@@ -42,7 +49,7 @@ namespace InventoryManagement.UI.Product
 
         private void btn_saveProduct_Click(object sender, EventArgs e)
         {
-
+            m_Controller.SubmitNewProduct();
         }
 
         private void btn_browseImage_Click(object sender, EventArgs e)

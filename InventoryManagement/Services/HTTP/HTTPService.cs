@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
 using InventoryManagement.Services.Misc.Assert;
+using System.Drawing;
+using System.IO;
 
 namespace InventoryManagement.Services.HTTP
 {
     public class HTTPService
     {
+
+        public static byte[] GETFile(string imageURL)
+        {
+            RestRequest Request = new RestRequest(imageURL);
+
+            byte[] imageBytes = Client.DownloadData(Request);
+
+            return imageBytes;
+        }
+
         public static T GET<T>(string URL) where T: new()
         {
             RestRequest Request = new RestRequest(URL);
