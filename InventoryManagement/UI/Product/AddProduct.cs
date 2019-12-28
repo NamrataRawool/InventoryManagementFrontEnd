@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.UI.Product
 {
-    public partial class form_ProductDetails : Form
+    public partial class Form_AddProduct : Form
     {
-        public form_ProductDetails()
+        public Form_AddProduct()
         {
             InitializeComponent();
             cb_Category.DataSource = GetCategories();

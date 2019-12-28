@@ -39,6 +39,12 @@
             this.btn_editProduct = new System.Windows.Forms.Button();
             this.tb_searchProduct = new System.Windows.Forms.TextBox();
             this.btn_SearchProduct = new System.Windows.Forms.Button();
+            this.ProductTableColumn_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductTableColumn_Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductTableColumn_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductTableColumn_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductTableColumn_RetailPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductTableColumn_WholesalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.productDataView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -62,6 +68,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.productDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.productDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.productDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductTableColumn_ID,
+            this.ProductTableColumn_Barcode,
+            this.ProductTableColumn_Name,
+            this.ProductTableColumn_Category,
+            this.ProductTableColumn_RetailPrice,
+            this.ProductTableColumn_WholesalePrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -199,6 +212,42 @@
             this.btn_SearchProduct.UseVisualStyleBackColor = false;
             this.btn_SearchProduct.Click += new System.EventHandler(this.btn_SearchProduct_Click);
             // 
+            // ProductTableColumn_ID
+            // 
+            this.ProductTableColumn_ID.HeaderText = "ID";
+            this.ProductTableColumn_ID.Name = "ProductTableColumn_ID";
+            this.ProductTableColumn_ID.ReadOnly = true;
+            // 
+            // ProductTableColumn_Barcode
+            // 
+            this.ProductTableColumn_Barcode.HeaderText = "Barcode";
+            this.ProductTableColumn_Barcode.Name = "ProductTableColumn_Barcode";
+            this.ProductTableColumn_Barcode.ReadOnly = true;
+            // 
+            // ProductTableColumn_Name
+            // 
+            this.ProductTableColumn_Name.HeaderText = "Name";
+            this.ProductTableColumn_Name.Name = "ProductTableColumn_Name";
+            this.ProductTableColumn_Name.ReadOnly = true;
+            // 
+            // ProductTableColumn_Category
+            // 
+            this.ProductTableColumn_Category.HeaderText = "Category";
+            this.ProductTableColumn_Category.Name = "ProductTableColumn_Category";
+            this.ProductTableColumn_Category.ReadOnly = true;
+            // 
+            // ProductTableColumn_RetailPrice
+            // 
+            this.ProductTableColumn_RetailPrice.HeaderText = "Retail Price";
+            this.ProductTableColumn_RetailPrice.Name = "ProductTableColumn_RetailPrice";
+            this.ProductTableColumn_RetailPrice.ReadOnly = true;
+            // 
+            // ProductTableColumn_WholesalePrice
+            // 
+            this.ProductTableColumn_WholesalePrice.HeaderText = "Wholesale price";
+            this.ProductTableColumn_WholesalePrice.Name = "ProductTableColumn_WholesalePrice";
+            this.ProductTableColumn_WholesalePrice.ReadOnly = true;
+            // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -220,11 +269,17 @@
         #endregion
 
         public System.Windows.Forms.DataGridView productDataView;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btn_addProduct;
-        private System.Windows.Forms.Button btn_editProduct;
-        private System.Windows.Forms.TextBox tb_searchProduct;
-        private System.Windows.Forms.Button btn_SearchProduct;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        public System.Windows.Forms.Button btn_addProduct;
+        public System.Windows.Forms.Button btn_editProduct;
+        public System.Windows.Forms.TextBox tb_searchProduct;
+        public System.Windows.Forms.Button btn_SearchProduct;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_ID;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_Barcode;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_Name;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_Category;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_RetailPrice;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_WholesalePrice;
     }
 }

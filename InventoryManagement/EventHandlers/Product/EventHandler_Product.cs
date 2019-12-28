@@ -21,7 +21,7 @@ namespace InventoryManagement.EventHandlers.Product
 
             if (type == EventType.UI_Product_AddNewProduct)
             {
-                m_Controller.OpenAddNewProductWindow();
+                m_Controller.OpenForm_AddProduct();
             }
         }
     }

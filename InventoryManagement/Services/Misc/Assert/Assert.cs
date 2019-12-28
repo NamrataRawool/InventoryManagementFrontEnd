@@ -5,7 +5,7 @@ namespace InventoryManagement.Services.Misc.Assert
     public static class Assert
     {
 
-        public static void Do(string message)
+        public static void Do(string message = null)
         {
             if (!IsEnabled())
                 return;
