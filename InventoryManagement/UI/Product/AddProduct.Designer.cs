@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagement.UI.Product
 {
-    partial class form_ProductDetails
+    partial class Form_AddProduct
     {
         /// <summary>
         /// Required designer variable.

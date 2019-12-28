@@ -51,6 +51,7 @@ namespace InventoryManagement.Models
 
         public int WholeSalePrice { get; set; }
 
+        public string ImagePath { get; set; }
     }
 
     public class ProductPost : ProductBase
@@ -60,8 +61,6 @@ namespace InventoryManagement.Models
 
     public class ProductGet : ProductBase
     {
-        public string ImagePath { get; set; }
-
         public int Quantity { get; set; }
 
         public CategoryGet Category { get; set; }

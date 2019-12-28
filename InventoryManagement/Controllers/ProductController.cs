@@ -23,7 +23,7 @@ namespace InventoryManagement.Controllers
 
         public void OpenAddNewProductWindow()
         {
-            form_ProductDetails addProduct = new form_ProductDetails();
+            Form_AddProduct addProduct = new Form_AddProduct();
             addProduct.Text = "Add Product";
             addProduct.ShowDialog();
         }

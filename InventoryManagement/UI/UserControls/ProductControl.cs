@@ -26,7 +26,7 @@ namespace InventoryManagement.UI.UserControls
             m_Controller = new ProductController(this);
 
             InitializeComponent();
-            TextBoxAutoSearch();
+            InitializeAutoSearchEntries();
             productDataView.DataSource = GetProducts();
         }
 
@@ -55,7 +55,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_editProduct_Click(object sender, EventArgs e)
         {
-            form_ProductDetails editProduct = new form_ProductDetails();
+            Form_AddProduct editProduct = new Form_AddProduct();
             editProduct.Text = "Edit Product";
             var rows = productDataView.SelectedRows;
             if (rows.Count > 0)
@@ -117,7 +117,7 @@ namespace InventoryManagement.UI.UserControls
                 btn_SearchProduct_Click(this, new EventArgs());
             }
         }
-        void TextBoxAutoSearch()
+        void InitializeAutoSearchEntries()
         {
             tb_searchProduct.AutoCompleteMode = AutoCompleteMode.Suggest;
             tb_searchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -129,6 +129,17 @@ namespace InventoryManagement.UI.UserControls
                     collection.Add(product.Name);
 
             tb_searchProduct.AutoCompleteCustomSource = collection;
-        }    
+        }
+
+        private void productDataView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (productDataView.SelectedRows.Count < 0)
+                return;
+
+            int selectedRowIndex = productDataView.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = productDataView.Rows[selectedRowIndex];
+
+            Assert.Do("");
+        }
     }
 }

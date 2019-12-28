@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
+using InventoryManagement.Services.Misc.Assert;
 
 namespace InventoryManagement.Services.HTTP
 {
@@ -14,9 +15,28 @@ namespace InventoryManagement.Services.HTTP
         {
             RestRequest Request = new RestRequest(URL);
 
-            var Response = Client.Get(Request).Content;
+            var Response = Client.Get(Request);
 
-            return JsonConvert.DeserializeObject<T>(Response);
+            if (Response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Assert.Do();
+                return default(T);
+            }
+
+            var Content = Response.Content;
+
+            return JsonConvert.DeserializeObject<T>(Content);
+        }
+
+        public static T POST<T>(string URL, T Obj, string filename) where T : new()
+        {
+            List<string> files = null;
+            if (filename != null)
+            {
+                files = new List<string>();
+                files.Add(filename);
+            }
+            return POST(URL, Obj, files);
         }
 
         public static T POST<T>(string URL, T Obj, List<string> filenames = null) where T: new()
@@ -28,12 +48,22 @@ namespace InventoryManagement.Services.HTTP
             if (filenames != null)
             {
                 foreach (var filename in filenames)
-                    Request.AddFile("images", filename);
+                {
+                    if (filename != null && !filename.Equals(""))
+                        Request.AddFile("images", filename);
+                }
             }
 
-            var Response = Client.Post(Request).Content;
+            var Response = Client.Post(Request);
 
-            return JsonConvert.DeserializeObject<T>(Response);
+            if (Response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Assert.Do();
+                return default(T);
+            }
+
+            var Content = Response.Content;
+            return JsonConvert.DeserializeObject<T>(Content);
         }
 
 
