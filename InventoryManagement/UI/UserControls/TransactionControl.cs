@@ -27,9 +27,21 @@ namespace InventoryManagement.UI.UserControls
         }
         private void TransactionControl_Load(Object sender, EventArgs e)
         {
+            cb_customerName.DataSource = GetCustomers();
             TextBoxAutoSearch();
         }
-
+        private List<string> GetCustomers()
+        {
+            var customers = HTTPService.GET<List<CustomerGet>>("customers");
+            if (customers == null)
+                return null;
+            List<string> customerDataSource = new List<string>();
+            foreach (var customer in customers)
+            {
+                customerDataSource.Add(customer.Name);
+            }
+            return customerDataSource;
+        }
         private void TextBoxAutoSearch()
         {
             tb_productName.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -134,8 +146,12 @@ namespace InventoryManagement.UI.UserControls
                     }
                 }
             }
-          
+
         }
 
+        private void btn_searchByCustomerName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

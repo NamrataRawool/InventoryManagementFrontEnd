@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -94,7 +94,7 @@
             this.categoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryDataView.GridColor = System.Drawing.Color.Black;
             this.categoryDataView.Location = new System.Drawing.Point(48, 133);
-            this.categoryDataView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.categoryDataView.Margin = new System.Windows.Forms.Padding(4);
             this.categoryDataView.MultiSelect = false;
             this.categoryDataView.Name = "categoryDataView";
             this.categoryDataView.ReadOnly = true;
@@ -128,7 +128,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btn_searchCategory, 4, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(48, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -146,7 +146,7 @@
             this.btn_addCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_addCategory.Image")));
             this.btn_addCategory.Location = new System.Drawing.Point(4, 34);
-            this.btn_addCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_addCategory.Margin = new System.Windows.Forms.Padding(4);
             this.btn_addCategory.Name = "btn_addCategory";
             this.btn_addCategory.Size = new System.Drawing.Size(109, 44);
             this.btn_addCategory.TabIndex = 1;
@@ -162,7 +162,7 @@
             this.btn_editCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_editCategory.Image")));
             this.btn_editCategory.Location = new System.Drawing.Point(121, 34);
-            this.btn_editCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_editCategory.Margin = new System.Windows.Forms.Padding(4);
             this.btn_editCategory.Name = "btn_editCategory";
             this.btn_editCategory.Size = new System.Drawing.Size(108, 44);
             this.btn_editCategory.TabIndex = 2;
@@ -174,7 +174,7 @@
             this.tb_searchCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_searchCategory.Location = new System.Drawing.Point(530, 34);
-            this.tb_searchCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_searchCategory.Margin = new System.Windows.Forms.Padding(4);
             this.tb_searchCategory.Name = "tb_searchCategory";
             this.tb_searchCategory.Size = new System.Drawing.Size(387, 34);
             this.tb_searchCategory.TabIndex = 3;
@@ -188,7 +188,7 @@
             this.btn_searchCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_searchCategory.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_searchCategory.Location = new System.Drawing.Point(925, 34);
-            this.btn_searchCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_searchCategory.Margin = new System.Windows.Forms.Padding(4);
             this.btn_searchCategory.MaximumSize = new System.Drawing.Size(0, 34);
             this.btn_searchCategory.MinimumSize = new System.Drawing.Size(0, 34);
             this.btn_searchCategory.Name = "btn_searchCategory";
@@ -203,7 +203,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CategoryControl";
             this.Size = new System.Drawing.Size(1485, 866);
             this.Load += new System.EventHandler(this.CategoryControl_Load);

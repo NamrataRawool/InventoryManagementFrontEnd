@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.transactionTabControl = new System.Windows.Forms.TabControl();
             this.tab_newTransaction = new System.Windows.Forms.TabPage();
+            this.gb_billDetails = new System.Windows.Forms.GroupBox();
             this.btn_saveTransaction = new System.Windows.Forms.Button();
-            this.tb_amountDue = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tb_totalDiscount = new System.Windows.Forms.TextBox();
-            this.tb_totalTax = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.tb_amountDue = new System.Windows.Forms.TextBox();
             this.btn_printBill = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tb_totalTax = new System.Windows.Forms.TextBox();
+            this.tb_totalDiscount = new System.Windows.Forms.TextBox();
+            this.gb_customerDeails = new System.Windows.Forms.GroupBox();
             this.tb_mobileNumber = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tb_customerName = new System.Windows.Forms.TextBox();
-            this.tb_pendingAmount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btn_addCustomer = new System.Windows.Forms.Button();
-            this.Bill_ProductsDataView = new System.Windows.Forms.DataGridView();
-            this.tab_transactionHistory = new System.Windows.Forms.TabPage();
+            this.tb_customerName = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tb_pendingAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_barCode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -67,39 +67,39 @@
             this.tb_price = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btn_addProductToBill = new System.Windows.Forms.Button();
-            this.gb_customerDeails = new System.Windows.Forms.GroupBox();
-            this.gb_billDetails = new System.Windows.Forms.GroupBox();
+            this.Bill_ProductsDataView = new System.Windows.Forms.DataGridView();
             this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab_transactionHistory = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_searchByCustomerName = new System.Windows.Forms.Button();
+            this.cb_customerName = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_searchByDate = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.toDate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fromDate = new System.Windows.Forms.DateTimePicker();
             this.TransactionHistoryDataView = new System.Windows.Forms.DataGridView();
             this.Transaction_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.fromDate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.toDate = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
+            this.gb_billDetails.SuspendLayout();
+            this.gb_customerDeails.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bill_ProductsDataView)).BeginInit();
             this.tab_transactionHistory.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.gb_customerDeails.SuspendLayout();
-            this.gb_billDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionTabControl
@@ -132,6 +132,25 @@
             this.tab_newTransaction.TabIndex = 0;
             this.tab_newTransaction.Text = "New Transaction";
             // 
+            // gb_billDetails
+            // 
+            this.gb_billDetails.Controls.Add(this.btn_saveTransaction);
+            this.gb_billDetails.Controls.Add(this.tb_subtotal);
+            this.gb_billDetails.Controls.Add(this.tb_amountDue);
+            this.gb_billDetails.Controls.Add(this.btn_printBill);
+            this.gb_billDetails.Controls.Add(this.label12);
+            this.gb_billDetails.Controls.Add(this.label11);
+            this.gb_billDetails.Controls.Add(this.label10);
+            this.gb_billDetails.Controls.Add(this.label7);
+            this.gb_billDetails.Controls.Add(this.tb_totalTax);
+            this.gb_billDetails.Controls.Add(this.tb_totalDiscount);
+            this.gb_billDetails.Location = new System.Drawing.Point(1167, 544);
+            this.gb_billDetails.Name = "gb_billDetails";
+            this.gb_billDetails.Size = new System.Drawing.Size(504, 336);
+            this.gb_billDetails.TabIndex = 31;
+            this.gb_billDetails.TabStop = false;
+            this.gb_billDetails.Text = "Bill Details";
+            // 
             // btn_saveTransaction
             // 
             this.btn_saveTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -143,6 +162,15 @@
             this.btn_saveTransaction.Text = "Save";
             this.btn_saveTransaction.UseVisualStyleBackColor = true;
             // 
+            // tb_subtotal
+            // 
+            this.tb_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_subtotal.Location = new System.Drawing.Point(224, 46);
+            this.tb_subtotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_subtotal.Name = "tb_subtotal";
+            this.tb_subtotal.Size = new System.Drawing.Size(244, 24);
+            this.tb_subtotal.TabIndex = 23;
+            // 
             // tb_amountDue
             // 
             this.tb_amountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,6 +179,17 @@
             this.tb_amountDue.Name = "tb_amountDue";
             this.tb_amountDue.Size = new System.Drawing.Size(244, 24);
             this.tb_amountDue.TabIndex = 26;
+            // 
+            // btn_printBill
+            // 
+            this.btn_printBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_printBill.Location = new System.Drawing.Point(329, 281);
+            this.btn_printBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_printBill.Name = "btn_printBill";
+            this.btn_printBill.Size = new System.Drawing.Size(103, 41);
+            this.btn_printBill.TabIndex = 28;
+            this.btn_printBill.Text = "Print Bill";
+            this.btn_printBill.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -162,14 +201,25 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "Amount Due";
             // 
-            // tb_subtotal
+            // label11
             // 
-            this.tb_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_subtotal.Location = new System.Drawing.Point(224, 46);
-            this.tb_subtotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_subtotal.Name = "tb_subtotal";
-            this.tb_subtotal.Size = new System.Drawing.Size(244, 24);
-            this.tb_subtotal.TabIndex = 23;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(38, 162);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 24);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Total Tax";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(38, 46);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(77, 24);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Subtotal";
             // 
             // label7
             // 
@@ -180,6 +230,15 @@
             this.label7.Size = new System.Drawing.Size(129, 24);
             this.label7.TabIndex = 15;
             this.label7.Text = "Total Discount";
+            // 
+            // tb_totalTax
+            // 
+            this.tb_totalTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totalTax.Location = new System.Drawing.Point(224, 162);
+            this.tb_totalTax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_totalTax.Name = "tb_totalTax";
+            this.tb_totalTax.Size = new System.Drawing.Size(244, 24);
+            this.tb_totalTax.TabIndex = 25;
             // 
             // tb_totalDiscount
             // 
@@ -195,45 +254,21 @@
             this.tb_totalDiscount.Size = new System.Drawing.Size(244, 24);
             this.tb_totalDiscount.TabIndex = 24;
             // 
-            // tb_totalTax
+            // gb_customerDeails
             // 
-            this.tb_totalTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_totalTax.Location = new System.Drawing.Point(224, 162);
-            this.tb_totalTax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_totalTax.Name = "tb_totalTax";
-            this.tb_totalTax.Size = new System.Drawing.Size(244, 24);
-            this.tb_totalTax.TabIndex = 25;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(38, 46);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 24);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Subtotal";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(38, 162);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 24);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Total Tax";
-            // 
-            // btn_printBill
-            // 
-            this.btn_printBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_printBill.Location = new System.Drawing.Point(329, 281);
-            this.btn_printBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_printBill.Name = "btn_printBill";
-            this.btn_printBill.Size = new System.Drawing.Size(103, 41);
-            this.btn_printBill.TabIndex = 28;
-            this.btn_printBill.Text = "Print Bill";
-            this.btn_printBill.UseVisualStyleBackColor = true;
+            this.gb_customerDeails.Controls.Add(this.tb_mobileNumber);
+            this.gb_customerDeails.Controls.Add(this.label8);
+            this.gb_customerDeails.Controls.Add(this.label6);
+            this.gb_customerDeails.Controls.Add(this.btn_addCustomer);
+            this.gb_customerDeails.Controls.Add(this.tb_customerName);
+            this.gb_customerDeails.Controls.Add(this.label9);
+            this.gb_customerDeails.Controls.Add(this.tb_pendingAmount);
+            this.gb_customerDeails.Location = new System.Drawing.Point(60, 525);
+            this.gb_customerDeails.Name = "gb_customerDeails";
+            this.gb_customerDeails.Size = new System.Drawing.Size(604, 299);
+            this.gb_customerDeails.TabIndex = 30;
+            this.gb_customerDeails.TabStop = false;
+            this.gb_customerDeails.Text = "Customer Details";
             // 
             // tb_mobileNumber
             // 
@@ -244,6 +279,16 @@
             this.tb_mobileNumber.Size = new System.Drawing.Size(244, 24);
             this.tb_mobileNumber.TabIndex = 23;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(90, 55);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(102, 24);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Mobile No.";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -253,6 +298,17 @@
             this.label6.Size = new System.Drawing.Size(147, 24);
             this.label6.TabIndex = 15;
             this.label6.Text = "Customer Name";
+            // 
+            // btn_addCustomer
+            // 
+            this.btn_addCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addCustomer.Location = new System.Drawing.Point(349, 244);
+            this.btn_addCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_addCustomer.Name = "btn_addCustomer";
+            this.btn_addCustomer.Size = new System.Drawing.Size(172, 41);
+            this.btn_addCustomer.TabIndex = 26;
+            this.btn_addCustomer.Text = "Add Customer";
+            this.btn_addCustomer.UseVisualStyleBackColor = true;
             // 
             // tb_customerName
             // 
@@ -268,25 +324,6 @@
             this.tb_customerName.Size = new System.Drawing.Size(244, 24);
             this.tb_customerName.TabIndex = 24;
             // 
-            // tb_pendingAmount
-            // 
-            this.tb_pendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_pendingAmount.Location = new System.Drawing.Point(276, 174);
-            this.tb_pendingAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_pendingAmount.Name = "tb_pendingAmount";
-            this.tb_pendingAmount.Size = new System.Drawing.Size(244, 24);
-            this.tb_pendingAmount.TabIndex = 25;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(90, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 24);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Mobile No.";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -297,88 +334,14 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Pending Amount";
             // 
-            // btn_addCustomer
+            // tb_pendingAmount
             // 
-            this.btn_addCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addCustomer.Location = new System.Drawing.Point(349, 244);
-            this.btn_addCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_addCustomer.Name = "btn_addCustomer";
-            this.btn_addCustomer.Size = new System.Drawing.Size(172, 41);
-            this.btn_addCustomer.TabIndex = 26;
-            this.btn_addCustomer.Text = "Add Customer";
-            this.btn_addCustomer.UseVisualStyleBackColor = true;
-            // 
-            // Bill_ProductsDataView
-            // 
-            this.Bill_ProductsDataView.AllowUserToOrderColumns = true;
-            this.Bill_ProductsDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Bill_ProductsDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.Bill_ProductsDataView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.Bill_ProductsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Bill_ProductsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bill_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.Bill_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Bill_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BillTable_Name,
-            this.BillTable_Price,
-            this.BillTable_Discount,
-            this.BillTable_Quantity,
-            this.BillTable_TotalPrice});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Bill_ProductsDataView.GridColor = System.Drawing.Color.Black;
-            this.Bill_ProductsDataView.Location = new System.Drawing.Point(697, 26);
-            this.Bill_ProductsDataView.Margin = new System.Windows.Forms.Padding(4);
-            this.Bill_ProductsDataView.MultiSelect = false;
-            this.Bill_ProductsDataView.Name = "Bill_ProductsDataView";
-            this.Bill_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bill_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.Bill_ProductsDataView.RowHeadersVisible = false;
-            this.Bill_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.Bill_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Bill_ProductsDataView.Size = new System.Drawing.Size(974, 493);
-            this.Bill_ProductsDataView.TabIndex = 25;
-            this.Bill_ProductsDataView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Bill_ProductsDataView_CellBeginEdit);
-            this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
-            // 
-            // tab_transactionHistory
-            // 
-            this.tab_transactionHistory.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tab_transactionHistory.Controls.Add(this.button1);
-            this.tab_transactionHistory.Controls.Add(this.groupBox3);
-            this.tab_transactionHistory.Controls.Add(this.groupBox2);
-            this.tab_transactionHistory.Controls.Add(this.TransactionHistoryDataView);
-            this.tab_transactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_transactionHistory.Location = new System.Drawing.Point(4, 54);
-            this.tab_transactionHistory.Margin = new System.Windows.Forms.Padding(4);
-            this.tab_transactionHistory.Name = "tab_transactionHistory";
-            this.tab_transactionHistory.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_transactionHistory.Size = new System.Drawing.Size(1729, 905);
-            this.tab_transactionHistory.TabIndex = 1;
-            this.tab_transactionHistory.Text = "Transaction History";
+            this.tb_pendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_pendingAmount.Location = new System.Drawing.Point(276, 174);
+            this.tb_pendingAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_pendingAmount.Name = "tb_pendingAmount";
+            this.tb_pendingAmount.Size = new System.Drawing.Size(244, 24);
+            this.tb_pendingAmount.TabIndex = 25;
             // 
             // groupBox1
             // 
@@ -518,40 +481,61 @@
             this.btn_addProductToBill.UseVisualStyleBackColor = true;
             this.btn_addProductToBill.Click += new System.EventHandler(this.btn_addProductToBill_Click);
             // 
-            // gb_customerDeails
+            // Bill_ProductsDataView
             // 
-            this.gb_customerDeails.Controls.Add(this.tb_mobileNumber);
-            this.gb_customerDeails.Controls.Add(this.label8);
-            this.gb_customerDeails.Controls.Add(this.label6);
-            this.gb_customerDeails.Controls.Add(this.btn_addCustomer);
-            this.gb_customerDeails.Controls.Add(this.tb_customerName);
-            this.gb_customerDeails.Controls.Add(this.label9);
-            this.gb_customerDeails.Controls.Add(this.tb_pendingAmount);
-            this.gb_customerDeails.Location = new System.Drawing.Point(60, 525);
-            this.gb_customerDeails.Name = "gb_customerDeails";
-            this.gb_customerDeails.Size = new System.Drawing.Size(604, 299);
-            this.gb_customerDeails.TabIndex = 30;
-            this.gb_customerDeails.TabStop = false;
-            this.gb_customerDeails.Text = "Customer Details";
-            // 
-            // gb_billDetails
-            // 
-            this.gb_billDetails.Controls.Add(this.btn_saveTransaction);
-            this.gb_billDetails.Controls.Add(this.tb_subtotal);
-            this.gb_billDetails.Controls.Add(this.tb_amountDue);
-            this.gb_billDetails.Controls.Add(this.btn_printBill);
-            this.gb_billDetails.Controls.Add(this.label12);
-            this.gb_billDetails.Controls.Add(this.label11);
-            this.gb_billDetails.Controls.Add(this.label10);
-            this.gb_billDetails.Controls.Add(this.label7);
-            this.gb_billDetails.Controls.Add(this.tb_totalTax);
-            this.gb_billDetails.Controls.Add(this.tb_totalDiscount);
-            this.gb_billDetails.Location = new System.Drawing.Point(1167, 544);
-            this.gb_billDetails.Name = "gb_billDetails";
-            this.gb_billDetails.Size = new System.Drawing.Size(504, 336);
-            this.gb_billDetails.TabIndex = 31;
-            this.gb_billDetails.TabStop = false;
-            this.gb_billDetails.Text = "Bill Details";
+            this.Bill_ProductsDataView.AllowUserToOrderColumns = true;
+            this.Bill_ProductsDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Bill_ProductsDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.Bill_ProductsDataView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.Bill_ProductsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Bill_ProductsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle40.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Bill_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            this.Bill_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Bill_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BillTable_Name,
+            this.BillTable_Price,
+            this.BillTable_Discount,
+            this.BillTable_Quantity,
+            this.BillTable_TotalPrice});
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle41.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Bill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle41;
+            this.Bill_ProductsDataView.GridColor = System.Drawing.Color.Black;
+            this.Bill_ProductsDataView.Location = new System.Drawing.Point(697, 26);
+            this.Bill_ProductsDataView.Margin = new System.Windows.Forms.Padding(4);
+            this.Bill_ProductsDataView.MultiSelect = false;
+            this.Bill_ProductsDataView.Name = "Bill_ProductsDataView";
+            this.Bill_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bill_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            this.Bill_ProductsDataView.RowHeadersVisible = false;
+            this.Bill_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.Bill_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Bill_ProductsDataView.Size = new System.Drawing.Size(974, 493);
+            this.Bill_ProductsDataView.TabIndex = 25;
+            this.Bill_ProductsDataView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Bill_ProductsDataView_CellBeginEdit);
+            this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
             // 
             // BillTable_Name
             // 
@@ -582,6 +566,134 @@
             this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
             this.BillTable_TotalPrice.ReadOnly = true;
             // 
+            // tab_transactionHistory
+            // 
+            this.tab_transactionHistory.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tab_transactionHistory.Controls.Add(this.button1);
+            this.tab_transactionHistory.Controls.Add(this.groupBox3);
+            this.tab_transactionHistory.Controls.Add(this.groupBox2);
+            this.tab_transactionHistory.Controls.Add(this.TransactionHistoryDataView);
+            this.tab_transactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tab_transactionHistory.Location = new System.Drawing.Point(4, 54);
+            this.tab_transactionHistory.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_transactionHistory.Name = "tab_transactionHistory";
+            this.tab_transactionHistory.Padding = new System.Windows.Forms.Padding(4);
+            this.tab_transactionHistory.Size = new System.Drawing.Size(1729, 905);
+            this.tab_transactionHistory.TabIndex = 1;
+            this.tab_transactionHistory.Text = "Transaction History";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1418, 481);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(233, 41);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Export To Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btn_searchByCustomerName);
+            this.groupBox3.Controls.Add(this.cb_customerName);
+            this.groupBox3.Location = new System.Drawing.Point(370, 203);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(937, 108);
+            this.groupBox3.TabIndex = 28;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Customer Name";
+            // 
+            // btn_searchByCustomerName
+            // 
+            this.btn_searchByCustomerName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_searchByCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchByCustomerName.Location = new System.Drawing.Point(625, 45);
+            this.btn_searchByCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_searchByCustomerName.Name = "btn_searchByCustomerName";
+            this.btn_searchByCustomerName.Size = new System.Drawing.Size(233, 41);
+            this.btn_searchByCustomerName.TabIndex = 31;
+            this.btn_searchByCustomerName.Text = "Search";
+            this.btn_searchByCustomerName.UseVisualStyleBackColor = true;
+            this.btn_searchByCustomerName.Click += new System.EventHandler(this.btn_searchByCustomerName_Click);
+            // 
+            // cb_customerName
+            // 
+            this.cb_customerName.DropDownHeight = 80;
+            this.cb_customerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_customerName.FormattingEnabled = true;
+            this.cb_customerName.IntegralHeight = false;
+            this.cb_customerName.Location = new System.Drawing.Point(181, 45);
+            this.cb_customerName.Name = "cb_customerName";
+            this.cb_customerName.Size = new System.Drawing.Size(370, 28);
+            this.cb_customerName.TabIndex = 0;
+            this.cb_customerName.Text = "Select Customer";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btn_searchByDate);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.toDate);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.fromDate);
+            this.groupBox2.Location = new System.Drawing.Point(102, 39);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1407, 119);
+            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Select Date";
+            // 
+            // btn_searchByDate
+            // 
+            this.btn_searchByDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_searchByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchByDate.Location = new System.Drawing.Point(1107, 45);
+            this.btn_searchByDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_searchByDate.Name = "btn_searchByDate";
+            this.btn_searchByDate.Size = new System.Drawing.Size(233, 41);
+            this.btn_searchByDate.TabIndex = 30;
+            this.btn_searchByDate.Text = "Search";
+            this.btn_searchByDate.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(650, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "To";
+            // 
+            // toDate
+            // 
+            this.toDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toDate.Location = new System.Drawing.Point(733, 53);
+            this.toDate.Name = "toDate";
+            this.toDate.Size = new System.Drawing.Size(309, 27);
+            this.toDate.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(89, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "From";
+            // 
+            // fromDate
+            // 
+            this.fromDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromDate.Location = new System.Drawing.Point(172, 53);
+            this.fromDate.Name = "fromDate";
+            this.fromDate.Size = new System.Drawing.Size(309, 27);
+            this.fromDate.TabIndex = 0;
+            // 
             // TransactionHistoryDataView
             // 
             this.TransactionHistoryDataView.AllowUserToOrderColumns = true;
@@ -591,15 +703,15 @@
             this.TransactionHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TransactionHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle37.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.TransactionHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Transaction_Date,
@@ -607,29 +719,29 @@
             this.Transaction_CustomerName,
             this.Transaction_Quantity,
             this.Transaction_TotalPrice});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle38.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle38;
             this.TransactionHistoryDataView.GridColor = System.Drawing.Color.Black;
             this.TransactionHistoryDataView.Location = new System.Drawing.Point(175, 334);
             this.TransactionHistoryDataView.Margin = new System.Windows.Forms.Padding(4);
             this.TransactionHistoryDataView.MultiSelect = false;
             this.TransactionHistoryDataView.Name = "TransactionHistoryDataView";
             this.TransactionHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.TransactionHistoryDataView.RowHeadersVisible = false;
             this.TransactionHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.TransactionHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -666,113 +778,6 @@
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.toDate);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.fromDate);
-            this.groupBox2.Location = new System.Drawing.Point(102, 39);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1407, 119);
-            this.groupBox2.TabIndex = 27;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Select Date";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Location = new System.Drawing.Point(370, 203);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(937, 108);
-            this.groupBox3.TabIndex = 28;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Customer Name";
-            // 
-            // fromDate
-            // 
-            this.fromDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromDate.Location = new System.Drawing.Point(172, 53);
-            this.fromDate.Name = "fromDate";
-            this.fromDate.Size = new System.Drawing.Size(309, 27);
-            this.fromDate.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(89, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "From";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(650, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "To";
-            // 
-            // toDate
-            // 
-            this.toDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toDate.Location = new System.Drawing.Point(733, 53);
-            this.toDate.Name = "toDate";
-            this.toDate.Size = new System.Drawing.Size(309, 27);
-            this.toDate.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(181, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(370, 37);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1418, 481);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 41);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Export To Excel";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1107, 45);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(233, 41);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(625, 45);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(233, 41);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // TransactionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -785,18 +790,18 @@
             this.Load += new System.EventHandler(this.TransactionControl_Load);
             this.transactionTabControl.ResumeLayout(false);
             this.tab_newTransaction.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Bill_ProductsDataView)).EndInit();
-            this.tab_transactionHistory.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.gb_customerDeails.ResumeLayout(false);
-            this.gb_customerDeails.PerformLayout();
             this.gb_billDetails.ResumeLayout(false);
             this.gb_billDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).EndInit();
+            this.gb_customerDeails.ResumeLayout(false);
+            this.gb_customerDeails.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Bill_ProductsDataView)).EndInit();
+            this.tab_transactionHistory.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -855,9 +860,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker toDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_customerName;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_searchByCustomerName;
+        private System.Windows.Forms.Button btn_searchByDate;
     }
 }
