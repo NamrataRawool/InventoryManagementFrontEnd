@@ -1,4 +1,5 @@
-﻿using InventoryManagement.EventHandlers.Transaction;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.EventHandlers.Transaction;
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 using InventoryManagement.UI.UserControls;
@@ -16,9 +17,30 @@ namespace InventoryManagement.Controllers
             SetEventHandler(new EventHandler_Transaction(this));
         }
 
+        public void OnAddProduct(BillRowEntry Entry)
+        {
+            Event_TransactionAddProduct Event = new Event_TransactionAddProduct(Entry);
+            EventBroadcaster.Get().BroadcastEvent(Event);
+        }
+
         public void AddProductRowToTable(BillRowEntry Entry)
         {
             var GridView = m_UIControl.Bill_ProductsDataView;
+
+            foreach (DataGridViewRow row in GridView.Rows)
+            {
+                var productName = row.Cells["BillTable_Name"].Value;
+                if (productName != null && productName.Equals(Entry.ProductName))
+                {
+                    var newQuantity = Convert.ToInt32(row.Cells["BillTable_Quantity"].Value) + Entry.Quantity;
+                    row.Cells["BillTable_Quantity"].Value = newQuantity;
+                    double discount = (Entry.Price * Entry.Discount / 100);
+                    row.Cells["BillTable_Discount"].Value = discount * newQuantity;
+                    row.Cells["BillTable_TotalPrice"].Value = CalculateTotalPrice(Entry.Price, Entry.Discount, newQuantity);
+                    return;
+                }
+            }
+
             int Index = GridView.Rows.Add();
 
             DataGridViewRow NewRow = GridView.Rows[Index];
@@ -28,19 +50,21 @@ namespace InventoryManagement.Controllers
             NewRow.Cells["BillTable_Discount"].Value = discountInRupees * Entry.Quantity;
             NewRow.Cells["BillTable_Quantity"].Value = Entry.Quantity;
             NewRow.Cells["BillTable_TotalPrice"].Value = CalculateTotalPrice(Entry.Price, Entry.Discount, Entry.Quantity);
+
             UpdateUILabels();
         }
+
         private void UpdateUILabels()
         {
-            var subtotal = 0;
-            var totalDiscount = 0;
+            double subtotal = 0;
+            double totalDiscount = 0;
             for (int i = 0; i < m_UIControl.Bill_ProductsDataView.Rows.Count; ++i)
             {
-                subtotal += Convert.ToInt32(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_TotalPrice"].Value);
-                totalDiscount += Convert.ToInt32(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Discount"].Value);
+                subtotal += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_TotalPrice"].Value);
+                totalDiscount += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Discount"].Value);
             }
-            m_UIControl.lbl_subTotal.Text = subtotal.ToString();
-            m_UIControl.lbl_discountedPrice.Text = totalDiscount.ToString();
+            m_UIControl.tb_subtotal.Text = subtotal.ToString();
+            m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
         }
 
         private double CalculateTotalPrice(int price, double discountRate, int quantity)

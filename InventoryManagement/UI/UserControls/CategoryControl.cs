@@ -17,7 +17,11 @@ namespace InventoryManagement.UI.UserControls
     {
         public CategoryControl()
         {
-            InitializeComponent();
+            InitializeComponent();         
+        }
+
+        private void CategoryControl_Load(object sender, EventArgs e)
+        {
             categoryDataView.DataSource = HTTPService.GET<List<CategoryGet>>("categories");
         }
 
@@ -43,5 +47,6 @@ namespace InventoryManagement.UI.UserControls
             form_categoryDetails addCategory = new form_categoryDetails();
             addCategory.ShowDialog();
         }
+
     }
 }

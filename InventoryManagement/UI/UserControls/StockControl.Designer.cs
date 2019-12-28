@@ -60,7 +60,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1042, 563);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1114, 704);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // stockDataView
@@ -92,7 +92,7 @@
             this.stockDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.stockDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stockDataView.GridColor = System.Drawing.Color.Black;
-            this.stockDataView.Location = new System.Drawing.Point(34, 87);
+            this.stockDataView.Location = new System.Drawing.Point(36, 108);
             this.stockDataView.MultiSelect = false;
             this.stockDataView.Name = "stockDataView";
             this.stockDataView.ReadOnly = true;
@@ -108,7 +108,7 @@
             this.stockDataView.RowHeadersVisible = false;
             this.stockDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.stockDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.stockDataView.Size = new System.Drawing.Size(932, 388);
+            this.stockDataView.Size = new System.Drawing.Size(997, 486);
             this.stockDataView.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -125,13 +125,13 @@
             this.tableLayoutPanel2.Controls.Add(this.tb_searchCategory, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_searchStock, 4, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(34, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(36, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.58974F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(932, 78);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(997, 99);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // btn_addStock
@@ -142,9 +142,9 @@
             this.btn_addStock.FlatAppearance.BorderSize = 2;
             this.btn_addStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addStock.Image = ((System.Drawing.Image)(resources.GetObject("btn_addStock.Image")));
-            this.btn_addStock.Location = new System.Drawing.Point(3, 22);
+            this.btn_addStock.Location = new System.Drawing.Point(3, 27);
             this.btn_addStock.Name = "btn_addStock";
-            this.btn_addStock.Size = new System.Drawing.Size(76, 27);
+            this.btn_addStock.Size = new System.Drawing.Size(82, 36);
             this.btn_addStock.TabIndex = 1;
             this.btn_addStock.UseVisualStyleBackColor = false;
             // 
@@ -156,9 +156,9 @@
             this.btn_editStock.FlatAppearance.BorderSize = 2;
             this.btn_editStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editStock.Image = ((System.Drawing.Image)(resources.GetObject("btn_editStock.Image")));
-            this.btn_editStock.Location = new System.Drawing.Point(85, 22);
+            this.btn_editStock.Location = new System.Drawing.Point(91, 27);
             this.btn_editStock.Name = "btn_editStock";
-            this.btn_editStock.Size = new System.Drawing.Size(75, 27);
+            this.btn_editStock.Size = new System.Drawing.Size(81, 36);
             this.btn_editStock.TabIndex = 2;
             this.btn_editStock.UseVisualStyleBackColor = false;
             // 
@@ -166,9 +166,9 @@
             // 
             this.tb_searchCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchCategory.Location = new System.Drawing.Point(371, 22);
+            this.tb_searchCategory.Location = new System.Drawing.Point(397, 27);
             this.tb_searchCategory.Name = "tb_searchCategory";
-            this.tb_searchCategory.Size = new System.Drawing.Size(271, 28);
+            this.tb_searchCategory.Size = new System.Drawing.Size(290, 28);
             this.tb_searchCategory.TabIndex = 3;
             // 
             // btn_searchStock
@@ -179,11 +179,11 @@
             this.btn_searchStock.FlatAppearance.BorderSize = 2;
             this.btn_searchStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_searchStock.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchStock.Location = new System.Drawing.Point(648, 22);
+            this.btn_searchStock.Location = new System.Drawing.Point(693, 27);
             this.btn_searchStock.MaximumSize = new System.Drawing.Size(0, 28);
             this.btn_searchStock.MinimumSize = new System.Drawing.Size(0, 28);
             this.btn_searchStock.Name = "btn_searchStock";
-            this.btn_searchStock.Size = new System.Drawing.Size(72, 28);
+            this.btn_searchStock.Size = new System.Drawing.Size(77, 28);
             this.btn_searchStock.TabIndex = 4;
             this.btn_searchStock.Text = "Search";
             this.btn_searchStock.UseVisualStyleBackColor = false;
@@ -195,7 +195,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StockControl";
-            this.Size = new System.Drawing.Size(1042, 563);
+            this.Size = new System.Drawing.Size(1114, 704);
+            this.Load += new System.EventHandler(this.StockControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stockDataView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

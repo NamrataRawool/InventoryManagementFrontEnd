@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerControl));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.customerDataView = new System.Windows.Forms.DataGridView();
@@ -55,13 +55,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1389, 693);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1114, 704);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // customerDataView
@@ -72,45 +71,44 @@
             this.customerDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.customerDataView.BackgroundColor = System.Drawing.Color.White;
             this.customerDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customerDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.customerDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.customerDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(116)))), ((int)(((byte)(122)))));
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(175)))), ((int)(((byte)(183)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customerDataView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(116)))), ((int)(((byte)(122)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(175)))), ((int)(((byte)(183)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.customerDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.customerDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDataView.GridColor = System.Drawing.Color.Black;
-            this.customerDataView.Location = new System.Drawing.Point(46, 107);
-            this.customerDataView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.customerDataView.Location = new System.Drawing.Point(36, 108);
             this.customerDataView.MultiSelect = false;
             this.customerDataView.Name = "customerDataView";
             this.customerDataView.ReadOnly = true;
             this.customerDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.customerDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.customerDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.customerDataView.RowHeadersVisible = false;
             this.customerDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.customerDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customerDataView.Size = new System.Drawing.Size(1242, 477);
+            this.customerDataView.Size = new System.Drawing.Size(997, 486);
             this.customerDataView.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -127,14 +125,13 @@
             this.tableLayoutPanel2.Controls.Add(this.tb_searchCategory, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_searchCustomer, 4, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(36, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.58974F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.05128F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1242, 95);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(997, 99);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // btn_addCustomer
@@ -145,10 +142,9 @@
             this.btn_addCustomer.FlatAppearance.BorderSize = 2;
             this.btn_addCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_addCustomer.Image")));
-            this.btn_addCustomer.Location = new System.Drawing.Point(4, 27);
-            this.btn_addCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_addCustomer.Location = new System.Drawing.Point(3, 27);
             this.btn_addCustomer.Name = "btn_addCustomer";
-            this.btn_addCustomer.Size = new System.Drawing.Size(101, 33);
+            this.btn_addCustomer.Size = new System.Drawing.Size(82, 36);
             this.btn_addCustomer.TabIndex = 1;
             this.btn_addCustomer.UseVisualStyleBackColor = false;
             this.btn_addCustomer.Click += new System.EventHandler(this.btn_addCustomer_Click);
@@ -161,10 +157,9 @@
             this.btn_editCustomer.FlatAppearance.BorderSize = 2;
             this.btn_editCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_editCustomer.Image")));
-            this.btn_editCustomer.Location = new System.Drawing.Point(113, 27);
-            this.btn_editCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_editCustomer.Location = new System.Drawing.Point(91, 27);
             this.btn_editCustomer.Name = "btn_editCustomer";
-            this.btn_editCustomer.Size = new System.Drawing.Size(100, 33);
+            this.btn_editCustomer.Size = new System.Drawing.Size(81, 36);
             this.btn_editCustomer.TabIndex = 2;
             this.btn_editCustomer.UseVisualStyleBackColor = false;
             this.btn_editCustomer.Click += new System.EventHandler(this.btn_editCustomer_Click);
@@ -173,10 +168,9 @@
             // 
             this.tb_searchCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchCategory.Location = new System.Drawing.Point(494, 27);
-            this.tb_searchCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_searchCategory.Location = new System.Drawing.Point(397, 27);
             this.tb_searchCategory.Name = "tb_searchCategory";
-            this.tb_searchCategory.Size = new System.Drawing.Size(361, 34);
+            this.tb_searchCategory.Size = new System.Drawing.Size(290, 28);
             this.tb_searchCategory.TabIndex = 3;
             // 
             // btn_searchCustomer
@@ -187,26 +181,25 @@
             this.btn_searchCustomer.FlatAppearance.BorderSize = 2;
             this.btn_searchCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_searchCustomer.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchCustomer.Location = new System.Drawing.Point(863, 27);
-            this.btn_searchCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_searchCustomer.MaximumSize = new System.Drawing.Size(0, 34);
-            this.btn_searchCustomer.MinimumSize = new System.Drawing.Size(0, 34);
+            this.btn_searchCustomer.Location = new System.Drawing.Point(693, 27);
+            this.btn_searchCustomer.MaximumSize = new System.Drawing.Size(0, 28);
+            this.btn_searchCustomer.MinimumSize = new System.Drawing.Size(0, 28);
             this.btn_searchCustomer.Name = "btn_searchCustomer";
-            this.btn_searchCustomer.Size = new System.Drawing.Size(96, 34);
+            this.btn_searchCustomer.Size = new System.Drawing.Size(77, 28);
             this.btn_searchCustomer.TabIndex = 4;
             this.btn_searchCustomer.Text = "Search";
             this.btn_searchCustomer.UseVisualStyleBackColor = false;
             // 
             // CustomerControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomerControl";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Size = new System.Drawing.Size(1389, 693);
+            this.Size = new System.Drawing.Size(1114, 704);
+            this.Load += new System.EventHandler(this.CustomerControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customerDataView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

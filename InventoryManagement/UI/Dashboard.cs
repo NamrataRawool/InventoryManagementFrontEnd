@@ -18,61 +18,59 @@ namespace InventoryManagement.UI
         public Dashboard()
         {
             InitializeComponent();
-            transactionControl.BringToFront();
-            ChangeButtonBackColor(btn_Home);
+
+        }
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            SidePanel.Height = btn_Home.Height;
+            homeControl.BringToFront();
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = btn_Home.Height;
+            SidePanel.Top = btn_Home.Top;
             homeControl.BringToFront();
-            ChangeButtonBackColor(btn_Home);
         }
 
         private void btn_Product_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = btn_Product.Height;
+            SidePanel.Top = btn_Product.Top;
             productControl.BringToFront();
-            ChangeButtonBackColor(btn_Product);
-        }
-        private void btn_Category_Click(object sender, EventArgs e)
-        {
-            categoryControl.BringToFront();
-            ChangeButtonBackColor(btn_Category);
         }
 
+        private void btn_Category_Click(object sender, EventArgs e)
+        {
+            SidePanel.Height = btn_Category.Height;
+            SidePanel.Top = btn_Category.Top;
+            categoryControl.BringToFront();
+        }
         private void btn_Transaction_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = btn_Transaction.Height;
+            SidePanel.Top = btn_Transaction.Top;
             transactionControl.BringToFront();
-            ChangeButtonBackColor(btn_Transaction);
         }
 
         private void btn_Customer_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = btn_Customer.Height;
+            SidePanel.Top = btn_Customer.Top;
             customerControl.BringToFront();
-            ChangeButtonBackColor(btn_Customer);
         }
 
         private void btn_Stock_Click(object sender, EventArgs e)
         {
+            SidePanel.Height = btn_Stock.Height;
+            SidePanel.Top = btn_Stock.Top;
             stockControl.BringToFront();
-            ChangeButtonBackColor(btn_Stock);
         }
 
-        private void ChangeButtonBackColor(Button button)
+        private void btn_AboutUs_Click(object sender, EventArgs e)
         {
-            var buttons = new List<Button>() { btn_Home, btn_Product, btn_Category, btn_Customer, btn_Transaction, btn_Stock };
-            foreach (Button btn in buttons)
-            {
-                if (button.Equals(btn))
-                {
-                    button.BackColor = Color.FromArgb(246, 247, 251);
-                    button.ForeColor = Color.Black;
-                }
-                else
-                {
-                    btn.BackColor = Color.FromArgb(24, 24, 36);
-                    btn.ForeColor = Color.White;
-                }
-            }
+            SidePanel.Height = btn_AboutUs.Height;
+            SidePanel.Top = btn_AboutUs.Top;
         }
     }
 }

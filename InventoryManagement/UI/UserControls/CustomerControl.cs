@@ -10,8 +10,6 @@ using System.Windows.Forms;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.Models;
 using InventoryManagement.UI.Customer;
-using System.Diagnostics;
-using InventoryManagement.Services.Misc.Assert;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -20,6 +18,10 @@ namespace InventoryManagement.UI.UserControls
         public CustomerControl()
         {
             InitializeComponent();
+
+        }
+        private void CustomerControl_Load(object sender, EventArgs e)
+        {
             customerDataView.DataSource = GetCustomers();
         }
         private List<CustomerGet> GetCustomers()
@@ -27,11 +29,7 @@ namespace InventoryManagement.UI.UserControls
             var customers = HTTPService.GET<List<CustomerGet>>("customers");
             var customerDataSource = new List<CustomerGet>();
             if (customers == null)
-            {
-                Assert.Do("HTTPService not working!");
                 return null;
-            }
-
             foreach (var customer in customers)
             {
                 customerDataSource.Add(customer);
@@ -63,5 +61,6 @@ namespace InventoryManagement.UI.UserControls
 
             editCustomer.ShowDialog();
         }
+
     }
 }

@@ -11,8 +11,6 @@ using InventoryManagement.Models;
 using InventoryManagement.UI.Product;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.Controllers;
-using System.Diagnostics;
-using InventoryManagement.Services.Misc.Assert;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -23,28 +21,25 @@ namespace InventoryManagement.UI.UserControls
 
         public ProductControl()
         {
-            m_Controller = new ProductController(this);
-
             InitializeComponent();
-            InitializeAutoSearchEntries();
-            productDataView.DataSource = GetProducts();
+            m_Controller = new ProductController(this);
         }
 
+        private void ProductControl_Load(object sender, EventArgs e)
+        {
+            TextBoxAutoSearch();
+            productDataView.DataSource = GetProducts();
+        }
         private List<ProductUI> GetProducts()
         {
             var products = HTTPService.GET<List<ProductGet>>("products");
             var productDataSource = new List<ProductUI>();
             if (products == null)
-            {
-                Assert.Do("HTTPService not Working!");
                 return null;
-            }
-
             foreach (var product in products)
             {
                 productDataSource.Add(new ProductUI(product));
             }
-
             return productDataSource;
         }
 
@@ -55,7 +50,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_editProduct_Click(object sender, EventArgs e)
         {
-            Form_AddProduct editProduct = new Form_AddProduct();
+            form_ProductDetails editProduct = new form_ProductDetails();
             editProduct.Text = "Edit Product";
             var rows = productDataView.SelectedRows;
             if (rows.Count > 0)
@@ -117,29 +112,21 @@ namespace InventoryManagement.UI.UserControls
                 btn_SearchProduct_Click(this, new EventArgs());
             }
         }
-        void InitializeAutoSearchEntries()
+        void TextBoxAutoSearch()
         {
             tb_searchProduct.AutoCompleteMode = AutoCompleteMode.Suggest;
             tb_searchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
 
             var products = GetProducts();
-            if(products != null)
-                foreach (var product in products)
-                    collection.Add(product.Name);
-
+            if (products == null)
+                return;
+            foreach (var product in products)
+            {
+                collection.Add(product.Name);
+            }
             tb_searchProduct.AutoCompleteCustomSource = collection;
         }
 
-        private void productDataView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (productDataView.SelectedRows.Count < 0)
-                return;
-
-            int selectedRowIndex = productDataView.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = productDataView.Rows[selectedRowIndex];
-
-            Assert.Do("");
-        }
     }
 }
