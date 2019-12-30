@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox_ProductImage = new System.Windows.Forms.PictureBox();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.Panel_ProductDetails = new System.Windows.Forms.Panel();
             this.Button_UpdateProductDetails = new System.Windows.Forms.Button();
@@ -61,21 +60,14 @@
             this.StockHistoryColumn_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockHistoryColumn_BuyingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockHistoryColumn_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).BeginInit();
+            this.pictureBox_ProductImage = new System.Windows.Forms.PictureBox();
             this.Panel_ProductDetails.SuspendLayout();
             this.GroupBox_ProductDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Panel_AddStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_StockHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox_ProductImage
-            // 
-            this.pictureBox_ProductImage.Location = new System.Drawing.Point(18, 25);
-            this.pictureBox_ProductImage.Name = "pictureBox_ProductImage";
-            this.pictureBox_ProductImage.Size = new System.Drawing.Size(170, 118);
-            this.pictureBox_ProductImage.TabIndex = 0;
-            this.pictureBox_ProductImage.TabStop = false;
             // 
             // btn_ChangeProductImage
             // 
@@ -382,6 +374,17 @@
             this.StockHistoryColumn_TotalPrice.HeaderText = "Total Price";
             this.StockHistoryColumn_TotalPrice.Name = "StockHistoryColumn_TotalPrice";
             // 
+            // pictureBox_ProductImage
+            // 
+            this.pictureBox_ProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_ProductImage.Image = global::InventoryManagement.Properties.Resources.placeholder;
+            this.pictureBox_ProductImage.Location = new System.Drawing.Point(18, 25);
+            this.pictureBox_ProductImage.Name = "pictureBox_ProductImage";
+            this.pictureBox_ProductImage.Size = new System.Drawing.Size(170, 118);
+            this.pictureBox_ProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_ProductImage.TabIndex = 0;
+            this.pictureBox_ProductImage.TabStop = false;
+            // 
             // Form_ProductDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,7 +402,6 @@
             this.Name = "Form_ProductDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Product Details";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).EndInit();
             this.Panel_ProductDetails.ResumeLayout(false);
             this.Panel_ProductDetails.PerformLayout();
             this.GroupBox_ProductDetails.ResumeLayout(false);
@@ -407,6 +409,7 @@
             this.Panel_AddStock.ResumeLayout(false);
             this.Panel_AddStock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_StockHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).EndInit();
             this.ResumeLayout(false);
 
         }
