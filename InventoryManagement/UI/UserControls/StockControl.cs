@@ -21,5 +21,10 @@ namespace InventoryManagement.UI.UserControls
         {
 
         }
+
+        private void btn_editStock_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,6 +12,7 @@ using InventoryManagement.Events;
 using InventoryManagement.Broadcaster;
 using InventoryManagement.Controllers;
 using InventoryManagement.Services.HTTP;
+using InventoryManagement.Utilities;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -82,6 +83,8 @@ namespace InventoryManagement.UI.UserControls
             Entry.ProductName = this.tb_productName.Text;
             Entry.Price = int.Parse(this.tb_price.Text);
             Entry.Discount = int.Parse(this.tb_discount.Text);
+            if (String.IsNullOrEmpty(tb_quantity.Text) || !Validator.IsInteger(tb_quantity.Text))
+                return;
             Entry.Quantity = int.Parse(this.tb_quantity.Text);
 
             m_Controller.OnAddProduct(Entry);
@@ -128,8 +131,15 @@ namespace InventoryManagement.UI.UserControls
 
         private void tb_barCode_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Enter)
             {
+                if (String.IsNullOrEmpty(tb_barCode.Text) || !Validator.IsInteger(tb_barCode.Text))
+                {
+                    lbl_errorText.Text = "Please enter valid bar code";
+                    return;
+                }
+                lbl_errorText.Text = string.Empty;
                 List<ProductGet> products = HTTPService.GET<List<ProductGet>>("products");
                 if (products == null)
                     return;
@@ -145,6 +155,7 @@ namespace InventoryManagement.UI.UserControls
                         return;
                     }
                 }
+                lbl_errorText.Text = "Record not found";
             }
 
         }
@@ -152,6 +163,11 @@ namespace InventoryManagement.UI.UserControls
         private void btn_searchByCustomerName_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_deleteBillRecord_Click(object sender, EventArgs e)
+        {
+            m_Controller.OnDeleteProduct();
         }
     }
 }

@@ -201,6 +201,7 @@
     <Compile Include="UI\UserControls\TransactionControl.Designer.cs">
       <DependentUpon>TransactionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Validator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

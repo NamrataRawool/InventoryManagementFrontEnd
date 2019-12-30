@@ -23,6 +23,15 @@ namespace InventoryManagement.Controllers
             EventBroadcaster.Get().BroadcastEvent(Event);
         }
 
+        public void OnDeleteProduct()
+        {
+            foreach (DataGridViewRow row in m_UIControl.Bill_ProductsDataView.SelectedRows)
+            {
+                m_UIControl.Bill_ProductsDataView.Rows.RemoveAt(row.Index);
+                UpdateUILabels();
+            }
+        }
+
         public void AddProductRowToTable(BillRowEntry Entry)
         {
             var GridView = m_UIControl.Bill_ProductsDataView;

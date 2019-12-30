@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.transactionTabControl = new System.Windows.Forms.TabControl();
             this.tab_newTransaction = new System.Windows.Forms.TabPage();
+            this.btn_deleteBillRecord = new System.Windows.Forms.Button();
             this.gb_billDetails = new System.Windows.Forms.GroupBox();
             this.btn_saveTransaction = new System.Windows.Forms.Button();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
@@ -90,6 +91,7 @@
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_errorText = new System.Windows.Forms.Label();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
@@ -120,6 +122,7 @@
             // tab_newTransaction
             // 
             this.tab_newTransaction.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tab_newTransaction.Controls.Add(this.btn_deleteBillRecord);
             this.tab_newTransaction.Controls.Add(this.gb_billDetails);
             this.tab_newTransaction.Controls.Add(this.gb_customerDeails);
             this.tab_newTransaction.Controls.Add(this.groupBox1);
@@ -131,6 +134,19 @@
             this.tab_newTransaction.Size = new System.Drawing.Size(1729, 905);
             this.tab_newTransaction.TabIndex = 0;
             this.tab_newTransaction.Text = "New Transaction";
+            // 
+            // btn_deleteBillRecord
+            // 
+            this.btn_deleteBillRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deleteBillRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deleteBillRecord.Location = new System.Drawing.Point(1578, 136);
+            this.btn_deleteBillRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_deleteBillRecord.Name = "btn_deleteBillRecord";
+            this.btn_deleteBillRecord.Size = new System.Drawing.Size(103, 41);
+            this.btn_deleteBillRecord.TabIndex = 36;
+            this.btn_deleteBillRecord.Text = "Delete";
+            this.btn_deleteBillRecord.UseVisualStyleBackColor = true;
+            this.btn_deleteBillRecord.Click += new System.EventHandler(this.btn_deleteBillRecord_Click);
             // 
             // gb_billDetails
             // 
@@ -144,7 +160,7 @@
             this.gb_billDetails.Controls.Add(this.label7);
             this.gb_billDetails.Controls.Add(this.tb_totalTax);
             this.gb_billDetails.Controls.Add(this.tb_totalDiscount);
-            this.gb_billDetails.Location = new System.Drawing.Point(1167, 544);
+            this.gb_billDetails.Location = new System.Drawing.Point(1044, 545);
             this.gb_billDetails.Name = "gb_billDetails";
             this.gb_billDetails.Size = new System.Drawing.Size(504, 336);
             this.gb_billDetails.TabIndex = 31;
@@ -346,6 +362,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Controls.Add(this.lbl_errorText);
             this.groupBox1.Controls.Add(this.tb_barCode);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.tb_productName);
@@ -359,15 +376,16 @@
             this.groupBox1.Controls.Add(this.btn_addProductToBill);
             this.groupBox1.Location = new System.Drawing.Point(60, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(604, 389);
+            this.groupBox1.Size = new System.Drawing.Size(604, 435);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product Details";
             // 
             // tb_barCode
             // 
+            this.tb_barCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_barCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_barCode.Location = new System.Drawing.Point(276, 54);
+            this.tb_barCode.Location = new System.Drawing.Point(276, 82);
             this.tb_barCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_barCode.Name = "tb_barCode";
             this.tb_barCode.Size = new System.Drawing.Size(244, 24);
@@ -378,7 +396,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(90, 110);
+            this.label13.Location = new System.Drawing.Point(90, 138);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(131, 24);
             this.label13.TabIndex = 26;
@@ -392,7 +410,7 @@
             this.tb_productName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tb_productName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tb_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_productName.Location = new System.Drawing.Point(276, 110);
+            this.tb_productName.Location = new System.Drawing.Point(276, 138);
             this.tb_productName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_productName.Name = "tb_productName";
             this.tb_productName.Size = new System.Drawing.Size(244, 24);
@@ -403,7 +421,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(90, 165);
+            this.label14.Location = new System.Drawing.Point(90, 193);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(53, 24);
             this.label14.TabIndex = 25;
@@ -412,7 +430,7 @@
             // tb_quantity
             // 
             this.tb_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_quantity.Location = new System.Drawing.Point(276, 274);
+            this.tb_quantity.Location = new System.Drawing.Point(276, 302);
             this.tb_quantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_quantity.Name = "tb_quantity";
             this.tb_quantity.Size = new System.Drawing.Size(244, 24);
@@ -423,7 +441,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(90, 54);
+            this.label15.Location = new System.Drawing.Point(90, 82);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 24);
             this.label15.TabIndex = 33;
@@ -433,7 +451,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(90, 274);
+            this.label16.Location = new System.Drawing.Point(90, 302);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(78, 24);
             this.label16.TabIndex = 28;
@@ -442,7 +460,7 @@
             // tb_discount
             // 
             this.tb_discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_discount.Location = new System.Drawing.Point(276, 219);
+            this.tb_discount.Location = new System.Drawing.Point(276, 247);
             this.tb_discount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_discount.Name = "tb_discount";
             this.tb_discount.ReadOnly = true;
@@ -452,7 +470,7 @@
             // tb_price
             // 
             this.tb_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_price.Location = new System.Drawing.Point(276, 165);
+            this.tb_price.Location = new System.Drawing.Point(276, 193);
             this.tb_price.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_price.Name = "tb_price";
             this.tb_price.ReadOnly = true;
@@ -463,7 +481,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(90, 219);
+            this.label17.Location = new System.Drawing.Point(90, 247);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 24);
             this.label17.TabIndex = 31;
@@ -472,7 +490,7 @@
             // btn_addProductToBill
             // 
             this.btn_addProductToBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addProductToBill.Location = new System.Drawing.Point(418, 326);
+            this.btn_addProductToBill.Location = new System.Drawing.Point(418, 354);
             this.btn_addProductToBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_addProductToBill.Name = "btn_addProductToBill";
             this.btn_addProductToBill.Size = new System.Drawing.Size(103, 41);
@@ -490,15 +508,15 @@
             this.Bill_ProductsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Bill_ProductsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle40.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bill_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Bill_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.Bill_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Bill_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BillTable_Name,
@@ -506,33 +524,33 @@
             this.BillTable_Discount,
             this.BillTable_Quantity,
             this.BillTable_TotalPrice});
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle41.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Bill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle14;
             this.Bill_ProductsDataView.GridColor = System.Drawing.Color.Black;
             this.Bill_ProductsDataView.Location = new System.Drawing.Point(697, 26);
             this.Bill_ProductsDataView.Margin = new System.Windows.Forms.Padding(4);
             this.Bill_ProductsDataView.MultiSelect = false;
             this.Bill_ProductsDataView.Name = "Bill_ProductsDataView";
             this.Bill_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bill_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bill_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.Bill_ProductsDataView.RowHeadersVisible = false;
             this.Bill_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.Bill_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Bill_ProductsDataView.Size = new System.Drawing.Size(974, 493);
+            this.Bill_ProductsDataView.Size = new System.Drawing.Size(851, 493);
             this.Bill_ProductsDataView.TabIndex = 25;
             this.Bill_ProductsDataView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Bill_ProductsDataView_CellBeginEdit);
             this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
@@ -703,15 +721,15 @@
             this.TransactionHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TransactionHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle37.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.TransactionHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Transaction_Date,
@@ -719,29 +737,29 @@
             this.Transaction_CustomerName,
             this.Transaction_Quantity,
             this.Transaction_TotalPrice});
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle38.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle38.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle17;
             this.TransactionHistoryDataView.GridColor = System.Drawing.Color.Black;
             this.TransactionHistoryDataView.Location = new System.Drawing.Point(175, 334);
             this.TransactionHistoryDataView.Margin = new System.Windows.Forms.Padding(4);
             this.TransactionHistoryDataView.MultiSelect = false;
             this.TransactionHistoryDataView.Name = "TransactionHistoryDataView";
             this.TransactionHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.TransactionHistoryDataView.RowHeadersVisible = false;
             this.TransactionHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.TransactionHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -777,6 +795,16 @@
             this.Transaction_TotalPrice.HeaderText = "Total Price (in Rs)";
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
+            // 
+            // lbl_errorText
+            // 
+            this.lbl_errorText.AutoSize = true;
+            this.lbl_errorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_errorText.ForeColor = System.Drawing.Color.Red;
+            this.lbl_errorText.Location = new System.Drawing.Point(194, 43);
+            this.lbl_errorText.Name = "lbl_errorText";
+            this.lbl_errorText.Size = new System.Drawing.Size(0, 20);
+            this.lbl_errorText.TabIndex = 36;
             // 
             // TransactionControl
             // 
@@ -864,5 +892,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_searchByCustomerName;
         private System.Windows.Forms.Button btn_searchByDate;
+        private System.Windows.Forms.Button btn_deleteBillRecord;
+        private System.Windows.Forms.Label lbl_errorText;
     }
 }
