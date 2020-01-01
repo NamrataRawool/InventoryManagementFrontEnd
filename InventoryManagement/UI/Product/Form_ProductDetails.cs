@@ -30,5 +30,27 @@ namespace InventoryManagement.UI.Product
             m_Controller = new FormController_ProductDetails(productID, this);
         }
 
+        private void btn_AddStockAddStock_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // update the image
+        private void btn_ChangeProductImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            DialogResult dialogResult = dialog.ShowDialog();
+            if (dialogResult != DialogResult.OK)
+                return;
+
+            string imagePath = dialog.FileName;
+            pictureBox_ProductImage.Image = Image.FromFile(imagePath);
+            pictureBox_ProductImage.Tag = imagePath;
+        }
+
+        private void Button_UpdateProductDetails_Click(object sender, EventArgs e)
+        {
+            m_Controller.UpdateProductDetails();
+        }
     }
 }

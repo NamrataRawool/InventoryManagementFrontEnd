@@ -1,5 +1,6 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Product;
 using System;
 using System.Collections.Generic;
@@ -8,52 +9,83 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Product
 {
     class FormController_ProductDetails : IController<Form_ProductDetails>
     {
-        private int m_ProductID;
+        private ProductGet m_Product;
 
-        public FormController_ProductDetails(int ProductID, Form_ProductDetails UIControl) 
-            :   base(UIControl)
+        public FormController_ProductDetails(int productID, Form_ProductDetails UIControl)
+            : base(UIControl)
         {
-            m_ProductID = ProductID;
-
-            Initialize();
+            Initialize(productID);
         }
 
-        private void Initialize()
+        private void Initialize(int productID)
         {
-            InitializeProductDetails();
+            InitializeProductDetails(productID);
+            InitializeAvailableStockLabel();
         }
 
-        private void InitializeProductDetails()
+        public void UpdateProductDetails()
         {
-            var Product = HTTPService.GET<ProductGet>("product/" + m_ProductID);
+            ProductPost product = new ProductPost();
+            product.ID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
+            product.Barcode = m_UIControl.tf_ProductDetails_Barcode.Text;
+            product.Name = m_UIControl.tf_ProductDetails_ProductName.Text;
+            product.Description = m_UIControl.tf_ProductDetails_Description.Text;
+            product.RetailPrice = int.Parse(m_UIControl.tf_ProductDetails_RetailPrice.Text);
+            product.WholeSalePrice = int.Parse(m_UIControl.tf_ProductDetails_WholesalePrice.Text);
+
+            string categoryName = m_UIControl.cb_ProductDetails_Category.Text;
+            product.CategoryID = HTTPService.GET<CategoryGet>("category/name=" + categoryName).ID;
+            if(m_UIControl.pictureBox_ProductImage.Tag != null)
+                product.ImagePath = m_UIControl.pictureBox_ProductImage.Tag.ToString();
+
+            m_Product = HTTPService.POST<ProductGet, ProductPost>("product", product, product.ImagePath);
+        }
+
+        private void InitializeAvailableStockLabel()
+        {
+            var stock = HTTPService.GET<StockGet>("/Stock/ProductID=" + m_Product.ID);
+
+            m_UIControl.lbl_ProductDetails_AvailableStockValue.Text = "Not in Database";
+            if (stock != null)
+                m_UIControl.lbl_ProductDetails_AvailableStockValue.Text = stock.AvailableQuantity.ToString();
+        }
+
+        private byte[] GetImage(ProductGet product)
+        {
+            if (product.ImagePath == null)
+                return null;
+
+            string imagePath = m_Product.ImagePath.Split(',')[0];
+            if (imagePath == null || imagePath.Length <= 0)
+                return null;
+
+            string path = imagePath;
+            return HTTPService.GETFile(path);
+        }
+
+        private void InitializeProductDetails(int productID)
+        {
+            m_Product = HTTPService.GET<ProductGet>("product/" + productID);
 
             var UI = m_UIControl;
 
-            UI.tf_ProductDetails_ProductID.Text = Product.ID.ToString();
-            UI.tf_ProductDetails_ProductName.Text = Product.Name;
-            UI.tf_ProductDetails_RetailPrice.Text = Product.RetailPrice.ToString();
-            UI.tf_ProductDetails_WholesalePrice.Text = Product.WholeSalePrice.ToString();
+            UI.tf_ProductDetails_ProductID.Text = m_Product.ID.ToString();
+            UI.tf_ProductDetails_Barcode.Text = m_Product.Barcode;
+            UI.tf_ProductDetails_ProductName.Text = m_Product.Name;
+            UI.tf_ProductDetails_Description.Text = m_Product.Description;
+            UI.tf_ProductDetails_RetailPrice.Text = m_Product.RetailPrice.ToString();
+            UI.tf_ProductDetails_WholesalePrice.Text = m_Product.WholeSalePrice.ToString();
 
-            if (Product.ImagePath != null)
+            byte[] imageBytes = GetImage(m_Product);
+            if (imageBytes != null && imageBytes.Length > 0)
             {
-                string[] imagePaths = Product.ImagePath.Split(',');
-                for (int i = 0; i < imagePaths.Length; ++i)
-                {
-                    if (imagePaths[i] == null || imagePaths[i].Length <= 0)
-                        continue;
-
-                    string path = imagePaths[i];
-                    byte[] bytes = HTTPService.GETFile(path);
-                    if (bytes != null)
-                    {
-                        UI.pictureBox_ProductImage.Image = Image.FromStream(new MemoryStream(bytes));
-                    }
-                }
+                UI.pictureBox_ProductImage.Image = Image.FromStream(new MemoryStream(imageBytes));
             }
 
             // fill categories
@@ -62,7 +94,7 @@ namespace InventoryManagement.Controllers.Product
             {
                 UI.cb_ProductDetails_Category.Items.Add(category.Name);
             }
-            UI.cb_ProductDetails_Category.SelectedItem = Product.Category.Name;
+            UI.cb_ProductDetails_Category.SelectedItem = m_Product.Category.Name;
         }
 
         protected override void RegisterEvents()
