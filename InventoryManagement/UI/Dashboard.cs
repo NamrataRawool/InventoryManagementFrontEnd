@@ -47,8 +47,8 @@ namespace InventoryManagement.UI
 
         private void btn_Stock_Click(object sender, EventArgs e)
         {
-            UpdateSidePanel(btn_Stock);
-            stockControl.BringToFront();
+            UpdateSidePanel(btn_Vendors);
+            vendorControl.BringToFront();
         }
 
         private void btn_AboutUs_Click(object sender, EventArgs e)

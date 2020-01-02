@@ -26,11 +26,15 @@ namespace InventoryManagement.UI.UserControls
             InitializeComponent();
             m_Controller = new TransactionController(this);
         }
+
         private void TransactionControl_Load(Object sender, EventArgs e)
         {
+            m_Controller.Initialize();
+            ResetTextBox();
             cb_customerName.DataSource = GetCustomers();
             TextBoxAutoSearch();
         }
+
         private List<string> GetCustomers()
         {
             var customers = HTTPService.GET<List<CustomerGet>>("customers");
@@ -80,6 +84,7 @@ namespace InventoryManagement.UI.UserControls
         private void btn_addProductToBill_Click(object sender, EventArgs e)
         {
             BillRowEntry Entry = new BillRowEntry();
+            Entry.ProductId = int.Parse(this.tb_barCode.Text);
             Entry.ProductName = this.tb_productName.Text;
             Entry.Price = int.Parse(this.tb_price.Text);
             Entry.Discount = int.Parse(this.tb_discount.Text);
@@ -162,12 +167,33 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_searchByCustomerName_Click(object sender, EventArgs e)
         {
-
+            m_Controller.SearchTransactionByCustomerName(cb_customerName.Text);
         }
 
         private void btn_deleteBillRecord_Click(object sender, EventArgs e)
         {
             m_Controller.OnDeleteProduct();
+        }
+
+        private void btn_addCustomer_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btn_searchByDate_Click(object sender, EventArgs e)
+        {
+            var fromDate = DateTime_fromDate.Text;
+            var toDate = DateTime_toDate.Text;
+            m_Controller.SearchTransactionsByDate(fromDate, toDate);
+        }
+
+        private void btn_exportToExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_saveTransaction_Click(object sender, EventArgs e)
+        {
+            m_Controller.SaveTransaction();
         }
     }
 }

@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.btn_AboutUs = new System.Windows.Forms.Button();
-            this.btn_Stock = new System.Windows.Forms.Button();
+            this.btn_Vendors = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.homeControl = new InventoryManagement.UI.UserControls.HomeControl();
             this.productControl = new InventoryManagement.UI.UserControls.ProductControl();
-            this.stockControl = new InventoryManagement.UI.UserControls.StockControl();
+            this.vendorControl = new InventoryManagement.UI.UserControls.VendorControl();
             this.categoryControl = new InventoryManagement.UI.UserControls.CategoryControl();
             this.customerControl = new InventoryManagement.UI.UserControls.CustomerControl();
             this.transactionControl = new InventoryManagement.UI.UserControls.TransactionControl();
@@ -56,7 +56,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
             this.panel1.Controls.Add(this.SidePanel);
             this.panel1.Controls.Add(this.btn_AboutUs);
-            this.panel1.Controls.Add(this.btn_Stock);
+            this.panel1.Controls.Add(this.btn_Vendors);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btn_Customer);
             this.panel1.Controls.Add(this.btn_Transaction);
@@ -96,22 +96,22 @@
             this.btn_AboutUs.UseVisualStyleBackColor = true;
             this.btn_AboutUs.Click += new System.EventHandler(this.btn_AboutUs_Click);
             // 
-            // btn_Stock
+            // btn_Vendors
             // 
-            this.btn_Stock.FlatAppearance.BorderSize = 0;
-            this.btn_Stock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Stock.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Stock.ForeColor = System.Drawing.Color.White;
-            this.btn_Stock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Stock.Location = new System.Drawing.Point(1, 522);
-            this.btn_Stock.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Stock.Name = "btn_Stock";
-            this.btn_Stock.Size = new System.Drawing.Size(233, 66);
-            this.btn_Stock.TabIndex = 8;
-            this.btn_Stock.Text = "Stock";
-            this.btn_Stock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Stock.UseVisualStyleBackColor = true;
-            this.btn_Stock.Click += new System.EventHandler(this.btn_Stock_Click);
+            this.btn_Vendors.FlatAppearance.BorderSize = 0;
+            this.btn_Vendors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Vendors.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Vendors.ForeColor = System.Drawing.Color.White;
+            this.btn_Vendors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Vendors.Location = new System.Drawing.Point(1, 522);
+            this.btn_Vendors.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Vendors.Name = "btn_Vendors";
+            this.btn_Vendors.Size = new System.Drawing.Size(233, 66);
+            this.btn_Vendors.TabIndex = 8;
+            this.btn_Vendors.Text = "Vendors";
+            this.btn_Vendors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Vendors.UseVisualStyleBackColor = true;
+            this.btn_Vendors.Click += new System.EventHandler(this.btn_Stock_Click);
             // 
             // panel3
             // 
@@ -265,13 +265,13 @@
             // 
             // stockControl
             // 
-            this.stockControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
-            this.stockControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stockControl.Location = new System.Drawing.Point(236, 25);
-            this.stockControl.Margin = new System.Windows.Forms.Padding(4);
-            this.stockControl.Name = "stockControl";
-            this.stockControl.Size = new System.Drawing.Size(1114, 704);
-            this.stockControl.TabIndex = 6;
+            this.vendorControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.vendorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendorControl.Location = new System.Drawing.Point(236, 25);
+            this.vendorControl.Margin = new System.Windows.Forms.Padding(4);
+            this.vendorControl.Name = "stockControl";
+            this.vendorControl.Size = new System.Drawing.Size(1114, 704);
+            this.vendorControl.TabIndex = 6;
             // 
             // categoryControl
             // 
@@ -313,7 +313,7 @@
             this.Controls.Add(this.transactionControl);
             this.Controls.Add(this.customerControl);
             this.Controls.Add(this.categoryControl);
-            this.Controls.Add(this.stockControl);
+            this.Controls.Add(this.vendorControl);
             this.Controls.Add(this.productControl);
             this.Controls.Add(this.homeControl);
             this.Controls.Add(this.panel1);
@@ -335,7 +335,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Button btn_AboutUs;
-        private System.Windows.Forms.Button btn_Stock;
+        private System.Windows.Forms.Button btn_Vendors;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -347,7 +347,7 @@
         private System.Windows.Forms.Panel panel2;
         private UserControls.HomeControl homeControl;
         private UserControls.ProductControl productControl;
-        private UserControls.StockControl stockControl;
+        private UserControls.VendorControl vendorControl;
         private UserControls.CategoryControl categoryControl;
         private UserControls.CustomerControl customerControl;
         private UserControls.TransactionControl transactionControl;

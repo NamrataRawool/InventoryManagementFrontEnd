@@ -105,6 +105,8 @@
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
     <Compile Include="Controllers\Product\ProductController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\Transaction\FormController_ViewBill.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
     <Compile Include="EventHandlers\Product\EventHandler_Product.cs" />
     <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\Vendor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Export\Exporters\Excel\ExcelExporter_Categories.cs" />
@@ -166,6 +169,12 @@
     <Compile Include="UI\Product\Form_ProductDetails.Designer.cs">
       <DependentUpon>Form_ProductDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Transaction\Form_ViewBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transaction\Form_ViewBill.Designer.cs">
+      <DependentUpon>Form_ViewBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,17 +199,29 @@
     <Compile Include="UI\UserControls\HomeControl.Designer.cs">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControls\StockControl.cs">
+    <Compile Include="UI\UserControls\VendorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\UserControls\StockControl.Designer.cs">
-      <DependentUpon>StockControl.cs</DependentUpon>
+    <Compile Include="UI\UserControls\VendorControl.Designer.cs">
+      <DependentUpon>VendorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserControls\TransactionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\UserControls\TransactionControl.Designer.cs">
       <DependentUpon>TransactionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Vendor\Form_AddVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Vendor\Form_AddVendor.Designer.cs">
+      <DependentUpon>Form_AddVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Vendor\Form_EditVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Vendor\Form_EditVendor.Designer.cs">
+      <DependentUpon>Form_EditVendor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Validator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -231,6 +252,9 @@
     <EmbeddedResource Include="UI\Product\Form_ProductDetails.resx">
       <DependentUpon>Form_ProductDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transaction\Form_ViewBill.resx">
+      <DependentUpon>Form_ViewBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,11 +267,17 @@
     <EmbeddedResource Include="UI\UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControls\StockControl.resx">
-      <DependentUpon>StockControl.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\VendorControl.resx">
+      <DependentUpon>VendorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\TransactionControl.resx">
       <DependentUpon>TransactionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Vendor\Form_AddVendor.resx">
+      <DependentUpon>Form_AddVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Vendor\Form_EditVendor.resx">
+      <DependentUpon>Form_EditVendor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
