@@ -10,11 +10,7 @@ namespace InventoryManagement.Utilities
     {
         public static bool IsInteger(string text)
         {
-            if (int.TryParse(text, out int value))
-            {
-                return true;
-            }
-            return false;
+            return int.TryParse(text, out int value);
         }
     }
 }
