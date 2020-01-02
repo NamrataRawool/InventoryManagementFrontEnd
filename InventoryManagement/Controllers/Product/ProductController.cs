@@ -19,14 +19,13 @@ namespace InventoryManagement.Controllers
             SetEventHandler(new EventHandler_Product(this));
         }
 
-        public void OnAddNewProductClicked()
+        public void Initialize(bool reset = true)
         {
-            var e = new Event_AddProduct();
-            EventBroadcaster.Get().BroadcastEvent(e);
-        }
+            if (reset)
+            {
+                ResetTable();
+            }
 
-        public void Initialize()
-        {
             var products = HTTPService.GET<List<ProductGet>>("products");
             if (products == null)
                 return;
@@ -35,21 +34,35 @@ namespace InventoryManagement.Controllers
             InitializeAutoSearchBox(products);
         }
 
+        public void ResetTable()
+        {
+            var Table = GetTable();
+            Table.Rows.Clear();
+            Table.Refresh();
+        }
+
         public void InitializeTable(List<ProductGet> products)
         {
-            var Table = m_UIControl.productDataView;
-
             foreach (var product in products)
-            {
-                int Index = Table.Rows.Add();
-                DataGridViewRow NewRow = Table.Rows[Index];
-                NewRow.Cells["ProductTableColumn_ID"].Value = product.ID;
-                NewRow.Cells["ProductTableColumn_Barcode"].Value = product.ID;
-                NewRow.Cells["ProductTableColumn_Name"].Value = product.Name;
-                NewRow.Cells["ProductTableColumn_Category"].Value = product.Category.Name;
-                NewRow.Cells["ProductTableColumn_RetailPrice"].Value = product.RetailPrice;
-                NewRow.Cells["ProductTableColumn_WholesalePrice"].Value = product.WholeSalePrice;
-            }
+                AddProductToTable(product);
+        }
+
+        public void AddProductToTable(ProductGet product)
+        {
+            var Table = GetTable();
+            int Index = Table.Rows.Add();
+            DataGridViewRow NewRow = Table.Rows[Index];
+            NewRow.Cells["ProductTableColumn_ID"].Value = product.ID;
+            NewRow.Cells["ProductTableColumn_Barcode"].Value = product.ID;
+            NewRow.Cells["ProductTableColumn_Name"].Value = product.Name;
+            NewRow.Cells["ProductTableColumn_Category"].Value = product.Category.Name;
+            NewRow.Cells["ProductTableColumn_RetailPrice"].Value = product.RetailPrice;
+            NewRow.Cells["ProductTableColumn_WholesalePrice"].Value = product.WholeSalePrice;
+        }
+
+        public void RefreshTable()
+        {
+            GetTable().Refresh();
         }
 
         public void InitializeAutoSearchBox(List<ProductGet> products)
@@ -63,6 +76,12 @@ namespace InventoryManagement.Controllers
                 collection.Add(product.Name);
 
             searchBox.AutoCompleteCustomSource = collection;
+        }
+
+        public void AddProductToAutoSearchBox(string productName)
+        {
+            var searchBox = m_UIControl.tb_searchProduct;
+            searchBox.AutoCompleteCustomSource.Add(productName);
         }
 
         public void OpenForm_AddProduct()
@@ -91,7 +110,7 @@ namespace InventoryManagement.Controllers
 
         protected override void RegisterEvents()
         {
-            RegisterEvent(EventType.UI_Product_AddNewProduct);
+            RegisterEvent(EventType.NewProductAdded);
         }
 
         private DataGridView GetTable()

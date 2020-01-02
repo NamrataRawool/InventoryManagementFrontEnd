@@ -11,7 +11,7 @@ namespace InventoryManagement.Events
     {
 
         // Product
-        UI_Product_AddNewProduct,
+        NewProductAdded,
 
         // Transaction
         UI_Transaction_AddProduct,
@@ -20,6 +20,11 @@ namespace InventoryManagement.Events
     public abstract class IEvent
     {
         public abstract EventType Type();
+
+        public T Cast<T>()
+        {
+            return (T)Convert.ChangeType(this, typeof(T));
+        }
     }
 
 }

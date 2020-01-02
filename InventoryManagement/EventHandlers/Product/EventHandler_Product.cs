@@ -1,5 +1,9 @@
 ﻿using InventoryManagement.Controllers;
 using InventoryManagement.Events;
+using InventoryManagement.Events.Product;
+using InventoryManagement.Models;
+using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Misc.Assert;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +23,27 @@ namespace InventoryManagement.EventHandlers.Product
         {
             EventType type = e.Type();
 
-            if (type == EventType.UI_Product_AddNewProduct)
+            switch (type)
             {
-                m_Controller.OpenForm_AddProduct();
+                case EventType.NewProductAdded:
+                    AddProductToTable(e.Cast<Event_NewProductAdded>().GetProductID());
+                    break;
             }
+        }
+
+        private void AddProductToTable(int productID)
+        {
+            var product = HTTPService.GET<ProductGet>("product/" + productID);
+            if (product == null)
+            {
+                Assert.Do("This should not have happened!");
+                return;
+            }
+
+            m_Controller.AddProductToTable(product);
+            m_Controller.RefreshTable();
+
+            m_Controller.AddProductToAutoSearchBox(product.Name);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
-            m_Controller.OnAddNewProductClicked();
+            m_Controller.OpenForm_AddProduct();
         }
 
         private void btn_editProduct_Click(object sender, EventArgs e)

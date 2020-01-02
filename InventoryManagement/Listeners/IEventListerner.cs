@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Listeners
 {
-    public class IEventListener
+    public abstract class IEventListener
     {
-        public virtual void OnEvent(IEvent e)
-        {
-        }
+        public abstract void OnEvent(IEvent e);
     }
 }

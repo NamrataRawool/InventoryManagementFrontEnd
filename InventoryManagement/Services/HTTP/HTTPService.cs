@@ -40,7 +40,11 @@ namespace InventoryManagement.Services.HTTP
             return JsonConvert.DeserializeObject<T>(Content);
         }
 
-        public static T POST<T>(string URL, T Obj, string filename) where T : new()
+        /*
+         * RETURN_TYPE : 'Get' model eg. 'ProductGet'
+         * INPUT_TYPE : 'Post' model eg. 'ProductPost'
+         */
+        public static RETURN_TYPE POST<RETURN_TYPE, INPUT_TYPE>(string URL, INPUT_TYPE Obj, string filename) where INPUT_TYPE : new()
         {
             List<string> files = null;
             if (filename != null)
@@ -48,10 +52,14 @@ namespace InventoryManagement.Services.HTTP
                 files = new List<string>();
                 files.Add(filename);
             }
-            return POST(URL, Obj, files);
+            return POST<RETURN_TYPE, INPUT_TYPE>(URL, Obj, files);
         }
 
-        public static T POST<T>(string URL, T Obj, List<string> filenames = null) where T: new()
+        //public static RETURN_TYPE PUT<RETURN_TYPE, INPUT_TYPE>(string URL, INPUT_TYPE Obj, string filename) where INPUT_TYPE : new()
+        //{
+        //}
+
+        public static RETURN_TYPE POST<RETURN_TYPE, INPUT_TYPE>(string URL, INPUT_TYPE Obj, List<string> filenames = null) where INPUT_TYPE : new()
         {
 
             RestRequest Request = new RestRequest(URL);
@@ -68,14 +76,14 @@ namespace InventoryManagement.Services.HTTP
 
             var Response = Client.Post(Request);
 
-            if (Response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (Response.StatusCode != System.Net.HttpStatusCode.OK && Response.StatusCode != System.Net.HttpStatusCode.Created)
             {
                 Assert.Do();
-                return default(T);
+                return default(RETURN_TYPE);
             }
 
             var Content = Response.Content;
-            return JsonConvert.DeserializeObject<T>(Content);
+            return JsonConvert.DeserializeObject<RETURN_TYPE>(Content);
         }
 
 

@@ -110,7 +110,7 @@
     <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />
     <Compile Include="Events\Event_TransactionAddProduct.cs" />
     <Compile Include="Events\IEvent.cs" />
-    <Compile Include="Events\Product\Event_AddProduct.cs" />
+    <Compile Include="Events\Product\Event_NewProductAdded.cs" />
     <Compile Include="Listeners\IEventListerner.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />
@@ -267,12 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\Misc\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_home1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\placeholder.jpg" />

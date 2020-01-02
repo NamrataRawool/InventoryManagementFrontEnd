@@ -14,7 +14,7 @@ namespace InventoryManagement.Models
 
         public int AvailableQuantity { get; set; }
 
-        public string TotalQuantity { get; set; }
+        public int TotalQuantity { get; set; }
     }
 
     public class StockGet : StockBase

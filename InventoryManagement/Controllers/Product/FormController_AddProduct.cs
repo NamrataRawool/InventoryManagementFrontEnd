@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Product;
+using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Product;
 using System;
@@ -17,23 +19,40 @@ namespace InventoryManagement.Controllers.Product
         {
         }
 
-        public void SubmitNewProduct()
+        public bool AddNewProduct()
         {
             var UI = m_UIControl;
 
             string categoryName = UI.cb_Category.Text;
-            CategoryGet category = HTTPService.GET<CategoryGet>("category/name-" + categoryName);
+            CategoryGet category = HTTPService.GET<CategoryGet>("category/name=" + categoryName);
 
             ProductPost product = new ProductPost();
             product.Name = UI.tb_Name.Text;
-            product.Description = UI.tb_description.Text;
-            product.RetailPrice = int.Parse(UI.tb_retailPrice.Text);
-            product.WholeSalePrice = int.Parse(UI.tb_wholeSalePrice.Text);
+            product.Barcode = UI.tb_Barcode.Text;
+            product.Description = UI.tb_Description.Text;
+            product.RetailPrice = int.Parse(UI.tb_RetailPrice.Text);
+            product.WholeSalePrice = int.Parse(UI.tb_WholeSalePrice.Text);
             product.ImagePath = UI.tb_imageName.Text;
             product.CategoryID = category.ID;
 
-            HTTPService.POST("product", product, UI.tb_imageName.Text);
+            var productPost = HTTPService.POST<ProductGet, ProductPost>("product", product, product.ImagePath);
+            if (productPost == null)
+                return false;
 
+            // post the Default details
+            StockPost stock = new StockPost();
+            stock.ProductID = productPost.ID;
+            stock.AvailableQuantity = 0;
+            stock.TotalQuantity = 0;
+            var stockPost = HTTPService.POST<StockGet, StockPost>("stock", stock);
+            if (stockPost == null)
+                return false;
+
+            // Broadcast NewProductAdded Event
+            Event_NewProductAdded e = new Event_NewProductAdded(productPost.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
+
+            return true;
         }
 
         protected override void RegisterEvents()

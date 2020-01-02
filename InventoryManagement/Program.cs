@@ -5,8 +5,7 @@ using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace InventoryManagement
@@ -44,7 +43,7 @@ namespace InventoryManagement
                 pPost.WholeSalePrice = 98;
                 pPost.CategoryID = 1;
 
-                var PostResponse = HTTPService.POST("product", pPost, files);
+                var PostResponse = HTTPService.POST<ProductGet, ProductPost>("product", pPost, files);
                 Console.WriteLine(PostResponse.Name);
             }
 
@@ -58,18 +57,30 @@ namespace InventoryManagement
                 cPost.SGST = 12.6;
                 cPost.Discount = 10;
 
-                var PostResponse = HTTPService.POST("category", cPost);
+                var PostResponse = HTTPService.POST<CategoryGet, CategoryPost>("category", cPost);
                 Console.WriteLine(PostResponse.Name);
             }
 
-            bool postCustomers = true;
+            bool postCustomers = false;
             if (postCustomers)
             {
                 CustomerPost cPost = new CustomerPost();
                 cPost.Name = "Aditya Bhende";
 
-                var PostResponse = HTTPService.POST("customer", cPost);
+                var PostResponse = HTTPService.POST<CustomerGet, CustomerPost>("customer", cPost);
                 Console.WriteLine(PostResponse.Name);
+            }
+
+            bool postStock = true;
+            if(postStock)
+            {
+                StockPost stock = new StockPost();
+                stock.ProductID = 1;
+                stock.AvailableQuantity = 1;
+                stock.TotalQuantity = 1;
+
+                var PostResponse = HTTPService.POST<StockGet, StockPost>("stock", stock);
+                Console.WriteLine(PostResponse.ID);
             }
         }
 
@@ -89,9 +100,21 @@ namespace InventoryManagement
 
         }
 
+        private static void InitializeHttpControllers()
+        {
+            // TEMP : to initialize all the HttpControllers
+            HTTPService.GET<List<ProductGet>>("products");
+            HTTPService.GET<List<ProductGet>>("categories");
+            HTTPService.GET<List<ProductGet>>("transactions");
+            HTTPService.GET<List<ProductGet>>("stocks");
+            HTTPService.GET<List<ProductGet>>("purchases");
+            HTTPService.GET<List<ProductGet>>("vendors");
+        }
+
         private static void Initialize()
         {
-            Assert.Disable();
+            Assert.Enable();
+            //InitializeHttpControllers();
         }
 
         /// <summary>
@@ -100,7 +123,6 @@ namespace InventoryManagement
         [STAThread]
         static void Main()
         {
-
             Initialize();
 
             Application.EnableVisualStyles();

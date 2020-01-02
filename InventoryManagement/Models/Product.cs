@@ -13,8 +13,21 @@ namespace InventoryManagement.Models
 
     public class ProductBase
     {
+        public ProductBase() { }
+        public ProductBase(ProductBase rhs)
+        {
+            ID = rhs.ID;
+            Barcode = rhs.Barcode;
+            Name = rhs.Name;
+            Description = rhs.Description;
+            RetailPrice = rhs.RetailPrice;
+            WholeSalePrice = rhs.WholeSalePrice;
+            ImagePath = rhs.ImagePath;
+        }
 
         public int ID { get; set; }
+
+        public string Barcode { get; set; }
 
         public string Name { get; set; }
 
@@ -29,6 +42,13 @@ namespace InventoryManagement.Models
 
     public class ProductPost : ProductBase
     {
+        public ProductPost() { }
+        public ProductPost(ProductGet rhs)
+            :base(rhs)
+        {
+            CategoryID = rhs.Category.ID;
+        }
+
         public int CategoryID { get; set; }
     }
 

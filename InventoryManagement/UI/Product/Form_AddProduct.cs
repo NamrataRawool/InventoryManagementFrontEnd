@@ -37,19 +37,33 @@ namespace InventoryManagement.UI.Product
             }
             return categoryDataSource;
         }
-        private void btn_ResetProduct_Click(object sender, EventArgs e)
+
+        private void ResetAll()
         {
             tb_Name.Text = string.Empty;
-            tb_description.Text = string.Empty;
-            tb_retailPrice.Text = string.Empty;
-            tb_wholeSalePrice.Text = string.Empty;
+            tb_Barcode.Text = string.Empty;
+            tb_Description.Text = string.Empty;
+            tb_RetailPrice.Text = string.Empty;
+            tb_WholeSalePrice.Text = string.Empty;
             cb_Category.Text = string.Empty;
             tb_imageName.Text = string.Empty;
         }
 
+        private void btn_ResetProduct_Click(object sender, EventArgs e)
+        {
+            ResetAll();
+        }
+
         private void btn_saveProduct_Click(object sender, EventArgs e)
         {
-            m_Controller.SubmitNewProduct();
+            bool result = m_Controller.AddNewProduct();
+            if (!result)
+            {
+                // TODO: raise UI warning
+                return;
+            }
+
+            ResetAll();
         }
 
         private void btn_browseImage_Click(object sender, EventArgs e)
