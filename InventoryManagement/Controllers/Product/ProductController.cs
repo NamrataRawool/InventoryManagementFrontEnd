@@ -104,7 +104,7 @@ namespace InventoryManagement.Controllers
             int ProductID = int.Parse(selectedRow.Cells["ProductTableColumn_ID"].Value.ToString());
 
             Form_ProductDetails formProductDetails = new Form_ProductDetails(ProductID);
-            formProductDetails.Text = "Edit Product";
+            formProductDetails.Text = "Product Details";
             formProductDetails.ShowDialog();
         }
 

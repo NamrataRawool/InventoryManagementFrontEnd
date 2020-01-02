@@ -10,7 +10,7 @@ namespace InventoryManagement.Models
     {
         public int ID { get; set; }
 
-        public int TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
 
         public string ProductIDs { get; set; }
 

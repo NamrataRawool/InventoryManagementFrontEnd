@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.GroupBox_ProductDetails = new System.Windows.Forms.GroupBox();
             this.tf_ProductDetails_Description = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.Label_ProductID = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cb_AddStock_Vendor = new System.Windows.Forms.ComboBox();
-            this.btn_AddStockAddStock = new System.Windows.Forms.Button();
+            this.btn_AddStock = new System.Windows.Forms.Button();
             this.tf_AddStock_BuyingPrice = new System.Windows.Forms.TextBox();
             this.tf_AddStock_Quantity = new System.Windows.Forms.TextBox();
             this.datePicker_AddStock_Date = new System.Windows.Forms.DateTimePicker();
@@ -74,10 +74,11 @@
             // 
             // btn_ChangeProductImage
             // 
+            this.btn_ChangeProductImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ChangeProductImage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_ChangeProductImage.Location = new System.Drawing.Point(194, 120);
+            this.btn_ChangeProductImage.Location = new System.Drawing.Point(194, 113);
             this.btn_ChangeProductImage.Name = "btn_ChangeProductImage";
-            this.btn_ChangeProductImage.Size = new System.Drawing.Size(75, 23);
+            this.btn_ChangeProductImage.Size = new System.Drawing.Size(90, 30);
             this.btn_ChangeProductImage.TabIndex = 1;
             this.btn_ChangeProductImage.Text = "Change";
             this.btn_ChangeProductImage.UseVisualStyleBackColor = true;
@@ -148,7 +149,7 @@
             // 
             this.Button_UpdateProductDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_UpdateProductDetails.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Button_UpdateProductDetails.Location = new System.Drawing.Point(246, 272);
+            this.Button_UpdateProductDetails.Location = new System.Drawing.Point(240, 263);
             this.Button_UpdateProductDetails.Name = "Button_UpdateProductDetails";
             this.Button_UpdateProductDetails.Size = new System.Drawing.Size(90, 30);
             this.Button_UpdateProductDetails.TabIndex = 10;
@@ -252,7 +253,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Controls.Add(this.cb_AddStock_Vendor);
-            this.groupBox1.Controls.Add(this.btn_AddStockAddStock);
+            this.groupBox1.Controls.Add(this.btn_AddStock);
             this.groupBox1.Controls.Add(this.Label_AddStockVendor);
             this.groupBox1.Controls.Add(this.tf_AddStock_BuyingPrice);
             this.groupBox1.Controls.Add(this.Label_AddStockDate);
@@ -276,17 +277,17 @@
             this.cb_AddStock_Vendor.Size = new System.Drawing.Size(185, 24);
             this.cb_AddStock_Vendor.TabIndex = 20;
             // 
-            // btn_AddStockAddStock
+            // btn_AddStock
             // 
-            this.btn_AddStockAddStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_AddStockAddStock.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_AddStockAddStock.Location = new System.Drawing.Point(240, 152);
-            this.btn_AddStockAddStock.Name = "btn_AddStockAddStock";
-            this.btn_AddStockAddStock.Size = new System.Drawing.Size(90, 30);
-            this.btn_AddStockAddStock.TabIndex = 19;
-            this.btn_AddStockAddStock.Text = "Add Stock";
-            this.btn_AddStockAddStock.UseVisualStyleBackColor = true;
-            this.btn_AddStockAddStock.Click += new System.EventHandler(this.btn_AddStockAddStock_Click);
+            this.btn_AddStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddStock.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_AddStock.Location = new System.Drawing.Point(240, 152);
+            this.btn_AddStock.Name = "btn_AddStock";
+            this.btn_AddStock.Size = new System.Drawing.Size(90, 30);
+            this.btn_AddStock.TabIndex = 19;
+            this.btn_AddStock.Text = "Add Stock";
+            this.btn_AddStock.UseVisualStyleBackColor = true;
+            this.btn_AddStock.Click += new System.EventHandler(this.btn_AddStock_Click);
             // 
             // tf_AddStock_BuyingPrice
             // 
@@ -391,14 +392,14 @@
             this.table_StockHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.table_StockHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.table_StockHistory.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.table_StockHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.table_StockHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.table_StockHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table_StockHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StockHIstoryTable_Date,
@@ -406,14 +407,14 @@
             this.StockHistoryColumn_Quantity,
             this.StockHistoryColumn_BuyingPrice,
             this.StockHistoryColumn_TotalPrice});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.table_StockHistory.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.table_StockHistory.DefaultCellStyle = dataGridViewCellStyle4;
             this.table_StockHistory.Location = new System.Drawing.Point(484, 172);
             this.table_StockHistory.Name = "table_StockHistory";
             this.table_StockHistory.Size = new System.Drawing.Size(710, 449);
@@ -482,7 +483,7 @@
         public System.Windows.Forms.Label Label_AddStockQuantity;
         public System.Windows.Forms.Label Label_AddStockDate;
         public System.Windows.Forms.Label Label_AddStockVendor;
-        public System.Windows.Forms.Button btn_AddStockAddStock;
+        public System.Windows.Forms.Button btn_AddStock;
         public System.Windows.Forms.TextBox tf_AddStock_BuyingPrice;
         public System.Windows.Forms.TextBox tf_AddStock_Quantity;
         public System.Windows.Forms.DateTimePicker datePicker_AddStock_Date;

@@ -30,7 +30,7 @@ namespace InventoryManagement.UI.Product
             m_Controller = new FormController_ProductDetails(productID, this);
         }
 
-        private void btn_AddStockAddStock_Click(object sender, EventArgs e)
+        private void btn_AddStock_Click(object sender, EventArgs e)
         {
 
         }
