@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventoryManagement.Controllers
+namespace InventoryManagement.Controllers.Vendor
 {
     public class VendorController : IController<VendorControl>
     {
@@ -39,15 +39,62 @@ namespace InventoryManagement.Controllers
 
         public void OpenForm_EditVendor()
         {
-            Form_EditVendor editVendor = new Form_EditVendor();
+            var Table = GetTable();
+
+            var rows = Table.SelectedRows;
+            if (rows.Count < 0)
+                return;
+
+            int selectedRowIndex = Table.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = Table.Rows[selectedRowIndex];
+            int vendorId = int.Parse(selectedRow.Cells["VendorTable_Id"].Value.ToString());
+            Form_EditVendor editVendor = new Form_EditVendor(vendorId);
             editVendor.ShowDialog();
+            //TODO: REfresh
+            Initialize();
         }
 
-        protected override void RegisterEvents()
+        public void SearchVendor(string name)
         {
+            var Table = GetTable();
+            Table.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            CurrencyManager currencyManager = (CurrencyManager)m_UIControl.BindingContext[Table.DataSource];
+            currencyManager.SuspendBinding();
+            try
+            {
+                bool valueResult = false;
+                foreach (DataGridViewRow row in Table.Rows)
+                {
+                    int rowIndex = row.Index;
+                    if (row.Cells["VendorTable_CompanyName"].Value != null && row.Cells["VendorTable_CompanyName"].Value.ToString().ToLower().StartsWith(name.ToLower()))
+                    {
+                        Table.Rows[rowIndex].Visible = true;
+                        Table.FirstDisplayedScrollingRowIndex = rowIndex;
+                        valueResult = true;
+                    }
+                    else
+                    {
+                        Table.Rows[rowIndex].Visible = false;
+                    }
+
+                }
+                currencyManager.ResumeBinding();
+                if (!valueResult)
+                {
+                    MessageBox.Show("Unable to find " + name);
+                    return;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
 
         }
-
+        public void RefreshTable()
+        {
+            GetTable().Refresh();
+        }
         public void ResetTable()
         {
             var Table = GetTable();
@@ -87,6 +134,11 @@ namespace InventoryManagement.Controllers
         private DataGridView GetTable()
         {
             return m_UIControl.VendorsDataView;
+        }
+
+        protected override void RegisterEvents()
+        {
+
         }
     }
 }

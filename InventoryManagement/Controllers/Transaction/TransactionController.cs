@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace InventoryManagement.Controllers
+namespace InventoryManagement.Controllers.Transaction
 {
 
     public class TransactionController : IController<TransactionControl>
@@ -36,16 +36,16 @@ namespace InventoryManagement.Controllers
 
         public void OnDeleteProduct()
         {
-            foreach (DataGridViewRow row in m_UIControl.table_Products.SelectedRows)
+            foreach (DataGridViewRow row in m_UIControl.Bill_ProductsDataView.SelectedRows)
             {
-                m_UIControl.table_Products.Rows.RemoveAt(row.Index);
+                m_UIControl.Bill_ProductsDataView.Rows.RemoveAt(row.Index);
                 UpdateUILabels();
             }
         }
 
         public void AddProductRowToTable(BillRowEntry Entry)
         {
-            var GridView = m_UIControl.table_Products;
+            var GridView = m_UIControl.Bill_ProductsDataView;
 
             foreach (DataGridViewRow row in GridView.Rows)
             {
@@ -78,11 +78,11 @@ namespace InventoryManagement.Controllers
 
         public void UpdateBillProductsDataRow(BillRowEntry oldBillRowEntry)
         {
-            var rows = m_UIControl.table_Products.SelectedRows;
+            var rows = m_UIControl.Bill_ProductsDataView.SelectedRows;
             if (rows.Count > 0)
             {
-                int selectedRowIndex = m_UIControl.table_Products.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = m_UIControl.table_Products.Rows[selectedRowIndex];
+                int selectedRowIndex = m_UIControl.Bill_ProductsDataView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = m_UIControl.Bill_ProductsDataView.Rows[selectedRowIndex];
                 int newQuantity = Convert.ToInt32(selectedRow.Cells["BillTable_Quantity"].Value);
 
                 selectedRow.Cells["BillTable_TotalPrice"].Value = CalculateTotalPrice(oldBillRowEntry.Price, oldBillRowEntry.Discount, newQuantity);
@@ -102,13 +102,13 @@ namespace InventoryManagement.Controllers
             string productIds = string.Empty;
             string productQuantity = string.Empty;
             int i = 0;
-            for (i = 0; i < m_UIControl.table_Products.Rows.Count - 1; ++i)
+            for (i = 0; i < m_UIControl.Bill_ProductsDataView.Rows.Count - 1; ++i)
             {
-                productIds += m_UIControl.table_Products.Rows[i].Cells["BillTable_ProductId"].Value + ",";
-                productQuantity += m_UIControl.table_Products.Rows[i].Cells["BillTable_Quantity"].Value + ",";
+                productIds += m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_ProductId"].Value + ",";
+                productQuantity += m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Quantity"].Value + ",";
             }
-            productIds += m_UIControl.table_Products.Rows[i].Cells["BillTable_ProductId"].Value;
-            productQuantity += m_UIControl.table_Products.Rows[i].Cells["BillTable_Quantity"].Value;
+            productIds += m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_ProductId"].Value;
+            productQuantity += m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Quantity"].Value;
             transactionPost.ProductIDs = productIds;
             transactionPost.ProductQuantity = productQuantity;
 
@@ -145,10 +145,10 @@ namespace InventoryManagement.Controllers
         {
             double subtotal = 0;
             double totalDiscount = 0;
-            for (int i = 0; i < m_UIControl.table_Products.Rows.Count; ++i)
+            for (int i = 0; i < m_UIControl.Bill_ProductsDataView.Rows.Count; ++i)
             {
-                subtotal += Convert.ToDouble(m_UIControl.table_Products.Rows[i].Cells["BillTable_TotalPrice"].Value);
-                totalDiscount += Convert.ToDouble(m_UIControl.table_Products.Rows[i].Cells["BillTable_Discount"].Value);
+                subtotal += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_TotalPrice"].Value);
+                totalDiscount += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Discount"].Value);
             }
             m_UIControl.tb_subtotal.Text = subtotal.ToString();
             m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
@@ -197,7 +197,7 @@ namespace InventoryManagement.Controllers
         }
         private void ResetBillProductsTable()
         {
-            var Table = m_UIControl.table_Products;
+            var Table = m_UIControl.Bill_ProductsDataView;
             Table.Rows.Clear();
             Table.Refresh();
         }
@@ -211,7 +211,7 @@ namespace InventoryManagement.Controllers
 
         private DataGridView GetTransactionHistoryTable()
         {
-            return m_UIControl.table_TransactionHistory;
+            return m_UIControl.TransactionHistoryDataView;
         }
 
         protected override void RegisterEvents()

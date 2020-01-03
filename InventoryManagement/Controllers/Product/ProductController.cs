@@ -6,6 +6,7 @@ using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Product;
 using InventoryManagement.UI.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -106,6 +107,45 @@ namespace InventoryManagement.Controllers
             Form_ProductDetails formProductDetails = new Form_ProductDetails(ProductID);
             formProductDetails.Text = "Product Details";
             formProductDetails.ShowDialog();
+
+        }
+
+        public void SearchProductByName(string name)
+        {
+            //TODO: Need to change the logic
+            var Table = GetTable();
+            Table.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            CurrencyManager currencyManager = (CurrencyManager)m_UIControl.BindingContext[Table.DataSource];
+            currencyManager.SuspendBinding();
+            try
+            {
+                bool valueResult = false;
+                foreach (DataGridViewRow row in Table.Rows)
+                {
+                    int rowIndex = row.Index;
+                    if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().ToLower().StartsWith(name.ToLower()))
+                    {
+                        Table.Rows[rowIndex].Visible = true;
+                        Table.FirstDisplayedScrollingRowIndex = rowIndex;
+                        valueResult = true;
+                    }
+                    else
+                    {
+                        Table.Rows[rowIndex].Visible = false;
+                    }
+
+                }
+                currencyManager.ResumeBinding();
+                if (!valueResult)
+                {
+                    MessageBox.Show("Unable to find " + name);
+                    return;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         protected override void RegisterEvents()

@@ -19,7 +19,7 @@ namespace InventoryManagement.UI.Transaction
         public Form_ViewBill(TransactionGet transaction)
         {
             InitializeComponent();
-            m_Controller = new FormController_ViewBill( transaction, this);
+            m_Controller = new FormController_ViewBill(transaction, this);
         }
 
 

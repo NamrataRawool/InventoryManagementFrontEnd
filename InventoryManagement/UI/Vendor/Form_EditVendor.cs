@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.Controllers.Vendor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,16 @@ namespace InventoryManagement.UI.Vendor
 {
     public partial class Form_EditVendor : Form
     {
-        public Form_EditVendor()
+        FormController_EditVendor m_controller;
+        public Form_EditVendor(int vendorId)
         {
             InitializeComponent();
+            m_controller = new FormController_EditVendor(vendorId, this);
+        }
+
+        private void btn_updateVendor_Click(object sender, EventArgs e)
+        {
+            m_controller.UpdateVendor();
         }
     }
 }

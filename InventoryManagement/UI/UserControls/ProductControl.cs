@@ -42,53 +42,15 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_SearchProduct_Click(object sender, EventArgs e)
         {
-            string searchValue = tb_searchProduct.Text.Trim();
-
-            productDataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            CurrencyManager currencyManager = (CurrencyManager)BindingContext[productDataView.DataSource];
-            currencyManager.SuspendBinding();
-            try
-            {
-                bool valueResult = false;
-                foreach (DataGridViewRow row in productDataView.Rows)
-                {
-                    int rowIndex = row.Index;
-                    if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().ToLower().StartsWith(searchValue.ToLower()))
-                    {
-                        productDataView.Rows[rowIndex].Visible = true;
-                        productDataView.FirstDisplayedScrollingRowIndex = rowIndex;
-                        valueResult = true;
-                    }
-                    else
-                    {
-                        productDataView.Rows[rowIndex].Visible = false;
-                    }
-
-                }
-                currencyManager.ResumeBinding();
-                if (!valueResult)
-                {
-                    MessageBox.Show("Unable to find " + tb_searchProduct.Text, "Not Found");
-                    return;
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
+            m_Controller.SearchProductByName(tb_searchProduct.Text.Trim());
         }
 
         private void tb_searchProduct_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btn_SearchProduct_Click(this, new EventArgs());
+                m_Controller.SearchProductByName(tb_searchProduct.Text.Trim());
             }
-        }
-        void TextBoxAutoSearch()
-        {
-
-        }
-
+        }       
     }
 }

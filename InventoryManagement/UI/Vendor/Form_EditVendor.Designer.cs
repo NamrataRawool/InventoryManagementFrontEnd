@@ -43,7 +43,7 @@
             this.tb_mobileNumber = new System.Windows.Forms.TextBox();
             this.tb_email = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.btn_editVendor = new System.Windows.Forms.Button();
+            this.btn_updateVendor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             this.groupBox1.Controls.Add(this.tb_mobileNumber);
             this.groupBox1.Controls.Add(this.tb_email);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.btn_editVendor);
+            this.groupBox1.Controls.Add(this.btn_updateVendor);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 20);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -222,16 +222,17 @@
             this.label17.TabIndex = 31;
             this.label17.Text = "Mobile Number";
             // 
-            // btn_editVendor
+            // btn_updateVendor
             // 
-            this.btn_editVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_editVendor.Location = new System.Drawing.Point(259, 371);
-            this.btn_editVendor.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_editVendor.Name = "btn_editVendor";
-            this.btn_editVendor.Size = new System.Drawing.Size(77, 33);
-            this.btn_editVendor.TabIndex = 8;
-            this.btn_editVendor.Text = "Update";
-            this.btn_editVendor.UseVisualStyleBackColor = true;
+            this.btn_updateVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_updateVendor.Location = new System.Drawing.Point(259, 371);
+            this.btn_updateVendor.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_updateVendor.Name = "btn_updateVendor";
+            this.btn_updateVendor.Size = new System.Drawing.Size(77, 33);
+            this.btn_updateVendor.TabIndex = 8;
+            this.btn_updateVendor.Text = "Update";
+            this.btn_updateVendor.UseVisualStyleBackColor = true;
+            this.btn_updateVendor.Click += new System.EventHandler(this.btn_updateVendor_Click);
             // 
             // Form_EditVendor
             // 
@@ -253,20 +254,20 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tb_vendorId;
+        public System.Windows.Forms.TextBox tb_vendorId;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox tb_companyName;
+        public System.Windows.Forms.TextBox tb_companyName;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox tb_address;
+        public System.Windows.Forms.TextBox tb_address;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox tb_mobileNumber;
-        private System.Windows.Forms.TextBox tb_email;
+        public System.Windows.Forms.TextBox tb_mobileNumber;
+        public System.Windows.Forms.TextBox tb_email;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button btn_editVendor;
-        private System.Windows.Forms.TextBox tb_state;
+        private System.Windows.Forms.Button btn_updateVendor;
+        public System.Windows.Forms.TextBox tb_state;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_city;
+        public System.Windows.Forms.TextBox tb_city;
         private System.Windows.Forms.Label label2;
     }
 }
