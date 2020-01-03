@@ -40,13 +40,14 @@ namespace InventoryManagement.UI.UserControls
             var customers = HTTPService.GET<List<CustomerGet>>("customers");
             if (customers == null)
                 return null;
+
             List<string> customerDataSource = new List<string>();
             foreach (var customer in customers)
-            {
                 customerDataSource.Add(customer.Name);
-            }
+
             return customerDataSource;
         }
+
         private void TextBoxAutoSearch()
         {
             tb_productName.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -62,20 +63,22 @@ namespace InventoryManagement.UI.UserControls
             }
             tb_productName.AutoCompleteCustomSource = collection;
         }
+
         private void Bill_ProductsDataView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            var rows = Bill_ProductsDataView.SelectedRows;
+            var rows = table_Products.SelectedRows;
             if (rows.Count > 0)
             {
                 oldBillRowEntry = new BillRowEntry();
-                int selectedRowIndex = Bill_ProductsDataView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = Bill_ProductsDataView.Rows[selectedRowIndex];
+                int selectedRowIndex = table_Products.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = table_Products.Rows[selectedRowIndex];
                 oldBillRowEntry.Price = int.Parse(selectedRow.Cells["BillTable_Price"].Value.ToString());
                 var discountedPrice = int.Parse(selectedRow.Cells["BillTable_Discount"].Value.ToString());
                 oldBillRowEntry.Quantity = int.Parse(selectedRow.Cells["BillTable_Quantity"].Value.ToString());
                 oldBillRowEntry.Discount = (discountedPrice * 100) / (oldBillRowEntry.Price * oldBillRowEntry.Quantity);
             }
         }
+
         private void Bill_ProductsDataView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             m_Controller.UpdateBillProductsDataRow(oldBillRowEntry);
@@ -188,7 +191,6 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_exportToExcel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btn_saveTransaction_Click(object sender, EventArgs e)

@@ -32,8 +32,11 @@ namespace InventoryManagement.Controllers.Product
             product.Description = UI.tb_Description.Text;
             product.RetailPrice = int.Parse(UI.tb_RetailPrice.Text);
             product.WholeSalePrice = int.Parse(UI.tb_WholeSalePrice.Text);
-            product.ImagePath = UI.tb_imageName.Text;
+            product.ImagePath = (string)UI.pictureBox_Image.Tag;
             product.CategoryID = category.ID;
+            product.CGST = double.Parse(UI.tb_CGST.Text);
+            product.SGST = double.Parse(UI.tb_CGST.Text);
+            product.Discount = double.Parse(UI.tb_SGST.Text);
 
             var productPost = HTTPService.POST<ProductGet, ProductPost>("product", product, product.ImagePath);
             if (productPost == null)

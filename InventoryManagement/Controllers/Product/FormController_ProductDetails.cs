@@ -38,6 +38,9 @@ namespace InventoryManagement.Controllers.Product
             product.Description = m_UIControl.tf_ProductDetails_Description.Text;
             product.RetailPrice = int.Parse(m_UIControl.tf_ProductDetails_RetailPrice.Text);
             product.WholeSalePrice = int.Parse(m_UIControl.tf_ProductDetails_WholesalePrice.Text);
+            product.Discount = double.Parse(m_UIControl.tf_ProductDetails_Discount.Text);
+            product.CGST = double.Parse(m_UIControl.tf_ProductDetails_CGST.Text);
+            product.SGST = double.Parse(m_UIControl.tf_ProductDetails_SGST.Text);
 
             string categoryName = m_UIControl.cb_ProductDetails_Category.Text;
             product.CategoryID = HTTPService.GET<CategoryGet>("category/name=" + categoryName).ID;
@@ -81,6 +84,9 @@ namespace InventoryManagement.Controllers.Product
             UI.tf_ProductDetails_Description.Text = m_Product.Description;
             UI.tf_ProductDetails_RetailPrice.Text = m_Product.RetailPrice.ToString();
             UI.tf_ProductDetails_WholesalePrice.Text = m_Product.WholeSalePrice.ToString();
+            UI.tf_ProductDetails_Discount.Text = m_Product.Discount.ToString();
+            UI.tf_ProductDetails_CGST.Text = m_Product.CGST.ToString();
+            UI.tf_ProductDetails_SGST.Text = m_Product.SGST.ToString();
 
             byte[] imageBytes = GetImage(m_Product);
             if (imageBytes != null && imageBytes.Length > 0)

@@ -46,7 +46,10 @@ namespace InventoryManagement.UI.Product
             tb_RetailPrice.Text = string.Empty;
             tb_WholeSalePrice.Text = string.Empty;
             cb_Category.Text = string.Empty;
-            tb_imageName.Text = string.Empty;
+            pictureBox_Image.Image = null;
+            tb_CGST.Text = string.Empty;
+            tb_SGST.Text = string.Empty;
+            tb_Discount.Text = string.Empty;
         }
 
         private void btn_ResetProduct_Click(object sender, EventArgs e)
@@ -66,28 +69,21 @@ namespace InventoryManagement.UI.Product
             ResetAll();
         }
 
-        private void btn_browseImage_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                InitialDirectory = @"D:\",
-                Title = "Browse Files",
-
-                CheckFileExists = true,
-                CheckPathExists = true,
-                RestoreDirectory = true,
-                ReadOnlyChecked = true,
-                ShowReadOnly = true
-            };
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                tb_imageName.Text = openFileDialog.FileName;
-            }
-        }
-
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_ChangeProductImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            DialogResult dialogResult = dialog.ShowDialog();
+            if (dialogResult != DialogResult.OK)
+                return;
+
+            string imagePath = dialog.FileName;
+            pictureBox_Image.Image = Image.FromFile(imagePath);
+            pictureBox_Image.Tag = imagePath;
         }
     }
 }

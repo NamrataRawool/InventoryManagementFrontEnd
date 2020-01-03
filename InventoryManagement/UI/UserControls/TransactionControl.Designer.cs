@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.transactionTabControl = new System.Windows.Forms.TabControl();
             this.tab_newTransaction = new System.Windows.Forms.TabPage();
             this.btn_deleteBillRecord = new System.Windows.Forms.Button();
@@ -68,7 +68,13 @@
             this.tb_price = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btn_addProductToBill = new System.Windows.Forms.Button();
-            this.Bill_ProductsDataView = new System.Windows.Forms.DataGridView();
+            this.table_Products = new System.Windows.Forms.DataGridView();
+            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_transactionHistory = new System.Windows.Forms.TabPage();
             this.lbl_transactionError = new System.Windows.Forms.Label();
             this.btn_exportToExcel = new System.Windows.Forms.Button();
@@ -81,28 +87,22 @@
             this.DateTime_toDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.DateTime_fromDate = new System.Windows.Forms.DateTimePicker();
-            this.TransactionHistoryDataView = new System.Windows.Forms.DataGridView();
+            this.table_TransactionHistory = new System.Windows.Forms.DataGridView();
             this.Transaction_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
             this.gb_customerDeails.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Bill_ProductsDataView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_Products)).BeginInit();
             this.tab_transactionHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_TransactionHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionTabControl
@@ -126,7 +126,7 @@
             this.tab_newTransaction.Controls.Add(this.gb_billDetails);
             this.tab_newTransaction.Controls.Add(this.gb_customerDeails);
             this.tab_newTransaction.Controls.Add(this.groupBox1);
-            this.tab_newTransaction.Controls.Add(this.Bill_ProductsDataView);
+            this.tab_newTransaction.Controls.Add(this.table_Products);
             this.tab_newTransaction.Location = new System.Drawing.Point(4, 54);
             this.tab_newTransaction.Margin = new System.Windows.Forms.Padding(0);
             this.tab_newTransaction.Name = "tab_newTransaction";
@@ -518,62 +518,97 @@
             this.btn_addProductToBill.UseVisualStyleBackColor = true;
             this.btn_addProductToBill.Click += new System.EventHandler(this.btn_addProductToBill_Click);
             // 
-            // Bill_ProductsDataView
+            // table_Products
             // 
-            this.Bill_ProductsDataView.AllowUserToAddRows = false;
-            this.Bill_ProductsDataView.AllowUserToOrderColumns = true;
-            this.Bill_ProductsDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Bill_ProductsDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.Bill_ProductsDataView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.Bill_ProductsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Bill_ProductsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bill_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.Bill_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Bill_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.table_Products.AllowUserToAddRows = false;
+            this.table_Products.AllowUserToOrderColumns = true;
+            this.table_Products.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table_Products.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.table_Products.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.table_Products.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.table_Products.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.table_Products.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.table_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.table_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table_Products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BillTable_ProductId,
             this.BillTable_Name,
             this.BillTable_Price,
             this.BillTable_Discount,
             this.BillTable_Quantity,
             this.BillTable_TotalPrice});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Bill_ProductsDataView.GridColor = System.Drawing.Color.Black;
-            this.Bill_ProductsDataView.Location = new System.Drawing.Point(523, 21);
-            this.Bill_ProductsDataView.MultiSelect = false;
-            this.Bill_ProductsDataView.Name = "Bill_ProductsDataView";
-            this.Bill_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bill_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.Bill_ProductsDataView.RowHeadersVisible = false;
-            this.Bill_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.Bill_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Bill_ProductsDataView.Size = new System.Drawing.Size(638, 402);
-            this.Bill_ProductsDataView.TabIndex = 25;
-            this.Bill_ProductsDataView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Bill_ProductsDataView_CellBeginEdit);
-            this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.table_Products.DefaultCellStyle = dataGridViewCellStyle2;
+            this.table_Products.GridColor = System.Drawing.Color.Black;
+            this.table_Products.Location = new System.Drawing.Point(523, 21);
+            this.table_Products.MultiSelect = false;
+            this.table_Products.Name = "table_Products";
+            this.table_Products.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.table_Products.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.table_Products.RowHeadersVisible = false;
+            this.table_Products.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.table_Products.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_Products.Size = new System.Drawing.Size(638, 402);
+            this.table_Products.TabIndex = 25;
+            this.table_Products.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Bill_ProductsDataView_CellBeginEdit);
+            this.table_Products.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
+            // 
+            // BillTable_ProductId
+            // 
+            this.BillTable_ProductId.HeaderText = "Product Id";
+            this.BillTable_ProductId.Name = "BillTable_ProductId";
+            this.BillTable_ProductId.ReadOnly = true;
+            // 
+            // BillTable_Name
+            // 
+            this.BillTable_Name.HeaderText = "Name";
+            this.BillTable_Name.Name = "BillTable_Name";
+            this.BillTable_Name.ReadOnly = true;
+            // 
+            // BillTable_Price
+            // 
+            this.BillTable_Price.HeaderText = "Price (in Rs)";
+            this.BillTable_Price.Name = "BillTable_Price";
+            this.BillTable_Price.ReadOnly = true;
+            // 
+            // BillTable_Discount
+            // 
+            this.BillTable_Discount.HeaderText = "Discount (in Rs)";
+            this.BillTable_Discount.Name = "BillTable_Discount";
+            this.BillTable_Discount.ReadOnly = true;
+            // 
+            // BillTable_Quantity
+            // 
+            this.BillTable_Quantity.HeaderText = "Quantity";
+            this.BillTable_Quantity.Name = "BillTable_Quantity";
+            // 
+            // BillTable_TotalPrice
+            // 
+            this.BillTable_TotalPrice.HeaderText = "Total Price (in Rs)";
+            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
+            this.BillTable_TotalPrice.ReadOnly = true;
             // 
             // tab_transactionHistory
             // 
@@ -582,7 +617,7 @@
             this.tab_transactionHistory.Controls.Add(this.btn_exportToExcel);
             this.tab_transactionHistory.Controls.Add(this.groupBox3);
             this.tab_transactionHistory.Controls.Add(this.groupBox2);
-            this.tab_transactionHistory.Controls.Add(this.TransactionHistoryDataView);
+            this.tab_transactionHistory.Controls.Add(this.table_TransactionHistory);
             this.tab_transactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab_transactionHistory.Location = new System.Drawing.Point(4, 54);
             this.tab_transactionHistory.Name = "tab_transactionHistory";
@@ -725,58 +760,58 @@
             this.DateTime_fromDate.Size = new System.Drawing.Size(233, 23);
             this.DateTime_fromDate.TabIndex = 0;
             // 
-            // TransactionHistoryDataView
+            // table_TransactionHistory
             // 
-            this.TransactionHistoryDataView.AllowUserToOrderColumns = true;
-            this.TransactionHistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TransactionHistoryDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.TransactionHistoryDataView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.TransactionHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TransactionHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.TransactionHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TransactionHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.table_TransactionHistory.AllowUserToOrderColumns = true;
+            this.table_TransactionHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table_TransactionHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.table_TransactionHistory.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.table_TransactionHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.table_TransactionHistory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.table_TransactionHistory.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.table_TransactionHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.table_TransactionHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table_TransactionHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Transaction_Date,
             this.Transaction_ID,
             this.Transaction_CustomerName,
             this.Transaction_Quantity,
             this.Transaction_TotalPrice});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle17;
-            this.TransactionHistoryDataView.GridColor = System.Drawing.Color.Black;
-            this.TransactionHistoryDataView.Location = new System.Drawing.Point(129, 297);
-            this.TransactionHistoryDataView.MultiSelect = false;
-            this.TransactionHistoryDataView.Name = "TransactionHistoryDataView";
-            this.TransactionHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.TransactionHistoryDataView.RowHeadersVisible = false;
-            this.TransactionHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.TransactionHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransactionHistoryDataView.Size = new System.Drawing.Size(903, 407);
-            this.TransactionHistoryDataView.TabIndex = 26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.table_TransactionHistory.DefaultCellStyle = dataGridViewCellStyle5;
+            this.table_TransactionHistory.GridColor = System.Drawing.Color.Black;
+            this.table_TransactionHistory.Location = new System.Drawing.Point(129, 297);
+            this.table_TransactionHistory.MultiSelect = false;
+            this.table_TransactionHistory.Name = "table_TransactionHistory";
+            this.table_TransactionHistory.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.table_TransactionHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.table_TransactionHistory.RowHeadersVisible = false;
+            this.table_TransactionHistory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.table_TransactionHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_TransactionHistory.Size = new System.Drawing.Size(903, 407);
+            this.table_TransactionHistory.TabIndex = 26;
             // 
             // Transaction_Date
             // 
@@ -808,41 +843,6 @@
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
             // 
-            // BillTable_ProductId
-            // 
-            this.BillTable_ProductId.HeaderText = "Product Id";
-            this.BillTable_ProductId.Name = "BillTable_ProductId";
-            this.BillTable_ProductId.ReadOnly = true;
-            // 
-            // BillTable_Name
-            // 
-            this.BillTable_Name.HeaderText = "Name";
-            this.BillTable_Name.Name = "BillTable_Name";
-            this.BillTable_Name.ReadOnly = true;
-            // 
-            // BillTable_Price
-            // 
-            this.BillTable_Price.HeaderText = "Price (in Rs)";
-            this.BillTable_Price.Name = "BillTable_Price";
-            this.BillTable_Price.ReadOnly = true;
-            // 
-            // BillTable_Discount
-            // 
-            this.BillTable_Discount.HeaderText = "Discount (in Rs)";
-            this.BillTable_Discount.Name = "BillTable_Discount";
-            this.BillTable_Discount.ReadOnly = true;
-            // 
-            // BillTable_Quantity
-            // 
-            this.BillTable_Quantity.HeaderText = "Quantity";
-            this.BillTable_Quantity.Name = "BillTable_Quantity";
-            // 
-            // BillTable_TotalPrice
-            // 
-            this.BillTable_TotalPrice.HeaderText = "Total Price (in Rs)";
-            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
-            this.BillTable_TotalPrice.ReadOnly = true;
-            // 
             // TransactionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -860,13 +860,13 @@
             this.gb_customerDeails.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Bill_ProductsDataView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_Products)).EndInit();
             this.tab_transactionHistory.ResumeLayout(false);
             this.tab_transactionHistory.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_TransactionHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -876,7 +876,7 @@
         private System.Windows.Forms.TabControl transactionTabControl;
         private System.Windows.Forms.TabPage tab_newTransaction;
         private System.Windows.Forms.TabPage tab_transactionHistory;
-        public System.Windows.Forms.DataGridView Bill_ProductsDataView;
+        public System.Windows.Forms.DataGridView table_Products;
         private System.Windows.Forms.TextBox tb_mobileNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tb_customerName;
@@ -907,7 +907,7 @@
         private System.Windows.Forms.Button btn_addProductToBill;
         private System.Windows.Forms.GroupBox gb_billDetails;
         private System.Windows.Forms.GroupBox gb_customerDeails;
-        public System.Windows.Forms.DataGridView TransactionHistoryDataView;
+        public System.Windows.Forms.DataGridView table_TransactionHistory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_CustomerName;

@@ -38,6 +38,12 @@ namespace InventoryManagement.Models
         public int WholeSalePrice { get; set; }
 
         public string ImagePath { get; set; }
+
+        public double SGST { get; set; }
+
+        public double CGST { get; set; }
+
+        public double Discount { get; set; }
     }
 
     public class ProductPost : ProductBase
