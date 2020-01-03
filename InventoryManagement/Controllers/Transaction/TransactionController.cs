@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace InventoryManagement.Controllers
+namespace InventoryManagement.Controllers.Transaction
 {
 
     public class TransactionController : IController<TransactionControl>

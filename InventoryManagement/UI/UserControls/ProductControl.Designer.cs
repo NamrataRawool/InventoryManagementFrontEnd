@@ -41,10 +41,10 @@
             this.ProductTableColumn_WholesalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tb_searchProduct = new System.Windows.Forms.TextBox();
-            this.btn_SearchProduct = new System.Windows.Forms.Button();
             this.btn_addProduct = new System.Windows.Forms.Button();
             this.btn_editProduct = new System.Windows.Forms.Button();
+            this.tb_searchProduct = new System.Windows.Forms.TextBox();
+            this.btn_SearchProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.productDataView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -183,34 +183,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(997, 99);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
-            // tb_searchProduct
-            // 
-            this.tb_searchProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_searchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchProduct.Location = new System.Drawing.Point(397, 27);
-            this.tb_searchProduct.Name = "tb_searchProduct";
-            this.tb_searchProduct.Size = new System.Drawing.Size(290, 28);
-            this.tb_searchProduct.TabIndex = 3;
-            this.tb_searchProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_searchProduct_KeyDown);
-            // 
-            // btn_SearchProduct
-            // 
-            this.btn_SearchProduct.BackColor = System.Drawing.Color.White;
-            this.btn_SearchProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_SearchProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_SearchProduct.FlatAppearance.BorderSize = 2;
-            this.btn_SearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SearchProduct.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SearchProduct.Location = new System.Drawing.Point(693, 27);
-            this.btn_SearchProduct.MaximumSize = new System.Drawing.Size(0, 28);
-            this.btn_SearchProduct.MinimumSize = new System.Drawing.Size(0, 28);
-            this.btn_SearchProduct.Name = "btn_SearchProduct";
-            this.btn_SearchProduct.Size = new System.Drawing.Size(77, 28);
-            this.btn_SearchProduct.TabIndex = 4;
-            this.btn_SearchProduct.Text = "Search";
-            this.btn_SearchProduct.UseVisualStyleBackColor = false;
-            this.btn_SearchProduct.Click += new System.EventHandler(this.btn_SearchProduct_Click);
-            // 
             // btn_addProduct
             // 
             this.btn_addProduct.BackColor = System.Drawing.Color.White;
@@ -241,13 +213,41 @@
             this.btn_editProduct.UseVisualStyleBackColor = false;
             this.btn_editProduct.Click += new System.EventHandler(this.btn_editProduct_Click);
             // 
+            // tb_searchProduct
+            // 
+            this.tb_searchProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_searchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_searchProduct.Location = new System.Drawing.Point(397, 27);
+            this.tb_searchProduct.Name = "tb_searchProduct";
+            this.tb_searchProduct.Size = new System.Drawing.Size(290, 28);
+            this.tb_searchProduct.TabIndex = 3;
+            this.tb_searchProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_searchProduct_KeyDown);
+            // 
+            // btn_SearchProduct
+            // 
+            this.btn_SearchProduct.BackColor = System.Drawing.Color.White;
+            this.btn_SearchProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_SearchProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.btn_SearchProduct.FlatAppearance.BorderSize = 2;
+            this.btn_SearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SearchProduct.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SearchProduct.Location = new System.Drawing.Point(693, 27);
+            this.btn_SearchProduct.MaximumSize = new System.Drawing.Size(0, 28);
+            this.btn_SearchProduct.MinimumSize = new System.Drawing.Size(0, 28);
+            this.btn_SearchProduct.Name = "btn_SearchProduct";
+            this.btn_SearchProduct.Size = new System.Drawing.Size(77, 28);
+            this.btn_SearchProduct.TabIndex = 4;
+            this.btn_SearchProduct.Text = "Search";
+            this.btn_SearchProduct.UseVisualStyleBackColor = false;
+            this.btn_SearchProduct.Click += new System.EventHandler(this.btn_SearchProduct_Click);
+            // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductControl";
             this.Size = new System.Drawing.Size(1114, 704);
             this.Load += new System.EventHandler(this.ProductControl_Load);

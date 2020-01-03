@@ -73,52 +73,52 @@
             // 
             // tb_state
             // 
-            this.tb_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_state.Location = new System.Drawing.Point(164, 261);
             this.tb_state.Margin = new System.Windows.Forms.Padding(2);
             this.tb_state.Name = "tb_state";
-            this.tb_state.Size = new System.Drawing.Size(184, 21);
+            this.tb_state.Size = new System.Drawing.Size(184, 22);
             this.tb_state.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 261);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 18);
+            this.label1.Size = new System.Drawing.Size(39, 16);
             this.label1.TabIndex = 37;
             this.label1.Text = "State";
             // 
             // tb_city
             // 
-            this.tb_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_city.Location = new System.Drawing.Point(164, 217);
             this.tb_city.Margin = new System.Windows.Forms.Padding(2);
             this.tb_city.Name = "tb_city";
-            this.tb_city.Size = new System.Drawing.Size(184, 21);
+            this.tb_city.Size = new System.Drawing.Size(184, 22);
             this.tb_city.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(25, 217);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 18);
+            this.label2.Size = new System.Drawing.Size(30, 16);
             this.label2.TabIndex = 38;
             this.label2.Text = "City";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(25, 40);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 18);
+            this.label13.Size = new System.Drawing.Size(106, 16);
             this.label13.TabIndex = 26;
             this.label13.Text = "Comapny Name";
             // 
@@ -129,70 +129,70 @@
             "h"});
             this.tb_companyName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tb_companyName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tb_companyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_companyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_companyName.Location = new System.Drawing.Point(164, 40);
             this.tb_companyName.Margin = new System.Windows.Forms.Padding(2);
             this.tb_companyName.Name = "tb_companyName";
-            this.tb_companyName.Size = new System.Drawing.Size(184, 21);
+            this.tb_companyName.Size = new System.Drawing.Size(184, 22);
             this.tb_companyName.TabIndex = 1;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(25, 85);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 18);
+            this.label14.Size = new System.Drawing.Size(42, 16);
             this.label14.TabIndex = 25;
             this.label14.Text = "Email";
             // 
             // tb_address
             // 
-            this.tb_address.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_address.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_address.Location = new System.Drawing.Point(164, 173);
             this.tb_address.Margin = new System.Windows.Forms.Padding(2);
             this.tb_address.Name = "tb_address";
-            this.tb_address.Size = new System.Drawing.Size(184, 21);
+            this.tb_address.Size = new System.Drawing.Size(184, 22);
             this.tb_address.TabIndex = 4;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(25, 173);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 18);
+            this.label16.Size = new System.Drawing.Size(59, 16);
             this.label16.TabIndex = 28;
             this.label16.Text = "Address";
             // 
             // tb_mobileNumber
             // 
-            this.tb_mobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_mobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_mobileNumber.Location = new System.Drawing.Point(164, 129);
             this.tb_mobileNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tb_mobileNumber.Name = "tb_mobileNumber";
-            this.tb_mobileNumber.Size = new System.Drawing.Size(184, 21);
+            this.tb_mobileNumber.Size = new System.Drawing.Size(184, 22);
             this.tb_mobileNumber.TabIndex = 3;
             // 
             // tb_email
             // 
-            this.tb_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_email.Location = new System.Drawing.Point(164, 85);
             this.tb_email.Margin = new System.Windows.Forms.Padding(2);
             this.tb_email.Name = "tb_email";
-            this.tb_email.Size = new System.Drawing.Size(184, 21);
+            this.tb_email.Size = new System.Drawing.Size(184, 22);
             this.tb_email.TabIndex = 2;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(25, 129);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(109, 18);
+            this.label17.Size = new System.Drawing.Size(100, 16);
             this.label17.TabIndex = 31;
             this.label17.Text = "Mobile Number";
             // 
@@ -206,6 +206,7 @@
             this.btn_addVendor.TabIndex = 7;
             this.btn_addVendor.Text = "Add";
             this.btn_addVendor.UseVisualStyleBackColor = true;
+            this.btn_addVendor.Click += new System.EventHandler(this.btn_addVendor_Click);
             // 
             // Form_AddVendor
             // 
@@ -213,6 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 425);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_AddVendor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Vendor";
@@ -225,18 +227,18 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tb_state;
+        public System.Windows.Forms.TextBox tb_state;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_city;
+        public System.Windows.Forms.TextBox tb_city;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox tb_companyName;
+        public System.Windows.Forms.TextBox tb_companyName;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox tb_address;
+        public System.Windows.Forms.TextBox tb_address;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox tb_mobileNumber;
-        private System.Windows.Forms.TextBox tb_email;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button btn_addVendor;
+        public System.Windows.Forms.TextBox tb_mobileNumber;
+        public System.Windows.Forms.TextBox tb_email;
+        public System.Windows.Forms.Label label17;
+        public System.Windows.Forms.Button btn_addVendor;
     }
 }

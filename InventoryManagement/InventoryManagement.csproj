@@ -104,9 +104,11 @@
     <Compile Include="Controllers\Product\FormController_AddProduct.cs" />
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
     <Compile Include="Controllers\Product\ProductController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\Transaction\TransactionController.cs" />
     <Compile Include="Controllers\Transaction\FormController_ViewBill.cs" />
-    <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\Vendor\FormController_AddVendor.cs" />
+    <Compile Include="Controllers\Vendor\FormController_EditVendor.cs" />
+    <Compile Include="Controllers\Vendor\VendorController.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
     <Compile Include="EventHandlers\Product\EventHandler_Product.cs" />
     <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />

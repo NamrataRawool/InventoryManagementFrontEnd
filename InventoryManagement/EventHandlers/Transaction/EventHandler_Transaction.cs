@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Controllers;
+using InventoryManagement.Controllers.Transaction;
 using InventoryManagement.Events;
 
 namespace InventoryManagement.EventHandlers.Transaction

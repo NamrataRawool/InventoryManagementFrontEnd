@@ -13,6 +13,7 @@ using InventoryManagement.Broadcaster;
 using InventoryManagement.Controllers;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.Utilities;
+using InventoryManagement.Controllers.Transaction;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -29,13 +30,14 @@ namespace InventoryManagement.UI.UserControls
 
         private void TransactionControl_Load(Object sender, EventArgs e)
         {
+            tb_barCode.Focus();
             m_Controller.Initialize();
             ResetTextBox();
-            cb_customerName.DataSource = GetCustomers();
+            cb_customerName.DataSource = InitializeCustomerNameDatasource();
             TextBoxAutoSearch();
         }
 
-        private List<string> GetCustomers()
+        private List<string> InitializeCustomerNameDatasource()
         {
             var customers = HTTPService.GET<List<CustomerGet>>("customers");
             if (customers == null)
@@ -104,6 +106,7 @@ namespace InventoryManagement.UI.UserControls
             tb_discount.Text = string.Empty;
             tb_barCode.Text = string.Empty;
             tb_price.Text = string.Empty;
+           
         }
 
         private void tb_quantity_KeyDown(object sender, KeyEventArgs e)
@@ -194,6 +197,27 @@ namespace InventoryManagement.UI.UserControls
         private void btn_saveTransaction_Click(object sender, EventArgs e)
         {
             m_Controller.SaveTransaction();
+        }
+
+        private void tb_customerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            lbl_customerError.Text = string.Empty;
+            if (e.KeyCode == Keys.Enter)
+            {
+                var customer = HTTPService.GET<CustomerGet>("customer/name=" + tb_customerName.Text);
+                if (customer == null)
+                    lbl_customerError.Text = "Customer Not found!";
+                tb_mobileNumber.Text = customer.MobileNumber;
+                tb_pendingAmount.Text = customer.PendingAmount.ToString();
+            }
+        }
+
+        private void tb_mobileNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //var customer = HTTPService.GET<CustomerGet>("customer/name=" + tb_customerName.Text);
+            }
         }
     }
 }
