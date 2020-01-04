@@ -112,40 +112,18 @@ namespace InventoryManagement.Controllers
 
         public void SearchProductByName(string name)
         {
-            //TODO: Need to change the logic
             var Table = GetTable();
-            Table.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            CurrencyManager currencyManager = (CurrencyManager)m_UIControl.BindingContext[Table.DataSource];
-            currencyManager.SuspendBinding();
-            try
-            {
-                bool valueResult = false;
-                foreach (DataGridViewRow row in Table.Rows)
-                {
-                    int rowIndex = row.Index;
-                    if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().ToLower().StartsWith(name.ToLower()))
-                    {
-                        Table.Rows[rowIndex].Visible = true;
-                        Table.FirstDisplayedScrollingRowIndex = rowIndex;
-                        valueResult = true;
-                    }
-                    else
-                    {
-                        Table.Rows[rowIndex].Visible = false;
-                    }
 
-                }
-                currencyManager.ResumeBinding();
-                if (!valueResult)
-                {
-                    MessageBox.Show("Unable to find " + name);
-                    return;
-                }
-            }
-            catch (Exception exc)
+            foreach (DataGridViewRow row in Table.Rows)
             {
-                MessageBox.Show(exc.Message);
+                bool visible = false;
+                var productName = row.Cells["ProductTableColumn_Name"].Value.ToString().ToLower();
+                if (productName.StartsWith(name.ToLower()))
+                    visible = true;
+
+                row.Visible = visible;
             }
+            return;
         }
 
         protected override void RegisterEvents()
