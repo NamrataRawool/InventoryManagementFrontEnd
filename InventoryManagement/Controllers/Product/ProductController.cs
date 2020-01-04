@@ -110,7 +110,7 @@ namespace InventoryManagement.Controllers
 
         }
 
-        public void SearchProductByName(string name)
+        public void UpdateTableByProductName(string name)
         {
             var Table = GetTable();
 

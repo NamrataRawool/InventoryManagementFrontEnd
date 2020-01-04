@@ -42,15 +42,20 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_SearchProduct_Click(object sender, EventArgs e)
         {
-            m_Controller.SearchProductByName(tb_searchProduct.Text.Trim());
+            m_Controller.UpdateTableByProductName(tb_searchProduct.Text.Trim());
         }
 
         private void tb_searchProduct_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                m_Controller.SearchProductByName(tb_searchProduct.Text.Trim());
+                m_Controller.UpdateTableByProductName(tb_searchProduct.Text.Trim());
             }
-        }       
+        }
+
+        private void onTextChanged_SearchProduct(object sender, EventArgs e)
+        {
+            m_Controller.UpdateTableByProductName(tb_searchProduct.Text.Trim());
+        }
     }
 }
