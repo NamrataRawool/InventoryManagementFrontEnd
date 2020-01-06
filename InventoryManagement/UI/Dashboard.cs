@@ -13,7 +13,7 @@ namespace InventoryManagement.UI
         private void Dashboard_Load(object sender, EventArgs e)
         {
             UpdateSidePanel(btn_Home);
-            productControl.BringToFront();
+            homeControl.BringToFront();
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
@@ -45,21 +45,22 @@ namespace InventoryManagement.UI
             customerControl.BringToFront();
         }
 
-        private void btn_Stock_Click(object sender, EventArgs e)
+        private void btn_Purchase_Click(object sender, EventArgs e)
+        {
+            UpdateSidePanel(btn_Purchase);
+            purchaseControl.BringToFront();
+        }
+
+        private void btn_Vendors_Click(object sender, EventArgs e)
         {
             UpdateSidePanel(btn_Vendors);
             vendorControl.BringToFront();
         }
 
-        private void btn_AboutUs_Click(object sender, EventArgs e)
-        {
-            UpdateSidePanel(btn_AboutUs);
-        }
-
         public void UpdateSidePanel(Control control)
         {
-            SidePanel.Height    = control.Height;
-            SidePanel.Top       = control.Top;
+            SidePanel.Height = control.Height;
+            SidePanel.Top = control.Top;
         }
 
     }

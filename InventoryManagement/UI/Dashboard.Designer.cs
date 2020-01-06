@@ -30,8 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
-            this.btn_AboutUs = new System.Windows.Forms.Button();
             this.btn_Vendors = new System.Windows.Forms.Button();
+            this.btn_Purchase = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,12 +41,13 @@
             this.btn_Product = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.homeControl = new InventoryManagement.UI.UserControls.HomeControl();
-            this.productControl = new InventoryManagement.UI.UserControls.ProductControl();
             this.vendorControl = new InventoryManagement.UI.UserControls.VendorControl();
-            this.categoryControl = new InventoryManagement.UI.UserControls.CategoryControl();
+            this.purchaseControl = new InventoryManagement.UI.UserControls.PurchaseControl();
             this.customerControl = new InventoryManagement.UI.UserControls.CustomerControl();
             this.transactionControl = new InventoryManagement.UI.UserControls.TransactionControl();
+            this.categoryControl = new InventoryManagement.UI.UserControls.CategoryControl();
+            this.productControl = new InventoryManagement.UI.UserControls.ProductControl();
+            this.homeControl = new InventoryManagement.UI.UserControls.HomeControl();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -55,8 +56,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
             this.panel1.Controls.Add(this.SidePanel);
-            this.panel1.Controls.Add(this.btn_AboutUs);
             this.panel1.Controls.Add(this.btn_Vendors);
+            this.panel1.Controls.Add(this.btn_Purchase);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btn_Customer);
             this.panel1.Controls.Add(this.btn_Transaction);
@@ -79,23 +80,6 @@
             this.SidePanel.Size = new System.Drawing.Size(13, 68);
             this.SidePanel.TabIndex = 4;
             // 
-            // btn_AboutUs
-            // 
-            this.btn_AboutUs.FlatAppearance.BorderSize = 0;
-            this.btn_AboutUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_AboutUs.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AboutUs.ForeColor = System.Drawing.Color.White;
-            this.btn_AboutUs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_AboutUs.Location = new System.Drawing.Point(1, 619);
-            this.btn_AboutUs.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_AboutUs.Name = "btn_AboutUs";
-            this.btn_AboutUs.Size = new System.Drawing.Size(233, 66);
-            this.btn_AboutUs.TabIndex = 8;
-            this.btn_AboutUs.Text = "About Us";
-            this.btn_AboutUs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_AboutUs.UseVisualStyleBackColor = true;
-            this.btn_AboutUs.Click += new System.EventHandler(this.btn_AboutUs_Click);
-            // 
             // btn_Vendors
             // 
             this.btn_Vendors.FlatAppearance.BorderSize = 0;
@@ -103,7 +87,7 @@
             this.btn_Vendors.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Vendors.ForeColor = System.Drawing.Color.White;
             this.btn_Vendors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Vendors.Location = new System.Drawing.Point(1, 522);
+            this.btn_Vendors.Location = new System.Drawing.Point(1, 619);
             this.btn_Vendors.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Vendors.Name = "btn_Vendors";
             this.btn_Vendors.Size = new System.Drawing.Size(233, 66);
@@ -111,7 +95,24 @@
             this.btn_Vendors.Text = "Vendors";
             this.btn_Vendors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Vendors.UseVisualStyleBackColor = true;
-            this.btn_Vendors.Click += new System.EventHandler(this.btn_Stock_Click);
+            this.btn_Vendors.Click += new System.EventHandler(this.btn_Vendors_Click);
+            // 
+            // btn_Purchase
+            // 
+            this.btn_Purchase.FlatAppearance.BorderSize = 0;
+            this.btn_Purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Purchase.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Purchase.ForeColor = System.Drawing.Color.White;
+            this.btn_Purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Purchase.Location = new System.Drawing.Point(1, 522);
+            this.btn_Purchase.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Purchase.Name = "btn_Purchase";
+            this.btn_Purchase.Size = new System.Drawing.Size(233, 66);
+            this.btn_Purchase.TabIndex = 8;
+            this.btn_Purchase.Text = "Purchase";
+            this.btn_Purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Purchase.UseVisualStyleBackColor = true;
+            this.btn_Purchase.Click += new System.EventHandler(this.btn_Purchase_Click);
             // 
             // panel3
             // 
@@ -242,16 +243,51 @@
             this.panel2.Size = new System.Drawing.Size(1350, 25);
             this.panel2.TabIndex = 3;
             // 
-            // homeControl
+            // vendorControl
             // 
-            this.homeControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
-            this.homeControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeControl.Location = new System.Drawing.Point(236, 25);
-            this.homeControl.Margin = new System.Windows.Forms.Padding(4);
-            this.homeControl.Name = "homeControl";
-            this.homeControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.homeControl.Size = new System.Drawing.Size(1114, 704);
-            this.homeControl.TabIndex = 4;
+            this.vendorControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.vendorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendorControl.Location = new System.Drawing.Point(236, 25);
+            this.vendorControl.Name = "vendorControl";
+            this.vendorControl.Size = new System.Drawing.Size(1114, 704);
+            this.vendorControl.TabIndex = 4;
+            // 
+            // purchaseControl
+            // 
+            this.purchaseControl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.purchaseControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.purchaseControl.Location = new System.Drawing.Point(236, 25);
+            this.purchaseControl.Name = "purchaseControl";
+            this.purchaseControl.Size = new System.Drawing.Size(1114, 704);
+            this.purchaseControl.TabIndex = 5;
+            // 
+            // customerControl1
+            // 
+            this.customerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.customerControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customerControl.Location = new System.Drawing.Point(236, 25);
+            this.customerControl.Name = "customerControl1";
+            this.customerControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.customerControl.Size = new System.Drawing.Size(1114, 704);
+            this.customerControl.TabIndex = 6;
+            // 
+            // transactionControl1
+            // 
+            this.transactionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.transactionControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transactionControl.Location = new System.Drawing.Point(236, 25);
+            this.transactionControl.Name = "transactionControl1";
+            this.transactionControl.Size = new System.Drawing.Size(1114, 704);
+            this.transactionControl.TabIndex = 7;
+            // 
+            // categoryControl
+            // 
+            this.categoryControl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.categoryControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoryControl.Location = new System.Drawing.Point(236, 25);
+            this.categoryControl.Name = "categoryControl";
+            this.categoryControl.Size = new System.Drawing.Size(1114, 704);
+            this.categoryControl.TabIndex = 8;
             // 
             // productControl
             // 
@@ -261,48 +297,17 @@
             this.productControl.Margin = new System.Windows.Forms.Padding(2);
             this.productControl.Name = "productControl";
             this.productControl.Size = new System.Drawing.Size(1114, 704);
-            this.productControl.TabIndex = 5;
+            this.productControl.TabIndex = 9;
             // 
-            // stockControl
+            // homeControl1
             // 
-            this.vendorControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
-            this.vendorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorControl.Location = new System.Drawing.Point(236, 25);
-            this.vendorControl.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorControl.Name = "stockControl";
-            this.vendorControl.Size = new System.Drawing.Size(1114, 704);
-            this.vendorControl.TabIndex = 6;
-            // 
-            // categoryControl
-            // 
-            this.categoryControl.BackColor = System.Drawing.Color.Gainsboro;
-            this.categoryControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoryControl.Location = new System.Drawing.Point(236, 25);
-            this.categoryControl.Margin = new System.Windows.Forms.Padding(4);
-            this.categoryControl.Name = "categoryControl";
-            this.categoryControl.Size = new System.Drawing.Size(1114, 704);
-            this.categoryControl.TabIndex = 7;
-            // 
-            // customerControl
-            // 
-            this.customerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
-            this.customerControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customerControl.Location = new System.Drawing.Point(236, 25);
-            this.customerControl.Margin = new System.Windows.Forms.Padding(4);
-            this.customerControl.Name = "customerControl";
-            this.customerControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.customerControl.Size = new System.Drawing.Size(1114, 704);
-            this.customerControl.TabIndex = 8;
-            // 
-            // transactionControl
-            // 
-            this.transactionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
-            this.transactionControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transactionControl.Location = new System.Drawing.Point(236, 25);
-            this.transactionControl.Margin = new System.Windows.Forms.Padding(4);
-            this.transactionControl.Name = "transactionControl";
-            this.transactionControl.Size = new System.Drawing.Size(1114, 704);
-            this.transactionControl.TabIndex = 9;
+            this.homeControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.homeControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeControl.Location = new System.Drawing.Point(236, 25);
+            this.homeControl.Name = "homeControl1";
+            this.homeControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.homeControl.Size = new System.Drawing.Size(1114, 704);
+            this.homeControl.TabIndex = 10;
             // 
             // Dashboard
             // 
@@ -310,12 +315,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.homeControl);
+            this.Controls.Add(this.productControl);
+            this.Controls.Add(this.categoryControl);
             this.Controls.Add(this.transactionControl);
             this.Controls.Add(this.customerControl);
-            this.Controls.Add(this.categoryControl);
+            this.Controls.Add(this.purchaseControl);
             this.Controls.Add(this.vendorControl);
-            this.Controls.Add(this.productControl);
-            this.Controls.Add(this.homeControl);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "Dashboard";
@@ -334,8 +340,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel SidePanel;
-        private System.Windows.Forms.Button btn_AboutUs;
         private System.Windows.Forms.Button btn_Vendors;
+        private System.Windows.Forms.Button btn_Purchase;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -345,11 +351,12 @@
         private System.Windows.Forms.Button btn_Product;
         private System.Windows.Forms.Button btn_Home;
         private System.Windows.Forms.Panel panel2;
-        private UserControls.HomeControl homeControl;
-        private UserControls.ProductControl productControl;
         private UserControls.VendorControl vendorControl;
-        private UserControls.CategoryControl categoryControl;
+        private UserControls.PurchaseControl purchaseControl;
         private UserControls.CustomerControl customerControl;
         private UserControls.TransactionControl transactionControl;
+        private UserControls.CategoryControl categoryControl;
+        private UserControls.ProductControl productControl;
+        private UserControls.HomeControl homeControl;
     }
 }
