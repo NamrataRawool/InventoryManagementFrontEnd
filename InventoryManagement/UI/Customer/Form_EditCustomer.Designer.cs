@@ -28,246 +28,234 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label7 = new System.Windows.Forms.Label();
-            this.tb_editCustomerEmail = new System.Windows.Forms.TextBox();
-            this.tb_editCustomerMobile = new System.Windows.Forms.TextBox();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_saveEditCustomer = new System.Windows.Forms.Button();
-            this.btn_resetEditCustomer = new System.Windows.Forms.Button();
-            this.tb_editCustomerName = new System.Windows.Forms.TextBox();
+            this.tb_customerEmail = new System.Windows.Forms.TextBox();
+            this.tb_customerMobileNumber = new System.Windows.Forms.TextBox();
+            this.btn_updateCustomer = new System.Windows.Forms.Button();
+            this.btn_resetCustomer = new System.Windows.Forms.Button();
+            this.tb_customerName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tb_editCustomerTotalAmount = new System.Windows.Forms.TextBox();
-            this.tb_editCustomerPendingAmount = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.tb_customerTotalPurchaseAmount = new System.Windows.Forms.TextBox();
+            this.tb_customerPendingAmount = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_customerId = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label7
+            // tb_customerEmail
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(108, 9);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(165, 23);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Customer Details";
+            this.tb_customerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_customerEmail.Location = new System.Drawing.Point(161, 213);
+            this.tb_customerEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_customerEmail.Name = "tb_customerEmail";
+            this.tb_customerEmail.Size = new System.Drawing.Size(200, 22);
+            this.tb_customerEmail.TabIndex = 53;
             // 
-            // tb_editCustomerEmail
+            // tb_customerMobileNumber
             // 
-            this.tb_editCustomerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_editCustomerEmail.Location = new System.Drawing.Point(174, 232);
-            this.tb_editCustomerEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_editCustomerEmail.Multiline = true;
-            this.tb_editCustomerEmail.Name = "tb_editCustomerEmail";
-            this.tb_editCustomerEmail.Size = new System.Drawing.Size(200, 33);
-            this.tb_editCustomerEmail.TabIndex = 53;
+            this.tb_customerMobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_customerMobileNumber.Location = new System.Drawing.Point(161, 154);
+            this.tb_customerMobileNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_customerMobileNumber.Name = "tb_customerMobileNumber";
+            this.tb_customerMobileNumber.Size = new System.Drawing.Size(200, 22);
+            this.tb_customerMobileNumber.TabIndex = 52;
             // 
-            // tb_editCustomerMobile
+            // btn_updateCustomer
             // 
-            this.tb_editCustomerMobile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_editCustomerMobile.Location = new System.Drawing.Point(174, 167);
-            this.tb_editCustomerMobile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_editCustomerMobile.Multiline = true;
-            this.tb_editCustomerMobile.Name = "tb_editCustomerMobile";
-            this.tb_editCustomerMobile.Size = new System.Drawing.Size(200, 33);
-            this.tb_editCustomerMobile.TabIndex = 52;
+            this.btn_updateCustomer.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_updateCustomer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_updateCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_updateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_updateCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btn_updateCustomer.Location = new System.Drawing.Point(285, 436);
+            this.btn_updateCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_updateCustomer.Name = "btn_updateCustomer";
+            this.btn_updateCustomer.Size = new System.Drawing.Size(88, 36);
+            this.btn_updateCustomer.TabIndex = 48;
+            this.btn_updateCustomer.Text = "Update";
+            this.btn_updateCustomer.UseVisualStyleBackColor = false;
+            this.btn_updateCustomer.Click += new System.EventHandler(this.btn_updateCustomer_Click);
             // 
-            // btn_cancel
+            // btn_resetCustomer
             // 
-            this.btn_cancel.BackColor = System.Drawing.Color.White;
-            this.btn_cancel.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.Color.Red;
-            this.btn_cancel.Location = new System.Drawing.Point(162, 460);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(88, 36);
-            this.btn_cancel.TabIndex = 51;
-            this.btn_cancel.Text = "Cancel";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btn_resetCustomer.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_resetCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_resetCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_resetCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btn_resetCustomer.Location = new System.Drawing.Point(173, 436);
+            this.btn_resetCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_resetCustomer.Name = "btn_resetCustomer";
+            this.btn_resetCustomer.Size = new System.Drawing.Size(88, 36);
+            this.btn_resetCustomer.TabIndex = 49;
+            this.btn_resetCustomer.Text = "Reset";
+            this.btn_resetCustomer.UseVisualStyleBackColor = false;
+            this.btn_resetCustomer.Click += new System.EventHandler(this.btn_resetCustomer_Click);
             // 
-            // panel1
+            // tb_customerName
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(418, 43);
-            this.panel1.TabIndex = 50;
-            // 
-            // btn_saveEditCustomer
-            // 
-            this.btn_saveEditCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_saveEditCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btn_saveEditCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_saveEditCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_saveEditCustomer.ForeColor = System.Drawing.Color.White;
-            this.btn_saveEditCustomer.Location = new System.Drawing.Point(285, 460);
-            this.btn_saveEditCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_saveEditCustomer.Name = "btn_saveEditCustomer";
-            this.btn_saveEditCustomer.Size = new System.Drawing.Size(88, 36);
-            this.btn_saveEditCustomer.TabIndex = 48;
-            this.btn_saveEditCustomer.Text = "Save";
-            this.btn_saveEditCustomer.UseVisualStyleBackColor = false;
-            this.btn_saveEditCustomer.Click += new System.EventHandler(this.btn_saveEditCustomer_Click);
-            // 
-            // btn_resetEditCustomer
-            // 
-            this.btn_resetEditCustomer.BackColor = System.Drawing.Color.LightGray;
-            this.btn_resetEditCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_resetEditCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_resetEditCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btn_resetEditCustomer.Location = new System.Drawing.Point(35, 460);
-            this.btn_resetEditCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_resetEditCustomer.Name = "btn_resetEditCustomer";
-            this.btn_resetEditCustomer.Size = new System.Drawing.Size(88, 36);
-            this.btn_resetEditCustomer.TabIndex = 49;
-            this.btn_resetEditCustomer.Text = "Reset";
-            this.btn_resetEditCustomer.UseVisualStyleBackColor = false;
-            this.btn_resetEditCustomer.Click += new System.EventHandler(this.btn_resetEditCustomer_Click);
-            // 
-            // tb_editCustomerName
-            // 
-            this.tb_editCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_editCustomerName.Location = new System.Drawing.Point(174, 101);
-            this.tb_editCustomerName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_editCustomerName.Multiline = true;
-            this.tb_editCustomerName.Name = "tb_editCustomerName";
-            this.tb_editCustomerName.Size = new System.Drawing.Size(200, 33);
-            this.tb_editCustomerName.TabIndex = 47;
+            this.tb_customerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_customerName.Location = new System.Drawing.Point(161, 95);
+            this.tb_customerName.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_customerName.Name = "tb_customerName";
+            this.tb_customerName.Size = new System.Drawing.Size(200, 22);
+            this.tb_customerName.TabIndex = 47;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 232);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 213);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 18);
+            this.label3.Size = new System.Drawing.Size(116, 18);
             this.label3.TabIndex = 46;
-            this.label3.Text = "Email ID";
+            this.label3.Text = "Email ID :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 167);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 154);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 18);
+            this.label2.Size = new System.Drawing.Size(130, 18);
             this.label2.TabIndex = 45;
-            this.label2.Text = "Mobile Number";
+            this.label2.Text = "Mobile Number :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 101);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 95);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 18);
+            this.label1.Size = new System.Drawing.Size(116, 18);
             this.label1.TabIndex = 44;
-            this.label1.Text = "Name";
+            this.label1.Text = "Name :";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 364);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 331);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 18);
+            this.label4.Size = new System.Drawing.Size(124, 18);
             this.label4.TabIndex = 54;
-            this.label4.Text = "Pending Amount";
+            this.label4.Text = "Pending Amount :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 298);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(19, 272);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 18);
+            this.label5.Size = new System.Drawing.Size(116, 18);
             this.label5.TabIndex = 55;
-            this.label5.Text = "Total Amount";
+            this.label5.Text = "Total Purchase : ";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tb_editCustomerTotalAmount
+            // tb_customerTotalPurchaseAmount
             // 
-            this.tb_editCustomerTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_editCustomerTotalAmount.Location = new System.Drawing.Point(174, 298);
-            this.tb_editCustomerTotalAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_editCustomerTotalAmount.Multiline = true;
-            this.tb_editCustomerTotalAmount.Name = "tb_editCustomerTotalAmount";
-            this.tb_editCustomerTotalAmount.Size = new System.Drawing.Size(200, 33);
-            this.tb_editCustomerTotalAmount.TabIndex = 53;
+            this.tb_customerTotalPurchaseAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_customerTotalPurchaseAmount.Location = new System.Drawing.Point(161, 272);
+            this.tb_customerTotalPurchaseAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_customerTotalPurchaseAmount.Name = "tb_customerTotalPurchaseAmount";
+            this.tb_customerTotalPurchaseAmount.Size = new System.Drawing.Size(200, 22);
+            this.tb_customerTotalPurchaseAmount.TabIndex = 53;
             // 
-            // tb_editCustomerPendingAmount
+            // tb_customerPendingAmount
             // 
-            this.tb_editCustomerPendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_editCustomerPendingAmount.Location = new System.Drawing.Point(174, 364);
-            this.tb_editCustomerPendingAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_editCustomerPendingAmount.Multiline = true;
-            this.tb_editCustomerPendingAmount.Name = "tb_editCustomerPendingAmount";
-            this.tb_editCustomerPendingAmount.Size = new System.Drawing.Size(200, 33);
-            this.tb_editCustomerPendingAmount.TabIndex = 53;
+            this.tb_customerPendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_customerPendingAmount.Location = new System.Drawing.Point(161, 331);
+            this.tb_customerPendingAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_customerPendingAmount.Name = "tb_customerPendingAmount";
+            this.tb_customerPendingAmount.Size = new System.Drawing.Size(200, 22);
+            this.tb_customerPendingAmount.TabIndex = 53;
             // 
-            // form_editCustomer
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tb_customerId);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.tb_customerName);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.tb_customerPendingAmount);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tb_customerTotalPurchaseAmount);
+            this.groupBox1.Controls.Add(this.tb_customerMobileNumber);
+            this.groupBox1.Controls.Add(this.tb_customerEmail);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 31);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(385, 383);
+            this.groupBox1.TabIndex = 56;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Customer Details";
+            // 
+            // tb_customerId
+            // 
+            this.tb_customerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_customerId.Location = new System.Drawing.Point(161, 36);
+            this.tb_customerId.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_customerId.Name = "tb_customerId";
+            this.tb_customerId.ReadOnly = true;
+            this.tb_customerId.Size = new System.Drawing.Size(200, 22);
+            this.tb_customerId.TabIndex = 57;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(19, 36);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(116, 18);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Customer Id:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Form_editCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 559);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tb_editCustomerPendingAmount);
-            this.Controls.Add(this.tb_editCustomerTotalAmount);
-            this.Controls.Add(this.tb_editCustomerEmail);
-            this.Controls.Add(this.tb_editCustomerMobile);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btn_saveEditCustomer);
-            this.Controls.Add(this.btn_resetEditCustomer);
-            this.Controls.Add(this.tb_editCustomerName);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(421, 498);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_updateCustomer);
+            this.Controls.Add(this.btn_resetCustomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "form_editCustomer";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "Form_editCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Customer";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.Form_editCustomer_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.TextBox tb_editCustomerEmail;
-        public System.Windows.Forms.TextBox tb_editCustomerMobile;
-        private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn_saveEditCustomer;
-        private System.Windows.Forms.Button btn_resetEditCustomer;
-        public System.Windows.Forms.TextBox tb_editCustomerName;
+        public System.Windows.Forms.TextBox tb_customerEmail;
+        public System.Windows.Forms.TextBox tb_customerMobileNumber;
+        private System.Windows.Forms.Button btn_updateCustomer;
+        private System.Windows.Forms.Button btn_resetCustomer;
+        public System.Windows.Forms.TextBox tb_customerName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox tb_editCustomerTotalAmount;
-        public System.Windows.Forms.TextBox tb_editCustomerPendingAmount;
+        public System.Windows.Forms.TextBox tb_customerTotalPurchaseAmount;
+        public System.Windows.Forms.TextBox tb_customerPendingAmount;
+        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TextBox tb_customerId;
+        private System.Windows.Forms.Label label6;
     }
 }

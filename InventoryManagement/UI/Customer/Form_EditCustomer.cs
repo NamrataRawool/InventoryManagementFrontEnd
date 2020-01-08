@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.Controllers.Customer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,28 +13,27 @@ namespace InventoryManagement.UI.Customer
 {
     public partial class Form_editCustomer : Form
     {
-        public Form_editCustomer()
+        FormController_EditCustomer m_controller;
+        public Form_editCustomer(int customerId)
         {
             InitializeComponent();
+            m_controller = new FormController_EditCustomer(customerId, this);
         }
-
-        private void btn_cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_resetEditCustomer_Click(object sender, EventArgs e)
-        {
-            tb_editCustomerName.Text = string.Empty;
-            tb_editCustomerMobile.Text = string.Empty;
-            tb_editCustomerEmail.Text = string.Empty;
-            tb_editCustomerTotalAmount.Text = string.Empty;
-            tb_editCustomerPendingAmount.Text = string.Empty;
-        }
-
-        private void btn_saveEditCustomer_Click(object sender, EventArgs e)
+        private void Form_editCustomer_Load(object sender, EventArgs e)
         {
 
         }
+        private void btn_resetCustomer_Click(object sender, EventArgs e)
+        {
+            m_controller.ResetTextBoxes();
+        }
+
+        private void btn_updateCustomer_Click(object sender, EventArgs e)
+        {
+            m_controller.UpdateCustomer();
+            Close();
+        }
+
+
     }
 }
