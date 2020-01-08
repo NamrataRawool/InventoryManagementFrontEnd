@@ -4,9 +4,9 @@ using InventoryManagement.Events;
 
 namespace InventoryManagement.EventHandlers.Transaction
 {
-    public class EventHandler_Transaction : IEventHandler<TransactionController>
+    public class EventHandler_Transaction : IEventHandler<NewTransactionController>
     {
-        public EventHandler_Transaction(TransactionController Controller)
+        public EventHandler_Transaction(NewTransactionController Controller)
             : base(Controller)
         {
         }

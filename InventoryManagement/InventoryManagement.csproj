@@ -104,8 +104,10 @@
     <Compile Include="Controllers\Product\FormController_AddProduct.cs" />
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
     <Compile Include="Controllers\Product\ProductController.cs" />
-    <Compile Include="Controllers\Transaction\TransactionController.cs" />
+    <Compile Include="Controllers\Transaction\NewTransactionController.cs" />
     <Compile Include="Controllers\Transaction\FormController_ViewBill.cs" />
+    <Compile Include="Controllers\Transaction\TransactionHistoryController.cs" />
+    <Compile Include="Controllers\Transaction\TransactionSession.cs" />
     <Compile Include="Controllers\Vendor\FormController_AddVendor.cs" />
     <Compile Include="Controllers\Vendor\FormController_EditVendor.cs" />
     <Compile Include="Controllers\Vendor\VendorController.cs" />
@@ -116,7 +118,6 @@
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\Product\Event_NewProductAdded.cs" />
     <Compile Include="Listeners\IEventListerner.cs" />
-    <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />

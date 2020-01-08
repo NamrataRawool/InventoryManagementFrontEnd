@@ -12,17 +12,17 @@ namespace InventoryManagement.Controllers.Transaction
 {
     public class FormController_ViewBill : IController<Form_ViewBill>
     {
-        
-        public FormController_ViewBill(TransactionGet transaction, Form_ViewBill UIControl)
+
+        public FormController_ViewBill(TransactionSession transactionSession, Form_ViewBill UIControl)
             : base(UIControl)
         {
-            Initialize(transaction);
+            Initialize(transactionSession);
         }
-        private void Initialize(TransactionGet transaction)
+        private void Initialize(TransactionSession transactionSession)
         {
             ResetViewBillTable();
-            InitializeLabels(transaction);
-            InitializeViewBillTable(transaction.ProductDetails);
+            InitializeLabels(transactionSession);
+            InitializeViewBillTable(transactionSession.GetRowEntries());
         }
 
         private void InitializeViewBillTable(List<ProductGet> products)
@@ -54,12 +54,15 @@ namespace InventoryManagement.Controllers.Transaction
         {
             return m_UIControl.ViewBill_ProductsDataView;
         }
-        private void InitializeLabels(TransactionGet transaction)
+        private void InitializeLabels(TransactionSession transactionSession)
         {
-            m_UIControl.lbl_CustomerName.Text = transaction.Customer.Name;
-            m_UIControl.lbl_Date.Text = transaction.TransactionDateTime.ToString();
-            m_UIControl.lbl_TotalPrice.Text = transaction.TotalPrice.ToString();
-            m_UIControl.lbl_totalTax.Text = transaction.TotalPrice.ToString();
+            if (transactionSession.GetCustomer().Name == null)
+                m_UIControl.lbl_CustomerName.Text = "--";
+            else
+                m_UIControl.lbl_CustomerName.Text = transactionSession.GetCustomer().Name;
+            m_UIControl.lbl_Date.Text = DateTime.Now.ToString();
+            m_UIControl.lbl_TotalPrice.Text = transactionSession.amountDue;
+            m_UIControl.lbl_totalTax.Text = transactionSession.totalTax;
         }
         protected override void RegisterEvents()
         {
