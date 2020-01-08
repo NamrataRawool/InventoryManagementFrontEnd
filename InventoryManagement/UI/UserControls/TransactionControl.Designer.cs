@@ -38,7 +38,7 @@
             this.tab_newTransaction = new System.Windows.Forms.TabPage();
             this.btn_deleteBillRecord = new System.Windows.Forms.Button();
             this.gb_billDetails = new System.Windows.Forms.GroupBox();
-            this.btn_saveTransaction = new System.Windows.Forms.Button();
+            this.btn_ViewBill = new System.Windows.Forms.Button();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.tb_amountDue = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -85,6 +85,7 @@
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
@@ -114,6 +115,7 @@
             // tab_newTransaction
             // 
             this.tab_newTransaction.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tab_newTransaction.Controls.Add(this.button1);
             this.tab_newTransaction.Controls.Add(this.btn_deleteBillRecord);
             this.tab_newTransaction.Controls.Add(this.gb_billDetails);
             this.tab_newTransaction.Controls.Add(this.gb_customerDetails);
@@ -142,7 +144,7 @@
             // 
             // gb_billDetails
             // 
-            this.gb_billDetails.Controls.Add(this.btn_saveTransaction);
+            this.gb_billDetails.Controls.Add(this.btn_ViewBill);
             this.gb_billDetails.Controls.Add(this.tb_subtotal);
             this.gb_billDetails.Controls.Add(this.tb_amountDue);
             this.gb_billDetails.Controls.Add(this.label12);
@@ -160,17 +162,17 @@
             this.gb_billDetails.TabStop = false;
             this.gb_billDetails.Text = "Bill Details";
             // 
-            // btn_saveTransaction
+            // btn_ViewBill
             // 
-            this.btn_saveTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_saveTransaction.Location = new System.Drawing.Point(275, 226);
-            this.btn_saveTransaction.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_saveTransaction.Name = "btn_saveTransaction";
-            this.btn_saveTransaction.Size = new System.Drawing.Size(77, 33);
-            this.btn_saveTransaction.TabIndex = 27;
-            this.btn_saveTransaction.Text = "View Bill";
-            this.btn_saveTransaction.UseVisualStyleBackColor = true;
-            this.btn_saveTransaction.Click += new System.EventHandler(this.btn_saveTransaction_Click);
+            this.btn_ViewBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ViewBill.Location = new System.Drawing.Point(275, 226);
+            this.btn_ViewBill.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_ViewBill.Name = "btn_ViewBill";
+            this.btn_ViewBill.Size = new System.Drawing.Size(77, 33);
+            this.btn_ViewBill.TabIndex = 27;
+            this.btn_ViewBill.Text = "View Bill";
+            this.btn_ViewBill.UseVisualStyleBackColor = true;
+            this.btn_ViewBill.Click += new System.EventHandler(this.btn_ViewBill_Click);
             // 
             // tb_subtotal
             // 
@@ -356,7 +358,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(473, 100);
+            this.groupBox1.Size = new System.Drawing.Size(459, 100);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transaction Details";
@@ -419,7 +421,7 @@
             this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -436,7 +438,7 @@
             this.BillTable_TotalPrice});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -732,6 +734,17 @@
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(520, 62);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 44);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Reset ";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // TransactionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -766,13 +779,13 @@
         private System.Windows.Forms.TabPage tab_newTransaction;
         private System.Windows.Forms.TabPage tab_transactionHistory;
         public System.Windows.Forms.DataGridView Bill_ProductsDataView;
-        private System.Windows.Forms.TextBox tb_mobileNumber;
+        public System.Windows.Forms.TextBox tb_mobileNumber;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox tb_customerName;
         public System.Windows.Forms.TextBox tb_pendingAmount;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btn_saveTransaction;
+        private System.Windows.Forms.Button btn_ViewBill;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox tb_subtotal;
         private System.Windows.Forms.Label label7;
@@ -813,5 +826,6 @@
         public System.Windows.Forms.Label lbl_customerError;
         public System.Windows.Forms.TextBox tb_totalTax;
         public System.Windows.Forms.TextBox tb_amountDue;
+        private System.Windows.Forms.Button button1;
     }
 }

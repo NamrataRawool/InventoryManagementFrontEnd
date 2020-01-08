@@ -142,17 +142,17 @@
     <Compile Include="UI\Category\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Customer\AddCustomer.cs">
+    <Compile Include="UI\Customer\Form_AddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Customer\AddCustomer.Designer.cs">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
+    <Compile Include="UI\Customer\Form_AddCustomer.Designer.cs">
+      <DependentUpon>Form_AddCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Customer\EditCustomer.cs">
+    <Compile Include="UI\Customer\Form_EditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Customer\EditCustomer.Designer.cs">
-      <DependentUpon>EditCustomer.cs</DependentUpon>
+    <Compile Include="UI\Customer\Form_EditCustomer.Designer.cs">
+      <DependentUpon>Form_EditCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Dashboard.cs">
       <SubType>Form</SubType>
@@ -246,11 +246,11 @@
     <EmbeddedResource Include="UI\Category\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Customer\AddCustomer.resx">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Customer\Form_AddCustomer.resx">
+      <DependentUpon>Form_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Customer\EditCustomer.resx">
-      <DependentUpon>EditCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Customer\Form_EditCustomer.resx">
+      <DependentUpon>Form_EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

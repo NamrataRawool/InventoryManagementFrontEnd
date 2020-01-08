@@ -39,14 +39,14 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_addCustomer_Click(object sender, EventArgs e)
         {
-            form_addCustomer addCustomer = new form_addCustomer();
+            Form_AddCustomer addCustomer = new Form_AddCustomer();
             addCustomer.ShowDialog();
 
         }
 
         private void btn_editCustomer_Click(object sender, EventArgs e)
         {
-            form_editCustomer editCustomer = new form_editCustomer();
+            Form_editCustomer editCustomer = new Form_editCustomer();
             var rows = customerDataView.SelectedRows;
             if (rows.Count > 0)
             {

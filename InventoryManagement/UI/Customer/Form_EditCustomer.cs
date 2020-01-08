@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.UI.Customer
 {
-    public partial class form_editCustomer : Form
+    public partial class Form_editCustomer : Form
     {
-        public form_editCustomer()
+        public Form_editCustomer()
         {
             InitializeComponent();
         }
@@ -29,6 +29,11 @@ namespace InventoryManagement.UI.Customer
             tb_editCustomerEmail.Text = string.Empty;
             tb_editCustomerTotalAmount.Text = string.Empty;
             tb_editCustomerPendingAmount.Text = string.Empty;
+        }
+
+        private void btn_saveEditCustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,22 +12,45 @@ namespace InventoryManagement.Controllers.Transaction
 {
     public class FormController_ViewBill : IController<Form_ViewBill>
     {
+        TransactionSession m_transactionSession;
 
         public FormController_ViewBill(TransactionSession transactionSession, Form_ViewBill UIControl)
             : base(UIControl)
         {
-            Initialize(transactionSession);
+            m_transactionSession = transactionSession;
+            Initialize();
         }
-        private void Initialize(TransactionSession transactionSession)
+        private void Initialize()
         {
             ResetViewBillTable();
-            InitializeLabels(transactionSession);
-            InitializeViewBillTable(transactionSession.GetRowEntries());
+            InitializeLabels();
+            InitializeViewBillTable();
         }
 
-        private void InitializeViewBillTable(List<ProductGet> products)
+
+        public void SaveTransaction()
         {
-            foreach (var product in products)
+            TransactionPost transactionPost = new TransactionPost();
+            transactionPost.CustomerID = m_transactionSession.GetCustomer().ID;
+            transactionPost.TransactionDateTime = DateTime.Now;
+            transactionPost.TotalPrice = Convert.ToInt32(m_transactionSession.subtotal);
+            string productIds = string.Empty;
+            string productQuantity = string.Empty;
+            foreach (var product in m_transactionSession.GetRowEntries())
+            {
+                productIds += product.ID + ",";
+                productQuantity += product.Quantity + ",";
+            }
+
+            //Removing last comma
+            transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
+            transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
+            var transaction = HTTPService.POST<TransactionGet, TransactionPost>("Transaction", transactionPost);
+        }
+
+        private void InitializeViewBillTable()
+        {
+            foreach (var product in m_transactionSession.GetRowEntries())
             {
                 AddRowToViewBillTable(product);
             }
@@ -54,15 +77,15 @@ namespace InventoryManagement.Controllers.Transaction
         {
             return m_UIControl.ViewBill_ProductsDataView;
         }
-        private void InitializeLabels(TransactionSession transactionSession)
+        private void InitializeLabels()
         {
-            if (transactionSession.GetCustomer().Name == null)
+            if (m_transactionSession.GetCustomer().Name == null)
                 m_UIControl.lbl_CustomerName.Text = "--";
             else
-                m_UIControl.lbl_CustomerName.Text = transactionSession.GetCustomer().Name;
+                m_UIControl.lbl_CustomerName.Text = m_transactionSession.GetCustomer().Name;
             m_UIControl.lbl_Date.Text = DateTime.Now.ToString();
-            m_UIControl.lbl_TotalPrice.Text = transactionSession.amountDue;
-            m_UIControl.lbl_totalTax.Text = transactionSession.totalTax;
+            m_UIControl.lbl_TotalPrice.Text = m_transactionSession.amountDue;
+            m_UIControl.lbl_totalTax.Text = m_transactionSession.totalTax;
         }
         protected override void RegisterEvents()
         {

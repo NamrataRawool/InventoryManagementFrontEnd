@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.UI.Customer
 {
-    public partial class form_addCustomer : Form
+    public partial class Form_AddCustomer : Form
     {
-        public form_addCustomer()
+        public Form_AddCustomer()
         {
             InitializeComponent();
         }
@@ -25,6 +25,11 @@ namespace InventoryManagement.UI.Customer
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_saveCustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

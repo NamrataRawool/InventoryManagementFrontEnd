@@ -138,8 +138,7 @@
             // 
             this.btn_addCustomer.BackColor = System.Drawing.Color.White;
             this.btn_addCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_addCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_addCustomer.FlatAppearance.BorderSize = 2;
+            this.btn_addCustomer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_addCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_addCustomer.Image")));
             this.btn_addCustomer.Location = new System.Drawing.Point(3, 27);
@@ -153,8 +152,7 @@
             // 
             this.btn_editCustomer.BackColor = System.Drawing.Color.White;
             this.btn_editCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_editCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_editCustomer.FlatAppearance.BorderSize = 2;
+            this.btn_editCustomer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_editCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_editCustomer.Image")));
             this.btn_editCustomer.Location = new System.Drawing.Point(91, 27);
@@ -177,10 +175,9 @@
             // 
             this.btn_searchCustomer.BackColor = System.Drawing.Color.White;
             this.btn_searchCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_searchCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_searchCustomer.FlatAppearance.BorderSize = 2;
+            this.btn_searchCustomer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_searchCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_searchCustomer.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_searchCustomer.Location = new System.Drawing.Point(693, 27);
             this.btn_searchCustomer.MaximumSize = new System.Drawing.Size(0, 28);
             this.btn_searchCustomer.MinimumSize = new System.Drawing.Size(0, 28);

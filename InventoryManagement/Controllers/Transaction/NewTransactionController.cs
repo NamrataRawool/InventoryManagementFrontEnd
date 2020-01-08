@@ -3,6 +3,7 @@ using InventoryManagement.EventHandlers.Transaction;
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 using InventoryManagement.Services.HTTP;
+using InventoryManagement.UI.Customer;
 using InventoryManagement.UI.Transaction;
 using InventoryManagement.UI.UserControls;
 using System;
@@ -99,8 +100,12 @@ namespace InventoryManagement.Controllers.Transaction
             var customer = HTTPService.GET<CustomerGet>("customer/mobileNumber=" + mobileNumber);
             if (customer == null || customer.ID == 0)
             {
-                m_UIControl.lbl_customerError.Text = "Customer Not found!";
-                return;
+                DialogResult dialogResult = MessageBox.Show("Do you want to add new customer?", "Not found !", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Form_AddCustomer addCustomer = new Form_AddCustomer();
+                    addCustomer.ShowDialog();
+                }
             }
             m_transactionSession.SetCustomer(customer);
             m_UIControl.tb_customerName.Text = customer.Name;
@@ -115,7 +120,16 @@ namespace InventoryManagement.Controllers.Transaction
         public void OpenForm_ViewBill()
         {
             Form_ViewBill viewBill = new Form_ViewBill(m_transactionSession);
-            viewBill.ShowDialog();
+            var result = viewBill.ShowDialog();
+            if (result == DialogResult.Yes)
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to print bill?", "Transaction successful !", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                   
+                }
+                ResetTransaction();
+            }
         }
 
         private void UpdateUILabels()
@@ -145,9 +159,15 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void ResetTransaction()
         {
+            m_transactionSession = new TransactionSession();
             ResetBillProductsTable();
             m_UIControl.tb_subtotal.Text = string.Empty;
             m_UIControl.tb_totalDiscount.Text = string.Empty;
+            m_UIControl.tb_amountDue.Text = string.Empty;
+            m_UIControl.tb_totalTax.Text = string.Empty;
+            m_UIControl.tb_customerName.Text = string.Empty;
+            m_UIControl.tb_pendingAmount.Text = string.Empty;
+            m_UIControl.tb_mobileNumber.Text = string.Empty;
         }
         private void ResetBillProductsTable()
         {

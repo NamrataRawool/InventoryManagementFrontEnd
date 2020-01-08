@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorControl));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_addVendor = new System.Windows.Forms.Button();
+            this.btn_editVendor = new System.Windows.Forms.Button();
             this.tb_searchVendors = new System.Windows.Forms.TextBox();
             this.btn_searchVendor = new System.Windows.Forms.Button();
             this.VendorsDataView = new System.Windows.Forms.DataGridView();
@@ -42,8 +44,6 @@
             this.VendorTable_Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorTable_MobileNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VendorTable_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_addVendor = new System.Windows.Forms.Button();
-            this.btn_editVendor = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VendorsDataView)).BeginInit();
@@ -90,6 +90,34 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.34343F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(997, 99);
             this.tableLayoutPanel2.TabIndex = 5;
+            // 
+            // btn_addVendor
+            // 
+            this.btn_addVendor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_addVendor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_addVendor.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_addVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addVendor.Image = ((System.Drawing.Image)(resources.GetObject("btn_addVendor.Image")));
+            this.btn_addVendor.Location = new System.Drawing.Point(3, 27);
+            this.btn_addVendor.Name = "btn_addVendor";
+            this.btn_addVendor.Size = new System.Drawing.Size(82, 34);
+            this.btn_addVendor.TabIndex = 1;
+            this.btn_addVendor.UseVisualStyleBackColor = false;
+            this.btn_addVendor.Click += new System.EventHandler(this.btn_addVendor_Click);
+            // 
+            // btn_editVendor
+            // 
+            this.btn_editVendor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_editVendor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_editVendor.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_editVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editVendor.Image = ((System.Drawing.Image)(resources.GetObject("btn_editVendor.Image")));
+            this.btn_editVendor.Location = new System.Drawing.Point(91, 27);
+            this.btn_editVendor.Name = "btn_editVendor";
+            this.btn_editVendor.Size = new System.Drawing.Size(81, 34);
+            this.btn_editVendor.TabIndex = 2;
+            this.btn_editVendor.UseVisualStyleBackColor = false;
+            this.btn_editVendor.Click += new System.EventHandler(this.btn_editVendor_Click);
             // 
             // tb_searchVendors
             // 
@@ -202,34 +230,6 @@
             // 
             this.VendorTable_Address.HeaderText = "Address";
             this.VendorTable_Address.Name = "VendorTable_Address";
-            // 
-            // btn_addVendor
-            // 
-            this.btn_addVendor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_addVendor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_addVendor.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btn_addVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addVendor.Image = ((System.Drawing.Image)(resources.GetObject("btn_addVendor.Image")));
-            this.btn_addVendor.Location = new System.Drawing.Point(3, 27);
-            this.btn_addVendor.Name = "btn_addVendor";
-            this.btn_addVendor.Size = new System.Drawing.Size(82, 34);
-            this.btn_addVendor.TabIndex = 1;
-            this.btn_addVendor.UseVisualStyleBackColor = false;
-            this.btn_addVendor.Click += new System.EventHandler(this.btn_addVendor_Click);
-            // 
-            // btn_editVendor
-            // 
-            this.btn_editVendor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_editVendor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_editVendor.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btn_editVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_editVendor.Image = ((System.Drawing.Image)(resources.GetObject("btn_editVendor.Image")));
-            this.btn_editVendor.Location = new System.Drawing.Point(91, 27);
-            this.btn_editVendor.Name = "btn_editVendor";
-            this.btn_editVendor.Size = new System.Drawing.Size(81, 34);
-            this.btn_editVendor.TabIndex = 2;
-            this.btn_editVendor.UseVisualStyleBackColor = false;
-            this.btn_editVendor.Click += new System.EventHandler(this.btn_editVendor_Click);
             // 
             // VendorControl
             // 

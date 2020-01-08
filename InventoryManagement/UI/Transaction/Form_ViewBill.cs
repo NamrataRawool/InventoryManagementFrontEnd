@@ -15,9 +15,10 @@ namespace InventoryManagement.UI.Transaction
     public partial class Form_ViewBill : Form
     {
         private FormController_ViewBill m_Controller;
-
+        TransactionSession m_transactionSession;
         public Form_ViewBill(TransactionSession transactionSession)
         {
+            m_transactionSession = transactionSession;
             InitializeComponent();
             m_Controller = new FormController_ViewBill(transactionSession, this);
         }
@@ -30,17 +31,15 @@ namespace InventoryManagement.UI.Transaction
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-           
-        }
-
-        private void btn_printBill_Click(object sender, EventArgs e)
-        {
-
+            m_Controller.SaveTransaction();
+            this.DialogResult = DialogResult.Yes;
+            this.Close();
         }
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.No;
+            this.Close();            
         }
     }
 }

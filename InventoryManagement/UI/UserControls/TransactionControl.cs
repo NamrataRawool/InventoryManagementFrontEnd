@@ -21,7 +21,6 @@ namespace InventoryManagement.UI.UserControls
     {
         NewTransactionController m_newTransactionController;
         TransactionHistoryController m_transactionHistoryController;
-        ProductGet oldBillRowEntry;
 
         public TransactionControl()
         {
@@ -38,18 +37,7 @@ namespace InventoryManagement.UI.UserControls
             cb_customerName.DataSource = InitializeCustomerNameDatasource();
         }
 
-        private List<string> InitializeCustomerNameDatasource()
-        {
-            var customers = HTTPService.GET<List<CustomerGet>>("customers");
-            if (customers == null)
-                return null;
-
-            List<string> customerDataSource = new List<string>();
-            foreach (var customer in customers)
-                customerDataSource.Add(customer.Name);
-
-            return customerDataSource;
-        }
+        #region New Transaction
 
         private void Bill_ProductsDataView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -82,16 +70,6 @@ namespace InventoryManagement.UI.UserControls
             tb_barCode.Text = string.Empty;
         }
 
-        private void tb_quantity_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btn_addProductToBill_Click(sender, e);
-                tb_barCode.Focus();
-            }
-        }
-
-
         private void tb_barCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -114,33 +92,13 @@ namespace InventoryManagement.UI.UserControls
                 ResetTextBox();
             }
         }
-
-        private void btn_searchByCustomerName_Click(object sender, EventArgs e)
-        {
-            m_transactionHistoryController.SearchTransactionByCustomerName(cb_customerName.Text);
-        }
-
         private void btn_deleteBillRecord_Click(object sender, EventArgs e)
         {
             m_newTransactionController.OnDeleteProduct();
         }
 
-        private void btn_addCustomer_Click(object sender, EventArgs e)
-        {
-        }
 
-        private void btn_searchByDate_Click(object sender, EventArgs e)
-        {
-            var fromDate = DateTime_fromDate.Text;
-            var toDate = DateTime_toDate.Text;
-            m_transactionHistoryController.SearchTransactionsByDate(fromDate, toDate);
-        }
-
-        private void btn_exportToExcel_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btn_saveTransaction_Click(object sender, EventArgs e)
+        private void btn_ViewBill_Click(object sender, EventArgs e)
         {
             m_newTransactionController.OpenForm_ViewBill();
         }
@@ -177,5 +135,36 @@ namespace InventoryManagement.UI.UserControls
                 m_newTransactionController.OnDeleteProduct();
             }
         }
+        #endregion
+
+
+        #region Transaction History
+        private List<string> InitializeCustomerNameDatasource()
+        {
+            var customers = HTTPService.GET<List<CustomerGet>>("customers");
+            if (customers == null)
+                return null;
+
+            List<string> customerDataSource = new List<string>();
+            foreach (var customer in customers)
+                customerDataSource.Add(customer.Name);
+
+            return customerDataSource;
+        }
+        private void btn_searchByCustomerName_Click(object sender, EventArgs e)
+        {
+            m_transactionHistoryController.SearchTransactionByCustomerName(cb_customerName.Text);
+        }
+        private void btn_searchByDate_Click(object sender, EventArgs e)
+        {
+            var fromDate = DateTime_fromDate.Text;
+            var toDate = DateTime_toDate.Text;
+            m_transactionHistoryController.SearchTransactionsByDate(fromDate, toDate);
+        }
+        private void btn_exportToExcel_Click(object sender, EventArgs e)
+        {
+        }
+        #endregion
+
     }
 }
