@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.Export;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.Services.Misc.Assert;
@@ -10,10 +11,22 @@ using System.Windows.Forms;
 
 namespace InventoryManagement
 {
+
+    public enum DBEntityType
+    {
+        PRODUCT,
+        CATEGORY,
+        STOCK,
+        TRANSACTION,
+        CUSTOMER,
+        VENDOR,
+        PURCHASE,
+    }
+
     static class Program
     {
 
-        private static void TestGET()
+        private static void TestGet()
         {
             // GET
             var Categories = HTTPService.GET<List<CategoryGet>>("categories");
@@ -28,7 +41,7 @@ namespace InventoryManagement
 
         }
 
-        private static void TestPOST()
+        private static void TestPost()
         {
             bool postProduct = false;
             if (postProduct)
@@ -53,9 +66,6 @@ namespace InventoryManagement
                 CategoryPost cPost = new CategoryPost();
                 cPost.Name = "test name";
                 cPost.Description = "test Description";
-                cPost.CGST = 12.6;
-                cPost.SGST = 12.6;
-                cPost.Discount = 10;
 
                 var PostResponse = HTTPService.POST<CategoryGet, CategoryPost>("category", cPost);
                 Console.WriteLine(PostResponse.Name);
@@ -114,7 +124,8 @@ namespace InventoryManagement
         private static void Initialize()
         {
             Assert.Enable();
-            //InitializeHttpControllers();
+
+            DataService.Get().Initialize();
         }
 
         /// <summary>

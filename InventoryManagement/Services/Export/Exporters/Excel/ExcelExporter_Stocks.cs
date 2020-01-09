@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using OfficeOpenXml;
 
@@ -11,7 +12,7 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
     {
         public override void Export(string filename)
         {
-            var stocks = HTTPService.GET<List<StockGet>>("Stocks");
+            var stocks = DataService.Get().GetStockDataController().GetAll();
             if (stocks == null)
                 return;
 

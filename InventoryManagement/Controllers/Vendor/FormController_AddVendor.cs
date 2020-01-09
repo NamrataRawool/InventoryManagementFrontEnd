@@ -1,4 +1,7 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Vendor;
 using System;
@@ -24,12 +27,16 @@ namespace InventoryManagement.Controllers.Vendor
             vendor.MobileNumber = m_UIControl.tb_mobileNumber.Text;
             vendor.City = m_UIControl.tb_city.Text;
             vendor.State = m_UIControl.tb_state.Text;
-            var vendorPost = HTTPService.POST<VendorGet, VendorPost>("vendor", vendor);
-            if (vendorPost != null)
+            var vendorGet = DataService.Get().GetVendorDataController().Post(vendor);
+            if (vendorGet != null)
             {
                 MessageBox.Show("Vendor Added Successfully");
                 ResetTextBoxes();
             }
+
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.VENDOR, vendorGet.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
+
         }
 
         private void ResetTextBoxes()
@@ -41,9 +48,11 @@ namespace InventoryManagement.Controllers.Vendor
             m_UIControl.tb_city.Text = string.Empty;
             m_UIControl.tb_state.Text = string.Empty;
         }
+
         protected override void RegisterEvents()
         {
 
         }
+
     }
 }

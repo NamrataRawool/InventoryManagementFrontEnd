@@ -1,14 +1,9 @@
 ﻿using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
-using InventoryManagement.Services.Misc.Assert;
+using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Product;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Product
@@ -31,7 +26,10 @@ namespace InventoryManagement.Controllers.Product
 
         public void UpdateProductDetails()
         {
-            ProductPost product = new ProductPost();
+            int productID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
+            ProductGet existingProduct = DataService.Get().GetProductDataController().Get(productID);
+
+            ProductPost product = new ProductPost(existingProduct);
             product.ID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
             product.Barcode = m_UIControl.tf_ProductDetails_Barcode.Text;
             product.Name = m_UIControl.tf_ProductDetails_ProductName.Text;
@@ -43,38 +41,48 @@ namespace InventoryManagement.Controllers.Product
             product.SGST = double.Parse(m_UIControl.tf_ProductDetails_SGST.Text);
 
             string categoryName = m_UIControl.cb_ProductDetails_Category.Text;
-            product.CategoryID = HTTPService.GET<CategoryGet>("category/name=" + categoryName).ID;
-            if(m_UIControl.pictureBox_ProductImage.Tag != null)
+            product.CategoryID = DataService.Get().GetCategoryDataController().GetByName(categoryName).ID;
+            if (m_UIControl.pictureBox_ProductImage.Tag != null)
                 product.ImagePath = m_UIControl.pictureBox_ProductImage.Tag.ToString();
 
-            m_Product = HTTPService.POST<ProductGet, ProductPost>("product", product, product.ImagePath);
+            m_Product = DataService.Get().GetProductDataController().Put(product);
+            if (m_Product == null)
+            {
+                MessageBox.Show(m_UIControl, "Failed to Update Product Details!");
+            }
+            else
+            {
+                MessageBox.Show(m_UIControl, "Product Details updated successfully!");
+            }
         }
 
         private void InitializeAvailableStockLabel()
         {
-            var stock = HTTPService.GET<StockGet>("/Stock/ProductID=" + m_Product.ID);
+            var stock = DataService.Get().GetStockDataController().GetByProductID(m_Product.ID);
 
             m_UIControl.lbl_ProductDetails_AvailableStockValue.Text = "Not in Database";
             if (stock != null)
                 m_UIControl.lbl_ProductDetails_AvailableStockValue.Text = stock.AvailableQuantity.ToString();
         }
 
-        private byte[] GetImage(ProductGet product)
+        private string GetImagePath(ProductGet product)
         {
             if (product.ImagePath == null)
                 return null;
 
-            string imagePath = m_Product.ImagePath.Split(',')[0];
+            string imagePath = product.ImagePath.Split(',')[0];
             if (imagePath == null || imagePath.Length <= 0)
                 return null;
 
-            string path = imagePath;
-            return HTTPService.GETFile(path);
+            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string path = directory + "/" + imagePath;
+            return path;
         }
 
         private void InitializeProductDetails(int productID)
         {
-            m_Product = HTTPService.GET<ProductGet>("product/" + productID);
+            m_Product = DataService.Get().GetProductDataController().Get(productID);
 
             var UI = m_UIControl;
 
@@ -88,14 +96,11 @@ namespace InventoryManagement.Controllers.Product
             UI.tf_ProductDetails_CGST.Text = m_Product.CGST.ToString();
             UI.tf_ProductDetails_SGST.Text = m_Product.SGST.ToString();
 
-            byte[] imageBytes = GetImage(m_Product);
-            if (imageBytes != null && imageBytes.Length > 0)
-            {
-                UI.pictureBox_ProductImage.Image = Image.FromStream(new MemoryStream(imageBytes));
-            }
+            string filepath = GetImagePath(m_Product);
+            UI.pictureBox_ProductImage.Image = Image.FromFile(filepath);
 
             // fill categories
-            var Categories = HTTPService.GET<List<CategoryGet>>("categories");
+            var Categories = DataService.Get().GetCategoryDataController().GetAll();
             foreach (var category in Categories)
             {
                 UI.cb_ProductDetails_Category.Items.Add(category.Name);

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using InventoryManagement.Services.Data.Database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,35 +11,65 @@ namespace InventoryManagement.Models
 {
     public class VendorBase
     {
+
+        public VendorBase() { }
+
+        public VendorBase(VendorBase rhs)
+        {
+            CopyFrom(rhs);
+        }
+
+        public void CopyFrom(VendorBase rhs)
+        {
+            ID = rhs.ID;
+            CompanyName = rhs.CompanyName;
+            Address = rhs.Address;
+            Email = rhs.Email;
+            MobileNumber = rhs.MobileNumber;
+            City = rhs.City;
+            State = rhs.State;
+        }
+
         [Key]
-        [JsonProperty]
         public int ID { get; set; }
 
         [Required]
-        [JsonProperty]
         public string CompanyName { get; set; }
 
-        [JsonProperty]
         public string Email { get; set; }
 
-        [JsonProperty]
         public string MobileNumber { get; set; }
 
-        [JsonProperty]
         public string Address { get; set; }
 
-        [JsonProperty]
         public string City { get; set; }
 
-        [JsonProperty]
         public string State { get; set; }
     }
 
     public class VendorGet : VendorBase
     {
+
+        public VendorGet() { }
+
+        public VendorGet(InventoryDbContext context, VendorDTO dto)
+            : base(dto)
+        {
+        }
+
     }
 
-    public class VendorPost : VendorBase
+    public class VendorPost : VendorBase { }
+
+    public class VendorDTO : VendorBase
     {
+        public VendorDTO() { }
+
+        public VendorDTO(VendorPost vendorPOST)
+            : base(vendorPOST)
+        {
+        }
     }
+
+
 }

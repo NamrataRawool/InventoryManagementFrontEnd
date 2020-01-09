@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.Services.Data.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,22 @@ namespace InventoryManagement.Models
 {
     public class StockBase
     {
+
+        public StockBase() { }
+
+        public StockBase(StockBase rhs)
+        {
+            CopyFrom(rhs);
+        }
+
+        public void CopyFrom(StockBase rhs)
+        {
+            ProductID = rhs.ProductID;
+            TotalQuantity = rhs.TotalQuantity;
+            AvailableQuantity = rhs.AvailableQuantity;
+            TotalQuantity = rhs.TotalQuantity;
+        }
+
         public int ID { get; set; }
 
         public int ProductID { get; set; }
@@ -19,10 +36,25 @@ namespace InventoryManagement.Models
 
     public class StockGet : StockBase
     {
+
+        public StockGet() { }
+
+        public StockGet(InventoryDbContext context, StockDTO dto)
+            : base(dto)
+        {
+        }
     }
 
-    public class StockPost : StockBase
+    public class StockPost : StockBase { }
+
+    public class StockDTO : StockBase
     {
+        public StockDTO() { }
+
+        public StockDTO(StockPost stockPOST)
+            : base(stockPOST)
+        {
+        }
     }
 
 }
