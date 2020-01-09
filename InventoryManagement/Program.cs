@@ -1,6 +1,7 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.Services.Export;
+using InventoryManagement.Services.Licensing;
 using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI;
 using System;
@@ -38,10 +39,18 @@ namespace InventoryManagement
         [STAThread]
         static void Main()
         {
-            Initialize();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            bool isLicensed = LicenseManager.CheckLicense();
+            if (!isLicensed)
+            {
+                Application.Exit();
+                return;
+            }
+
+            Initialize();
+
             Application.Run(new Dashboard());
         }
     }
