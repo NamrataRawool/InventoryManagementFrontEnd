@@ -206,12 +206,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Broadcaster\EventBroadcaster.cs" />
+    <Compile Include="Controllers\Customer\CustomerContoller.cs" />
+    <Compile Include="Controllers\Customer\FormController_AddCustomer.cs" />
+    <Compile Include="Controllers\Customer\FormController_EditCustomer.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\Product\FormController_AddProduct.cs" />
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
     <Compile Include="Controllers\Product\ProductController.cs" />
-    <Compile Include="Controllers\Transaction\TransactionController.cs" />
+    <Compile Include="Controllers\Transaction\NewTransactionController.cs" />
     <Compile Include="Controllers\Transaction\FormController_ViewBill.cs" />
+    <Compile Include="Controllers\Transaction\TransactionHistoryController.cs" />
+    <Compile Include="Controllers\Transaction\TransactionSession.cs" />
     <Compile Include="Controllers\Vendor\FormController_AddVendor.cs" />
     <Compile Include="Controllers\Vendor\FormController_EditVendor.cs" />
     <Compile Include="Controllers\Vendor\VendorController.cs" />
@@ -223,7 +228,6 @@
     <Compile Include="Events\Event_TransactionAddProduct.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Listeners\IEventListerner.cs" />
-    <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />
@@ -261,17 +265,17 @@
     <Compile Include="UI\Category\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Customer\AddCustomer.cs">
+    <Compile Include="UI\Customer\Form_AddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Customer\AddCustomer.Designer.cs">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
+    <Compile Include="UI\Customer\Form_AddCustomer.Designer.cs">
+      <DependentUpon>Form_AddCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Customer\EditCustomer.cs">
+    <Compile Include="UI\Customer\Form_EditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Customer\EditCustomer.Designer.cs">
-      <DependentUpon>EditCustomer.cs</DependentUpon>
+    <Compile Include="UI\Customer\Form_EditCustomer.Designer.cs">
+      <DependentUpon>Form_EditCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Dashboard.cs">
       <SubType>Form</SubType>
@@ -321,6 +325,12 @@
     <Compile Include="UI\UserControls\HomeControl.Designer.cs">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\PurchaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\PurchaseControl.Designer.cs">
+      <DependentUpon>PurchaseControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\VendorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -359,11 +369,11 @@
     <EmbeddedResource Include="UI\Category\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Customer\AddCustomer.resx">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Customer\Form_AddCustomer.resx">
+      <DependentUpon>Form_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Customer\EditCustomer.resx">
-      <DependentUpon>EditCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Customer\Form_EditCustomer.resx">
+      <DependentUpon>Form_EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -388,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\PurchaseControl.resx">
+      <DependentUpon>PurchaseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\VendorControl.resx">
       <DependentUpon>VendorControl.cs</DependentUpon>

@@ -29,7 +29,7 @@ namespace InventoryManagement.Services.HTTP
 
             var Response = Client.Get(Request);
 
-            if (Response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (Response.StatusCode != System.Net.HttpStatusCode.OK && Response.StatusCode != System.Net.HttpStatusCode.NotFound)
             {
                 Assert.Do();
                 return default(T);

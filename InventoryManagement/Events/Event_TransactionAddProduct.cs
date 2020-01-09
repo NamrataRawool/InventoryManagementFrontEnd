@@ -10,14 +10,14 @@ namespace InventoryManagement.Events
     class Event_TransactionAddProduct : IEvent
     {
 
-        private BillRowEntry m_BillEntry;
+        private ProductGet m_BillEntry;
 
-        public Event_TransactionAddProduct(BillRowEntry Entry)
+        public Event_TransactionAddProduct(ProductGet product)
         {
-            m_BillEntry = Entry;
+            m_BillEntry = product;
         }
 
-        public BillRowEntry GetBillRowEntry() { return m_BillEntry; }
+        public ProductGet GetBillRowEntry() { return m_BillEntry; }
 
         public override EventType Type()
         {
