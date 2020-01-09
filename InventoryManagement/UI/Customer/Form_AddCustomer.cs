@@ -28,7 +28,43 @@ namespace InventoryManagement.UI.Customer
         private void btn_saveCustomer_Click(object sender, EventArgs e)
         {
             m_controller.SaveCustomer();
-            Close();
+        }
+
+        private void tb_CustomerName_TextChanged(object sender, EventArgs e)
+        {
+            m_controller.IsValidName(tb_CustomerName.Text.Trim());
+        }
+
+        private void tb_CustomerName_Validating(object sender, CancelEventArgs e)
+        {
+            var isValid = m_controller.IsValidName(tb_CustomerName.Text.Trim());
+            if (!isValid)
+            {
+                e.Cancel = true;
+                tb_CustomerName.Select(0, tb_CustomerName.Text.Length);
+                this.customerErrorProvider.SetError(tb_CustomerName, "Name not valid");
+            }
+        }
+
+        private void tb_customerMobile_Validating(object sender, CancelEventArgs e)
+        {
+            var isValid = m_controller.IsValidMobileNumber(tb_customerMobile.Text.Trim());
+            if (!isValid)
+            {
+                e.Cancel = true;
+                tb_customerMobile.Select(0, tb_customerMobile.Text.Length);
+                this.customerErrorProvider.SetError(tb_customerMobile, "Mobile number not valid");
+            }
+        }
+
+        private void tb_CustomerName_Validated(object sender, EventArgs e)
+        {
+            customerErrorProvider.SetError(tb_CustomerName, "");
+        }
+
+        private void tb_customerMobile_Validated(object sender, EventArgs e)
+        {
+            customerErrorProvider.SetError(tb_customerMobile, "");
         }
     }
 }

@@ -70,6 +70,21 @@ namespace InventoryManagement.Controllers.Customer
                     OpenForm_EditCustomer();
             }
         }
+
+        public void UpdateTableByCustomerName(string name)
+        {
+            var Table = GetTable();
+            foreach  (DataGridViewRow row in Table.Rows)
+            {
+                bool visible = false;
+                var customerName = row.Cells["CustomerTable_Name"].Value.ToString().ToLower();
+                if (customerName.StartsWith(name.ToLower()))
+                    visible = true;
+
+                row.Visible = visible;
+            }
+            return;
+        }
         private void InitializeTable(List<CustomerGet> customers)
         {
             foreach (var customer in customers)
@@ -90,7 +105,7 @@ namespace InventoryManagement.Controllers.Customer
 
         private void InitializeAutoSearchBox(List<CustomerGet> customers)
         {
-            var searchBox = m_UIControl.tb_searchCategory;
+            var searchBox = m_UIControl.tb_searchCustomer;
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 

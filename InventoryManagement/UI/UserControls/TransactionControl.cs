@@ -135,6 +135,11 @@ namespace InventoryManagement.UI.UserControls
                 m_newTransactionController.OnDeleteProduct();
             }
         }
+
+        private void btn_resetTransaction_Click(object sender, EventArgs e)
+        {
+            m_newTransactionController.ResetTransaction();
+        }
         #endregion
 
 

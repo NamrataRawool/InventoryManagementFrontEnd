@@ -35,12 +35,25 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_editCustomer_Click(object sender, EventArgs e)
         {
-            m_controller.OpenForm_EditCustomer();     
+            m_controller.OpenForm_EditCustomer();
         }
 
         private void btn_searchCustomer_Click(object sender, EventArgs e)
         {
+            m_controller.UpdateTableByCustomerName(tb_searchCustomer.Text.Trim());
+        }
 
+        private void tb_searchCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                m_controller.UpdateTableByCustomerName(tb_searchCustomer.Text.Trim());
+            }
+        }
+
+        private void tb_searchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            m_controller.UpdateTableByCustomerName(tb_searchCustomer.Text.Trim());
         }
     }
 }

@@ -126,7 +126,7 @@ namespace InventoryManagement.Controllers.Transaction
                 DialogResult dialogResult = MessageBox.Show("Do you want to print bill?", "Transaction successful !", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                   
+
                 }
                 ResetTransaction();
             }
@@ -161,6 +161,11 @@ namespace InventoryManagement.Controllers.Transaction
         {
             m_transactionSession = new TransactionSession();
             ResetBillProductsTable();
+            ResetTextBoxes();
+        }
+        private void ResetTextBoxes()
+        {
+            m_UIControl.tb_barCode.Text = string.Empty;
             m_UIControl.tb_subtotal.Text = string.Empty;
             m_UIControl.tb_totalDiscount.Text = string.Empty;
             m_UIControl.tb_amountDue.Text = string.Empty;
