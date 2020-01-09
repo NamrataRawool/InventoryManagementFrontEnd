@@ -86,6 +86,31 @@ namespace InventoryManagement.Services.HTTP
             return JsonConvert.DeserializeObject<RETURN_TYPE>(Content);
         }
 
+        public static RETURN_TYPE PUT<RETURN_TYPE, INPUT_TYPE>(string URL, INPUT_TYPE Obj, List<string> filenames = null) where INPUT_TYPE : new()
+        {
+            RestRequest Request = new RestRequest(URL);
+
+            Request.AddObject(Obj);
+            if (filenames != null)
+            {
+                foreach (var filename in filenames)
+                {
+                    if (filename != null && !filename.Equals(""))
+                        Request.AddFile("images", filename);
+                }
+            }
+
+            var Response = Client.Put(Request);
+
+            if (Response.StatusCode != System.Net.HttpStatusCode.OK && Response.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                Assert.Do();
+                return default(RETURN_TYPE);
+            }
+
+            var Content = Response.Content;
+            return JsonConvert.DeserializeObject<RETURN_TYPE>(Content);
+        }
 
         private const string BaseURL = "http://localhost:5000";
         private static RestClient Client = new RestClient(BaseURL);

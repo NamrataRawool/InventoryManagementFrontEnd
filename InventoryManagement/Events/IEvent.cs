@@ -11,10 +11,14 @@ namespace InventoryManagement.Events
     {
 
         // Product
-        NewProductAdded,
 
         // Transaction
         UI_Transaction_AddProduct,
+
+        // Vendor
+
+        // New Entry Added
+        NewEntryAdded,
     }
 
     public abstract class IEvent

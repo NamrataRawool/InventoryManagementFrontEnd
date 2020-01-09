@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using OfficeOpenXml;
 using System;
@@ -24,7 +25,7 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
 
         public override void Export(string filename)
         {
-            var customers = HTTPService.GET<List<CustomerGet>>("customers");
+            var customers = DataService.Get().GetCustomerDataController().GetAll();
             if (customers == null)
                 return;
 

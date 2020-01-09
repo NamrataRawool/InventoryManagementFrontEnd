@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
@@ -25,7 +26,7 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
 
         public override void Export(string filename)
         {
-            var Categories = HTTPService.GET<List<CategoryGet>>("categories");
+            var Categories = DataService.Get().GetCategoryDataController().GetAll();
             if (Categories == null)
                 return;
 
@@ -47,9 +48,6 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
                     AddCell(worksheet, row_index, col_index++, category.ID);
                     AddCell(worksheet, row_index, col_index++, category.Name);
                     AddCell(worksheet, row_index, col_index++, category.Description);
-                    AddCell(worksheet, row_index, col_index++, category.Discount);
-                    AddCell(worksheet, row_index, col_index++, category.CGST);
-                    AddCell(worksheet, row_index, col_index++, category.SGST);
 
                     ++row_index;
                 }

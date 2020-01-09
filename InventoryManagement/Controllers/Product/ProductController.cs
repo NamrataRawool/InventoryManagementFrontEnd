@@ -1,8 +1,8 @@
 ﻿using InventoryManagement.Broadcaster;
 using InventoryManagement.EventHandlers.Product;
 using InventoryManagement.Events;
-using InventoryManagement.Events.Product;
 using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Product;
 using InventoryManagement.UI.UserControls;
@@ -27,7 +27,7 @@ namespace InventoryManagement.Controllers
                 ResetTable();
             }
 
-            var products = HTTPService.GET<List<ProductGet>>("products");
+            var products = DataService.Get().GetProductDataController().GetAll();
             if (products == null)
                 return;
 
@@ -128,7 +128,7 @@ namespace InventoryManagement.Controllers
 
         protected override void RegisterEvents()
         {
-            RegisterEvent(EventType.NewProductAdded);
+            RegisterEvent(EventType.NewEntryAdded);
         }
 
         private DataGridView GetTable()

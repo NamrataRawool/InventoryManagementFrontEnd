@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Vendor;
 using System;
@@ -34,16 +35,17 @@ namespace InventoryManagement.Controllers.Vendor
 
         public void UpdateVendor()
         {
-            VendorPost vendor = new VendorPost();
-            vendor.ID = int.Parse(m_UIControl.tb_vendorId.Text);
-            vendor.CompanyName = m_UIControl.tb_companyName.Text;
-            vendor.Address = m_UIControl.tb_address.Text;
-            vendor.Email = m_UIControl.tb_email.Text;
-            vendor.MobileNumber = m_UIControl.tb_mobileNumber.Text;
-            vendor.City = m_UIControl.tb_city.Text;
-            vendor.State = m_UIControl.tb_state.Text;
-            var vendorPost = HTTPService.POST<VendorGet, VendorPost>("vendor", vendor);
-            if (vendorPost != null)
+            VendorPost vendorPost = new VendorPost();
+            vendorPost.ID = int.Parse(m_UIControl.tb_vendorId.Text);
+            vendorPost.CompanyName = m_UIControl.tb_companyName.Text;
+            vendorPost.Address = m_UIControl.tb_address.Text;
+            vendorPost.Email = m_UIControl.tb_email.Text;
+            vendorPost.MobileNumber = m_UIControl.tb_mobileNumber.Text;
+            vendorPost.City = m_UIControl.tb_city.Text;
+            vendorPost.State = m_UIControl.tb_state.Text;
+
+            var vendorGet = DataService.Get().GetVendorDataController().Put(vendorPost);
+            if (vendorGet != null)
             {
                 MessageBox.Show("Vendor Updated Successfully");
                 ResetTextBoxes();
@@ -52,7 +54,7 @@ namespace InventoryManagement.Controllers.Vendor
 
         private void InitializeVendorDetails(int vendorId)
         {
-            var vendor = HTTPService.GET<VendorGet>("vendor/" + vendorId);
+            var vendor = DataService.Get().GetVendorDataController().Get(vendorId);
             if (vendor == null)
                 return;
             m_UIControl.tb_vendorId.Text = vendor.ID.ToString();

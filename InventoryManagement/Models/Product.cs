@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using InventoryManagement.Services.Data.Database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,11 @@ namespace InventoryManagement.Models
         public ProductBase() { }
         public ProductBase(ProductBase rhs)
         {
+            CopyFrom(rhs);
+        }
+
+        public void CopyFrom(ProductBase rhs)
+        {
             ID = rhs.ID;
             Barcode = rhs.Barcode;
             Name = rhs.Name;
@@ -23,6 +29,9 @@ namespace InventoryManagement.Models
             RetailPrice = rhs.RetailPrice;
             WholeSalePrice = rhs.WholeSalePrice;
             ImagePath = rhs.ImagePath;
+            CGST = rhs.CGST;
+            SGST = rhs.SGST;
+            Discount = rhs.Discount;
         }
 
         public int ID { get; set; }
@@ -48,21 +57,52 @@ namespace InventoryManagement.Models
 
     public class ProductPost : ProductBase
     {
-        public ProductPost() { }
-        public ProductPost(ProductGet rhs)
-            :base(rhs)
+
+        public ProductPost(ProductGet get)
+            : base(get)
         {
-            CategoryID = rhs.Category.ID;
+            CategoryID = get.Category.ID;
         }
+
+        public ProductPost() { }
 
         public int CategoryID { get; set; }
     }
 
     public class ProductGet : ProductBase
     {
+        public ProductGet() { }
+
+        public ProductGet(InventoryDbContext context, ProductDTO productDto)
+            : base(productDto)
+        {
+            ImagePath = productDto.ImagePath;
+            Category = new CategoryGet(context, context.GetCategory(productDto.CategoryID));
+        }
+
         public int Quantity { get; set; }
 
         public CategoryGet Category { get; set; }
+    }
+
+    public class ProductDTO : ProductBase
+    {
+        public ProductDTO() { }
+
+        public ProductDTO(ProductPost productPOST)
+            : base(productPOST)
+        {
+            CategoryID = productPOST.CategoryID;
+        }
+
+        public void CopyFrom(ProductPost productPOST)
+        {
+            base.CopyFrom(productPOST);
+            CategoryID = productPOST.CategoryID;
+        }
+
+        public int CategoryID { get; set; }
+
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using OfficeOpenXml;
 using System;
@@ -23,7 +24,7 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
 
         public override void Export(string filename)
         {
-            var transactions = HTTPService.GET<List<TransactionGet>>("Transactions");
+            var transactions = DataService.Get().GetTransactionDataController().GetAll();
             if (transactions == null)
                 return;
 

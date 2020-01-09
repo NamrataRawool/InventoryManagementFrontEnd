@@ -1,4 +1,7 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.EventHandlers.Vendor;
+using InventoryManagement.Events;
+using InventoryManagement.Models;
+using InventoryManagement.Services.Data;
 using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.UserControls;
 using InventoryManagement.UI.Vendor;
@@ -15,8 +18,9 @@ namespace InventoryManagement.Controllers.Vendor
     {
         public VendorController(VendorControl UIControl) : base(UIControl)
         {
-
+            SetEventHandler(new EventHandler_Vendor(this));
         }
+
         public void Initialize(bool reset = true)
         {
             if (reset)
@@ -24,7 +28,7 @@ namespace InventoryManagement.Controllers.Vendor
                 ResetTable();
             }
 
-            var vendors = HTTPService.GET<List<VendorGet>>("vendors");
+            var vendors = DataService.Get().GetVendorDataController().GetAll();
             if (vendors == null)
                 return;
 
@@ -54,47 +58,26 @@ namespace InventoryManagement.Controllers.Vendor
             Initialize();
         }
 
-        public void SearchVendor(string name)
+        public void UpdateTableByCompanyName(string name)
         {
             var Table = GetTable();
-            Table.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            CurrencyManager currencyManager = (CurrencyManager)m_UIControl.BindingContext[Table.DataSource];
-            currencyManager.SuspendBinding();
-            try
-            {
-                bool valueResult = false;
-                foreach (DataGridViewRow row in Table.Rows)
-                {
-                    int rowIndex = row.Index;
-                    if (row.Cells["VendorTable_CompanyName"].Value != null && row.Cells["VendorTable_CompanyName"].Value.ToString().ToLower().StartsWith(name.ToLower()))
-                    {
-                        Table.Rows[rowIndex].Visible = true;
-                        Table.FirstDisplayedScrollingRowIndex = rowIndex;
-                        valueResult = true;
-                    }
-                    else
-                    {
-                        Table.Rows[rowIndex].Visible = false;
-                    }
 
-                }
-                currencyManager.ResumeBinding();
-                if (!valueResult)
-                {
-                    MessageBox.Show("Unable to find " + name);
-                    return;
-                }
-            }
-            catch (Exception exc)
+            foreach (DataGridViewRow row in Table.Rows)
             {
-                MessageBox.Show(exc.Message);
-            }
+                bool visible = false;
+                var companyName = row.Cells["VendorTable_CompanyName"].Value.ToString().ToLower();
+                if (companyName.StartsWith(name.ToLower()))
+                    visible = true;
 
+                row.Visible = visible;
+            }
         }
+
         public void RefreshTable()
         {
             GetTable().Refresh();
         }
+
         public void ResetTable()
         {
             var Table = GetTable();
@@ -107,6 +90,7 @@ namespace InventoryManagement.Controllers.Vendor
             foreach (var vendor in vendors)
                 AddVendorToTable(vendor);
         }
+
         private void InitializeAutoSearchBox(List<VendorGet> vendors)
         {
             var searchBox = m_UIControl.tb_searchVendors;
@@ -120,7 +104,13 @@ namespace InventoryManagement.Controllers.Vendor
             searchBox.AutoCompleteCustomSource = collection;
         }
 
-        private void AddVendorToTable(VendorGet vendor)
+        public void AddProductToAutoSearchBox(string vendorName)
+        {
+            var searchBox = m_UIControl.tb_searchVendors;
+            searchBox.AutoCompleteCustomSource.Add(vendorName);
+        }
+
+        public void AddVendorToTable(VendorGet vendor)
         {
             var Table = GetTable();
             int Index = Table.Rows.Add();
@@ -131,6 +121,7 @@ namespace InventoryManagement.Controllers.Vendor
             NewRow.Cells["VendorTable_MobileNumber"].Value = vendor.MobileNumber;
             NewRow.Cells["VendorTable_Address"].Value = vendor.Address;
         }
+
         private DataGridView GetTable()
         {
             return m_UIControl.VendorsDataView;
@@ -138,7 +129,7 @@ namespace InventoryManagement.Controllers.Vendor
 
         protected override void RegisterEvents()
         {
-
+            RegisterEvent(EventType.NewEntryAdded);
         }
     }
 }
