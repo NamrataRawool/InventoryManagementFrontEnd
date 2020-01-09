@@ -17,12 +17,12 @@ namespace InventoryManagement.UI.UserControls
         VendorController m_Controller;
         public VendorControl()
         {
-            InitializeComponent();
-            m_Controller = new VendorController(this);
         }
 
         private void VendorControl_Load(object sender, EventArgs e)
         {
+            InitializeComponent();
+            m_Controller = new VendorController(this);
             m_Controller.Initialize();
         }
 
