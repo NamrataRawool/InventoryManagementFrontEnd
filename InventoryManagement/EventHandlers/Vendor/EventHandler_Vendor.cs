@@ -3,7 +3,6 @@ using InventoryManagement.Events;
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.Services.Misc.Assert;
 using System;
 using System.Collections.Generic;

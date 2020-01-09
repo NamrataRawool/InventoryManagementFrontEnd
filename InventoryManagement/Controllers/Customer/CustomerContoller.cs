@@ -1,5 +1,5 @@
 ﻿using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
 using InventoryManagement.UI.UserControls;
 using System;
@@ -24,7 +24,7 @@ namespace InventoryManagement.Controllers.Customer
             {
                 ResetTable();
             }
-            var customers = HTTPService.GET<List<CustomerGet>>("customers");
+            var customers = DataService.Get().GetCustomerDataController().GetAll();
             if (customers == null)
                 return;
 
@@ -74,7 +74,7 @@ namespace InventoryManagement.Controllers.Customer
         public void UpdateTableByCustomerName(string name)
         {
             var Table = GetTable();
-            foreach  (DataGridViewRow row in Table.Rows)
+            foreach (DataGridViewRow row in Table.Rows)
             {
                 bool visible = false;
                 var customerName = row.Cells["CustomerTable_Name"].Value.ToString().ToLower();

@@ -3,7 +3,6 @@ using InventoryManagement.EventHandlers.Product;
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Product;
 using InventoryManagement.UI.UserControls;
 using System;

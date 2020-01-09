@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventoryManagement.Models;
 using InventoryManagement.UI.Product;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.Controllers;
 
 namespace InventoryManagement.UI.UserControls

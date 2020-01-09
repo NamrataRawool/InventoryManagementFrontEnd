@@ -1,6 +1,6 @@
 ﻿using InventoryManagement.Controllers.Product;
 using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +29,7 @@ namespace InventoryManagement.UI.Product
 
         private List<string> GetCategories()
         {
-            var categories = HTTPService.GET<List<CategoryGet>>("categories");
+            var categories = DataService.Get().GetCategoryDataController().GetAll();
             var categoryDataSource = new List<string>();
             foreach (var category in categories)
             {

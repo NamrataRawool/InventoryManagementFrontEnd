@@ -38,14 +38,14 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_searchVendor_Click(object sender, EventArgs e)
         {
-            m_Controller.SearchVendor(tb_searchVendors.Text);
+            m_Controller.UpdateTableByCompanyName(tb_searchVendors.Text);
         }
 
         private void tb_searchVendors_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                m_Controller.SearchVendor(tb_searchVendors.Text);
+                m_Controller.UpdateTableByCompanyName(tb_searchVendors.Text);
             }
         }
     }

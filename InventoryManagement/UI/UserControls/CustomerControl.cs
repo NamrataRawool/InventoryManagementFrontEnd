@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.Models;
 using InventoryManagement.UI.Customer;
 using InventoryManagement.Controllers.Customer;

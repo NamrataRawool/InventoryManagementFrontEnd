@@ -2,7 +2,6 @@
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.UserControls;
 using InventoryManagement.UI.Vendor;
 using System;

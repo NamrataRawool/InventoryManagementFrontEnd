@@ -11,9 +11,9 @@ using InventoryManagement.Models;
 using InventoryManagement.Events;
 using InventoryManagement.Broadcaster;
 using InventoryManagement.Controllers;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.Utilities;
 using InventoryManagement.Controllers.Transaction;
+using InventoryManagement.Services.Data;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -53,7 +53,7 @@ namespace InventoryManagement.UI.UserControls
             }
             lbl_errorText.Text = string.Empty;
             int productId = int.Parse(this.tb_barCode.Text);
-            ProductGet product = HTTPService.GET<ProductGet>("product/" + productId);
+            var product = DataService.Get().GetProductDataController().Get(productId);
 
             if (product == null)
             {
@@ -81,7 +81,7 @@ namespace InventoryManagement.UI.UserControls
                 }
                 lbl_errorText.Text = string.Empty;
                 int productId = int.Parse(this.tb_barCode.Text);
-                ProductGet product = HTTPService.GET<ProductGet>("product/" + productId);
+                var product = DataService.Get().GetProductDataController().Get(productId);
                 if (product == null)
                 {
                     lbl_errorText.Text = "Record not found";
@@ -108,7 +108,7 @@ namespace InventoryManagement.UI.UserControls
             lbl_customerError.Text = string.Empty;
             if (e.KeyCode == Keys.Enter)
             {
-                var customer = HTTPService.GET<CustomerGet>("customer/name=" + tb_customerName.Text);
+                var customer = DataService.Get().GetCustomerDataController().GetByName(tb_customerName.Text.Trim());
                 if (customer == null)
                 {
                     lbl_customerError.Text = "Customer Not found!";
@@ -146,7 +146,7 @@ namespace InventoryManagement.UI.UserControls
         #region Transaction History
         private List<string> InitializeCustomerNameDatasource()
         {
-            var customers = HTTPService.GET<List<CustomerGet>>("customers");
+            var customers = DataService.Get().GetCustomerDataController().GetAll();
             if (customers == null)
                 return null;
 

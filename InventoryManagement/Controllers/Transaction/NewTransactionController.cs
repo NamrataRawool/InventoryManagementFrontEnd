@@ -2,7 +2,7 @@
 using InventoryManagement.EventHandlers.Transaction;
 using InventoryManagement.Events;
 using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
 using InventoryManagement.UI.Transaction;
 using InventoryManagement.UI.UserControls;
@@ -82,8 +82,10 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void UpdateBillProductsDataRow()
         {
+            if (m_UIControl.Bill_ProductsDataView.SelectedRows.Count < 0)
+                return;
             var productId = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_ProductId"].Value);
-            var rowEntry = HTTPService.GET<ProductGet>("product/" + productId);
+            var rowEntry = DataService.Get().GetProductDataController().Get(productId);
 
             rowEntry.Quantity = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value);
 
@@ -97,7 +99,7 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void SearchCustomerByMobileNumber(string mobileNumber)
         {
-            var customer = HTTPService.GET<CustomerGet>("customer/mobileNumber=" + mobileNumber);
+            var customer = DataService.Get().GetCustomerDataController().GetByMobileNumber(mobileNumber);
             if (customer == null || customer.ID == 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to add new customer?", "Not found !", MessageBoxButtons.YesNo);
@@ -110,11 +112,6 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession.SetCustomer(customer);
             m_UIControl.tb_customerName.Text = customer.Name;
             m_UIControl.tb_pendingAmount.Text = customer.PendingAmount.ToString();
-        }
-        public void SaveTransaction(TransactionPost transaction)
-        {
-            var transactionPost = HTTPService.POST<TransactionGet, TransactionPost>("Transaction", transaction);
-            ResetTransaction();
         }
 
         public void OpenForm_ViewBill()

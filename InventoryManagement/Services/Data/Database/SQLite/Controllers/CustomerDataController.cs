@@ -44,6 +44,16 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             return new CustomerGet(m_Context, customerDTO);
         }
 
+        public CustomerGet GetByMobileNumber(string mobileNumber)
+        {
+            var customerDTO = m_Context.Customers
+                                .AsNoTracking()
+                                .FirstOrDefaultAsync(c => c.MobileNumber.Equals(mobileNumber))
+                                .Result;
+
+            return new CustomerGet(m_Context, customerDTO);
+        }
+
         public CustomerGet Post(CustomerPost post)
         {
             var dto = new CustomerDTO(post);

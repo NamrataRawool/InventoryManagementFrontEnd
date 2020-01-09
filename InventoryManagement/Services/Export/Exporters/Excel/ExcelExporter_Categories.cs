@@ -1,6 +1,5 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
-using InventoryManagement.Services.HTTP;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;

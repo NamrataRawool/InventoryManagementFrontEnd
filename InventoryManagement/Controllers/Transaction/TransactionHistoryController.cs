@@ -1,5 +1,5 @@
 ﻿using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Data;
 using InventoryManagement.UI.UserControls;
 using System;
 using System.Collections.Generic;
@@ -15,13 +15,14 @@ namespace InventoryManagement.Controllers.Transaction
         public TransactionHistoryController(TransactionControl UIControl)
              : base(UIControl)
         {
-           
+
         }
 
         public void SearchTransactionsByDate(string from, string to)
         {
             m_UIControl.lbl_transactionError.Text = string.Empty;
-            List<TransactionGet> transactions = HTTPService.GET<List<TransactionGet>>("Transaction/from=" + from + "&to=" + to);
+
+            List<TransactionGet> transactions = DataService.Get().GetTransactionDataController().GetByDate(DateTime.Parse(from), DateTime.Parse(to));
             if (transactions.Count == 0)
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
             InitializeTransactionHistoryTable(transactions);
@@ -31,8 +32,8 @@ namespace InventoryManagement.Controllers.Transaction
         public void SearchTransactionByCustomerName(string name)
         {
             m_UIControl.lbl_transactionError.Text = string.Empty;
-            int customerID = HTTPService.GET<CustomerGet>("Customer/name=" + name).ID;
-            List<TransactionGet> transactions = HTTPService.GET<List<TransactionGet>>("Transaction/customerId=" + customerID);
+            int customerID = DataService.Get().GetCustomerDataController().GetByName(name).ID;
+            List<TransactionGet> transactions = DataService.Get().GetTransactionDataController().GetByCustomerID(customerID);
             if (transactions.Count == 0)
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
             InitializeTransactionHistoryTable(transactions);
@@ -79,7 +80,7 @@ namespace InventoryManagement.Controllers.Transaction
 
         protected override void RegisterEvents()
         {
-            
+
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace InventoryManagement.Controllers.Customer
                 customerPost.Name = m_UIControl.tb_CustomerName.Text;
                 customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
                 customerPost.PendingAmount = 0;
-                var customer = HTTPService.POST<CustomerGet, CustomerPost>("customer", customerPost);
+                var customer = DataService.Get().GetCustomerDataController().Post(customerPost);
                 if (customer != null)
                     m_UIControl.DialogResult = DialogResult.Yes;
                 else

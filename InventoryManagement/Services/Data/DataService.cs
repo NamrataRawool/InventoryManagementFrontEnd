@@ -19,7 +19,7 @@ namespace InventoryManagement.Services.Data
         public void Initialize()
         {
             m_Context = new InventoryDbContext();
-
+            m_Context.Database.EnsureCreated();
             m_ProductDataController = new ProductDataController(m_Context);
             m_CategoryDataController = new CategoryDataController(m_Context);
             m_CustomerDataController = new CustomerDataController(m_Context);

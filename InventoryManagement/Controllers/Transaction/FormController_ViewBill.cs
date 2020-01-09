@@ -1,5 +1,5 @@
 ﻿using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
+using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Transaction;
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace InventoryManagement.Controllers.Transaction
             //Removing last comma
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
-            var transaction = HTTPService.POST<TransactionGet, TransactionPost>("Transaction", transactionPost);
+            var transaction = DataService.Get().GetTransactionDataController().Post(transactionPost);
         }
 
         private void InitializeViewBillTable()

@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventoryManagement.Models;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Category;
+using InventoryManagement.Services.Data;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -17,12 +17,12 @@ namespace InventoryManagement.UI.UserControls
     {
         public CategoryControl()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
 
         private void CategoryControl_Load(object sender, EventArgs e)
         {
-            categoryDataView.DataSource = HTTPService.GET<List<CategoryGet>>("categories");
+            categoryDataView.DataSource = DataService.Get().GetCategoryDataController().GetAll();
         }
 
         private void btn_editCategory_Click(object sender, EventArgs e)

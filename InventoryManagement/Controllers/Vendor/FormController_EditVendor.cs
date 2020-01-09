@@ -1,6 +1,5 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
-using InventoryManagement.Services.HTTP;
 using InventoryManagement.UI.Vendor;
 using System;
 using System.Collections.Generic;
