@@ -33,7 +33,7 @@ namespace InventoryManagement.Controllers.Transaction
             TransactionPost transactionPost = new TransactionPost();
             transactionPost.CustomerID = m_transactionSession.GetCustomer().ID;
             transactionPost.TransactionDateTime = DateTime.Now;
-            transactionPost.TotalPrice = Convert.ToInt32(m_transactionSession.subtotal);
+            transactionPost.TotalPrice = double.Parse(m_transactionSession.subtotal);
             string productIds = string.Empty;
             string productQuantity = string.Empty;
             foreach (var product in m_transactionSession.GetRowEntries())

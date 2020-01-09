@@ -48,15 +48,11 @@ namespace InventoryManagement.Models
 
     public class CustomerGet : CustomerBase
     {
-        private InventoryDbContext context;
-        private CustomerDTO customerDTO;
-
         public CustomerGet() { }
 
         public CustomerGet(InventoryDbContext context, CustomerDTO customerDTO)
+            : base(customerDTO)
         {
-            this.context = context;
-            this.customerDTO = customerDTO;
         }
     }
 
