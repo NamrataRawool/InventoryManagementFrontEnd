@@ -24,13 +24,13 @@ namespace InventoryManagement.UI.UserControls
 
         public TransactionControl()
         {
+            InitializeComponent();
+            m_newTransactionController = new NewTransactionController(this);
+            m_transactionHistoryController = new TransactionHistoryController(this);
         }
 
         private void TransactionControl_Load(Object sender, EventArgs e)
         {
-            InitializeComponent();
-            m_newTransactionController = new NewTransactionController(this);
-            m_transactionHistoryController = new TransactionHistoryController(this);
 
             tb_barCode.Focus();
             m_newTransactionController.Initialize();
@@ -170,7 +170,13 @@ namespace InventoryManagement.UI.UserControls
         private void btn_exportToExcel_Click(object sender, EventArgs e)
         {
         }
+        private void TransactionHistoryDataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            m_transactionHistoryController.OpenForm_ViewTransactionDetails();
+        }
+
         #endregion
+
 
     }
 }

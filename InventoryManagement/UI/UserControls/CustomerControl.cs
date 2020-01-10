@@ -18,13 +18,13 @@ namespace InventoryManagement.UI.UserControls
         CustomerContoller m_controller;
         public CustomerControl()
         {
+            InitializeComponent();
+            m_controller = new CustomerContoller(this);
         }
 
         private void CustomerControl_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-            m_controller = new CustomerContoller(this);
-            m_controller.Initialize();
+            
         }
 
         private void btn_addCustomer_Click(object sender, EventArgs e)

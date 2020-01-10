@@ -62,12 +62,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_addProductToBill = new System.Windows.Forms.Button();
             this.Bill_ProductsDataView = new System.Windows.Forms.DataGridView();
-            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_transactionHistory = new System.Windows.Forms.TabPage();
             this.lbl_transactionError = new System.Windows.Forms.Label();
             this.btn_exportToExcel = new System.Windows.Forms.Button();
@@ -84,8 +78,13 @@
             this.Transaction_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Transaction_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
@@ -435,7 +434,7 @@
             this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -452,7 +451,7 @@
             this.BillTable_TotalPrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -479,41 +478,6 @@
             this.Bill_ProductsDataView.TabIndex = 25;
             this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
             this.Bill_ProductsDataView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bill_ProductsDataView_KeyDown);
-            // 
-            // BillTable_ProductId
-            // 
-            this.BillTable_ProductId.HeaderText = "Product Id";
-            this.BillTable_ProductId.Name = "BillTable_ProductId";
-            this.BillTable_ProductId.ReadOnly = true;
-            // 
-            // BillTable_Name
-            // 
-            this.BillTable_Name.HeaderText = "Name";
-            this.BillTable_Name.Name = "BillTable_Name";
-            this.BillTable_Name.ReadOnly = true;
-            // 
-            // BillTable_Price
-            // 
-            this.BillTable_Price.HeaderText = "Price (in Rs)";
-            this.BillTable_Price.Name = "BillTable_Price";
-            this.BillTable_Price.ReadOnly = true;
-            // 
-            // BillTable_Discount
-            // 
-            this.BillTable_Discount.HeaderText = "Discount (in Rs)";
-            this.BillTable_Discount.Name = "BillTable_Discount";
-            this.BillTable_Discount.ReadOnly = true;
-            // 
-            // BillTable_Quantity
-            // 
-            this.BillTable_Quantity.HeaderText = "Quantity";
-            this.BillTable_Quantity.Name = "BillTable_Quantity";
-            // 
-            // BillTable_TotalPrice
-            // 
-            this.BillTable_TotalPrice.HeaderText = "Total Price (in Rs)";
-            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
-            this.BillTable_TotalPrice.ReadOnly = true;
             // 
             // tab_transactionHistory
             // 
@@ -667,6 +631,7 @@
             // 
             // TransactionHistoryDataView
             // 
+            this.TransactionHistoryDataView.AllowUserToAddRows = false;
             this.TransactionHistoryDataView.AllowUserToOrderColumns = true;
             this.TransactionHistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TransactionHistoryDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -676,7 +641,7 @@
             this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -688,11 +653,10 @@
             this.Transaction_Date,
             this.Transaction_ID,
             this.Transaction_CustomerName,
-            this.Transaction_Quantity,
             this.Transaction_TotalPrice});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -717,6 +681,7 @@
             this.TransactionHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TransactionHistoryDataView.Size = new System.Drawing.Size(903, 407);
             this.TransactionHistoryDataView.TabIndex = 26;
+            this.TransactionHistoryDataView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionHistoryDataView_CellDoubleClick);
             // 
             // Transaction_Date
             // 
@@ -736,17 +701,46 @@
             this.Transaction_CustomerName.Name = "Transaction_CustomerName";
             this.Transaction_CustomerName.ReadOnly = true;
             // 
-            // Transaction_Quantity
-            // 
-            this.Transaction_Quantity.HeaderText = "Quantity";
-            this.Transaction_Quantity.Name = "Transaction_Quantity";
-            this.Transaction_Quantity.ReadOnly = true;
-            // 
             // Transaction_TotalPrice
             // 
             this.Transaction_TotalPrice.HeaderText = "Total Price (in Rs)";
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
+            // 
+            // BillTable_ProductId
+            // 
+            this.BillTable_ProductId.HeaderText = "ID";
+            this.BillTable_ProductId.Name = "BillTable_ProductId";
+            this.BillTable_ProductId.ReadOnly = true;
+            // 
+            // BillTable_Name
+            // 
+            this.BillTable_Name.HeaderText = "Name";
+            this.BillTable_Name.Name = "BillTable_Name";
+            this.BillTable_Name.ReadOnly = true;
+            // 
+            // BillTable_Price
+            // 
+            this.BillTable_Price.HeaderText = "Price (in Rs)";
+            this.BillTable_Price.Name = "BillTable_Price";
+            this.BillTable_Price.ReadOnly = true;
+            // 
+            // BillTable_Discount
+            // 
+            this.BillTable_Discount.HeaderText = "Discount (in Rs)";
+            this.BillTable_Discount.Name = "BillTable_Discount";
+            this.BillTable_Discount.ReadOnly = true;
+            // 
+            // BillTable_Quantity
+            // 
+            this.BillTable_Quantity.HeaderText = "Quantity";
+            this.BillTable_Quantity.Name = "BillTable_Quantity";
+            // 
+            // BillTable_TotalPrice
+            // 
+            this.BillTable_TotalPrice.HeaderText = "Total Price (in Rs)";
+            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
+            this.BillTable_TotalPrice.ReadOnly = true;
             // 
             // TransactionControl
             // 
@@ -801,11 +795,6 @@
         private System.Windows.Forms.GroupBox gb_billDetails;
         private System.Windows.Forms.GroupBox gb_customerDetails;
         public System.Windows.Forms.DataGridView TransactionHistoryDataView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_TotalPrice;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker DateTime_fromDate;
@@ -819,16 +808,20 @@
         private System.Windows.Forms.Button btn_deleteBillRecord;
         private System.Windows.Forms.Label lbl_errorText;
         public System.Windows.Forms.Label lbl_transactionError;
+        public System.Windows.Forms.Label lbl_customerError;
+        public System.Windows.Forms.TextBox tb_totalTax;
+        public System.Windows.Forms.TextBox tb_amountDue;
+        private System.Windows.Forms.Button btn_resetTransaction;
+        public System.Windows.Forms.TextBox tb_barCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Transaction_TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_TotalPrice;
-        public System.Windows.Forms.Label lbl_customerError;
-        public System.Windows.Forms.TextBox tb_totalTax;
-        public System.Windows.Forms.TextBox tb_amountDue;
-        private System.Windows.Forms.Button btn_resetTransaction;
-        public System.Windows.Forms.TextBox tb_barCode;
     }
 }

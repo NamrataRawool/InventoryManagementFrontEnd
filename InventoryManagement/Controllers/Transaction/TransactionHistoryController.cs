@@ -1,5 +1,6 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.UI.Transaction;
 using InventoryManagement.UI.UserControls;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,14 @@ namespace InventoryManagement.Controllers.Transaction
             InitializeTransactionHistoryTable(transactions);
         }
 
+        public void OpenForm_ViewTransactionDetails()
+        {
+            var Table = GetTransactionHistoryTable();
+            var transasctionId = Convert.ToInt32(Table.CurrentRow.Cells["Transaction_ID"].Value);
+            Form_ViewTransactionDetails transactionDetails = new Form_ViewTransactionDetails(transasctionId);
+            transactionDetails.ShowDialog();
+        }
+
         public void InitializeTransactionHistoryTable(List<TransactionGet> transactions)
         {
             ResetTransactionHistoryTable();
@@ -54,15 +63,16 @@ namespace InventoryManagement.Controllers.Transaction
             DataGridViewRow NewRow = Table.Rows[Index];
             NewRow.Cells["Transaction_ID"].Value = transaction.ID;
             NewRow.Cells["Transaction_Date"].Value = transaction.TransactionDateTime;
-            NewRow.Cells["Transaction_CustomerName"].Value = transaction.Customer.Name;
+            if (transaction.Customer != null)
+                NewRow.Cells["Transaction_CustomerName"].Value = transaction.Customer.Name;
+            else
+                NewRow.Cells["Transaction_CustomerName"].Value = "--";
             string[] productQuantity = transaction.ProductQuantity.Split(',');
             int qauntity = 0;
             foreach (string pq in productQuantity)
             {
                 qauntity += Convert.ToInt32(pq);
             }
-
-            NewRow.Cells["Transaction_Quantity"].Value = qauntity;
             NewRow.Cells["Transaction_TotalPrice"].Value = transaction.TotalPrice; ;
         }
 

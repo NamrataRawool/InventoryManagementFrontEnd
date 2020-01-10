@@ -20,13 +20,12 @@ namespace InventoryManagement.UI.UserControls
 
         public ProductControl()
         {
+            InitializeComponent();
+            m_Controller = new ProductController(this);
         }
 
         private void ProductControl_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-
-            m_Controller = new ProductController(this);
             m_Controller.Initialize();
         }
 

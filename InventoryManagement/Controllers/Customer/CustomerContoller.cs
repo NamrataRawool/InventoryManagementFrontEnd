@@ -15,7 +15,7 @@ namespace InventoryManagement.Controllers.Customer
     {
         public CustomerContoller(CustomerControl UIControl) : base(UIControl)
         {
-
+            Initialize();
         }
 
         public void Initialize(bool reset = true)

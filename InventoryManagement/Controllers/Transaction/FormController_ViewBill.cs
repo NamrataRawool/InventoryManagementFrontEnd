@@ -64,7 +64,13 @@ namespace InventoryManagement.Controllers.Transaction
             NewRow.Cells["ViewBillTable_ProductId"].Value = product.ID;
             NewRow.Cells["ViewBillTable_ProductName"].Value = product.Name;
             NewRow.Cells["ViewBillTable_Quantity"].Value = product.Quantity;
-            NewRow.Cells["ViewBillTable_TotalPrice"].Value = product.RetailPrice;
+            NewRow.Cells["ViewBillTable_ActualPrice"].Value = product.Quantity * product.RetailPrice;
+            NewRow.Cells["ViewBillTable_DiscountedPrice"].Value = product.Quantity * CalculateDiscountedPrice(product);
+        }
+        private double CalculateDiscountedPrice(ProductGet product)
+        {
+            double discountInRupees = product.RetailPrice * (product.Discount / 100);
+            return product.RetailPrice - discountInRupees;
         }
         private void ResetViewBillTable()
         {
