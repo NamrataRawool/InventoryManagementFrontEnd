@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Controllers.Customer;
+using InventoryManagement.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,14 +31,9 @@ namespace InventoryManagement.UI.Customer
             m_controller.SaveCustomer();
         }
 
-        private void tb_CustomerName_TextChanged(object sender, EventArgs e)
-        {
-            m_controller.IsValidName(tb_CustomerName.Text.Trim());
-        }
-
         private void tb_CustomerName_Validating(object sender, CancelEventArgs e)
         {
-            var isValid = m_controller.IsValidName(tb_CustomerName.Text.Trim());
+            var isValid = Validator.IsValidString(tb_CustomerName.Text.Trim());
             if (!isValid)
             {
                 e.Cancel = true;
@@ -48,7 +44,7 @@ namespace InventoryManagement.UI.Customer
 
         private void tb_customerMobile_Validating(object sender, CancelEventArgs e)
         {
-            var isValid = m_controller.IsValidMobileNumber(tb_customerMobile.Text.Trim());
+            var isValid = Validator.IsValidMobileNumber(tb_customerMobile.Text.Trim());
             if (!isValid)
             {
                 e.Cancel = true;

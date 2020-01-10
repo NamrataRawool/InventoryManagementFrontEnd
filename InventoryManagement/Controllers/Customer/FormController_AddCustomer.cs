@@ -1,6 +1,7 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
+using InventoryManagement.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,53 +51,26 @@ namespace InventoryManagement.Controllers.Customer
 
             if (!string.IsNullOrEmpty(email))
             {
-                if (!IsValidEmail(email))
+                if (!Validator.IsValidEmail(email))
+                {
+                    m_UIControl.lbl_customerErrorText.Text = "Email Id not valid";
                     return false;
+                }
             }
 
-            if (!IsValidName(name))
-                return false;
-            if (!IsValidMobileNumber(mobileNumber))
-                return false;
-
-            return true;
-        }
-
-        public bool IsValidName(string name)
-        {
-            m_UIControl.lbl_customerErrorText.Text = string.Empty;
-            string namePattern = @"^[A-z][A-z|\s]+$";
-            if (!Regex.IsMatch(name, namePattern))
+            if (!Validator.IsValidString(name))
             {
-                m_UIControl.lbl_customerErrorText.Text = "Name not valid!";
+                m_UIControl.lbl_customerErrorText.Text = "Name not valid";
+                return false;
+            }
+            if (!Validator.IsValidMobileNumber(mobileNumber))
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Mobile Number not valid";
                 return false;
             }
             return true;
         }
 
-        public bool IsValidMobileNumber(string mobileNumber)
-        {
-            m_UIControl.lbl_customerErrorText.Text = string.Empty;
-            string mobileNumberPattern = @"^[0-9]{10}$";
-            if (!Regex.IsMatch(mobileNumber, mobileNumberPattern))
-            {
-                m_UIControl.lbl_customerErrorText.Text = "Mobile number not valid";
-                return false;
-            }
-            return true;
-        }
-
-        public bool IsValidEmail(string email)
-        {
-            m_UIControl.lbl_customerErrorText.Text = string.Empty;
-            string emailPattern = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
-            if (!Regex.IsMatch(email, emailPattern))
-            {
-                m_UIControl.lbl_customerErrorText.Text = "Email Id not valid!";
-                return false;
-            }
-            return true;
-        }
 
         public void ResetTextBoxes()
         {
