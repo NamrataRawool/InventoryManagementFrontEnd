@@ -77,7 +77,8 @@ namespace InventoryManagement.Models
             : base(productDto)
         {
             ImagePath = productDto.ImagePath;
-            Category = new CategoryGet(context, context.GetCategory(productDto.CategoryID));
+            if (productDto.CategoryID != 0)
+                Category = new CategoryGet(context, context.GetCategory(productDto.CategoryID));
         }
 
         public int Quantity { get; set; }

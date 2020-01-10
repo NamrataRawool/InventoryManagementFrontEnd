@@ -18,6 +18,10 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
         public VendorGet Get(int id)
         {
             var vendorDTO = m_Context.GetVendor(id);
+
+            if (vendorDTO == null)
+                return null;
+
             return new VendorGet(m_Context, vendorDTO);
         }
 
@@ -26,6 +30,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             var vendorDTOs = m_Context.Vendors
                                 .AsNoTracking()
                                 .ToList();
+
+            if (vendorDTOs == null)
+                return null;
 
             List<VendorGet> outList = new List<VendorGet>();
             foreach (var dto in vendorDTOs)
@@ -36,23 +43,30 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
         public VendorGet Post(VendorPost post)
         {
-            var dto = new VendorDTO(post);
-            m_Context.Vendors.Add(dto);
+            var vendorDTO = new VendorDTO(post);
+            m_Context.Vendors.Add(vendorDTO);
             m_Context.SaveChanges();
 
-            return new VendorGet(m_Context, dto);
+            if (vendorDTO == null)
+                return null;
+
+            return new VendorGet(m_Context, vendorDTO);
         }
 
         public VendorGet Put(VendorPost post)
         {
-            var dto = m_Context.GetVendor(post.ID);
-            dto.CopyFrom(post);
+            var vendorDTO = m_Context.GetVendor(post.ID);
 
-            m_Context.Entry(dto).State = EntityState.Modified;
+            if (vendorDTO == null)
+                return null;
+
+            vendorDTO.CopyFrom(post);
+
+            m_Context.Entry(vendorDTO).State = EntityState.Modified;
 
             m_Context.SaveChanges();
 
-            return new VendorGet(m_Context, dto);
+            return new VendorGet(m_Context, vendorDTO);
         }
 
     }

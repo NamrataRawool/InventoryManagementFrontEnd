@@ -57,7 +57,7 @@ namespace InventoryManagement.Models
 
     public class TransactionGet : TransactionBase
     {
-        public TransactionGet(InventoryDbContext context, TransactionDTO dto) 
+        public TransactionGet(InventoryDbContext context, TransactionDTO dto)
             : base(dto)
         {
             ProductDetailsList = new List<ProductDetails>();
@@ -76,8 +76,8 @@ namespace InventoryManagement.Models
                     ProductDetailsList.Add(new ProductDetails(new ProductGet(context, context.GetProduct(ID)), Quantity));
                 }
             }
-
-            Customer = new CustomerGet(context, context.GetCustomer(dto.CustomerID));
+            if (dto.CustomerID != 0)
+                Customer = new CustomerGet(context, context.GetCustomer(dto.CustomerID));
         }
 
         public List<ProductDetails> ProductDetailsList { get; set; }

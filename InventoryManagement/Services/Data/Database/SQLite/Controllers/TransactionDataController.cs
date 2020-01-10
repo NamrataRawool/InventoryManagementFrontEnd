@@ -10,7 +10,7 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 {
     public class TransactionDataController : IDataController
     {
-        public TransactionDataController(InventoryDbContext context) 
+        public TransactionDataController(InventoryDbContext context)
             : base(context)
         {
         }
@@ -18,6 +18,10 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
         public TransactionGet Get(int id)
         {
             var transactionDTO = m_Context.GetTransaction(id);
+
+            if (transactionDTO == null)
+                return null;
+
             return new TransactionGet(m_Context, transactionDTO);
         }
 
@@ -26,6 +30,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             var transactionDTOs = m_Context.Transactions
                                 .AsNoTracking()
                                 .ToList();
+
+            if (transactionDTOs == null)
+                return null;
 
             List<TransactionGet> outList = new List<TransactionGet>();
             foreach (var dto in transactionDTOs)
@@ -41,6 +48,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
                                 .ToListAsync()
                                 .Result;
 
+            if (transactionsDTOs == null)
+                return null;
+
             List<TransactionGet> outList = new List<TransactionGet>();
             foreach (var dto in transactionsDTOs)
                 outList.Add(new TransactionGet(m_Context, dto));
@@ -55,6 +65,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
                                     .ToListAsync()
                                     .Result;
 
+            if (transactionsDTOs == null)
+                return null;
+
             List<TransactionGet> transactionList = new List<TransactionGet>();
             foreach (var dto in transactionsDTOs)
                 transactionList.Add(new TransactionGet(m_Context, dto));
@@ -64,23 +77,31 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
         public TransactionGet Post(TransactionPost post)
         {
-            var dto = new TransactionDTO(post);
-            m_Context.Transactions.Add(dto);
+            var transactionDTO = new TransactionDTO(post);
+
+            if (transactionDTO == null)
+                return null;
+
+            m_Context.Transactions.Add(transactionDTO);
             m_Context.SaveChanges();
 
-            return new TransactionGet(m_Context, dto);
+            return new TransactionGet(m_Context, transactionDTO);
         }
 
         public TransactionGet Put(TransactionPost post)
         {
-            var dto = m_Context.GetTransaction(post.ID);
-            dto.CopyFrom(post);
+            var transactionDTO = m_Context.GetTransaction(post.ID);
 
-            m_Context.Entry(dto).State = EntityState.Modified;
+            if (transactionDTO == null)
+                return null;
+
+            transactionDTO.CopyFrom(post);
+
+            m_Context.Entry(transactionDTO).State = EntityState.Modified;
 
             m_Context.SaveChanges();
 
-            return new TransactionGet(m_Context, dto);
+            return new TransactionGet(m_Context, transactionDTO);
         }
 
     }

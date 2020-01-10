@@ -7,15 +7,19 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 {
     public class CategoryDataController : IDataController
     {
-        public CategoryDataController(InventoryDbContext context) 
+        public CategoryDataController(InventoryDbContext context)
             : base(context)
         {
         }
 
         public CategoryGet Get(int id)
         {
-            var productDTO = m_Context.GetCategory(id);
-            return new CategoryGet(m_Context, productDTO);
+            var categoryDTO = m_Context.GetCategory(id);
+
+            if (categoryDTO == null)
+                return null;
+
+            return new CategoryGet(m_Context, categoryDTO);
         }
 
         public List<CategoryGet> GetAll()
@@ -23,6 +27,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             var categoryDTOs = m_Context.Categories
                                 .AsNoTracking()
                                 .ToList();
+
+            if (categoryDTOs == null)
+                return null;
 
             List<CategoryGet> outList = new List<CategoryGet>();
             foreach (var dto in categoryDTOs)
@@ -33,33 +40,43 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
         public CategoryGet GetByName(string name)
         {
-            var dto = m_Context.Categories
+            var categoryDTO = m_Context.Categories
                                .AsNoTracking()
                                .FirstOrDefaultAsync(c => c.Name.Equals(name))
                                .Result;
 
-            return new CategoryGet(m_Context, dto);
+            if (categoryDTO == null)
+                return null;
+
+            return new CategoryGet(m_Context, categoryDTO);
         }
 
         public CategoryGet Post(CategoryPost post)
         {
-            var dto = new CategoryDTO(post);
-            m_Context.Categories.Add(dto);
+            var categoryDTO = new CategoryDTO(post);
+            m_Context.Categories.Add(categoryDTO);
             m_Context.SaveChanges();
 
-            return new CategoryGet(m_Context, dto);
+            if (categoryDTO == null)
+                return null;
+
+            return new CategoryGet(m_Context, categoryDTO);
         }
 
         public CategoryGet Put(CategoryPost post)
         {
-            var dto = m_Context.GetCategory(post.ID);
-            dto.CopyFrom(post);
+            var categoryDTO = m_Context.GetCategory(post.ID);
 
-            m_Context.Entry(dto).State = EntityState.Modified;
+            if (categoryDTO == null)
+                return null;
+
+            categoryDTO.CopyFrom(post);
+
+            m_Context.Entry(categoryDTO).State = EntityState.Modified;
 
             m_Context.SaveChanges();
 
-            return new CategoryGet(m_Context, dto);
+            return new CategoryGet(m_Context, categoryDTO);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 {
     public class ProductDataController : IDataController
     {
-        
-        public ProductDataController(InventoryDbContext context) 
+
+        public ProductDataController(InventoryDbContext context)
             : base(context)
         {
         }
@@ -19,6 +19,10 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
         public ProductGet Get(int id)
         {
             var productDTO = m_Context.GetProduct(id);
+
+            if (productDTO == null)
+                return null;
+
             return new ProductGet(m_Context, productDTO);
         }
 
@@ -27,6 +31,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             var productDTOs = m_Context.Products
                                 .AsNoTracking()
                                 .ToList();
+
+            if (productDTOs == null)
+                return null;
 
             List<ProductGet> outList = new List<ProductGet>();
             foreach (var dto in productDTOs)
@@ -37,33 +44,40 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
         public ProductGet Post(ProductPost post)
         {
-            var dto = new ProductDTO(post);
+            var productDTO = new ProductDTO(post);
 
-            m_Context.Products.Add(dto);
+            m_Context.Products.Add(productDTO);
             m_Context.SaveChanges();
 
-            string pathToSave = SaveImage(dto);
-            dto.ImagePath = pathToSave;
+            string pathToSave = SaveImage(productDTO);
+            productDTO.ImagePath = pathToSave;
 
-            m_Context.Entry(dto).State = EntityState.Modified;
+            m_Context.Entry(productDTO).State = EntityState.Modified;
             m_Context.SaveChanges();
 
-            return new ProductGet(m_Context, dto);
+            if (productDTO == null)
+                return null;
+
+            return new ProductGet(m_Context, productDTO);
         }
 
         public ProductGet Put(ProductPost post, bool imageModified = true)
         {
-            var dto = m_Context.GetProduct(post.ID);
-            dto.CopyFrom(post);
+            var productDTO = m_Context.GetProduct(post.ID);
 
-            string pathToSave = SaveImage(dto, imageModified);
-            dto.ImagePath = pathToSave;
+            if (productDTO == null)
+                return null;
 
-            m_Context.Entry(dto).State = EntityState.Modified;
+            productDTO.CopyFrom(post);
+
+            string pathToSave = SaveImage(productDTO, imageModified);
+            productDTO.ImagePath = pathToSave;
+
+            m_Context.Entry(productDTO).State = EntityState.Modified;
 
             m_Context.SaveChanges();
 
-            return new ProductGet(m_Context, dto);
+            return new ProductGet(m_Context, productDTO);
         }
 
         // returns the path to save in the DB
@@ -94,7 +108,7 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             File.Copy(dto.ImagePath, finalPath, true);
 
             pathToSave = relativePath + filename;
-             return pathToSave;
+            return pathToSave;
         }
 
     }
