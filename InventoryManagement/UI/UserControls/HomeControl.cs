@@ -14,11 +14,11 @@ namespace InventoryManagement.UI.UserControls
     {
         public HomeControl()
         {
-            InitializeComponent();
         }
 
         private void HomeControl_Load(object sender, EventArgs e)
         {
+            InitializeComponent();
 
         }
     }

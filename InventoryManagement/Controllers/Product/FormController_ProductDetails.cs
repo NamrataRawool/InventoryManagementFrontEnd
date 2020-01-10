@@ -42,10 +42,15 @@ namespace InventoryManagement.Controllers.Product
 
             string categoryName = m_UIControl.cb_ProductDetails_Category.Text;
             product.CategoryID = DataService.Get().GetCategoryDataController().GetByName(categoryName).ID;
-            if (m_UIControl.pictureBox_ProductImage.Tag != null)
-                product.ImagePath = m_UIControl.pictureBox_ProductImage.Tag.ToString();
 
-            m_Product = DataService.Get().GetProductDataController().Put(product);
+            bool imageModified = false;
+            if (m_UIControl.pictureBox_ProductImage.Tag != null)
+            {
+                product.ImagePath = m_UIControl.pictureBox_ProductImage.Tag.ToString();
+                imageModified = true;
+            }
+
+            m_Product = DataService.Get().GetProductDataController().Put(product, imageModified);
             if (m_Product == null)
             {
                 MessageBox.Show(m_UIControl, "Failed to Update Product Details!");
@@ -97,7 +102,11 @@ namespace InventoryManagement.Controllers.Product
             UI.tf_ProductDetails_SGST.Text = m_Product.SGST.ToString();
 
             string filepath = GetImagePath(m_Product);
-            UI.pictureBox_ProductImage.Image = Image.FromFile(filepath);
+
+            using (var fs = new FileStream(filepath, FileMode.Open))
+            {
+                UI.pictureBox_ProductImage.Image = Image.FromStream(fs);
+            }
 
             // fill categories
             var Categories = DataService.Get().GetCategoryDataController().GetAll();

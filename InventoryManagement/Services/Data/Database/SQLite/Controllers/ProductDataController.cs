@@ -51,12 +51,12 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             return new ProductGet(m_Context, dto);
         }
 
-        public ProductGet Put(ProductPost post)
+        public ProductGet Put(ProductPost post, bool imageModified = true)
         {
             var dto = m_Context.GetProduct(post.ID);
             dto.CopyFrom(post);
 
-            string pathToSave = SaveImage(dto);
+            string pathToSave = SaveImage(dto, imageModified);
             dto.ImagePath = pathToSave;
 
             m_Context.Entry(dto).State = EntityState.Modified;
@@ -67,8 +67,11 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
         }
 
         // returns the path to save in the DB
-        private string SaveImage(ProductDTO dto)
+        private string SaveImage(ProductDTO dto, bool imageModified = true)
         {
+            if (!imageModified)
+                return dto.ImagePath;
+
             if (string.IsNullOrEmpty(dto.ImagePath))
                 return string.Empty;
 
@@ -91,7 +94,7 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             File.Copy(dto.ImagePath, finalPath, true);
 
             pathToSave = relativePath + filename;
-            return pathToSave;
+             return pathToSave;
         }
 
     }

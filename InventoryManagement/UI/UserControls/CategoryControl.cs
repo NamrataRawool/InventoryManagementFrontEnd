@@ -17,11 +17,12 @@ namespace InventoryManagement.UI.UserControls
     {
         public CategoryControl()
         {
-            InitializeComponent();
         }
 
         private void CategoryControl_Load(object sender, EventArgs e)
         {
+            InitializeComponent();
+
             categoryDataView.DataSource = DataService.Get().GetCategoryDataController().GetAll();
         }
 

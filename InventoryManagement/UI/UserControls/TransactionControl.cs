@@ -24,13 +24,14 @@ namespace InventoryManagement.UI.UserControls
 
         public TransactionControl()
         {
-            InitializeComponent();
-            m_newTransactionController = new NewTransactionController(this);
-            m_transactionHistoryController = new TransactionHistoryController(this);
         }
 
         private void TransactionControl_Load(Object sender, EventArgs e)
         {
+            InitializeComponent();
+            m_newTransactionController = new NewTransactionController(this);
+            m_transactionHistoryController = new TransactionHistoryController(this);
+
             tb_barCode.Focus();
             m_newTransactionController.Initialize();
             ResetTextBox();
