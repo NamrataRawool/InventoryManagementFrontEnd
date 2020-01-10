@@ -16,9 +16,20 @@ namespace InventoryManagement.Controllers.Transaction
         public TransactionHistoryController(TransactionControl UIControl)
              : base(UIControl)
         {
-
+            m_UIControl.cb_customerName.DataSource = InitializeCustomerNameDatasource();
         }
+        private List<string> InitializeCustomerNameDatasource()
+        {
+            var customers = DataService.Get().GetCustomerDataController().GetAll();
+            if (customers == null)
+                return null;
 
+            List<string> customerDataSource = new List<string>();
+            foreach (var customer in customers)
+                customerDataSource.Add(customer.Name);
+
+            return customerDataSource;
+        }
         public void SearchTransactionsByDate(string from, string to)
         {
             m_UIControl.lbl_transactionError.Text = string.Empty;

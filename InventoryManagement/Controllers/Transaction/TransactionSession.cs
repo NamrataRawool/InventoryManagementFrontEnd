@@ -26,7 +26,19 @@ namespace InventoryManagement.Controllers.Transaction
         {
             return m_rowEntries;
         }
-
+        public ProductGet GetRowEntry(int id)
+        {
+            if (m_rowEntries == null)
+                return null;
+            foreach (var product in m_rowEntries)
+            {
+                if (product.ID == id)
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
         public CustomerGet GetCustomer()
         {
             return m_customer;
