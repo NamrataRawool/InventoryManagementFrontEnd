@@ -45,7 +45,7 @@ namespace InventoryManagement.Controllers.Transaction
             //Removing last comma
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
-            var transaction = DataService.Get().GetTransactionDataController().Post(transactionPost);
+            var transaction = DataService.GetTransactionDataController().Post(transactionPost);
         }
 
         private void InitializeViewBillTable()

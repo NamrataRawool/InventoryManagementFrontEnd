@@ -85,7 +85,7 @@ namespace InventoryManagement.Controllers.Transaction
             if (m_UIControl.Bill_ProductsDataView.SelectedRows.Count < 0)
                 return;
             var productId = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_ProductId"].Value);
-            var rowEntry = DataService.Get().GetProductDataController().Get(productId);
+            var rowEntry = DataService.GetProductDataController().Get(productId);
 
             rowEntry.Quantity = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value);
 
@@ -99,7 +99,7 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void SearchCustomerByMobileNumber(string mobileNumber)
         {
-            var customer = DataService.Get().GetCustomerDataController().GetByMobileNumber(mobileNumber);
+            var customer = DataService.GetCustomerDataController().GetByMobileNumber(mobileNumber);
             if (customer == null || customer.ID == 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to add new customer?", "Not found !", MessageBoxButtons.YesNo);

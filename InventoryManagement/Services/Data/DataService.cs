@@ -11,12 +11,9 @@ using System.Threading.Tasks;
 namespace InventoryManagement.Services.Data
 {
    
-    // Singleton
-    public class DataService
+    public static class DataService
     {
-        public DataService() { }
-
-        public void Initialize()
+        public static void Initialize()
         {
             m_Context = new InventoryDbContext();
             m_Context.Database.EnsureCreated();
@@ -28,85 +25,22 @@ namespace InventoryManagement.Services.Data
             m_VendorDataController = new VendorDataController(m_Context);
         }
 
-        public ProductDataController GetProductDataController() { return m_ProductDataController; }
-        public CategoryDataController GetCategoryDataController() { return m_CategoryDataController; }
-        public CustomerDataController GetCustomerDataController() { return m_CustomerDataController; }
-        public TransactionDataController GetTransactionDataController() { return m_TransactionDataController; }
-        public StockDataController GetStockDataController() { return m_StockDataController; }
-        public VendorDataController GetVendorDataController() { return m_VendorDataController; }
+        public static ProductDataController GetProductDataController() { return m_ProductDataController; }
+        public static CategoryDataController GetCategoryDataController() { return m_CategoryDataController; }
+        public static CustomerDataController GetCustomerDataController() { return m_CustomerDataController; }
+        public static TransactionDataController GetTransactionDataController() { return m_TransactionDataController; }
+        public static StockDataController GetStockDataController() { return m_StockDataController; }
+        public static VendorDataController GetVendorDataController() { return m_VendorDataController; }
 
-        public static DataService Get()
-        {
-            if (s_Instance == null)
-                s_Instance = new DataService();
-            return s_Instance;
-        }
 
-        private ProductDataController m_ProductDataController;
-        private CategoryDataController m_CategoryDataController;
-        private CustomerDataController m_CustomerDataController;
-        private TransactionDataController m_TransactionDataController;
-        private StockDataController m_StockDataController;
-        private VendorDataController m_VendorDataController;
+        private static ProductDataController m_ProductDataController;
+        private static CategoryDataController m_CategoryDataController;
+        private static CustomerDataController m_CustomerDataController;
+        private static TransactionDataController m_TransactionDataController;
+        private static StockDataController m_StockDataController;
+        private static VendorDataController m_VendorDataController;
 
-        private InventoryDbContext m_Context;
+        private static InventoryDbContext m_Context;
 
-        private static DataService s_Instance = null;
     }
 }
-
-/*
- public class DataService
-    {
-        public DataService() { }
-
-        public void Initialize()
-        {
-            m_Service = new DatabaseService();
-            m_Service.Initialize();
-        }
-
-        public T GET_ALL<T>(DBEntityType type) where T : new()
-        {
-            return CAST<T>(m_Service.GetAll(type));
-        }
-
-        public T GET<T>(DBEntityType type, int id) where T : new()
-        {
-            return CAST<T>(m_Service.Get(type, id));
-        }
-
-        public T GET<T>(DBEntityType type, KeyValuePair<string, object> attribute) where T : new()
-        {
-            return CAST<T>(m_Service.Get(type, attribute));
-        }
-
-        public RETURN_TYPE POST<RETURN_TYPE>(DBEntityType type, object obj)
-        {
-            return CAST<RETURN_TYPE>(m_Service.Post(type, obj));
-        }
-
-        public RETURN_TYPE PUT<RETURN_TYPE>(DBEntityType type, object obj)
-        {
-            return CAST<RETURN_TYPE>(m_Service.Put(type, obj));
-        }
-
-        public static DataService Get()
-        {
-            if (m_Instance == null)
-                m_Instance = new DataService();
-            return m_Instance;
-        }
-
-        private T CAST<T>(object obj)
-        {
-            return (T)obj;
-        }
-
-        private static DataService m_Instance = null;
-
-        private IDataService m_Service;
-    }
-}
-
-*/

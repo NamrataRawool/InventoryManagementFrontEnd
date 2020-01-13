@@ -43,7 +43,7 @@ namespace InventoryManagement.Controllers.Vendor
             vendorPost.City = m_UIControl.tb_city.Text;
             vendorPost.State = m_UIControl.tb_state.Text;
 
-            var vendorGet = DataService.Get().GetVendorDataController().Put(vendorPost);
+            var vendorGet = DataService.GetVendorDataController().Put(vendorPost);
             if (vendorGet != null)
             {
                 MessageBox.Show("Vendor Updated Successfully");
@@ -53,7 +53,7 @@ namespace InventoryManagement.Controllers.Vendor
 
         private void InitializeVendorDetails(int vendorId)
         {
-            var vendor = DataService.Get().GetVendorDataController().Get(vendorId);
+            var vendor = DataService.GetVendorDataController().Get(vendorId);
             if (vendor == null)
                 return;
             m_UIControl.tb_vendorId.Text = vendor.ID.ToString();

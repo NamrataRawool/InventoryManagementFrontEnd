@@ -1,11 +1,14 @@
 ﻿using InventoryManagement.Broadcaster;
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
+using InventoryManagement.Properties;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Product;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,7 +28,7 @@ namespace InventoryManagement.Controllers.Product
             var UI = m_UIControl;
 
             string categoryName = UI.cb_Category.Text;
-            CategoryGet category = DataService.Get().GetCategoryDataController().GetByName(categoryName);
+            CategoryGet category = DataService.GetCategoryDataController().GetByName(categoryName);
 
             ProductPost productPost = new ProductPost();
             productPost.Name = UI.tb_Name.Text;
@@ -33,13 +36,21 @@ namespace InventoryManagement.Controllers.Product
             productPost.Description = UI.tb_Description.Text;
             productPost.RetailPrice = int.Parse(UI.tb_RetailPrice.Text);
             productPost.WholeSalePrice = int.Parse(UI.tb_WholeSalePrice.Text);
-            productPost.ImagePath = (string)UI.pictureBox_Image.Tag;
             productPost.CategoryID = category.ID;
             productPost.CGST = double.Parse(UI.tb_CGST.Text);
             productPost.SGST = double.Parse(UI.tb_CGST.Text);
             productPost.Discount = double.Parse(UI.tb_SGST.Text);
 
-            var productGet = DataService.Get().GetProductDataController().Post(productPost);
+            productPost.ImagePath = (string)UI.pictureBox_Image.Tag;
+
+            if (string.IsNullOrEmpty(productPost.ImagePath))
+            {
+                string runningDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string placeholderImagePath = runningDirectory + "/Resources/Images/Placeholder.png";
+                productPost.ImagePath = placeholderImagePath;
+            }
+
+            var productGet = DataService.GetProductDataController().Post(productPost);
             if (productGet == null)
             {
                 MessageBox.Show(m_UIControl, "Failed to Add Product!");
@@ -51,7 +62,7 @@ namespace InventoryManagement.Controllers.Product
             stock.ProductID = productGet.ID;
             stock.AvailableQuantity = 0;
             stock.TotalQuantity = 0;
-            var stockPost = DataService.Get().GetStockDataController().Post(stock);
+            var stockPost = DataService.GetStockDataController().Post(stock);
             if (stockPost == null)
             {
                 MessageBox.Show(m_UIControl, "Failed to Add Stock!");

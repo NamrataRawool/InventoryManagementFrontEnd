@@ -35,7 +35,7 @@ namespace InventoryManagement.EventHandlers.Product
 
         private void AddProductToTable(int productID)
         {
-            var product = DataService.Get().GetProductDataController().Get(productID);
+            var product = DataService.GetProductDataController().Get(productID);
             if (product == null)
             {
                 Assert.Do("This should not have happened!");

@@ -22,7 +22,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void CategoryControl_Load(object sender, EventArgs e)
         {
-            categoryDataView.DataSource = DataService.Get().GetCategoryDataController().GetAll();
+            categoryDataView.DataSource = DataService.GetCategoryDataController().GetAll();
         }
 
         private void btn_editCategory_Click(object sender, EventArgs e)

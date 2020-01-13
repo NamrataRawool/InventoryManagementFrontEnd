@@ -35,7 +35,7 @@ namespace InventoryManagement.EventHandlers.Vendor
 
         private void AddVendorToTable(int vendorID)
         {
-            var vendor = DataService.Get().GetVendorDataController().Get(vendorID);
+            var vendor = DataService.GetVendorDataController().Get(vendorID);
             if (vendor == null)
             {
                 Assert.Do("This should not have happened!");

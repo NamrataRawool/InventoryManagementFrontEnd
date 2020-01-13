@@ -44,7 +44,7 @@ namespace InventoryManagement.Controllers.Customer
                 customerPost.TotalAmount = Convert.ToInt32(m_UIControl.tb_customerTotalPurchaseAmount.Text);
                 customerPost.PendingAmount = Convert.ToInt32(m_UIControl.tb_customerPendingAmount.Text);
 
-                var customer = DataService.Get().GetCustomerDataController().Put(customerPost);
+                var customer = DataService.GetCustomerDataController().Put(customerPost);
                 if (customer == null)
                 {
                     m_UIControl.DialogResult = DialogResult.No;
@@ -104,7 +104,7 @@ namespace InventoryManagement.Controllers.Customer
         }
         private void InitializeProductDetails(int customerId)
         {
-            var customer = DataService.Get().GetCustomerDataController().Get(customerId);
+            var customer = DataService.GetCustomerDataController().Get(customerId);
             m_UIControl.tb_customerId.Text = customer.ID.ToString();
             m_UIControl.tb_customerName.Text = customer.Name;
             m_UIControl.tb_customerEmail.Text = customer.Email;

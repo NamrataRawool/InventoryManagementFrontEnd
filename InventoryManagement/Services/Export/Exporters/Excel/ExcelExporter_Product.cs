@@ -25,7 +25,7 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
 
         public override void Export(string filename)
         {
-            var products = DataService.Get().GetProductDataController().GetAll();
+            var products = DataService.GetProductDataController().GetAll();
             if (products == null)
                 return;
 

@@ -24,7 +24,7 @@ namespace InventoryManagement.Controllers.Customer
             {
                 ResetTable();
             }
-            var customers = DataService.Get().GetCustomerDataController().GetAll();
+            var customers = DataService.GetCustomerDataController().GetAll();
             if (customers == null)
                 return;
 

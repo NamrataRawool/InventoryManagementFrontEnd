@@ -23,7 +23,7 @@ namespace InventoryManagement.Controllers.Transaction
         {
             m_UIControl.lbl_transactionError.Text = string.Empty;
 
-            List<TransactionGet> transactions = DataService.Get().GetTransactionDataController().GetByDate(DateTime.Parse(from), DateTime.Parse(to));
+            List<TransactionGet> transactions = DataService.GetTransactionDataController().GetByDate(DateTime.Parse(from), DateTime.Parse(to));
             if (transactions.Count == 0)
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
             InitializeTransactionHistoryTable(transactions);
@@ -33,8 +33,8 @@ namespace InventoryManagement.Controllers.Transaction
         public void SearchTransactionByCustomerName(string name)
         {
             m_UIControl.lbl_transactionError.Text = string.Empty;
-            int customerID = DataService.Get().GetCustomerDataController().GetByName(name).ID;
-            List<TransactionGet> transactions = DataService.Get().GetTransactionDataController().GetByCustomerID(customerID);
+            int customerID = DataService.GetCustomerDataController().GetByName(name).ID;
+            List<TransactionGet> transactions = DataService.GetTransactionDataController().GetByCustomerID(customerID);
             if (transactions.Count == 0)
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
             InitializeTransactionHistoryTable(transactions);

@@ -29,7 +29,7 @@ namespace InventoryManagement.UI.Product
 
         private List<string> GetCategories()
         {
-            var categories = DataService.Get().GetCategoryDataController().GetAll();
+            var categories = DataService.GetCategoryDataController().GetAll();
             var categoryDataSource = new List<string>();
             foreach (var category in categories)
             {

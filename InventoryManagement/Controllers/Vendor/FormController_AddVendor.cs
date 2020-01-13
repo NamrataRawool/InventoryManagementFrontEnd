@@ -26,7 +26,7 @@ namespace InventoryManagement.Controllers.Vendor
             vendor.MobileNumber = m_UIControl.tb_mobileNumber.Text;
             vendor.City = m_UIControl.tb_city.Text;
             vendor.State = m_UIControl.tb_state.Text;
-            var vendorGet = DataService.Get().GetVendorDataController().Post(vendor);
+            var vendorGet = DataService.GetVendorDataController().Post(vendor);
             if (vendorGet != null)
             {
                 MessageBox.Show("Vendor Added Successfully");

@@ -19,7 +19,7 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void Initialize(int transasctionId)
         {
-            var transaction = DataService.Get().GetTransactionDataController().Get(transasctionId);
+            var transaction = DataService.GetTransactionDataController().Get(transasctionId);
             ResetTable();
             InitializeLabels(transaction);
             InitializeTable(transaction);

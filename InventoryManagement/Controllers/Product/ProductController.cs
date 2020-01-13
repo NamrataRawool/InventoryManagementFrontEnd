@@ -26,7 +26,7 @@ namespace InventoryManagement.Controllers
                 ResetTable();
             }
 
-            var products = DataService.Get().GetProductDataController().GetAll();
+            var products = DataService.GetProductDataController().GetAll();
             if (products == null)
                 return;
 

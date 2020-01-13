@@ -54,7 +54,7 @@ namespace InventoryManagement.UI.UserControls
             }
             lbl_errorText.Text = string.Empty;
             int productId = int.Parse(this.tb_barCode.Text);
-            var product = DataService.Get().GetProductDataController().Get(productId);
+            var product = DataService.GetProductDataController().Get(productId);
 
             if (product == null)
             {
@@ -82,7 +82,7 @@ namespace InventoryManagement.UI.UserControls
                 }
                 lbl_errorText.Text = string.Empty;
                 int productId = int.Parse(this.tb_barCode.Text);
-                var product = DataService.Get().GetProductDataController().Get(productId);
+                var product = DataService.GetProductDataController().Get(productId);
                 if (product == null)
                 {
                     lbl_errorText.Text = "Record not found";
@@ -109,7 +109,7 @@ namespace InventoryManagement.UI.UserControls
             lbl_customerError.Text = string.Empty;
             if (e.KeyCode == Keys.Enter)
             {
-                var customer = DataService.Get().GetCustomerDataController().GetByName(tb_customerName.Text.Trim());
+                var customer = DataService.GetCustomerDataController().GetByName(tb_customerName.Text.Trim());
                 if (customer == null)
                 {
                     lbl_customerError.Text = "Customer Not found!";
@@ -147,7 +147,7 @@ namespace InventoryManagement.UI.UserControls
         #region Transaction History
         private List<string> InitializeCustomerNameDatasource()
         {
-            var customers = DataService.Get().GetCustomerDataController().GetAll();
+            var customers = DataService.GetCustomerDataController().GetAll();
             if (customers == null)
                 return null;
 

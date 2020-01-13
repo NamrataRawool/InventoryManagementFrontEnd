@@ -23,7 +23,7 @@ namespace InventoryManagement.Services.Export.Exporters.Excel
 
         public override void Export(string filename)
         {
-            var transactions = DataService.Get().GetTransactionDataController().GetAll();
+            var transactions = DataService.GetTransactionDataController().GetAll();
             if (transactions == null)
                 return;
 

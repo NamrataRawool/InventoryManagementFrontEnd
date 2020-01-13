@@ -28,7 +28,7 @@ namespace InventoryManagement.Controllers.Customer
                 customerPost.Name = m_UIControl.tb_CustomerName.Text;
                 customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
                 customerPost.PendingAmount = 0;
-                var customer = DataService.Get().GetCustomerDataController().Post(customerPost);
+                var customer = DataService.GetCustomerDataController().Post(customerPost);
                 if (customer != null)
                     m_UIControl.DialogResult = DialogResult.Yes;
                 else

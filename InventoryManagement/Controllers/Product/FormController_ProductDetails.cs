@@ -27,7 +27,7 @@ namespace InventoryManagement.Controllers.Product
         public void UpdateProductDetails()
         {
             int productID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
-            ProductGet existingProduct = DataService.Get().GetProductDataController().Get(productID);
+            ProductGet existingProduct = DataService.GetProductDataController().Get(productID);
 
             ProductPost product = new ProductPost(existingProduct);
             product.ID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
@@ -41,7 +41,7 @@ namespace InventoryManagement.Controllers.Product
             product.SGST = double.Parse(m_UIControl.tf_ProductDetails_SGST.Text);
 
             string categoryName = m_UIControl.cb_ProductDetails_Category.Text;
-            product.CategoryID = DataService.Get().GetCategoryDataController().GetByName(categoryName).ID;
+            product.CategoryID = DataService.GetCategoryDataController().GetByName(categoryName).ID;
 
             bool imageModified = false;
             if (m_UIControl.pictureBox_ProductImage.Tag != null)
@@ -50,7 +50,7 @@ namespace InventoryManagement.Controllers.Product
                 imageModified = true;
             }
 
-            m_Product = DataService.Get().GetProductDataController().Put(product, imageModified);
+            m_Product = DataService.GetProductDataController().Put(product, imageModified);
             if (m_Product == null)
             {
                 MessageBox.Show(m_UIControl, "Failed to Update Product Details!");
@@ -63,7 +63,7 @@ namespace InventoryManagement.Controllers.Product
 
         private void InitializeAvailableStockLabel()
         {
-            var stock = DataService.Get().GetStockDataController().GetByProductID(m_Product.ID);
+            var stock = DataService.GetStockDataController().GetByProductID(m_Product.ID);
 
             m_UIControl.lbl_ProductDetails_AvailableStockValue.Text = "Not in Database";
             if (stock != null)
@@ -87,7 +87,7 @@ namespace InventoryManagement.Controllers.Product
 
         private void InitializeProductDetails(int productID)
         {
-            m_Product = DataService.Get().GetProductDataController().Get(productID);
+            m_Product = DataService.GetProductDataController().Get(productID);
 
             var UI = m_UIControl;
 
@@ -109,7 +109,7 @@ namespace InventoryManagement.Controllers.Product
             }
 
             // fill categories
-            var Categories = DataService.Get().GetCategoryDataController().GetAll();
+            var Categories = DataService.GetCategoryDataController().GetAll();
             foreach (var category in Categories)
             {
                 UI.cb_ProductDetails_Category.Items.Add(category.Name);

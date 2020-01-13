@@ -27,7 +27,7 @@ namespace InventoryManagement.Controllers.Vendor
                 ResetTable();
             }
 
-            var vendors = DataService.Get().GetVendorDataController().GetAll();
+            var vendors = DataService.GetVendorDataController().GetAll();
             if (vendors == null)
                 return;
 

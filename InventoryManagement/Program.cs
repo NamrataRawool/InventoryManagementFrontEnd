@@ -30,7 +30,7 @@ namespace InventoryManagement
         {
             Assert.Enable();
 
-            DataService.Get().Initialize();
+            DataService.Initialize();
         }
 
         /// <summary>
