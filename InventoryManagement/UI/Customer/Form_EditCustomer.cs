@@ -31,7 +31,6 @@ namespace InventoryManagement.UI.Customer
         private void btn_updateCustomer_Click(object sender, EventArgs e)
         {
             m_controller.UpdateCustomer();
-            Close();
         }
 
 

@@ -33,7 +33,6 @@ namespace InventoryManagement.Controllers.Customer
                     m_UIControl.DialogResult = DialogResult.Yes;
                 else
                     m_UIControl.DialogResult = DialogResult.No;
-                m_UIControl.Close();
             }
         }
 
@@ -63,6 +62,7 @@ namespace InventoryManagement.Controllers.Customer
                 m_UIControl.lbl_customerErrorText.Text = "Name not valid";
                 return false;
             }
+
             if (!Validator.IsValidMobileNumber(mobileNumber))
             {
                 m_UIControl.lbl_customerErrorText.Text = "Mobile Number not valid";

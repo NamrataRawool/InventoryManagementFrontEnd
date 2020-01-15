@@ -55,5 +55,10 @@ namespace InventoryManagement.UI.UserControls
         {
             m_controller.UpdateTableByCustomerName(tb_searchCustomer.Text.Trim());
         }
+
+        private void customerDataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            m_controller.OpenForm_EditCustomer();
+        }
     }
 }

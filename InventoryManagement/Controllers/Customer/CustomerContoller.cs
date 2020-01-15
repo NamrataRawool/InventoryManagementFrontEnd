@@ -52,6 +52,8 @@ namespace InventoryManagement.Controllers.Customer
 
         public void OpenForm_EditCustomer()
         {
+            if (GetTable().SelectedRows.Count <= 0)
+                return;
             var customerPost = new CustomerPost();
             var customerId = Convert.ToInt32(GetTable().CurrentRow.Cells["CustomerTable_ID"].Value);
             Form_editCustomer editCustomer = new Form_editCustomer(customerId);
