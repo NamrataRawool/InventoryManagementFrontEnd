@@ -19,6 +19,15 @@ namespace InventoryManagement.Utilities
             return true;
         }
 
+        public static bool IsValidDouble(string number)
+        {
+            string doublePattern = @"^[0-9]*(?:\.[0-9]*)?$";
+            if (!Regex.IsMatch(number, doublePattern))
+            {
+                return false;
+            }
+            return true;
+        }
         public static bool IsValidString(string name)
         {
             string namePattern = @"^[A-z][A-z|\s]+$";

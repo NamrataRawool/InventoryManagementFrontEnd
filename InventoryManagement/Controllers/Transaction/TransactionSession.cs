@@ -7,34 +7,40 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Controllers.Transaction
 {
+    public class BillProductDetails
+    {
+        public ProductGet Product;
+        public double FinalPrice;
+    }
     public class TransactionSession
     {
-        private List<ProductGet> m_rowEntries;
+        private List<BillProductDetails> m_rowEntries;
         private CustomerGet m_customer;
         public string subtotal;
         public string totalDiscount;
         public string totalTax;
         public string amountDue;
+        public string amountPaid;
 
         public TransactionSession()
         {
-            m_rowEntries = new List<ProductGet>();
+            m_rowEntries = new List<BillProductDetails>();
             m_customer = new CustomerGet();
         }
 
-        public List<ProductGet> GetRowEntries()
+        public List<BillProductDetails> GetRowEntries()
         {
             return m_rowEntries;
         }
-        public ProductGet GetRowEntry(int id)
+        public BillProductDetails GetRowEntry(int id)
         {
             if (m_rowEntries == null)
                 return null;
-            foreach (var product in m_rowEntries)
+            foreach (var entry in m_rowEntries)
             {
-                if (product.ID == id)
+                if (entry.Product.ID == id)
                 {
-                    return product;
+                    return entry;
                 }
             }
             return null;
@@ -48,37 +54,43 @@ namespace InventoryManagement.Controllers.Transaction
             m_customer = customer;
         }
 
-        public void AddRowEntry(ProductGet product)
+        public void AddRowEntry(ProductGet product, double finalPrice)
         {
+            BillProductDetails billProduct = new BillProductDetails();
             foreach (var p in m_rowEntries)
             {
-                if (p.ID == product.ID)
+                if (p.Product.ID == product.ID)
                 {
-                    p.Quantity += product.Quantity;
+                    p.Product.Quantity += product.Quantity;
+                    p.Product = product;
+                    p.FinalPrice = finalPrice;
                     return;
                 }
             }
-            m_rowEntries.Add(product);
+            billProduct.Product = product;
+            billProduct.FinalPrice = finalPrice;
+            m_rowEntries.Add(billProduct);
         }
 
-        public void UpdateRowEntry(ProductGet product)
+        public void UpdateRowEntry(ProductGet product, double finalPrice)
         {
             foreach (var p in m_rowEntries)
             {
-                if (p.ID == product.ID)
+                if (p.Product.ID == product.ID)
                 {
-                    p.Quantity = product.Quantity;
+                    p.Product.Quantity = product.Quantity;
+                    p.FinalPrice = finalPrice;
                     return;
                 }
             }
         }
         public void DeleteRowEntry(int productId)
         {
-            foreach (var product in m_rowEntries)
+            foreach (var entry in m_rowEntries)
             {
-                if (product.ID == productId)
+                if (entry.Product.ID == productId)
                 {
-                    m_rowEntries.Remove(product);
+                    m_rowEntries.Remove(entry);
                     return;
                 }
             }

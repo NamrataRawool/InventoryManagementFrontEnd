@@ -30,7 +30,9 @@ namespace InventoryManagement.Controllers.Transaction
             {
                 ResetTransaction();
             }
-            InitializeAutoSearchBox();
+            InitializeCustomerNameSearchBoxData();
+            InitializeCustomerMobileNumberSearchBoxData();
+            InitializProductNameSearchBoxData();
         }
 
         public void OnAddProduct(ProductGet product)
@@ -60,11 +62,15 @@ namespace InventoryManagement.Controllers.Transaction
                 if (productId.Equals(product.ID))
                 {
                     var newQuantity = Convert.ToInt32(row.Cells["BillTable_Quantity"].Value) + product.Quantity;
+                    product.Quantity = newQuantity;
                     row.Cells["BillTable_Quantity"].Value = newQuantity;
                     double discount = (product.RetailPrice * product.Discount / 100);
                     row.Cells["BillTable_Discount"].Value = discount * newQuantity;
-                    row.Cells["BillTable_TotalPrice"].Value = CalculateTotalPrice(product.RetailPrice, product.Discount, newQuantity);
-                    m_transactionSession.AddRowEntry(product);
+                    var totalTax = CalculateTotalTax(product);
+                    row.Cells["BillTable_Tax"].Value = totalTax;
+                    double finalPrice = CalculateFinalPrice(product.RetailPrice, product.Discount, newQuantity, totalTax);
+                    row.Cells["BillTable_FinalPrice"].Value = finalPrice;
+                    m_transactionSession.AddRowEntry(product, finalPrice);
                     UpdateUILabels();
                     return;
                 }
@@ -79,8 +85,11 @@ namespace InventoryManagement.Controllers.Transaction
             double discountInRupees = (product.RetailPrice * product.Discount / 100);
             NewRow.Cells["BillTable_Discount"].Value = discountInRupees * product.Quantity;
             NewRow.Cells["BillTable_Quantity"].Value = product.Quantity;
-            NewRow.Cells["BillTable_TotalPrice"].Value = CalculateTotalPrice(product.RetailPrice, product.Discount, product.Quantity);
-            m_transactionSession.AddRowEntry(product);
+            var tax = CalculateTotalTax(product);
+            NewRow.Cells["BillTable_Tax"].Value = tax;
+            var newFinalPrice = CalculateFinalPrice(product.RetailPrice, product.Discount, product.Quantity, tax);
+            NewRow.Cells["BillTable_FinalPrice"].Value = newFinalPrice;
+            m_transactionSession.AddRowEntry(product, newFinalPrice);
             UpdateUILabels();
         }
 
@@ -94,17 +103,25 @@ namespace InventoryManagement.Controllers.Transaction
             if (Validator.IsInteger(newQuantity))
             {
                 rowEntry.Quantity = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value);
-
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_TotalPrice"].Value = CalculateTotalPrice(rowEntry.RetailPrice, rowEntry.Discount, rowEntry.Quantity);
-
+                if (rowEntry.Quantity == 0)
+                {
+                    m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Product.Quantity;
+                    return;
+                }
                 double discountInRupees = (rowEntry.RetailPrice * rowEntry.Discount / 100);
                 m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Discount"].Value = discountInRupees * rowEntry.Quantity;
-                m_transactionSession.UpdateRowEntry(rowEntry);
+
+                var tax = CalculateTotalTax(rowEntry);
+                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Tax"].Value = tax;
+
+                var finalPrice = CalculateFinalPrice(rowEntry.RetailPrice, rowEntry.Discount, rowEntry.Quantity, tax);
+                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_FinalPrice"].Value = finalPrice;
+                m_transactionSession.UpdateRowEntry(rowEntry, finalPrice);
                 UpdateUILabels();
             }
             else
             {
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
+                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Product.Quantity;
                 return;
             }
         }
@@ -164,8 +181,32 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void OpenForm_ViewBill()
         {
+            m_UIControl.lbl_errorAmountPaid.Text = string.Empty;
             if (m_UIControl.Bill_ProductsDataView.Rows.Count <= 0)
                 return;
+
+            if (string.IsNullOrEmpty(m_UIControl.tb_AmountPaid.Text))
+            {
+                m_UIControl.lbl_errorAmountPaid.Text = "Please enter amount paid";
+                return;
+            }
+            if (!Validator.IsValidDouble(m_UIControl.tb_AmountPaid.Text.Trim()))
+            {
+                m_UIControl.lbl_errorAmountPaid.Text = "Enter valid amount!";
+                return;
+            }
+            double amountPaid = double.Parse(m_UIControl.tb_AmountPaid.Text);
+            double amountDue = double.Parse(m_UIControl.tb_amountDue.Text);
+            if (amountDue > amountPaid)
+            {
+                var customer = m_transactionSession.GetCustomer();
+                if (customer == null || customer.ID == 0)
+                {
+                    m_UIControl.lbl_errorAmountPaid.Text = "Please add customer details";
+                    return;
+                }
+            }
+            m_transactionSession.amountPaid = amountPaid.ToString();
             Form_ViewBill viewBill = new Form_ViewBill(m_transactionSession);
             var result = viewBill.ShowDialog();
             if (result == DialogResult.Yes)
@@ -178,7 +219,7 @@ namespace InventoryManagement.Controllers.Transaction
                 ResetTransaction();
             }
         }
-        public void InitializeAutoSearchBox()
+        public void InitializeCustomerNameSearchBoxData()
         {
             var customers = DataService.GetCustomerDataController().GetAll();
             var searchBox = m_UIControl.tb_customerName;
@@ -191,28 +232,64 @@ namespace InventoryManagement.Controllers.Transaction
 
             searchBox.AutoCompleteCustomSource = collection;
         }
+        public void InitializProductNameSearchBoxData()
+        {
+            var products = DataService.Get().GetProductDataController().GetAll();
+            var searchBox = m_UIControl.tb_productName;
+            searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (var product in products)
+                collection.Add(product.Name);
+
+            searchBox.AutoCompleteCustomSource = collection;
+        }
+        public void InitializeCustomerMobileNumberSearchBoxData()
+        {
+            var customers = DataService.Get().GetCustomerDataController().GetAll();
+            var searchBox = m_UIControl.tb_mobileNumber;
+            searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (var customer in customers)
+                collection.Add(customer.MobileNumber);
+
+            searchBox.AutoCompleteCustomSource = collection;
+        }
         private void UpdateUILabels()
         {
             double subtotal = 0;
             double totalDiscount = 0;
             double totalTax = 0;
+            double amountDue = 0;
             for (int i = 0; i < m_UIControl.Bill_ProductsDataView.Rows.Count; ++i)
             {
-                subtotal += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_TotalPrice"].Value);
+                var actualPrice = Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Price"].Value);
+                var quantity = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Quantity"].Value);
+                subtotal += actualPrice * quantity;
                 totalDiscount += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Discount"].Value);
+                totalTax += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Tax"].Value);
+                amountDue += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_FinalPrice"].Value);
             }
             m_transactionSession.subtotal = m_UIControl.tb_subtotal.Text = subtotal.ToString();
             m_transactionSession.totalDiscount = m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
             m_transactionSession.totalTax = m_UIControl.tb_totalTax.Text = totalTax.ToString();
-            var amountDue = subtotal + totalTax;
             m_transactionSession.amountDue = m_UIControl.tb_amountDue.Text = amountDue.ToString();
         }
-
-        private double CalculateTotalPrice(int price, double discountRate, int quantity)
+        private double CalculateTotalTax(ProductGet product)
+        {
+            var cgst = (product.RetailPrice * product.CGST / 100) * product.Quantity;
+            var sgst = (product.RetailPrice * product.SGST / 100) * product.Quantity;
+            double totalTax = cgst + sgst;
+            return totalTax;
+        }
+        private double CalculateFinalPrice(int price, double discountRate, int quantity, double totalTax)
         {
             double discountInRupees = (price * discountRate / 100);
             double discountedPrice = price - discountInRupees;
-            double totalPrice = discountedPrice * quantity;
+            double totalPrice = (discountedPrice * quantity) + totalTax;
             return totalPrice;
         }
 
@@ -220,16 +297,19 @@ namespace InventoryManagement.Controllers.Transaction
         {
             m_transactionSession = new TransactionSession();
             m_UIControl.lbl_errorText.Text = string.Empty;
+            m_UIControl.lbl_errorAmountPaid.Text = string.Empty;
             ResetBillProductsTable();
             ResetTextBoxes();
         }
         private void ResetTextBoxes()
         {
+            m_UIControl.tb_productName.Text = string.Empty;
             m_UIControl.tb_barCode.Text = string.Empty;
             m_UIControl.tb_subtotal.Text = string.Empty;
             m_UIControl.tb_totalDiscount.Text = string.Empty;
             m_UIControl.tb_amountDue.Text = string.Empty;
             m_UIControl.tb_totalTax.Text = string.Empty;
+            m_UIControl.tb_AmountPaid.Text = string.Empty;
             ResetCustomerDetails();
         }
         public void ResetCustomerDetails()

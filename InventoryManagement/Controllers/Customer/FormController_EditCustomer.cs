@@ -37,12 +37,12 @@ namespace InventoryManagement.Controllers.Customer
             if (ValidateCustomerDetails())
             {
                 CustomerPost customerPost = new CustomerPost();
-                customerPost.ID = Convert.ToInt32(m_UIControl.tb_customerId.Text);
+                customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text);
                 customerPost.Name = m_UIControl.tb_customerName.Text;
                 customerPost.Email = m_UIControl.tb_customerEmail.Text;
                 customerPost.MobileNumber = m_UIControl.tb_customerMobileNumber.Text;
-                customerPost.TotalAmount = Convert.ToInt32(m_UIControl.tb_customerTotalPurchaseAmount.Text);
-                customerPost.PendingAmount = Convert.ToInt32(m_UIControl.tb_customerPendingAmount.Text);
+                customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text);
+                customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text);
 
                 var customer = DataService.GetCustomerDataController().Put(customerPost);
                 if (customer == null)
@@ -51,6 +51,7 @@ namespace InventoryManagement.Controllers.Customer
                     return;
                 }
                 m_UIControl.DialogResult = DialogResult.Yes;
+                ResetTextBoxes();
             }
         }
         private bool ValidateCustomerDetails()
@@ -89,13 +90,13 @@ namespace InventoryManagement.Controllers.Customer
                 return false;
             }
 
-            if(!Validator.IsInteger(totalAmount))
+            if (!Validator.IsValidDouble(totalAmount))
             {
                 m_UIControl.lbl_customerErrorText.Text = "Total amount not valid";
                 return false;
             }
 
-            if (!Validator.IsInteger(purchaseAmount))
+            if (!Validator.IsValidDouble(purchaseAmount))
             {
                 m_UIControl.lbl_customerErrorText.Text = "Purchase amount not valid";
                 return false;

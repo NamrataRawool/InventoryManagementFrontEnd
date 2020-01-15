@@ -63,10 +63,30 @@ namespace InventoryManagement.UI.UserControls
             m_newTransactionController.OnAddProduct(product);
             ResetTextBox();
         }
+        private void btn_addProduct_ProductName_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tb_productName.Text) || !Validator.IsValidString(tb_productName.Text))
+            {
+                lbl_errorText.Text = "Please enter valid product name";
+                return;
+            }
+            lbl_errorText.Text = string.Empty;
+            string productName = tb_productName.Text.Trim();
+            var product = DataService.Get().GetProductDataController().GetByName(productName);
+            if (product == null)
+            {
+                lbl_errorText.Text = "Record not found";
+                return;
+            }
+            product.Quantity = 1;
+            m_newTransactionController.OnAddProduct(product);
+            ResetTextBox();
 
+        }
         private void ResetTextBox()
         {
             tb_barCode.Text = string.Empty;
+            tb_productName.Text = string.Empty;
         }
 
         private void tb_barCode_KeyDown(object sender, KeyEventArgs e)
@@ -101,6 +121,39 @@ namespace InventoryManagement.UI.UserControls
                 ResetTextBox();
             }
         }
+        private void tb_productName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (String.IsNullOrEmpty(tb_productName.Text))
+                {
+                    return;
+                }
+
+                if (!Validator.IsValidString(tb_productName.Text))
+                {
+                    lbl_errorText.Text = "Please enter valid product name";
+                    return;
+                }
+
+
+                lbl_errorText.Text = string.Empty;
+
+                string productName = tb_productName.Text.Trim();
+                var product = DataService.Get().GetProductDataController().GetByName(productName);
+
+                if (product == null)
+                {
+                    lbl_errorText.Text = "Record not found";
+                    return;
+                }
+                //default quantity while adding product
+                product.Quantity = 1;
+
+                m_newTransactionController.OnAddProduct(product);
+                ResetTextBox();
+            }
+        }
         private void btn_deleteBillRecord_Click(object sender, EventArgs e)
         {
             m_newTransactionController.OnDeleteProduct();
@@ -111,7 +164,13 @@ namespace InventoryManagement.UI.UserControls
         {
             m_newTransactionController.OpenForm_ViewBill();
         }
-
+        private void tb_AmountPaid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                m_newTransactionController.OpenForm_ViewBill();
+            }
+        }
         private void tb_mobileNumber_KeyDown(object sender, KeyEventArgs e)
         {
             lbl_customerError.Text = string.Empty;
@@ -157,7 +216,7 @@ namespace InventoryManagement.UI.UserControls
 
 
         #region Transaction History
-       
+
         private void btn_searchByCustomerName_Click(object sender, EventArgs e)
         {
             m_transactionHistoryController.SearchTransactionByCustomerName(cb_customerName.Text);
@@ -177,7 +236,10 @@ namespace InventoryManagement.UI.UserControls
         }
 
 
+
+
         #endregion
+
 
     }
 }
