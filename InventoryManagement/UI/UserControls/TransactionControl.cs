@@ -161,7 +161,7 @@ namespace InventoryManagement.UI.UserControls
 
 
         private void btn_ViewBill_Click(object sender, EventArgs e)
-        {
+        {          
             m_newTransactionController.OpenForm_ViewBill();
         }
 

@@ -70,13 +70,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_addProductToBill = new System.Windows.Forms.Button();
             this.Bill_ProductsDataView = new System.Windows.Forms.DataGridView();
-            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_transactionHistory = new System.Windows.Forms.TabPage();
             this.lbl_transactionError = new System.Windows.Forms.Label();
             this.btn_exportToExcel = new System.Windows.Forms.Button();
@@ -94,6 +87,15 @@
             this.Transaction_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_errorAmountPaid = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
@@ -169,6 +171,8 @@
             // 
             // gb_billDetails
             // 
+            this.gb_billDetails.Controls.Add(this.label13);
+            this.gb_billDetails.Controls.Add(this.lbl_errorAmountPaid);
             this.gb_billDetails.Controls.Add(this.btn_ViewBill);
             this.gb_billDetails.Controls.Add(this.tb_subtotal);
             this.gb_billDetails.Controls.Add(this.tb_AmountPaid);
@@ -555,7 +559,7 @@
             this.BillTable_Quantity,
             this.BillTable_Discount,
             this.BillTable_Tax,
-            this.BillTable_TotalPrice});
+            this.BillTable_FinalPrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -585,46 +589,6 @@
             this.Bill_ProductsDataView.TabIndex = 25;
             this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
             this.Bill_ProductsDataView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bill_ProductsDataView_KeyDown);
-            // 
-            // BillTable_ProductId
-            // 
-            this.BillTable_ProductId.HeaderText = "ID";
-            this.BillTable_ProductId.Name = "BillTable_ProductId";
-            this.BillTable_ProductId.ReadOnly = true;
-            // 
-            // BillTable_Name
-            // 
-            this.BillTable_Name.HeaderText = "Name";
-            this.BillTable_Name.Name = "BillTable_Name";
-            this.BillTable_Name.ReadOnly = true;
-            // 
-            // BillTable_Price
-            // 
-            this.BillTable_Price.HeaderText = "Price";
-            this.BillTable_Price.Name = "BillTable_Price";
-            this.BillTable_Price.ReadOnly = true;
-            // 
-            // BillTable_Quantity
-            // 
-            this.BillTable_Quantity.HeaderText = "Quantity";
-            this.BillTable_Quantity.Name = "BillTable_Quantity";
-            // 
-            // BillTable_Discount
-            // 
-            this.BillTable_Discount.HeaderText = "Discount";
-            this.BillTable_Discount.Name = "BillTable_Discount";
-            this.BillTable_Discount.ReadOnly = true;
-            // 
-            // BillTable_Tax
-            // 
-            this.BillTable_Tax.HeaderText = "Tax";
-            this.BillTable_Tax.Name = "BillTable_Tax";
-            // 
-            // BillTable_TotalPrice
-            // 
-            this.BillTable_TotalPrice.HeaderText = "Final Price";
-            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
-            this.BillTable_TotalPrice.ReadOnly = true;
             // 
             // tab_transactionHistory
             // 
@@ -854,6 +818,68 @@
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
             // 
+            // lbl_errorAmountPaid
+            // 
+            this.lbl_errorAmountPaid.AutoSize = true;
+            this.lbl_errorAmountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_errorAmountPaid.ForeColor = System.Drawing.Color.Red;
+            this.lbl_errorAmountPaid.Location = new System.Drawing.Point(64, 278);
+            this.lbl_errorAmountPaid.Name = "lbl_errorAmountPaid";
+            this.lbl_errorAmountPaid.Size = new System.Drawing.Size(0, 18);
+            this.lbl_errorAmountPaid.TabIndex = 28;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(151, 218);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(14, 18);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "*";
+            // 
+            // BillTable_ProductId
+            // 
+            this.BillTable_ProductId.HeaderText = "ID";
+            this.BillTable_ProductId.Name = "BillTable_ProductId";
+            this.BillTable_ProductId.ReadOnly = true;
+            // 
+            // BillTable_Name
+            // 
+            this.BillTable_Name.HeaderText = "Name";
+            this.BillTable_Name.Name = "BillTable_Name";
+            this.BillTable_Name.ReadOnly = true;
+            // 
+            // BillTable_Price
+            // 
+            this.BillTable_Price.HeaderText = "Price";
+            this.BillTable_Price.Name = "BillTable_Price";
+            this.BillTable_Price.ReadOnly = true;
+            // 
+            // BillTable_Quantity
+            // 
+            this.BillTable_Quantity.HeaderText = "Quantity";
+            this.BillTable_Quantity.Name = "BillTable_Quantity";
+            // 
+            // BillTable_Discount
+            // 
+            this.BillTable_Discount.HeaderText = "Discount";
+            this.BillTable_Discount.Name = "BillTable_Discount";
+            this.BillTable_Discount.ReadOnly = true;
+            // 
+            // BillTable_Tax
+            // 
+            this.BillTable_Tax.HeaderText = "Tax";
+            this.BillTable_Tax.Name = "BillTable_Tax";
+            // 
+            // BillTable_FinalPrice
+            // 
+            this.BillTable_FinalPrice.HeaderText = "Final Price";
+            this.BillTable_FinalPrice.Name = "BillTable_FinalPrice";
+            this.BillTable_FinalPrice.ReadOnly = true;
+            // 
             // TransactionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,12 +968,14 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox tb_AmountPaid;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label lbl_errorAmountPaid;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_Tax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_TotalPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BillTable_FinalPrice;
     }
 }
