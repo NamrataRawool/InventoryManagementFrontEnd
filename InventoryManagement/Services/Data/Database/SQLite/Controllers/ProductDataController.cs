@@ -25,7 +25,18 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
             return new ProductGet(m_Context, productDTO);
         }
+        public ProductGet GetByName(string name)
+        {
+            var productDTO = m_Context.Products
+                                .AsNoTracking()
+                                .FirstOrDefaultAsync(p => p.Name.ToLower().Equals(name.ToLower()))
+                                .Result;
 
+            if (productDTO == null)
+                return null;
+
+            return new ProductGet(m_Context, productDTO);
+        }
         public List<ProductGet> GetAll()
         {
             var productDTOs = m_Context.Products

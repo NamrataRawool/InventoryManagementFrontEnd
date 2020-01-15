@@ -15,6 +15,7 @@ namespace InventoryManagement.Controllers.Transaction
         public string totalDiscount;
         public string totalTax;
         public string amountDue;
+        public string amountPaid;
 
         public TransactionSession()
         {
