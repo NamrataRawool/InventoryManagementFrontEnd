@@ -69,5 +69,14 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             return new VendorGet(m_Context, vendorDTO);
         }
 
+        public VendorGet GetByName(string name)
+        {
+            var vendorDTO = m_Context.Vendors
+                    .AsNoTracking()
+                    .FirstOrDefault(v => v.CompanyName.Equals(name));
+
+            return new VendorGet(m_Context, vendorDTO);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Controllers.Product;
+using InventoryManagement.Services.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,11 +29,6 @@ namespace InventoryManagement.UI.Product
             InitializeComponent();
 
             m_Controller = new FormController_ProductDetails(productID, this);
-        }
-
-        private void btn_AddStock_Click(object sender, EventArgs e)
-        {
-
         }
 
         // update the image

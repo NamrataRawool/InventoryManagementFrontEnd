@@ -104,6 +104,7 @@
             this.productDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productDataView.Size = new System.Drawing.Size(997, 486);
             this.productDataView.TabIndex = 2;
+            this.productDataView.DoubleClick += new System.EventHandler(this.productDataView_DoubleClick);
             // 
             // ProductTableColumn_ID
             // 

@@ -36,7 +36,6 @@ namespace InventoryManagement.Models
 
     public class StockGet : StockBase
     {
-
         public StockGet() { }
 
         public StockGet(InventoryDbContext context, StockDTO dto)
@@ -45,7 +44,14 @@ namespace InventoryManagement.Models
         }
     }
 
-    public class StockPost : StockBase { }
+    public class StockPost : StockBase
+    {
+        public StockPost() { }
+        public StockPost(StockGet get)
+            : base(get)
+        {
+        }
+    }
 
     public class StockDTO : StockBase
     {

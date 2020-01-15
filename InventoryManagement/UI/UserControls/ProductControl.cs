@@ -56,5 +56,11 @@ namespace InventoryManagement.UI.UserControls
         {
             m_Controller.UpdateTableByProductName(tb_searchProduct.Text.Trim());
         }
+
+        private void productDataView_DoubleClick(object sender, EventArgs e)
+        {
+            m_Controller.OpenForm_ProductDetails();
+        }
+
     }
 }

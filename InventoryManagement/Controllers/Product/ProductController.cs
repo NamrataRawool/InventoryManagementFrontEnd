@@ -106,7 +106,6 @@ namespace InventoryManagement.Controllers
             Form_ProductDetails formProductDetails = new Form_ProductDetails(ProductID);
             formProductDetails.Text = "Product Details";
             formProductDetails.ShowDialog();
-
         }
 
         public void UpdateTableByProductName(string name)

@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.GroupBox_ProductDetails = new System.Windows.Forms.GroupBox();
+            this.Label_SGST = new System.Windows.Forms.Label();
+            this.tf_ProductDetails_SGST = new System.Windows.Forms.TextBox();
+            this.Label_CGST = new System.Windows.Forms.Label();
+            this.tf_ProductDetails_CGST = new System.Windows.Forms.TextBox();
+            this.Label_Discount = new System.Windows.Forms.Label();
+            this.tf_ProductDetails_Discount = new System.Windows.Forms.TextBox();
             this.tf_ProductDetails_Description = new System.Windows.Forms.TextBox();
             this.tf_ProductDetails_ProductID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,42 +51,18 @@
             this.Button_UpdateProductDetails = new System.Windows.Forms.Button();
             this.tf_ProductDetails_WholesalePrice = new System.Windows.Forms.TextBox();
             this.cb_ProductDetails_Category = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cb_AddStock_Vendor = new System.Windows.Forms.ComboBox();
-            this.btn_AddStock = new System.Windows.Forms.Button();
-            this.Label_AddStockVendor = new System.Windows.Forms.Label();
-            this.tf_AddStock_BuyingPrice = new System.Windows.Forms.TextBox();
-            this.Label_AddStockDate = new System.Windows.Forms.Label();
-            this.tf_AddStock_Quantity = new System.Windows.Forms.TextBox();
-            this.Label_AddStockQuantity = new System.Windows.Forms.Label();
-            this.datePicker_AddStock_Date = new System.Windows.Forms.DateTimePicker();
-            this.Label_AddStockBuyingPrice = new System.Windows.Forms.Label();
             this.lbl_ProductDetails_AvailableStock = new System.Windows.Forms.Label();
             this.pictureBox_ProductImage = new System.Windows.Forms.PictureBox();
             this.lbl_ProductDetails_AvailableStockValue = new System.Windows.Forms.Label();
-            this.table_StockHistory = new System.Windows.Forms.DataGridView();
-            this.StockHIstoryTable_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockHistoryColumn_Vendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockHistoryColumn_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockHistoryColumn_BuyingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockHistoryColumn_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Label_Discount = new System.Windows.Forms.Label();
-            this.tf_ProductDetails_Discount = new System.Windows.Forms.TextBox();
-            this.Label_CGST = new System.Windows.Forms.Label();
-            this.tf_ProductDetails_CGST = new System.Windows.Forms.TextBox();
-            this.Label_SGST = new System.Windows.Forms.Label();
-            this.tf_ProductDetails_SGST = new System.Windows.Forms.TextBox();
             this.GroupBox_ProductDetails.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_StockHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_ChangeProductImage
             // 
             this.btn_ChangeProductImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ChangeProductImage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_ChangeProductImage.Location = new System.Drawing.Point(563, 174);
+            this.btn_ChangeProductImage.Location = new System.Drawing.Point(263, 191);
             this.btn_ChangeProductImage.Name = "btn_ChangeProductImage";
             this.btn_ChangeProductImage.Size = new System.Drawing.Size(90, 30);
             this.btn_ChangeProductImage.TabIndex = 1;
@@ -114,12 +94,66 @@
             this.GroupBox_ProductDetails.Controls.Add(this.tf_ProductDetails_WholesalePrice);
             this.GroupBox_ProductDetails.Controls.Add(this.cb_ProductDetails_Category);
             this.GroupBox_ProductDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupBox_ProductDetails.Location = new System.Drawing.Point(12, 31);
+            this.GroupBox_ProductDetails.Location = new System.Drawing.Point(22, 267);
             this.GroupBox_ProductDetails.Name = "GroupBox_ProductDetails";
             this.GroupBox_ProductDetails.Size = new System.Drawing.Size(362, 422);
             this.GroupBox_ProductDetails.TabIndex = 4;
             this.GroupBox_ProductDetails.TabStop = false;
             this.GroupBox_ProductDetails.Text = "Product Details";
+            // 
+            // Label_SGST
+            // 
+            this.Label_SGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Label_SGST.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label_SGST.Location = new System.Drawing.Point(16, 345);
+            this.Label_SGST.Name = "Label_SGST";
+            this.Label_SGST.Size = new System.Drawing.Size(123, 26);
+            this.Label_SGST.TabIndex = 19;
+            this.Label_SGST.Text = "SGST : ";
+            this.Label_SGST.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tf_ProductDetails_SGST
+            // 
+            this.tf_ProductDetails_SGST.Location = new System.Drawing.Point(145, 349);
+            this.tf_ProductDetails_SGST.Name = "tf_ProductDetails_SGST";
+            this.tf_ProductDetails_SGST.Size = new System.Drawing.Size(186, 22);
+            this.tf_ProductDetails_SGST.TabIndex = 20;
+            // 
+            // Label_CGST
+            // 
+            this.Label_CGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Label_CGST.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label_CGST.Location = new System.Drawing.Point(15, 307);
+            this.Label_CGST.Name = "Label_CGST";
+            this.Label_CGST.Size = new System.Drawing.Size(123, 26);
+            this.Label_CGST.TabIndex = 17;
+            this.Label_CGST.Text = "CGST : ";
+            this.Label_CGST.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tf_ProductDetails_CGST
+            // 
+            this.tf_ProductDetails_CGST.Location = new System.Drawing.Point(144, 311);
+            this.tf_ProductDetails_CGST.Name = "tf_ProductDetails_CGST";
+            this.tf_ProductDetails_CGST.Size = new System.Drawing.Size(186, 22);
+            this.tf_ProductDetails_CGST.TabIndex = 18;
+            // 
+            // Label_Discount
+            // 
+            this.Label_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Label_Discount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Label_Discount.Location = new System.Drawing.Point(16, 269);
+            this.Label_Discount.Name = "Label_Discount";
+            this.Label_Discount.Size = new System.Drawing.Size(123, 26);
+            this.Label_Discount.TabIndex = 15;
+            this.Label_Discount.Text = "Discount : ";
+            this.Label_Discount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tf_ProductDetails_Discount
+            // 
+            this.tf_ProductDetails_Discount.Location = new System.Drawing.Point(145, 273);
+            this.tf_ProductDetails_Discount.Name = "tf_ProductDetails_Discount";
+            this.tf_ProductDetails_Discount.Size = new System.Drawing.Size(186, 22);
+            this.tf_ProductDetails_Discount.TabIndex = 16;
             // 
             // tf_ProductDetails_Description
             // 
@@ -261,116 +295,11 @@
             this.cb_ProductDetails_Category.Size = new System.Drawing.Size(186, 24);
             this.cb_ProductDetails_Category.TabIndex = 9;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.cb_AddStock_Vendor);
-            this.groupBox1.Controls.Add(this.btn_AddStock);
-            this.groupBox1.Controls.Add(this.Label_AddStockVendor);
-            this.groupBox1.Controls.Add(this.tf_AddStock_BuyingPrice);
-            this.groupBox1.Controls.Add(this.Label_AddStockDate);
-            this.groupBox1.Controls.Add(this.tf_AddStock_Quantity);
-            this.groupBox1.Controls.Add(this.Label_AddStockQuantity);
-            this.groupBox1.Controls.Add(this.datePicker_AddStock_Date);
-            this.groupBox1.Controls.Add(this.Label_AddStockBuyingPrice);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 474);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 201);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add Stock";
-            // 
-            // cb_AddStock_Vendor
-            // 
-            this.cb_AddStock_Vendor.FormattingEnabled = true;
-            this.cb_AddStock_Vendor.Location = new System.Drawing.Point(145, 36);
-            this.cb_AddStock_Vendor.Name = "cb_AddStock_Vendor";
-            this.cb_AddStock_Vendor.Size = new System.Drawing.Size(185, 24);
-            this.cb_AddStock_Vendor.TabIndex = 20;
-            // 
-            // btn_AddStock
-            // 
-            this.btn_AddStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_AddStock.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_AddStock.Location = new System.Drawing.Point(240, 152);
-            this.btn_AddStock.Name = "btn_AddStock";
-            this.btn_AddStock.Size = new System.Drawing.Size(90, 30);
-            this.btn_AddStock.TabIndex = 19;
-            this.btn_AddStock.Text = "Add Stock";
-            this.btn_AddStock.UseVisualStyleBackColor = true;
-            this.btn_AddStock.Click += new System.EventHandler(this.btn_AddStock_Click);
-            // 
-            // Label_AddStockVendor
-            // 
-            this.Label_AddStockVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_AddStockVendor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_AddStockVendor.Location = new System.Drawing.Point(18, 36);
-            this.Label_AddStockVendor.Name = "Label_AddStockVendor";
-            this.Label_AddStockVendor.Size = new System.Drawing.Size(123, 26);
-            this.Label_AddStockVendor.TabIndex = 11;
-            this.Label_AddStockVendor.Text = "Vendor : ";
-            this.Label_AddStockVendor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tf_AddStock_BuyingPrice
-            // 
-            this.tf_AddStock_BuyingPrice.Location = new System.Drawing.Point(145, 120);
-            this.tf_AddStock_BuyingPrice.Name = "tf_AddStock_BuyingPrice";
-            this.tf_AddStock_BuyingPrice.Size = new System.Drawing.Size(185, 22);
-            this.tf_AddStock_BuyingPrice.TabIndex = 18;
-            // 
-            // Label_AddStockDate
-            // 
-            this.Label_AddStockDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_AddStockDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_AddStockDate.Location = new System.Drawing.Point(18, 62);
-            this.Label_AddStockDate.Name = "Label_AddStockDate";
-            this.Label_AddStockDate.Size = new System.Drawing.Size(123, 26);
-            this.Label_AddStockDate.TabIndex = 12;
-            this.Label_AddStockDate.Text = "Date : ";
-            this.Label_AddStockDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tf_AddStock_Quantity
-            // 
-            this.tf_AddStock_Quantity.Location = new System.Drawing.Point(145, 92);
-            this.tf_AddStock_Quantity.Name = "tf_AddStock_Quantity";
-            this.tf_AddStock_Quantity.Size = new System.Drawing.Size(185, 22);
-            this.tf_AddStock_Quantity.TabIndex = 17;
-            // 
-            // Label_AddStockQuantity
-            // 
-            this.Label_AddStockQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_AddStockQuantity.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_AddStockQuantity.Location = new System.Drawing.Point(18, 88);
-            this.Label_AddStockQuantity.Name = "Label_AddStockQuantity";
-            this.Label_AddStockQuantity.Size = new System.Drawing.Size(123, 26);
-            this.Label_AddStockQuantity.TabIndex = 13;
-            this.Label_AddStockQuantity.Text = "Quantity : ";
-            this.Label_AddStockQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // datePicker_AddStock_Date
-            // 
-            this.datePicker_AddStock_Date.Location = new System.Drawing.Point(145, 66);
-            this.datePicker_AddStock_Date.Name = "datePicker_AddStock_Date";
-            this.datePicker_AddStock_Date.Size = new System.Drawing.Size(185, 22);
-            this.datePicker_AddStock_Date.TabIndex = 16;
-            // 
-            // Label_AddStockBuyingPrice
-            // 
-            this.Label_AddStockBuyingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_AddStockBuyingPrice.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_AddStockBuyingPrice.Location = new System.Drawing.Point(18, 114);
-            this.Label_AddStockBuyingPrice.Name = "Label_AddStockBuyingPrice";
-            this.Label_AddStockBuyingPrice.Size = new System.Drawing.Size(123, 26);
-            this.Label_AddStockBuyingPrice.TabIndex = 14;
-            this.Label_AddStockBuyingPrice.Text = "Buying Price : ";
-            this.Label_AddStockBuyingPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lbl_ProductDetails_AvailableStock
             // 
             this.lbl_ProductDetails_AvailableStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.lbl_ProductDetails_AvailableStock.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_ProductDetails_AvailableStock.Location = new System.Drawing.Point(876, 38);
+            this.lbl_ProductDetails_AvailableStock.Location = new System.Drawing.Point(48, 7);
             this.lbl_ProductDetails_AvailableStock.Name = "lbl_ProductDetails_AvailableStock";
             this.lbl_ProductDetails_AvailableStock.Size = new System.Drawing.Size(192, 67);
             this.lbl_ProductDetails_AvailableStock.TabIndex = 11;
@@ -381,9 +310,9 @@
             // 
             this.pictureBox_ProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox_ProductImage.Image = global::InventoryManagement.Properties.Resources.placeholder;
-            this.pictureBox_ProductImage.Location = new System.Drawing.Point(483, 38);
+            this.pictureBox_ProductImage.Location = new System.Drawing.Point(40, 86);
             this.pictureBox_ProductImage.Name = "pictureBox_ProductImage";
-            this.pictureBox_ProductImage.Size = new System.Drawing.Size(170, 118);
+            this.pictureBox_ProductImage.Size = new System.Drawing.Size(200, 135);
             this.pictureBox_ProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_ProductImage.TabIndex = 0;
             this.pictureBox_ProductImage.TabStop = false;
@@ -393,134 +322,20 @@
             this.lbl_ProductDetails_AvailableStockValue.Cursor = System.Windows.Forms.Cursors.Cross;
             this.lbl_ProductDetails_AvailableStockValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.lbl_ProductDetails_AvailableStockValue.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_ProductDetails_AvailableStockValue.Location = new System.Drawing.Point(1074, 31);
+            this.lbl_ProductDetails_AvailableStockValue.Location = new System.Drawing.Point(246, 7);
             this.lbl_ProductDetails_AvailableStockValue.Name = "lbl_ProductDetails_AvailableStockValue";
             this.lbl_ProductDetails_AvailableStockValue.Size = new System.Drawing.Size(122, 67);
             this.lbl_ProductDetails_AvailableStockValue.TabIndex = 14;
             this.lbl_ProductDetails_AvailableStockValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // table_StockHistory
-            // 
-            this.table_StockHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.table_StockHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.table_StockHistory.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.table_StockHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.table_StockHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_StockHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.StockHIstoryTable_Date,
-            this.StockHistoryColumn_Vendor,
-            this.StockHistoryColumn_Quantity,
-            this.StockHistoryColumn_BuyingPrice,
-            this.StockHistoryColumn_TotalPrice});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.table_StockHistory.DefaultCellStyle = dataGridViewCellStyle2;
-            this.table_StockHistory.Location = new System.Drawing.Point(483, 244);
-            this.table_StockHistory.Name = "table_StockHistory";
-            this.table_StockHistory.Size = new System.Drawing.Size(710, 449);
-            this.table_StockHistory.TabIndex = 12;
-            // 
-            // StockHIstoryTable_Date
-            // 
-            this.StockHIstoryTable_Date.HeaderText = "Date";
-            this.StockHIstoryTable_Date.Name = "StockHIstoryTable_Date";
-            // 
-            // StockHistoryColumn_Vendor
-            // 
-            this.StockHistoryColumn_Vendor.HeaderText = "Vendor";
-            this.StockHistoryColumn_Vendor.Name = "StockHistoryColumn_Vendor";
-            // 
-            // StockHistoryColumn_Quantity
-            // 
-            this.StockHistoryColumn_Quantity.HeaderText = "Quantity";
-            this.StockHistoryColumn_Quantity.Name = "StockHistoryColumn_Quantity";
-            // 
-            // StockHistoryColumn_BuyingPrice
-            // 
-            this.StockHistoryColumn_BuyingPrice.HeaderText = "Buying Price";
-            this.StockHistoryColumn_BuyingPrice.Name = "StockHistoryColumn_BuyingPrice";
-            // 
-            // StockHistoryColumn_TotalPrice
-            // 
-            this.StockHistoryColumn_TotalPrice.HeaderText = "Total Price";
-            this.StockHistoryColumn_TotalPrice.Name = "StockHistoryColumn_TotalPrice";
-            // 
-            // Label_Discount
-            // 
-            this.Label_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_Discount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_Discount.Location = new System.Drawing.Point(16, 269);
-            this.Label_Discount.Name = "Label_Discount";
-            this.Label_Discount.Size = new System.Drawing.Size(123, 26);
-            this.Label_Discount.TabIndex = 15;
-            this.Label_Discount.Text = "Discount : ";
-            this.Label_Discount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tf_ProductDetails_Discount
-            // 
-            this.tf_ProductDetails_Discount.Location = new System.Drawing.Point(145, 273);
-            this.tf_ProductDetails_Discount.Name = "tf_ProductDetails_Discount";
-            this.tf_ProductDetails_Discount.Size = new System.Drawing.Size(186, 22);
-            this.tf_ProductDetails_Discount.TabIndex = 16;
-            // 
-            // Label_CGST
-            // 
-            this.Label_CGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_CGST.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_CGST.Location = new System.Drawing.Point(15, 307);
-            this.Label_CGST.Name = "Label_CGST";
-            this.Label_CGST.Size = new System.Drawing.Size(123, 26);
-            this.Label_CGST.TabIndex = 17;
-            this.Label_CGST.Text = "CGST : ";
-            this.Label_CGST.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tf_ProductDetails_CGST
-            // 
-            this.tf_ProductDetails_CGST.Location = new System.Drawing.Point(144, 311);
-            this.tf_ProductDetails_CGST.Name = "tf_ProductDetails_CGST";
-            this.tf_ProductDetails_CGST.Size = new System.Drawing.Size(186, 22);
-            this.tf_ProductDetails_CGST.TabIndex = 18;
-            // 
-            // Label_SGST
-            // 
-            this.Label_SGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Label_SGST.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_SGST.Location = new System.Drawing.Point(16, 345);
-            this.Label_SGST.Name = "Label_SGST";
-            this.Label_SGST.Size = new System.Drawing.Size(123, 26);
-            this.Label_SGST.TabIndex = 19;
-            this.Label_SGST.Text = "SGST : ";
-            this.Label_SGST.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tf_ProductDetails_SGST
-            // 
-            this.tf_ProductDetails_SGST.Location = new System.Drawing.Point(145, 349);
-            this.tf_ProductDetails_SGST.Name = "tf_ProductDetails_SGST";
-            this.tf_ProductDetails_SGST.Size = new System.Drawing.Size(186, 22);
-            this.tf_ProductDetails_SGST.TabIndex = 20;
             // 
             // Form_ProductDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1301, 705);
-            this.Controls.Add(this.table_StockHistory);
+            this.ClientSize = new System.Drawing.Size(408, 714);
             this.Controls.Add(this.lbl_ProductDetails_AvailableStockValue);
             this.Controls.Add(this.lbl_ProductDetails_AvailableStock);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GroupBox_ProductDetails);
             this.Controls.Add(this.btn_ChangeProductImage);
             this.Controls.Add(this.pictureBox_ProductImage);
@@ -531,10 +346,7 @@
             this.Text = "Product Details";
             this.GroupBox_ProductDetails.ResumeLayout(false);
             this.GroupBox_ProductDetails.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_StockHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -544,17 +356,7 @@
         public System.Windows.Forms.PictureBox pictureBox_ProductImage;
         public System.Windows.Forms.Button btn_ChangeProductImage;
         public System.Windows.Forms.GroupBox GroupBox_ProductDetails;
-        public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.Label Label_AddStockBuyingPrice;
-        public System.Windows.Forms.Label Label_AddStockQuantity;
-        public System.Windows.Forms.Label Label_AddStockDate;
-        public System.Windows.Forms.Label Label_AddStockVendor;
-        public System.Windows.Forms.Button btn_AddStock;
-        public System.Windows.Forms.TextBox tf_AddStock_BuyingPrice;
-        public System.Windows.Forms.TextBox tf_AddStock_Quantity;
-        public System.Windows.Forms.DateTimePicker datePicker_AddStock_Date;
         public System.Windows.Forms.Label lbl_ProductDetails_AvailableStock;
-        public System.Windows.Forms.ComboBox cb_AddStock_Vendor;
         public System.Windows.Forms.Label lbl_ProductDetails_AvailableStockValue;
         public System.Windows.Forms.Button Button_UpdateProductDetails;
         public System.Windows.Forms.ComboBox cb_ProductDetails_Category;
@@ -571,12 +373,6 @@
         public System.Windows.Forms.Label Label_Barcode;
         public System.Windows.Forms.Label Label_Description;
         public System.Windows.Forms.TextBox tf_ProductDetails_Description;
-        public System.Windows.Forms.DataGridView table_StockHistory;
-        public System.Windows.Forms.DataGridViewTextBoxColumn StockHIstoryTable_Date;
-        public System.Windows.Forms.DataGridViewTextBoxColumn StockHistoryColumn_Vendor;
-        public System.Windows.Forms.DataGridViewTextBoxColumn StockHistoryColumn_Quantity;
-        public System.Windows.Forms.DataGridViewTextBoxColumn StockHistoryColumn_BuyingPrice;
-        public System.Windows.Forms.DataGridViewTextBoxColumn StockHistoryColumn_TotalPrice;
         public System.Windows.Forms.Label Label_SGST;
         public System.Windows.Forms.TextBox tf_ProductDetails_SGST;
         public System.Windows.Forms.Label Label_CGST;
