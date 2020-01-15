@@ -35,9 +35,9 @@ namespace InventoryManagement.Models
 
         public string Email { get; set; }
 
-        public int TotalAmount { get; set; }
+        public double TotalAmount { get; set; }
 
-        public int PendingAmount { get; set; }
+        public double PendingAmount { get; set; }
 
     }
 

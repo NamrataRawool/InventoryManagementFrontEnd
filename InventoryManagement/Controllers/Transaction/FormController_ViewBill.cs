@@ -46,6 +46,23 @@ namespace InventoryManagement.Controllers.Transaction
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
             var transaction = DataService.Get().GetTransactionDataController().Post(transactionPost);
+            UpdateCustomerDetails();
+        }
+        private void UpdateCustomerDetails()
+        {
+            //Update customer details
+            var customer = m_transactionSession.GetCustomer();
+            if (customer.ID == 0)
+                return;
+
+            CustomerPost customerPost = new CustomerPost();
+            customerPost.ID = customer.ID;
+            customerPost.MobileNumber = customer.MobileNumber;
+            customerPost.Name = customer.Name;
+            customerPost.Email = customer.Email;
+            customerPost.TotalAmount = customer.TotalAmount + double.Parse(m_transactionSession.amountDue);
+            customerPost.PendingAmount = customer.PendingAmount + (double.Parse(m_transactionSession.amountDue) - double.Parse(m_transactionSession.amountPaid));
+            var c = DataService.Get().GetCustomerDataController().Put(customerPost);
         }
 
         private void InitializeViewBillTable()

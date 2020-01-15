@@ -30,7 +30,8 @@ namespace InventoryManagement.Controllers.Transaction
             {
                 ResetTransaction();
             }
-            InitializeCustomerSearchBoxData();
+            InitializeCustomerNameSearchBoxData();
+            InitializeCustomerMobileNumberSearchBoxData();
             InitializProductNameSearchBoxData();
         }
 
@@ -218,7 +219,7 @@ namespace InventoryManagement.Controllers.Transaction
                 ResetTransaction();
             }
         }
-        public void InitializeCustomerSearchBoxData()
+        public void InitializeCustomerNameSearchBoxData()
         {
             var customers = DataService.Get().GetCustomerDataController().GetAll();
             var searchBox = m_UIControl.tb_customerName;
@@ -241,6 +242,19 @@ namespace InventoryManagement.Controllers.Transaction
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             foreach (var product in products)
                 collection.Add(product.Name);
+
+            searchBox.AutoCompleteCustomSource = collection;
+        }
+        public void InitializeCustomerMobileNumberSearchBoxData()
+        {
+            var customers = DataService.Get().GetCustomerDataController().GetAll();
+            var searchBox = m_UIControl.tb_mobileNumber;
+            searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (var customer in customers)
+                collection.Add(customer.MobileNumber);
 
             searchBox.AutoCompleteCustomSource = collection;
         }
