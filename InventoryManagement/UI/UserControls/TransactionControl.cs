@@ -72,7 +72,7 @@ namespace InventoryManagement.UI.UserControls
             }
             lbl_errorText.Text = string.Empty;
             string productName = tb_productName.Text.Trim();
-            var product = DataService.Get().GetProductDataController().GetByName(productName);
+            var product = DataService.GetProductDataController().GetByName(productName);
             if (product == null)
             {
                 lbl_errorText.Text = "Record not found";
@@ -140,7 +140,7 @@ namespace InventoryManagement.UI.UserControls
                 lbl_errorText.Text = string.Empty;
 
                 string productName = tb_productName.Text.Trim();
-                var product = DataService.Get().GetProductDataController().GetByName(productName);
+                var product = DataService.GetProductDataController().GetByName(productName);
 
                 if (product == null)
                 {

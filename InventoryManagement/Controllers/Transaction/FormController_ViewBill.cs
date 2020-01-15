@@ -45,7 +45,7 @@ namespace InventoryManagement.Controllers.Transaction
             //Removing last comma
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
-            var transaction = DataService.Get().GetTransactionDataController().Post(transactionPost);
+            var transaction = DataService.GetTransactionDataController().Post(transactionPost);
             UpdateCustomerDetails();
         }
         private void UpdateCustomerDetails()
@@ -62,7 +62,7 @@ namespace InventoryManagement.Controllers.Transaction
             customerPost.Email = customer.Email;
             customerPost.TotalAmount = customer.TotalAmount + double.Parse(m_transactionSession.amountDue);
             customerPost.PendingAmount = customer.PendingAmount + (double.Parse(m_transactionSession.amountDue) - double.Parse(m_transactionSession.amountPaid));
-            var c = DataService.Get().GetCustomerDataController().Put(customerPost);
+            var c = DataService.GetCustomerDataController().Put(customerPost);
         }
 
         private void InitializeViewBillTable()

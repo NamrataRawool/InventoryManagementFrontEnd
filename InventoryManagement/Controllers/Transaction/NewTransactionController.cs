@@ -234,7 +234,7 @@ namespace InventoryManagement.Controllers.Transaction
         }
         public void InitializProductNameSearchBoxData()
         {
-            var products = DataService.Get().GetProductDataController().GetAll();
+            var products = DataService.GetProductDataController().GetAll();
             var searchBox = m_UIControl.tb_productName;
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -247,7 +247,7 @@ namespace InventoryManagement.Controllers.Transaction
         }
         public void InitializeCustomerMobileNumberSearchBoxData()
         {
-            var customers = DataService.Get().GetCustomerDataController().GetAll();
+            var customers = DataService.GetCustomerDataController().GetAll();
             var searchBox = m_UIControl.tb_mobileNumber;
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
