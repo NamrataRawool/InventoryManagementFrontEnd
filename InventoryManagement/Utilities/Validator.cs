@@ -11,7 +11,7 @@ namespace InventoryManagement.Utilities
     {
         public static bool IsInteger(string integer)
         {
-            string integerPattern = @"^[0-9]$";
+            string integerPattern = @"^[0-9]{1,}$";
             if (!Regex.IsMatch(integer, integerPattern))
             {
                 return false;

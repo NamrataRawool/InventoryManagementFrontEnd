@@ -16,7 +16,20 @@ namespace InventoryManagement.Controllers.Transaction
         public TransactionHistoryController(TransactionControl UIControl)
              : base(UIControl)
         {
+            m_UIControl.cb_customerName.DataSource = InitializeCustomerNameDatasource();
+        }
 
+        private List<string> InitializeCustomerNameDatasource()
+        {
+            var customers = DataService.GetCustomerDataController().GetAll();
+            if (customers == null)
+                return null;
+
+            List<string> customerDataSource = new List<string>();
+            foreach (var customer in customers)
+                customerDataSource.Add(customer.Name);
+
+            return customerDataSource;
         }
 
         public void SearchTransactionsByDate(string from, string to)
@@ -28,7 +41,6 @@ namespace InventoryManagement.Controllers.Transaction
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
             InitializeTransactionHistoryTable(transactions);
         }
-
 
         public void SearchTransactionByCustomerName(string name)
         {
@@ -54,7 +66,6 @@ namespace InventoryManagement.Controllers.Transaction
             foreach (var transaction in transactions)
                 AddTransactionToHistoryTable(transaction);
         }
-
 
         private void AddTransactionToHistoryTable(TransactionGet transaction)
         {
@@ -90,7 +101,7 @@ namespace InventoryManagement.Controllers.Transaction
 
         protected override void RegisterEvents()
         {
-
         }
+
     }
 }

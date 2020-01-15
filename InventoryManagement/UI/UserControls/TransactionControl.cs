@@ -31,11 +31,9 @@ namespace InventoryManagement.UI.UserControls
 
         private void TransactionControl_Load(Object sender, EventArgs e)
         {
-
             tb_barCode.Focus();
             m_newTransactionController.Initialize();
             ResetTextBox();
-            cb_customerName.DataSource = InitializeCustomerNameDatasource();
         }
 
         #region New Transaction
@@ -75,20 +73,30 @@ namespace InventoryManagement.UI.UserControls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (String.IsNullOrEmpty(tb_barCode.Text) || !Validator.IsInteger(tb_barCode.Text))
+                if (String.IsNullOrEmpty(tb_barCode.Text))
+                {
+                    return;
+                }
+
+                if (!Validator.IsInteger(tb_barCode.Text))
                 {
                     lbl_errorText.Text = "Please enter valid bar code";
                     return;
                 }
+
                 lbl_errorText.Text = string.Empty;
+
                 int productId = int.Parse(this.tb_barCode.Text);
                 var product = DataService.GetProductDataController().Get(productId);
+
                 if (product == null)
                 {
                     lbl_errorText.Text = "Record not found";
                     return;
                 }
+                //default quantity while adding product
                 product.Quantity = 1;
+
                 m_newTransactionController.OnAddProduct(product);
                 ResetTextBox();
             }
@@ -104,31 +112,35 @@ namespace InventoryManagement.UI.UserControls
             m_newTransactionController.OpenForm_ViewBill();
         }
 
-        private void tb_customerName_KeyDown(object sender, KeyEventArgs e)
-        {
-            lbl_customerError.Text = string.Empty;
-            if (e.KeyCode == Keys.Enter)
-            {
-                var customer = DataService.GetCustomerDataController().GetByName(tb_customerName.Text.Trim());
-                if (customer == null)
-                {
-                    lbl_customerError.Text = "Customer Not found!";
-                    return;
-                }
-                tb_mobileNumber.Text = customer.MobileNumber;
-                tb_pendingAmount.Text = customer.PendingAmount.ToString();
-            }
-        }
-
         private void tb_mobileNumber_KeyDown(object sender, KeyEventArgs e)
         {
             lbl_customerError.Text = string.Empty;
             if (e.KeyCode == Keys.Enter)
             {
+                if (string.IsNullOrEmpty(tb_mobileNumber.Text))
+                {
+                    m_newTransactionController.ResetCustomerDetails();
+                    return;
+                }
+
                 m_newTransactionController.SearchCustomerByMobileNumber(tb_mobileNumber.Text);
             }
         }
 
+        private void tb_customerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            lbl_customerError.Text = string.Empty;
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrEmpty(tb_customerName.Text))
+                {
+                    m_newTransactionController.ResetCustomerDetails();
+                    return;
+                }
+                m_newTransactionController.SearchCustomerByName(tb_customerName.Text);
+            }
+
+        }
         private void Bill_ProductsDataView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -145,18 +157,7 @@ namespace InventoryManagement.UI.UserControls
 
 
         #region Transaction History
-        private List<string> InitializeCustomerNameDatasource()
-        {
-            var customers = DataService.GetCustomerDataController().GetAll();
-            if (customers == null)
-                return null;
-
-            List<string> customerDataSource = new List<string>();
-            foreach (var customer in customers)
-                customerDataSource.Add(customer.Name);
-
-            return customerDataSource;
-        }
+       
         private void btn_searchByCustomerName_Click(object sender, EventArgs e)
         {
             m_transactionHistoryController.SearchTransactionByCustomerName(cb_customerName.Text);
@@ -175,8 +176,8 @@ namespace InventoryManagement.UI.UserControls
             m_transactionHistoryController.OpenForm_ViewTransactionDetails();
         }
 
-        #endregion
 
+        #endregion
 
     }
 }

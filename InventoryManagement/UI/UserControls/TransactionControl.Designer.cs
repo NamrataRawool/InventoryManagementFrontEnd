@@ -62,6 +62,12 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_addProductToBill = new System.Windows.Forms.Button();
             this.Bill_ProductsDataView = new System.Windows.Forms.DataGridView();
+            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_transactionHistory = new System.Windows.Forms.TabPage();
             this.lbl_transactionError = new System.Windows.Forms.Label();
             this.btn_exportToExcel = new System.Windows.Forms.Button();
@@ -79,12 +85,6 @@
             this.Transaction_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaction_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTable_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionTabControl.SuspendLayout();
             this.tab_newTransaction.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
@@ -177,7 +177,7 @@
             // btn_ViewBill
             // 
             this.btn_ViewBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ViewBill.Location = new System.Drawing.Point(275, 226);
+            this.btn_ViewBill.Location = new System.Drawing.Point(311, 225);
             this.btn_ViewBill.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ViewBill.Name = "btn_ViewBill";
             this.btn_ViewBill.Size = new System.Drawing.Size(77, 33);
@@ -189,18 +189,20 @@
             // tb_subtotal
             // 
             this.tb_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_subtotal.Location = new System.Drawing.Point(168, 37);
+            this.tb_subtotal.Location = new System.Drawing.Point(204, 36);
             this.tb_subtotal.Margin = new System.Windows.Forms.Padding(2);
             this.tb_subtotal.Name = "tb_subtotal";
+            this.tb_subtotal.ReadOnly = true;
             this.tb_subtotal.Size = new System.Drawing.Size(184, 21);
             this.tb_subtotal.TabIndex = 23;
             // 
             // tb_amountDue
             // 
             this.tb_amountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_amountDue.Location = new System.Drawing.Point(168, 179);
+            this.tb_amountDue.Location = new System.Drawing.Point(204, 178);
             this.tb_amountDue.Margin = new System.Windows.Forms.Padding(2);
             this.tb_amountDue.Name = "tb_amountDue";
+            this.tb_amountDue.ReadOnly = true;
             this.tb_amountDue.Size = new System.Drawing.Size(184, 21);
             this.tb_amountDue.TabIndex = 26;
             // 
@@ -208,7 +210,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(28, 179);
+            this.label12.Location = new System.Drawing.Point(64, 178);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 18);
@@ -219,7 +221,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(28, 132);
+            this.label11.Location = new System.Drawing.Point(64, 131);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 18);
@@ -230,7 +232,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(28, 37);
+            this.label10.Location = new System.Drawing.Point(64, 36);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 18);
@@ -241,7 +243,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(28, 84);
+            this.label7.Location = new System.Drawing.Point(64, 83);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 18);
@@ -251,18 +253,20 @@
             // tb_totalTax
             // 
             this.tb_totalTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_totalTax.Location = new System.Drawing.Point(168, 132);
+            this.tb_totalTax.Location = new System.Drawing.Point(204, 131);
             this.tb_totalTax.Margin = new System.Windows.Forms.Padding(2);
             this.tb_totalTax.Name = "tb_totalTax";
+            this.tb_totalTax.ReadOnly = true;
             this.tb_totalTax.Size = new System.Drawing.Size(184, 21);
             this.tb_totalTax.TabIndex = 25;
             // 
             // tb_totalDiscount
             // 
             this.tb_totalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_totalDiscount.Location = new System.Drawing.Point(168, 84);
+            this.tb_totalDiscount.Location = new System.Drawing.Point(204, 83);
             this.tb_totalDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_totalDiscount.Name = "tb_totalDiscount";
+            this.tb_totalDiscount.ReadOnly = true;
             this.tb_totalDiscount.Size = new System.Drawing.Size(184, 21);
             this.tb_totalDiscount.TabIndex = 24;
             // 
@@ -287,17 +291,17 @@
             // lbl_customerError
             // 
             this.lbl_customerError.AutoSize = true;
-            this.lbl_customerError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_customerError.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_customerError.ForeColor = System.Drawing.Color.Red;
-            this.lbl_customerError.Location = new System.Drawing.Point(26, 201);
+            this.lbl_customerError.Location = new System.Drawing.Point(65, 33);
             this.lbl_customerError.Name = "lbl_customerError";
-            this.lbl_customerError.Size = new System.Drawing.Size(0, 16);
+            this.lbl_customerError.Size = new System.Drawing.Size(0, 18);
             this.lbl_customerError.TabIndex = 27;
             // 
             // tb_mobileNumber
             // 
             this.tb_mobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_mobileNumber.Location = new System.Drawing.Point(192, 50);
+            this.tb_mobileNumber.Location = new System.Drawing.Point(204, 79);
             this.tb_mobileNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tb_mobileNumber.Name = "tb_mobileNumber";
             this.tb_mobileNumber.Size = new System.Drawing.Size(184, 21);
@@ -308,7 +312,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(53, 50);
+            this.label8.Location = new System.Drawing.Point(65, 79);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 18);
@@ -319,7 +323,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(53, 95);
+            this.label6.Location = new System.Drawing.Point(65, 124);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 18);
@@ -331,18 +335,18 @@
             this.tb_customerName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tb_customerName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tb_customerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_customerName.Location = new System.Drawing.Point(192, 95);
+            this.tb_customerName.Location = new System.Drawing.Point(204, 124);
             this.tb_customerName.Margin = new System.Windows.Forms.Padding(2);
             this.tb_customerName.Name = "tb_customerName";
-            this.tb_customerName.ReadOnly = true;
             this.tb_customerName.Size = new System.Drawing.Size(184, 21);
             this.tb_customerName.TabIndex = 24;
+            this.tb_customerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_customerName_KeyDown);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(53, 137);
+            this.label9.Location = new System.Drawing.Point(65, 166);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 18);
@@ -352,7 +356,7 @@
             // tb_pendingAmount
             // 
             this.tb_pendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_pendingAmount.Location = new System.Drawing.Point(192, 137);
+            this.tb_pendingAmount.Location = new System.Drawing.Point(204, 166);
             this.tb_pendingAmount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_pendingAmount.Name = "tb_pendingAmount";
             this.tb_pendingAmount.ReadOnly = true;
@@ -412,7 +416,7 @@
             // 
             this.btn_addProductToBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addProductToBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_addProductToBill.Location = new System.Drawing.Point(341, 49);
+            this.btn_addProductToBill.Location = new System.Drawing.Point(339, 49);
             this.btn_addProductToBill.Margin = new System.Windows.Forms.Padding(2);
             this.btn_addProductToBill.Name = "btn_addProductToBill";
             this.btn_addProductToBill.Size = new System.Drawing.Size(77, 28);
@@ -434,7 +438,7 @@
             this.Bill_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -451,7 +455,7 @@
             this.BillTable_TotalPrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -478,6 +482,41 @@
             this.Bill_ProductsDataView.TabIndex = 25;
             this.Bill_ProductsDataView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Bill_ProductsDataView_CellEndEdit);
             this.Bill_ProductsDataView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bill_ProductsDataView_KeyDown);
+            // 
+            // BillTable_ProductId
+            // 
+            this.BillTable_ProductId.HeaderText = "ID";
+            this.BillTable_ProductId.Name = "BillTable_ProductId";
+            this.BillTable_ProductId.ReadOnly = true;
+            // 
+            // BillTable_Name
+            // 
+            this.BillTable_Name.HeaderText = "Name";
+            this.BillTable_Name.Name = "BillTable_Name";
+            this.BillTable_Name.ReadOnly = true;
+            // 
+            // BillTable_Price
+            // 
+            this.BillTable_Price.HeaderText = "Price (in Rs)";
+            this.BillTable_Price.Name = "BillTable_Price";
+            this.BillTable_Price.ReadOnly = true;
+            // 
+            // BillTable_Discount
+            // 
+            this.BillTable_Discount.HeaderText = "Discount (in Rs)";
+            this.BillTable_Discount.Name = "BillTable_Discount";
+            this.BillTable_Discount.ReadOnly = true;
+            // 
+            // BillTable_Quantity
+            // 
+            this.BillTable_Quantity.HeaderText = "Quantity";
+            this.BillTable_Quantity.Name = "BillTable_Quantity";
+            // 
+            // BillTable_TotalPrice
+            // 
+            this.BillTable_TotalPrice.HeaderText = "Total Price (in Rs)";
+            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
+            this.BillTable_TotalPrice.ReadOnly = true;
             // 
             // tab_transactionHistory
             // 
@@ -641,7 +680,7 @@
             this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -656,7 +695,7 @@
             this.Transaction_TotalPrice});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -707,41 +746,6 @@
             this.Transaction_TotalPrice.Name = "Transaction_TotalPrice";
             this.Transaction_TotalPrice.ReadOnly = true;
             // 
-            // BillTable_ProductId
-            // 
-            this.BillTable_ProductId.HeaderText = "ID";
-            this.BillTable_ProductId.Name = "BillTable_ProductId";
-            this.BillTable_ProductId.ReadOnly = true;
-            // 
-            // BillTable_Name
-            // 
-            this.BillTable_Name.HeaderText = "Name";
-            this.BillTable_Name.Name = "BillTable_Name";
-            this.BillTable_Name.ReadOnly = true;
-            // 
-            // BillTable_Price
-            // 
-            this.BillTable_Price.HeaderText = "Price (in Rs)";
-            this.BillTable_Price.Name = "BillTable_Price";
-            this.BillTable_Price.ReadOnly = true;
-            // 
-            // BillTable_Discount
-            // 
-            this.BillTable_Discount.HeaderText = "Discount (in Rs)";
-            this.BillTable_Discount.Name = "BillTable_Discount";
-            this.BillTable_Discount.ReadOnly = true;
-            // 
-            // BillTable_Quantity
-            // 
-            this.BillTable_Quantity.HeaderText = "Quantity";
-            this.BillTable_Quantity.Name = "BillTable_Quantity";
-            // 
-            // BillTable_TotalPrice
-            // 
-            this.BillTable_TotalPrice.HeaderText = "Total Price (in Rs)";
-            this.BillTable_TotalPrice.Name = "BillTable_TotalPrice";
-            this.BillTable_TotalPrice.ReadOnly = true;
-            // 
             // TransactionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -782,7 +786,7 @@
         public System.Windows.Forms.TextBox tb_pendingAmount;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btn_ViewBill;
+        public System.Windows.Forms.Button btn_ViewBill;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox tb_subtotal;
         private System.Windows.Forms.Label label7;
@@ -801,12 +805,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DateTime_toDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cb_customerName;
+        public System.Windows.Forms.ComboBox cb_customerName;
         private System.Windows.Forms.Button btn_exportToExcel;
         private System.Windows.Forms.Button btn_searchByCustomerName;
         private System.Windows.Forms.Button btn_searchByDate;
         private System.Windows.Forms.Button btn_deleteBillRecord;
-        private System.Windows.Forms.Label lbl_errorText;
+        public System.Windows.Forms.Label lbl_errorText;
         public System.Windows.Forms.Label lbl_transactionError;
         public System.Windows.Forms.Label lbl_customerError;
         public System.Windows.Forms.TextBox tb_totalTax;
