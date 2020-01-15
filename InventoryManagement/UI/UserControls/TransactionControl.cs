@@ -161,10 +161,16 @@ namespace InventoryManagement.UI.UserControls
 
 
         private void btn_ViewBill_Click(object sender, EventArgs e)
-        {          
+        {
             m_newTransactionController.OpenForm_ViewBill();
         }
-
+        private void tb_AmountPaid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                m_newTransactionController.OpenForm_ViewBill();
+            }
+        }
         private void tb_mobileNumber_KeyDown(object sender, KeyEventArgs e)
         {
             lbl_customerError.Text = string.Empty;
