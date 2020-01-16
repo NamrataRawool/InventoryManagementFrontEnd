@@ -6,7 +6,7 @@ namespace InventoryManagement.UI.UserControls
 {
     public partial class CustomerControl : UserControl
     {
-        CustomerContoller m_controller;
+        CustomerController m_controller;
 
         public CustomerControl()
         {
@@ -15,7 +15,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void CustomerControl_Load(object sender, EventArgs e)
         {
-            m_controller = new CustomerContoller(this);
+            m_controller = new CustomerController(this);
         }
 
         private void btn_addCustomer_Click(object sender, EventArgs e)

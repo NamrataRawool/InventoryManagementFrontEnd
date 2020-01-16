@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.EventHandlers.Customer;
+using InventoryManagement.Events;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
 using InventoryManagement.UI.UserControls;
@@ -11,10 +13,13 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Customer
 {
-    public class CustomerContoller : IController<CustomerControl>
+    public class CustomerController : IController<CustomerControl>
     {
-        public CustomerContoller(CustomerControl UIControl) : base(UIControl)
+        public CustomerController(CustomerControl UIControl) 
+            : base(UIControl)
         {
+            SetEventHandler(new EventHandler_Customer(this));
+
             Initialize();
         }
 
@@ -93,7 +98,7 @@ namespace InventoryManagement.Controllers.Customer
                 AddCustomerToTable(customer);
         }
 
-        private void AddCustomerToTable(CustomerGet customer)
+        public void AddCustomerToTable(CustomerGet customer)
         {
             var Table = GetTable();
             int Index = Table.Rows.Add();
@@ -133,9 +138,11 @@ namespace InventoryManagement.Controllers.Customer
         {
             return m_UIControl.customerDataView;
         }
+
         protected override void RegisterEvents()
         {
-
+            RegisterEvent(EventType.NewEntryAdded);
         }
+
     }
 }

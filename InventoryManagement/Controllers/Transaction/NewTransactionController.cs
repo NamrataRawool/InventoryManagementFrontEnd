@@ -232,6 +232,13 @@ namespace InventoryManagement.Controllers.Transaction
 
             searchBox.AutoCompleteCustomSource = collection;
         }
+
+        public void AddCustomerNameToSearchBox(string customerName)
+        {
+            var searchBox = m_UIControl.tb_customerName;
+            searchBox.AutoCompleteCustomSource.Add(customerName);
+        }
+
         public void InitializProductNameSearchBoxData()
         {
             var products = DataService.GetProductDataController().GetAll();
@@ -245,6 +252,7 @@ namespace InventoryManagement.Controllers.Transaction
 
             searchBox.AutoCompleteCustomSource = collection;
         }
+
         public void InitializeCustomerMobileNumberSearchBoxData()
         {
             var customers = DataService.GetCustomerDataController().GetAll();
@@ -329,6 +337,7 @@ namespace InventoryManagement.Controllers.Transaction
         protected override void RegisterEvents()
         {
             RegisterEvent(EventType.UI_Transaction_AddProduct);
+            RegisterEvent(EventType.NewEntryAdded);
         }
     }
 }

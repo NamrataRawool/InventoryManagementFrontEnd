@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
 using InventoryManagement.Utilities;
@@ -18,22 +20,26 @@ namespace InventoryManagement.Controllers.Customer
            : base(UIControl)
         {
         }
+
         public void SaveCustomer()
         {
             m_UIControl.lbl_customerErrorText.Text = string.Empty;
-            if (ValidateCustomerDetails())
-            {
-                CustomerPost customerPost = new CustomerPost();
-                customerPost.Email = m_UIControl.tb_customerEmail.Text;
-                customerPost.Name = m_UIControl.tb_CustomerName.Text;
-                customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
-                customerPost.PendingAmount = 0;
-                var customer = DataService.GetCustomerDataController().Post(customerPost);
-                if (customer != null)
-                    m_UIControl.DialogResult = DialogResult.Yes;
-                else
-                    m_UIControl.DialogResult = DialogResult.No;
-            }
+            if (!ValidateCustomerDetails())
+                return;
+
+            CustomerPost customerPost = new CustomerPost();
+            customerPost.Email = m_UIControl.tb_customerEmail.Text;
+            customerPost.Name = m_UIControl.tb_CustomerName.Text;
+            customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
+            customerPost.PendingAmount = 0;
+            var customer = DataService.GetCustomerDataController().Post(customerPost);
+            if (customer != null)
+                m_UIControl.DialogResult = DialogResult.Yes;
+            else
+                m_UIControl.DialogResult = DialogResult.No;
+
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CUSTOMER, customer.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
         }
 
         private bool ValidateCustomerDetails()
@@ -71,13 +77,13 @@ namespace InventoryManagement.Controllers.Customer
             return true;
         }
 
-
         public void ResetTextBoxes()
         {
             m_UIControl.tb_customerEmail.Text = string.Empty;
             m_UIControl.tb_customerMobile.Text = string.Empty;
             m_UIControl.tb_CustomerName.Text = string.Empty;
         }
+
         protected override void RegisterEvents()
         {
 

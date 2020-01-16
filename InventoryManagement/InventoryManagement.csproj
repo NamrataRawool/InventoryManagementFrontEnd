@@ -207,7 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Broadcaster\EventBroadcaster.cs" />
-    <Compile Include="Controllers\Customer\CustomerContoller.cs" />
+    <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Customer\FormController_AddCustomer.cs" />
     <Compile Include="Controllers\Customer\FormController_EditCustomer.cs" />
     <Compile Include="Controllers\IController.cs" />
@@ -222,6 +222,7 @@
     <Compile Include="Controllers\Vendor\FormController_AddVendor.cs" />
     <Compile Include="Controllers\Vendor\FormController_EditVendor.cs" />
     <Compile Include="Controllers\Vendor\VendorController.cs" />
+    <Compile Include="EventHandlers\Customer\EventHandler_Customer.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
     <Compile Include="EventHandlers\Product\EventHandler_Product.cs" />
     <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />
