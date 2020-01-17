@@ -28,19 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Purchase_ProductsDataView = new System.Windows.Forms.DataGridView();
-            this.PurchaseTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_transactionHistory = new System.Windows.Forms.TabPage();
             this.lbl_transactionError = new System.Windows.Forms.Label();
             this.btn_exportToExcel = new System.Windows.Forms.Button();
@@ -54,8 +48,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DateTime_fromDate = new System.Windows.Forms.DateTimePicker();
             this.TransactionHistoryDataView = new System.Windows.Forms.DataGridView();
+            this.Purchase_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchase_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchase_VendorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchase_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseTabControl = new System.Windows.Forms.TabControl();
-            this.tab_newTransaction = new System.Windows.Forms.TabPage();
+            this.tab_newPurchase = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.purchase_dateTime = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,17 +88,19 @@
             this.tb_barCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.Purchase_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchase_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchase_VendorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchase_TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).BeginInit();
             this.tab_transactionHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).BeginInit();
             this.purchaseTabControl.SuspendLayout();
-            this.tab_newTransaction.SuspendLayout();
+            this.tab_newPurchase.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.gb_billDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -117,84 +117,49 @@
             this.Purchase_ProductsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Purchase_ProductsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.Purchase_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Purchase_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Purchase_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.Purchase_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Purchase_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PurchaseTable_ProductId,
             this.PurchaseTable_Name,
             this.PurchaseTable_PurchasePrice,
             this.PurchaseTable_Quantity,
-            this.PurchaseTable_Discount,
-            this.PurchaseTable_Tax});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Purchase_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle14;
+            this.PurchaseTable_Discount});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Purchase_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle8;
             this.Purchase_ProductsDataView.GridColor = System.Drawing.Color.Black;
             this.Purchase_ProductsDataView.Location = new System.Drawing.Point(25, 319);
             this.Purchase_ProductsDataView.MultiSelect = false;
             this.Purchase_ProductsDataView.Name = "Purchase_ProductsDataView";
             this.Purchase_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Purchase_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Purchase_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.Purchase_ProductsDataView.RowHeadersVisible = false;
             this.Purchase_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.Purchase_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Purchase_ProductsDataView.Size = new System.Drawing.Size(716, 349);
             this.Purchase_ProductsDataView.TabIndex = 25;
-            // 
-            // PurchaseTable_ProductId
-            // 
-            this.PurchaseTable_ProductId.HeaderText = "ID";
-            this.PurchaseTable_ProductId.Name = "PurchaseTable_ProductId";
-            this.PurchaseTable_ProductId.ReadOnly = true;
-            // 
-            // PurchaseTable_Name
-            // 
-            this.PurchaseTable_Name.HeaderText = "Product Name";
-            this.PurchaseTable_Name.Name = "PurchaseTable_Name";
-            this.PurchaseTable_Name.ReadOnly = true;
-            // 
-            // PurchaseTable_PurchasePrice
-            // 
-            this.PurchaseTable_PurchasePrice.HeaderText = "Purchase Price";
-            this.PurchaseTable_PurchasePrice.Name = "PurchaseTable_PurchasePrice";
-            this.PurchaseTable_PurchasePrice.ReadOnly = true;
-            // 
-            // PurchaseTable_Quantity
-            // 
-            this.PurchaseTable_Quantity.HeaderText = "Quantity";
-            this.PurchaseTable_Quantity.Name = "PurchaseTable_Quantity";
-            // 
-            // PurchaseTable_Discount
-            // 
-            this.PurchaseTable_Discount.HeaderText = "Discount";
-            this.PurchaseTable_Discount.Name = "PurchaseTable_Discount";
-            this.PurchaseTable_Discount.ReadOnly = true;
-            // 
-            // PurchaseTable_Tax
-            // 
-            this.PurchaseTable_Tax.HeaderText = "Tax";
-            this.PurchaseTable_Tax.Name = "PurchaseTable_Tax";
             // 
             // tab_transactionHistory
             // 
@@ -217,7 +182,7 @@
             this.lbl_transactionError.AutoSize = true;
             this.lbl_transactionError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_transactionError.ForeColor = System.Drawing.Color.Red;
-            this.lbl_transactionError.Location = new System.Drawing.Point(491, 265);
+            this.lbl_transactionError.Location = new System.Drawing.Point(490, 253);
             this.lbl_transactionError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_transactionError.Name = "lbl_transactionError";
             this.lbl_transactionError.Size = new System.Drawing.Size(0, 16);
@@ -227,7 +192,7 @@
             // 
             this.btn_exportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exportToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_exportToExcel.Location = new System.Drawing.Point(1064, 391);
+            this.btn_exportToExcel.Location = new System.Drawing.Point(1063, 379);
             this.btn_exportToExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_exportToExcel.Name = "btn_exportToExcel";
             this.btn_exportToExcel.Size = new System.Drawing.Size(175, 33);
@@ -239,7 +204,7 @@
             // 
             this.groupBox3.Controls.Add(this.btn_searchByCustomerName);
             this.groupBox3.Controls.Add(this.cb_customerName);
-            this.groupBox3.Location = new System.Drawing.Point(278, 165);
+            this.groupBox3.Location = new System.Drawing.Point(277, 153);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
@@ -280,7 +245,7 @@
             this.groupBox2.Controls.Add(this.DateTime_toDate);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.DateTime_fromDate);
-            this.groupBox2.Location = new System.Drawing.Point(76, 32);
+            this.groupBox2.Location = new System.Drawing.Point(75, 20);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -353,52 +318,76 @@
             this.TransactionHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TransactionHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.TransactionHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Purchase_Date,
             this.Purchase_ID,
             this.Purchase_VendorName,
             this.Purchase_TotalPrice});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle11;
             this.TransactionHistoryDataView.GridColor = System.Drawing.Color.Black;
-            this.TransactionHistoryDataView.Location = new System.Drawing.Point(129, 297);
+            this.TransactionHistoryDataView.Location = new System.Drawing.Point(128, 285);
             this.TransactionHistoryDataView.MultiSelect = false;
             this.TransactionHistoryDataView.Name = "TransactionHistoryDataView";
             this.TransactionHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.TransactionHistoryDataView.RowHeadersVisible = false;
             this.TransactionHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.TransactionHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TransactionHistoryDataView.Size = new System.Drawing.Size(903, 407);
             this.TransactionHistoryDataView.TabIndex = 26;
             // 
+            // Purchase_Date
+            // 
+            this.Purchase_Date.HeaderText = "Date";
+            this.Purchase_Date.Name = "Purchase_Date";
+            this.Purchase_Date.ReadOnly = true;
+            // 
+            // Purchase_ID
+            // 
+            this.Purchase_ID.HeaderText = "Purchase ID";
+            this.Purchase_ID.Name = "Purchase_ID";
+            this.Purchase_ID.ReadOnly = true;
+            // 
+            // Purchase_VendorName
+            // 
+            this.Purchase_VendorName.HeaderText = "Vendor Name";
+            this.Purchase_VendorName.Name = "Purchase_VendorName";
+            this.Purchase_VendorName.ReadOnly = true;
+            // 
+            // Purchase_TotalPrice
+            // 
+            this.Purchase_TotalPrice.HeaderText = "Total Price";
+            this.Purchase_TotalPrice.Name = "Purchase_TotalPrice";
+            this.Purchase_TotalPrice.ReadOnly = true;
+            // 
             // purchaseTabControl
             // 
-            this.purchaseTabControl.Controls.Add(this.tab_newTransaction);
+            this.purchaseTabControl.Controls.Add(this.tab_newPurchase);
             this.purchaseTabControl.Controls.Add(this.tab_transactionHistory);
             this.purchaseTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.purchaseTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -410,22 +399,21 @@
             this.purchaseTabControl.Size = new System.Drawing.Size(1303, 782);
             this.purchaseTabControl.TabIndex = 1;
             // 
-            // tab_newTransaction
+            // tab_newPurchase
             // 
-            this.tab_newTransaction.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tab_newTransaction.Controls.Add(this.groupBox4);
-            this.tab_newTransaction.Controls.Add(this.btn_reset);
-            this.tab_newTransaction.Controls.Add(this.gb_billDetails);
-            this.tab_newTransaction.Controls.Add(this.lbl_errorText);
-            this.tab_newTransaction.Controls.Add(this.groupBox1);
-            this.tab_newTransaction.Controls.Add(this.Purchase_ProductsDataView);
-            this.tab_newTransaction.Location = new System.Drawing.Point(4, 54);
-            this.tab_newTransaction.Margin = new System.Windows.Forms.Padding(0);
-            this.tab_newTransaction.Name = "tab_newTransaction";
-            this.tab_newTransaction.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_newTransaction.Size = new System.Drawing.Size(1295, 724);
-            this.tab_newTransaction.TabIndex = 0;
-            this.tab_newTransaction.Text = "New Purchase";
+            this.tab_newPurchase.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tab_newPurchase.Controls.Add(this.groupBox4);
+            this.tab_newPurchase.Controls.Add(this.btn_reset);
+            this.tab_newPurchase.Controls.Add(this.gb_billDetails);
+            this.tab_newPurchase.Controls.Add(this.groupBox1);
+            this.tab_newPurchase.Controls.Add(this.Purchase_ProductsDataView);
+            this.tab_newPurchase.Location = new System.Drawing.Point(4, 54);
+            this.tab_newPurchase.Margin = new System.Windows.Forms.Padding(0);
+            this.tab_newPurchase.Name = "tab_newPurchase";
+            this.tab_newPurchase.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_newPurchase.Size = new System.Drawing.Size(1295, 724);
+            this.tab_newPurchase.TabIndex = 0;
+            this.tab_newPurchase.Text = "New Purchase";
             // 
             // groupBox4
             // 
@@ -464,10 +452,11 @@
             // 
             // cb_vendorName
             // 
+            this.cb_vendorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.cb_vendorName.FormattingEnabled = true;
             this.cb_vendorName.Location = new System.Drawing.Point(83, 44);
             this.cb_vendorName.Name = "cb_vendorName";
-            this.cb_vendorName.Size = new System.Drawing.Size(216, 28);
+            this.cb_vendorName.Size = new System.Drawing.Size(216, 26);
             this.cb_vendorName.TabIndex = 34;
             // 
             // label17
@@ -661,7 +650,7 @@
             this.lbl_errorText.AutoSize = true;
             this.lbl_errorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_errorText.ForeColor = System.Drawing.Color.Red;
-            this.lbl_errorText.Location = new System.Drawing.Point(242, 183);
+            this.lbl_errorText.Location = new System.Drawing.Point(28, 25);
             this.lbl_errorText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_errorText.Name = "lbl_errorText";
             this.lbl_errorText.Size = new System.Drawing.Size(0, 17);
@@ -670,9 +659,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Controls.Add(this.btn_add);
             this.groupBox1.Controls.Add(this.tb_availableStock);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.tb_discount);
+            this.groupBox1.Controls.Add(this.lbl_errorText);
             this.groupBox1.Controls.Add(this.cb_productName);
             this.groupBox1.Controls.Add(this.tb_purchasePrice);
             this.groupBox1.Controls.Add(this.label14);
@@ -686,7 +677,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1113, 146);
+            this.groupBox1.Size = new System.Drawing.Size(1161, 146);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product Details";
@@ -725,11 +716,14 @@
             // 
             // cb_productName
             // 
+            this.cb_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cb_productName.FormattingEnabled = true;
-            this.cb_productName.Location = new System.Drawing.Point(150, 95);
+            this.cb_productName.Location = new System.Drawing.Point(150, 101);
             this.cb_productName.Name = "cb_productName";
-            this.cb_productName.Size = new System.Drawing.Size(184, 28);
+            this.cb_productName.Size = new System.Drawing.Size(184, 24);
             this.cb_productName.TabIndex = 37;
+            this.cb_productName.Text = "Select Product";
+            this.cb_productName.SelectedValueChanged += new System.EventHandler(this.cb_productName_SelectedValueChanged);
             // 
             // tb_purchasePrice
             // 
@@ -762,6 +756,7 @@
             this.tb_quantity.Name = "tb_quantity";
             this.tb_quantity.Size = new System.Drawing.Size(142, 21);
             this.tb_quantity.TabIndex = 35;
+            this.tb_quantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_quantity_KeyDown);
             // 
             // label16
             // 
@@ -795,11 +790,12 @@
             this.tb_barCode.Name = "tb_barCode";
             this.tb_barCode.Size = new System.Drawing.Size(184, 21);
             this.tb_barCode.TabIndex = 1;
+            this.tb_barCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_barCode_KeyDown);
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 96);
+            this.label3.Location = new System.Drawing.Point(4, 103);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 18);
@@ -818,29 +814,46 @@
             this.label15.Text = "Bar Code :";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Purchase_Date
+            // PurchaseTable_ProductId
             // 
-            this.Purchase_Date.HeaderText = "Date";
-            this.Purchase_Date.Name = "Purchase_Date";
-            this.Purchase_Date.ReadOnly = true;
+            this.PurchaseTable_ProductId.HeaderText = "ID";
+            this.PurchaseTable_ProductId.Name = "PurchaseTable_ProductId";
+            this.PurchaseTable_ProductId.ReadOnly = true;
             // 
-            // Purchase_ID
+            // PurchaseTable_Name
             // 
-            this.Purchase_ID.HeaderText = "Purchase ID";
-            this.Purchase_ID.Name = "Purchase_ID";
-            this.Purchase_ID.ReadOnly = true;
+            this.PurchaseTable_Name.HeaderText = "Product Name";
+            this.PurchaseTable_Name.Name = "PurchaseTable_Name";
+            this.PurchaseTable_Name.ReadOnly = true;
             // 
-            // Purchase_VendorName
+            // PurchaseTable_PurchasePrice
             // 
-            this.Purchase_VendorName.HeaderText = "Vendor Name";
-            this.Purchase_VendorName.Name = "Purchase_VendorName";
-            this.Purchase_VendorName.ReadOnly = true;
+            this.PurchaseTable_PurchasePrice.HeaderText = "Purchase Price";
+            this.PurchaseTable_PurchasePrice.Name = "PurchaseTable_PurchasePrice";
+            this.PurchaseTable_PurchasePrice.ReadOnly = true;
             // 
-            // Purchase_TotalPrice
+            // PurchaseTable_Quantity
             // 
-            this.Purchase_TotalPrice.HeaderText = "Total Price";
-            this.Purchase_TotalPrice.Name = "Purchase_TotalPrice";
-            this.Purchase_TotalPrice.ReadOnly = true;
+            this.PurchaseTable_Quantity.HeaderText = "Quantity";
+            this.PurchaseTable_Quantity.Name = "PurchaseTable_Quantity";
+            // 
+            // PurchaseTable_Discount
+            // 
+            this.PurchaseTable_Discount.HeaderText = "Discount";
+            this.PurchaseTable_Discount.Name = "PurchaseTable_Discount";
+            this.PurchaseTable_Discount.ReadOnly = true;
+            // 
+            // btn_add
+            // 
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(1049, 90);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(64, 30);
+            this.btn_add.TabIndex = 30;
+            this.btn_add.Text = "Add";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // PurchaseControl
             // 
@@ -859,8 +872,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).EndInit();
             this.purchaseTabControl.ResumeLayout(false);
-            this.tab_newTransaction.ResumeLayout(false);
-            this.tab_newTransaction.PerformLayout();
+            this.tab_newPurchase.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.gb_billDetails.ResumeLayout(false);
@@ -887,7 +899,7 @@
         private System.Windows.Forms.DateTimePicker DateTime_fromDate;
         public System.Windows.Forms.DataGridView TransactionHistoryDataView;
         private System.Windows.Forms.TabControl purchaseTabControl;
-        private System.Windows.Forms.TabPage tab_newTransaction;
+        private System.Windows.Forms.TabPage tab_newPurchase;
         private System.Windows.Forms.GroupBox gb_billDetails;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label lbl_errorAmountPaid;
@@ -918,12 +930,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox tb_availableStock;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_ProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_PurchasePrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Tax;
         public System.Windows.Forms.Button btn_reset;
         public System.Windows.Forms.ComboBox cb_vendorName;
         public System.Windows.Forms.ComboBox cb_productName;
@@ -932,5 +938,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Purchase_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Purchase_VendorName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Purchase_TotalPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_PurchasePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Discount;
+        public System.Windows.Forms.Button btn_add;
     }
 }
