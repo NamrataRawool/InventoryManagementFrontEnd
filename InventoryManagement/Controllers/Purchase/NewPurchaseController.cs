@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.EventHandlers.Purchase;
+using InventoryManagement.Events;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.UserControls;
 using InventoryManagement.Utilities;
@@ -15,8 +17,9 @@ namespace InventoryManagement.Controllers.Purchase
     {
         public NewPurchaseController(PurchaseControl UIControl) : base(UIControl)
         {
-
+            SetEventHandler(new EventHandler_NewPurchase(this));
         }
+
         public void Initialize(bool reset = true)
         {
             if (reset)
@@ -26,30 +29,30 @@ namespace InventoryManagement.Controllers.Purchase
             InitializeVendorNameDataSource();
             InitializeProductNameDataSource();
         }
+
         private void InitializeVendorNameDataSource()
         {
             var vendors = DataService.GetVendorDataController().GetAll();
             if (vendors == null)
                 return;
 
-            List<string> VendorDataSource = new List<string>();
+            var comboBox = m_UIControl.cb_vendorName;
             foreach (var vendor in vendors)
-                VendorDataSource.Add(vendor.CompanyName);
-
-            m_UIControl.cb_vendorName.DataSource = VendorDataSource;
+                comboBox.Items.Add(vendor.CompanyName);
         }
 
-        private void InitializeProductNameDataSource()
+        public void OnNewVendorAdded(int vendorID)
         {
-            var products = DataService.GetProductDataController().GetAll();
-            if (products == null)
-                return;
+            var vendor = DataService.GetVendorDataController().Get(vendorID);
+            string name = vendor.CompanyName;
+            m_UIControl.cb_vendorName.Items.Add(name);
+        }
 
-            List<string> ProductDataSource = new List<string>();
-            foreach (var product in products)
-                ProductDataSource.Add(product.Name);
-
-            m_UIControl.cb_productName.DataSource = ProductDataSource;
+        public void OnNewProductAdded(int productID)
+        {
+            var product = DataService.GetProductDataController().Get(productID);
+            string name = product.Name;
+            m_UIControl.cb_productName.Items.Add(name);
         }
 
         public void ResetUIControls()
@@ -65,6 +68,7 @@ namespace InventoryManagement.Controllers.Purchase
             var product = DataService.GetProductDataController().GetByName(m_UIControl.cb_productName.Text);
             AddProductRowToTable(product);
         }
+
         public void AddProductRowToTable(ProductGet product)
         {
             var gridView = GetTable();
@@ -85,6 +89,30 @@ namespace InventoryManagement.Controllers.Purchase
             ResetProductDetails();
         }
 
+        public void InitilizeTextBoxes(ProductGet product)
+        {
+            m_UIControl.tb_barCode.Text = product.Barcode.ToString();
+            m_UIControl.cb_productName.Text = product.Name;
+            var stock = DataService.GetStockDataController().GetByProductID(product.ID);
+            m_UIControl.tb_availableStock.Text = stock.AvailableQuantity.ToString();
+        }
+
+        public void OnDeleteProduct()
+        {
+
+        }
+
+        private void InitializeProductNameDataSource()
+        {
+            var products = DataService.GetProductDataController().GetAll();
+            if (products == null)
+                return;
+
+            var comboBox = m_UIControl.cb_productName;
+            foreach (var product in products)
+                comboBox.Items.Add(product.Name);
+        }
+
         private void UpdateUILabels()
         {
             double subtotal = 0;
@@ -103,30 +131,31 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
             m_UIControl.tb_amountDue.Text = amountDue.ToString();
         }
+
         private bool ValidateProductDetails()
         {
-            if (String.IsNullOrEmpty(m_UIControl.tb_quantity.Text))
+            if (string.IsNullOrEmpty(m_UIControl.tb_quantity.Text))
             {
                 m_UIControl.lbl_errorText.Text = "Please enter quantity";
                 return false;
             }
-            if (String.IsNullOrEmpty(m_UIControl.tb_purchasePrice.Text))
+            if (string.IsNullOrEmpty(m_UIControl.tb_purchasePrice.Text))
             {
                 m_UIControl.lbl_errorText.Text = "Please enter purchase price";
                 return false;
             }
-            if (String.IsNullOrEmpty(m_UIControl.tb_barCode.Text) || string.IsNullOrEmpty(m_UIControl.cb_productName.Text))
+            if (string.IsNullOrEmpty(m_UIControl.tb_barCode.Text) && string.IsNullOrEmpty(m_UIControl.cb_productName.Text))
             {
                 m_UIControl.lbl_errorText.Text = "Please select product !";
                 return false;
             }
-            if (String.IsNullOrEmpty(m_UIControl.tb_discount.Text))
+            if (string.IsNullOrEmpty(m_UIControl.tb_discount.Text))
             {
                 m_UIControl.lbl_errorText.Text = "Please enter purchase price";
                 return false;
             }
 
-            if (!Validator.IsInteger(m_UIControl.tb_barCode.Text))
+            if (!Validator.IsInteger(m_UIControl.tb_barCode.Text) && !string.IsNullOrEmpty(m_UIControl.tb_barCode.Text))
             {
                 m_UIControl.lbl_errorText.Text = "Please enter valid bar code!";
                 return false;
@@ -148,13 +177,7 @@ namespace InventoryManagement.Controllers.Purchase
             }
             return true;
         }
-        public void InitilizeTextBoxes(ProductGet product)
-        {
-            m_UIControl.tb_barCode.Text = product.ID.ToString();
-            m_UIControl.cb_productName.Text = product.Name;
-            var stock = DataService.GetStockDataController().GetByProductID(product.ID);
-            m_UIControl.tb_availableStock.Text = stock.AvailableQuantity.ToString();
-        }
+
         private void ResetTextBoxes()
         {
             ResetProductDetails();
@@ -164,6 +187,7 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_totalTax.Text = string.Empty;
             m_UIControl.tb_AmountPaid.Text = string.Empty;
         }
+
         private void ResetProductDetails()
         {
             m_UIControl.cb_productName.Text = string.Empty;
@@ -173,6 +197,7 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_quantity.Text = string.Empty;
             m_UIControl.tb_discount.Text = string.Empty;
         }
+
         private void ResetProductsDataTable()
         {
             var Table = GetTable();
@@ -180,13 +205,16 @@ namespace InventoryManagement.Controllers.Purchase
             Table.Refresh();
         }
 
+
         private DataGridView GetTable()
         {
             return m_UIControl.Purchase_ProductsDataView;
         }
+
         protected override void RegisterEvents()
         {
-
+            RegisterEvent(EventType.NewEntryAdded);
         }
+
     }
 }

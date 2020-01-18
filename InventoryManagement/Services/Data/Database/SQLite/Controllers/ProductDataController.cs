@@ -25,6 +25,7 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
             return new ProductGet(m_Context, productDTO);
         }
+
         public ProductGet GetByName(string name)
         {
             var productDTO = m_Context.Products
@@ -37,6 +38,20 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
             return new ProductGet(m_Context, productDTO);
         }
+
+        public ProductGet GetByBarcode(string barcode)
+        {
+            var productDTO = m_Context.Products
+                                .AsNoTracking()
+                                .FirstOrDefaultAsync(p => p.Barcode.ToLower().Equals(barcode.ToLower()))
+                                .Result;
+
+            if (productDTO == null)
+                return null;
+
+            return new ProductGet(m_Context, productDTO);
+        }
+
         public List<ProductGet> GetAll()
         {
             var productDTOs = m_Context.Products

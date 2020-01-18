@@ -228,6 +228,7 @@
     <Compile Include="EventHandlers\Customer\EventHandler_Customer.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
     <Compile Include="EventHandlers\Product\EventHandler_Product.cs" />
+    <Compile Include="EventHandlers\Purchase\EventHandler_NewPurchase.cs" />
     <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />
     <Compile Include="EventHandlers\Vendor\EventHandler_Vendor.cs" />
     <Compile Include="Events\Common\Event_NewEntryAdded.cs" />
@@ -237,6 +238,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Vendor.cs" />
@@ -457,11 +459,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\Misc\" />
-    <Folder Include="Events\Product\" />
-    <Folder Include="Events\Vendor\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\placeholder.jpg" />
   </ItemGroup>

@@ -16,17 +16,20 @@ namespace InventoryManagement.UI.UserControls
     public partial class PurchaseControl : UserControl
     {
         NewPurchaseController m_newPurchaseController;
+
         public PurchaseControl()
         {
             InitializeComponent();
             m_newPurchaseController = new NewPurchaseController(this);
         }
+
         private void PurchaseControl_Load(object sender, EventArgs e)
         {
             m_newPurchaseController.Initialize();
         }
 
         #region NewPurchase
+
         private void btn_reset_Click(object sender, EventArgs e)
         {
             m_newPurchaseController.ResetUIControls();
@@ -37,25 +40,24 @@ namespace InventoryManagement.UI.UserControls
             if (e.KeyCode == Keys.Enter)
             {
                 if (String.IsNullOrEmpty(tb_barCode.Text))
-                {
                     return;
-                }
 
                 if (!Validator.IsInteger(tb_barCode.Text))
                 {
                     lbl_errorText.Text = "Please enter valid bar code";
                     return;
                 }
+
                 lbl_errorText.Text = string.Empty;
 
-                int productId = int.Parse(this.tb_barCode.Text);
-                var product = DataService.GetProductDataController().Get(productId);
-
+                string barcode = tb_barCode.Text;
+                var product = DataService.GetProductDataController().GetByBarcode(barcode);
                 if (product == null)
                 {
                     lbl_errorText.Text = "Record not found";
                     return;
                 }
+
                 m_newPurchaseController.InitilizeTextBoxes(product);
             }
         }
@@ -81,13 +83,22 @@ namespace InventoryManagement.UI.UserControls
             if (e.KeyCode == Keys.Enter)
             {
                 m_newPurchaseController.OnAddProduct();
-                
             }
         }
+
         private void btn_add_Click(object sender, EventArgs e)
         {
             m_newPurchaseController.OnAddProduct();
         }
+
         #endregion
+
+        private void Purchase_ProductsDataView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                m_newPurchaseController.OnDeleteProduct();
+            }
+        }
     }
 }

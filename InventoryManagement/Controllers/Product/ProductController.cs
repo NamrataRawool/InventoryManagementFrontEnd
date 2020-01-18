@@ -53,7 +53,7 @@ namespace InventoryManagement.Controllers
             int Index = Table.Rows.Add();
             DataGridViewRow NewRow = Table.Rows[Index];
             NewRow.Cells["ProductTableColumn_ID"].Value = product.ID;
-            NewRow.Cells["ProductTableColumn_Barcode"].Value = product.ID;
+            NewRow.Cells["ProductTableColumn_Barcode"].Value = product.Barcode;
             NewRow.Cells["ProductTableColumn_Name"].Value = product.Name;
             NewRow.Cells["ProductTableColumn_Category"].Value = product.Category.Name;
             NewRow.Cells["ProductTableColumn_RetailPrice"].Value = product.RetailPrice;

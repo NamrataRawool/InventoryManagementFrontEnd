@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace InventoryManagement.Models
 {
 
-    public class ProductDetails
+    public class TransactionProductDetails
     {
 
-        public ProductDetails(ProductGet p, int q)
+        public TransactionProductDetails(ProductGet p, int q)
         {
             Product = p;
             Quantity = q;
@@ -60,7 +60,7 @@ namespace InventoryManagement.Models
         public TransactionGet(InventoryDbContext context, TransactionDTO dto)
             : base(dto)
         {
-            ProductDetailsList = new List<ProductDetails>();
+            ProductDetailsList = new List<TransactionProductDetails>();
 
             // fill ProductDetails
             string[] IDs = dto.ProductIDs.Split(',');
@@ -73,14 +73,14 @@ namespace InventoryManagement.Models
                 {
                     int ID = int.Parse(sID);
                     int Quantity = int.Parse(sQuantity);
-                    ProductDetailsList.Add(new ProductDetails(new ProductGet(context, context.GetProduct(ID)), Quantity));
+                    ProductDetailsList.Add(new TransactionProductDetails(new ProductGet(context, context.GetProduct(ID)), Quantity));
                 }
             }
             if (dto.CustomerID != 0)
                 Customer = new CustomerGet(context, context.GetCustomer(dto.CustomerID));
         }
 
-        public List<ProductDetails> ProductDetailsList { get; set; }
+        public List<TransactionProductDetails> ProductDetailsList { get; set; }
 
         public CustomerGet Customer { get; set; }
     }

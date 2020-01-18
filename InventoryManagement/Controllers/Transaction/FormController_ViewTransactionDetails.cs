@@ -47,7 +47,7 @@ namespace InventoryManagement.Controllers.Transaction
                 AddRowTotheProductDetails(product);
             }
         }
-        private void AddRowTotheProductDetails(ProductDetails productDetails)
+        private void AddRowTotheProductDetails(TransactionProductDetails productDetails)
         {
             var Table = GetTable();
             int Index = Table.Rows.Add();
@@ -59,7 +59,7 @@ namespace InventoryManagement.Controllers.Transaction
             NewRow.Cells["TransactionTable_DiscountedPrice"].Value = productDetails.Quantity * CalculateDiscountedPrice(productDetails);
         }
 
-        private double CalculateDiscountedPrice(ProductDetails productDetails)
+        private double CalculateDiscountedPrice(TransactionProductDetails productDetails)
         {
             double discountInRupees = productDetails.Product.RetailPrice * (productDetails.Product.Discount / 100);
             return productDetails.Product.RetailPrice - discountInRupees;
