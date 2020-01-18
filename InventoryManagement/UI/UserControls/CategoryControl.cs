@@ -10,11 +10,15 @@ using System.Windows.Forms;
 using InventoryManagement.Models;
 using InventoryManagement.UI.Category;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Controllers.Category;
 
 namespace InventoryManagement.UI.UserControls
 {
     public partial class CategoryControl : UserControl
     {
+
+        CategoryController m_Controller;
+
         public CategoryControl()
         {
             InitializeComponent();
@@ -22,7 +26,8 @@ namespace InventoryManagement.UI.UserControls
 
         private void CategoryControl_Load(object sender, EventArgs e)
         {
-            categoryDataView.DataSource = DataService.GetCategoryDataController().GetAll();
+            m_Controller = new CategoryController(this);
+            m_Controller.Initialize();
         }
 
         private void btn_editCategory_Click(object sender, EventArgs e)
@@ -35,9 +40,6 @@ namespace InventoryManagement.UI.UserControls
                 DataGridViewRow selectedRow = categoryDataView.Rows[selectedRowIndex];
                 editCategory.tb_categoryName.Text = selectedRow.Cells["Name"].Value.ToString(); ;
                 editCategory.tb_categoryDescription.Text = selectedRow.Cells["Description"].Value.ToString();
-                editCategory.tb_categoryDiscount.Text = selectedRow.Cells["Discount"].Value.ToString();
-                editCategory.tb_categorySgst.Text = selectedRow.Cells["CGST"].Value.ToString();
-                editCategory.tb_categoryCgst.Text = selectedRow.Cells["SGST"].Value.ToString();
             }
             editCategory.ShowDialog();
         }
