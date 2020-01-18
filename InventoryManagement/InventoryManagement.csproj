@@ -257,6 +257,7 @@
     <Compile Include="Services\Data\Database\SQLite\DatabaseSQLite.cs" />
     <Compile Include="Services\Data\DataService.cs" />
     <Compile Include="Services\Data\IDataService.cs" />
+    <Compile Include="Services\Export\Exporters\Excel\ExcelExporter_DataGridView.cs" />
     <Compile Include="Services\Export\Exporters\Excel\ExcelExporter_Categories.cs" />
     <Compile Include="Services\Export\Exporters\Excel\ExcelExporter_Customers.cs" />
     <Compile Include="Services\Export\Exporters\Excel\ExcelExporter_Stocks.cs" />

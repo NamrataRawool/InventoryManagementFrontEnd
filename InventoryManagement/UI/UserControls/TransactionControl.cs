@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventoryManagement.Models;
-using InventoryManagement.Events;
-using InventoryManagement.Broadcaster;
-using InventoryManagement.Controllers;
 using InventoryManagement.Utilities;
 using InventoryManagement.Controllers.Transaction;
 using InventoryManagement.Services.Data;
@@ -63,6 +52,7 @@ namespace InventoryManagement.UI.UserControls
             m_newTransactionController.OnAddProduct(product);
             ResetTextBox();
         }
+
         private void btn_addProduct_ProductName_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(tb_productName.Text) || !Validator.IsValidString(tb_productName.Text))
@@ -83,6 +73,7 @@ namespace InventoryManagement.UI.UserControls
             ResetTextBox();
 
         }
+
         private void ResetTextBox()
         {
             tb_barCode.Text = string.Empty;
@@ -121,6 +112,7 @@ namespace InventoryManagement.UI.UserControls
                 ResetTextBox();
             }
         }
+
         private void tb_productName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -154,6 +146,7 @@ namespace InventoryManagement.UI.UserControls
                 ResetTextBox();
             }
         }
+
         private void btn_deleteBillRecord_Click(object sender, EventArgs e)
         {
             m_newTransactionController.OnDeleteProduct();
@@ -164,6 +157,7 @@ namespace InventoryManagement.UI.UserControls
         {
             m_newTransactionController.OpenForm_ViewBill();
         }
+
         private void tb_AmountPaid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -171,6 +165,7 @@ namespace InventoryManagement.UI.UserControls
                 m_newTransactionController.OpenForm_ViewBill();
             }
         }
+
         private void tb_mobileNumber_KeyDown(object sender, KeyEventArgs e)
         {
             lbl_customerError.Text = string.Empty;
@@ -200,6 +195,7 @@ namespace InventoryManagement.UI.UserControls
             }
 
         }
+
         private void Bill_ProductsDataView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -221,15 +217,19 @@ namespace InventoryManagement.UI.UserControls
         {
             m_transactionHistoryController.SearchTransactionByCustomerName(cb_customerName.Text);
         }
+
         private void btn_searchByDate_Click(object sender, EventArgs e)
         {
             var fromDate = DateTime_fromDate.Text;
             var toDate = DateTime_toDate.Text;
             m_transactionHistoryController.SearchTransactionsByDate(fromDate, toDate);
         }
+
         private void btn_exportToExcel_Click(object sender, EventArgs e)
         {
+            m_transactionHistoryController.ExportTrasactionHistory();
         }
+
         private void TransactionHistoryDataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             m_transactionHistoryController.OpenForm_ViewTransactionDetails();

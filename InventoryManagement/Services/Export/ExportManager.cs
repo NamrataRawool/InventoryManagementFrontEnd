@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace InventoryManagement.Services.Export
 {
@@ -38,10 +39,46 @@ namespace InventoryManagement.Services.Export
                     return new ExcelExporter_Transactions();
                 case ExportEntity.STOCKS:
                     return new ExcelExporter_Stocks();
+                case ExportEntity.DATAGRIDVIEW:
+                    return new ExcelExporter_DataGridView();
             }
 
             Assert.Do("Invalid Exporter Name");
             return null;
+        }
+
+        private void ExportDataGridViewToExcel(DataGridView dataGridView)
+        {
+            if (dataGridView.Rows.Count < 1)
+            {
+                MessageBox.Show("Nothing to export!");
+                return;
+            }
+
+            // open file selection dialog
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "*.xlsx|*.xlsx";
+            dialog.FilterIndex = 2;
+            dialog.RestoreDirectory = true;
+
+            DialogResult dialogResult = dialog.ShowDialog();
+            if (dialogResult != DialogResult.OK)
+                return;
+
+            string filename = dialog.FileName;
+
+            var exporter = (ExcelExporter_DataGridView)ExportManager.Get().CreateExporter(ExportType.EXCEL, ExportEntity.DATAGRIDVIEW);
+            exporter.SetDataGridView(dataGridView);
+
+            exporter.Export(filename);
+
+            MessageBox.Show("File exported : " + filename);
+        }
+
+        public void ExportDataGridView(DataGridView dataGridView, ExportType type)
+        {
+            if (type == ExportType.EXCEL)
+                ExportDataGridViewToExcel(dataGridView);
         }
 
         public static ExportManager Get()

@@ -14,6 +14,7 @@ namespace InventoryManagement.Services.Export
         CUSTOMERS,
         TRANSACTIONS,
         STOCKS,
+        DATAGRIDVIEW,
     }
 
     public enum ExportType

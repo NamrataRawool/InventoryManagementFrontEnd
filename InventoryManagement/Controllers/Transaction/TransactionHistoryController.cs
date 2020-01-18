@@ -1,5 +1,7 @@
 ﻿using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Services.Export;
+using InventoryManagement.Services.Export.Exporters.Excel;
 using InventoryManagement.UI.Transaction;
 using InventoryManagement.UI.UserControls;
 using System;
@@ -92,6 +94,12 @@ namespace InventoryManagement.Controllers.Transaction
             var Table = GetTransactionHistoryTable();
             Table.Rows.Clear();
             Table.Refresh();
+        }
+
+        public void ExportTrasactionHistory()
+        {
+            var table = GetTransactionHistoryTable();
+            ExportManager.Get().ExportDataGridView(table, ExportType.EXCEL);
         }
 
         private DataGridView GetTransactionHistoryTable()
