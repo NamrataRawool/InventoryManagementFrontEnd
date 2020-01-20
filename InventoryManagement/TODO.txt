@@ -29,3 +29,5 @@ add customer button in transaction page
 Entity --> Update --> Update UI table
 
 on product add/ edit --> Update in transaction product name data source
+
+transaction history --> double click to view details -> print button on that form

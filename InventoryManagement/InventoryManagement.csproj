@@ -217,6 +217,7 @@
     <Compile Include="Controllers\Product\ProductController.cs" />
     <Compile Include="Controllers\Purchase\FormController_ViewPurchaseBill.cs" />
     <Compile Include="Controllers\Purchase\NewPurchaseController.cs" />
+    <Compile Include="Controllers\Purchase\PurchaseHistoryController.cs" />
     <Compile Include="Controllers\Transaction\FormController_ViewTransactionDetails.cs" />
     <Compile Include="Controllers\Transaction\NewTransactionController.cs" />
     <Compile Include="Controllers\Transaction\FormController_ViewBill.cs" />

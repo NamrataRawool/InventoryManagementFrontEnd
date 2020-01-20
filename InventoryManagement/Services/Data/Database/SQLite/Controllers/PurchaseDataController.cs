@@ -1,5 +1,6 @@
 ﻿using InventoryManagement.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -64,6 +65,40 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             m_Context.SaveChanges();
 
             return new PurchaseGet(m_Context, purchaseDTO);
+        }
+
+        public List<PurchaseGet> GetByDate(DateTime from, DateTime to)
+        {
+            List<PurchaseDTO> purchaseDTOs = m_Context.Purchases
+                                    .Where(t => t.PurchaseDateTime.Date >= from.Date && t.PurchaseDateTime.Date <= to.Date)
+                                    .ToListAsync()
+                                    .Result;
+
+            if (purchaseDTOs == null)
+                return null;
+
+            List<PurchaseGet> purchaseList = new List<PurchaseGet>();
+            foreach (var dto in purchaseDTOs)
+                purchaseList.Add(new PurchaseGet(m_Context, dto));
+
+            return purchaseList;
+        }
+
+        public List<PurchaseGet> GetByVendorID(int vendorID)
+        {
+            List<PurchaseDTO> purchaseDTOs = m_Context.Purchases
+                                .Where(t => t.VendorID == vendorID)
+                                .ToListAsync()
+                                .Result;
+
+            if (purchaseDTOs == null)
+                return null;
+
+            List<PurchaseGet> outList = new List<PurchaseGet>();
+            foreach (var dto in purchaseDTOs)
+                outList.Add(new PurchaseGet(m_Context, dto));
+
+            return outList;
         }
     }
 }

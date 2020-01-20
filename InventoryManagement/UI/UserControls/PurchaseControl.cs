@@ -16,11 +16,12 @@ namespace InventoryManagement.UI.UserControls
     public partial class PurchaseControl : UserControl
     {
         NewPurchaseController m_newPurchaseController;
-
+        PurchaseHistoryController m_purchaseHistoryController;
         public PurchaseControl()
         {
             InitializeComponent();
             m_newPurchaseController = new NewPurchaseController(this);
+            m_purchaseHistoryController = new PurchaseHistoryController(this);
         }
 
         private void PurchaseControl_Load(object sender, EventArgs e)
@@ -102,8 +103,32 @@ namespace InventoryManagement.UI.UserControls
         {
             m_newPurchaseController.SavePurchase();
         }
+
         #endregion
 
+        #region Purchase History
+        private void btn_searchByDate_Click(object sender, EventArgs e)
+        {
+            var fromDate = DateTime_fromDate.Text;
+            var toDate = DateTime_toDate.Text;
+            m_purchaseHistoryController.SearchPurchaseByDate(fromDate, toDate);
+        }
 
+        private void btn_ResetTransactionHistory_Click(object sender, EventArgs e)
+        {
+            m_purchaseHistoryController.ResetPurchaseHistoryTable();
+        }
+
+        private void btn_searchByVendorName_Click(object sender, EventArgs e)
+        {
+            var vendorName = cb_VendorName_History.Text.Trim();
+            m_purchaseHistoryController.SearchPurchaseByVendorName(vendorName);
+        }
+
+        private void PurchaseHistoryDataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            m_purchaseHistoryController.OpenForm_ViewPurchaseBill();
+        }
+        #endregion
     }
 }

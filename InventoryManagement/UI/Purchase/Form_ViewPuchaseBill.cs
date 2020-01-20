@@ -14,15 +14,10 @@ namespace InventoryManagement.UI.Purchase
     public partial class Form_ViewPuchaseBill : Form
     {
         FormController_ViewPurchaseBill m_controller;
-        public Form_ViewPuchaseBill()
+        public Form_ViewPuchaseBill(int purchaseId)
         {
             InitializeComponent();
-            m_controller = new FormController_ViewPurchaseBill(this);
-        }
-
-        private void btn_SavePurchase_Click(object sender, EventArgs e)
-        {
-
+            m_controller = new FormController_ViewPurchaseBill(purchaseId, this);
         }
     }
 }

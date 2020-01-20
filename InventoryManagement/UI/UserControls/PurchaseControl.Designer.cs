@@ -40,19 +40,19 @@
             this.PurchaseTable_PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseTable_Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tab_transactionHistory = new System.Windows.Forms.TabPage();
-            this.lbl_transactionError = new System.Windows.Forms.Label();
+            this.tab_purchaseHistory = new System.Windows.Forms.TabPage();
+            this.lbl_purchaseSearchError = new System.Windows.Forms.Label();
             this.btn_exportToExcel = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btn_searchByCustomerName = new System.Windows.Forms.Button();
-            this.cb_customerName = new System.Windows.Forms.ComboBox();
+            this.btn_searchByVendorName = new System.Windows.Forms.Button();
+            this.cb_VendorName_History = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_searchByDate = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.DateTime_toDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.DateTime_fromDate = new System.Windows.Forms.DateTimePicker();
-            this.TransactionHistoryDataView = new System.Windows.Forms.DataGridView();
+            this.PurchaseHistoryDataView = new System.Windows.Forms.DataGridView();
             this.Purchase_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Purchase_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Purchase_VendorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,11 +93,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lbl_vendorError = new System.Windows.Forms.Label();
+            this.btn_ResetTransactionHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).BeginInit();
-            this.tab_transactionHistory.SuspendLayout();
+            this.tab_purchaseHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseHistoryDataView)).BeginInit();
             this.purchaseTabControl.SuspendLayout();
             this.tab_newPurchase.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -190,32 +191,33 @@
             this.PurchaseTable_Discount.Name = "PurchaseTable_Discount";
             this.PurchaseTable_Discount.ReadOnly = true;
             // 
-            // tab_transactionHistory
+            // tab_purchaseHistory
             // 
-            this.tab_transactionHistory.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tab_transactionHistory.Controls.Add(this.lbl_transactionError);
-            this.tab_transactionHistory.Controls.Add(this.btn_exportToExcel);
-            this.tab_transactionHistory.Controls.Add(this.groupBox3);
-            this.tab_transactionHistory.Controls.Add(this.groupBox2);
-            this.tab_transactionHistory.Controls.Add(this.TransactionHistoryDataView);
-            this.tab_transactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_transactionHistory.Location = new System.Drawing.Point(4, 54);
-            this.tab_transactionHistory.Name = "tab_transactionHistory";
-            this.tab_transactionHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_transactionHistory.Size = new System.Drawing.Size(1295, 724);
-            this.tab_transactionHistory.TabIndex = 1;
-            this.tab_transactionHistory.Text = "Purchase History";
+            this.tab_purchaseHistory.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tab_purchaseHistory.Controls.Add(this.btn_ResetTransactionHistory);
+            this.tab_purchaseHistory.Controls.Add(this.lbl_purchaseSearchError);
+            this.tab_purchaseHistory.Controls.Add(this.btn_exportToExcel);
+            this.tab_purchaseHistory.Controls.Add(this.groupBox3);
+            this.tab_purchaseHistory.Controls.Add(this.groupBox2);
+            this.tab_purchaseHistory.Controls.Add(this.PurchaseHistoryDataView);
+            this.tab_purchaseHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tab_purchaseHistory.Location = new System.Drawing.Point(4, 54);
+            this.tab_purchaseHistory.Name = "tab_purchaseHistory";
+            this.tab_purchaseHistory.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_purchaseHistory.Size = new System.Drawing.Size(1295, 724);
+            this.tab_purchaseHistory.TabIndex = 1;
+            this.tab_purchaseHistory.Text = "Purchase History";
             // 
-            // lbl_transactionError
+            // lbl_purchaseSearchError
             // 
-            this.lbl_transactionError.AutoSize = true;
-            this.lbl_transactionError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_transactionError.ForeColor = System.Drawing.Color.Red;
-            this.lbl_transactionError.Location = new System.Drawing.Point(490, 253);
-            this.lbl_transactionError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_transactionError.Name = "lbl_transactionError";
-            this.lbl_transactionError.Size = new System.Drawing.Size(0, 16);
-            this.lbl_transactionError.TabIndex = 30;
+            this.lbl_purchaseSearchError.AutoSize = true;
+            this.lbl_purchaseSearchError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_purchaseSearchError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_purchaseSearchError.Location = new System.Drawing.Point(490, 253);
+            this.lbl_purchaseSearchError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_purchaseSearchError.Name = "lbl_purchaseSearchError";
+            this.lbl_purchaseSearchError.Size = new System.Drawing.Size(0, 16);
+            this.lbl_purchaseSearchError.TabIndex = 30;
             // 
             // btn_exportToExcel
             // 
@@ -231,8 +233,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btn_searchByCustomerName);
-            this.groupBox3.Controls.Add(this.cb_customerName);
+            this.groupBox3.Controls.Add(this.btn_searchByVendorName);
+            this.groupBox3.Controls.Add(this.cb_VendorName_History);
             this.groupBox3.Location = new System.Drawing.Point(277, 153);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
@@ -242,30 +244,31 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vendor Name";
             // 
-            // btn_searchByCustomerName
+            // btn_searchByVendorName
             // 
-            this.btn_searchByCustomerName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_searchByCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchByCustomerName.Location = new System.Drawing.Point(469, 37);
-            this.btn_searchByCustomerName.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_searchByCustomerName.Name = "btn_searchByCustomerName";
-            this.btn_searchByCustomerName.Size = new System.Drawing.Size(175, 33);
-            this.btn_searchByCustomerName.TabIndex = 31;
-            this.btn_searchByCustomerName.Text = "Search";
-            this.btn_searchByCustomerName.UseVisualStyleBackColor = true;
+            this.btn_searchByVendorName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_searchByVendorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchByVendorName.Location = new System.Drawing.Point(469, 37);
+            this.btn_searchByVendorName.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_searchByVendorName.Name = "btn_searchByVendorName";
+            this.btn_searchByVendorName.Size = new System.Drawing.Size(175, 33);
+            this.btn_searchByVendorName.TabIndex = 31;
+            this.btn_searchByVendorName.Text = "Search";
+            this.btn_searchByVendorName.UseVisualStyleBackColor = true;
+            this.btn_searchByVendorName.Click += new System.EventHandler(this.btn_searchByVendorName_Click);
             // 
-            // cb_customerName
+            // cb_VendorName_History
             // 
-            this.cb_customerName.DropDownHeight = 80;
-            this.cb_customerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_customerName.FormattingEnabled = true;
-            this.cb_customerName.IntegralHeight = false;
-            this.cb_customerName.Location = new System.Drawing.Point(136, 37);
-            this.cb_customerName.Margin = new System.Windows.Forms.Padding(2);
-            this.cb_customerName.Name = "cb_customerName";
-            this.cb_customerName.Size = new System.Drawing.Size(278, 25);
-            this.cb_customerName.TabIndex = 0;
-            this.cb_customerName.Text = "Select Vendor";
+            this.cb_VendorName_History.DropDownHeight = 80;
+            this.cb_VendorName_History.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_VendorName_History.FormattingEnabled = true;
+            this.cb_VendorName_History.IntegralHeight = false;
+            this.cb_VendorName_History.Location = new System.Drawing.Point(136, 37);
+            this.cb_VendorName_History.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_VendorName_History.Name = "cb_VendorName_History";
+            this.cb_VendorName_History.Size = new System.Drawing.Size(278, 25);
+            this.cb_VendorName_History.TabIndex = 0;
+            this.cb_VendorName_History.Text = "Select Vendor";
             // 
             // groupBox2
             // 
@@ -294,6 +297,7 @@
             this.btn_searchByDate.TabIndex = 30;
             this.btn_searchByDate.Text = "Search";
             this.btn_searchByDate.UseVisualStyleBackColor = true;
+            this.btn_searchByDate.Click += new System.EventHandler(this.btn_searchByDate_Click);
             // 
             // label2
             // 
@@ -337,45 +341,45 @@
             this.DateTime_fromDate.Size = new System.Drawing.Size(233, 23);
             this.DateTime_fromDate.TabIndex = 0;
             // 
-            // TransactionHistoryDataView
+            // PurchaseHistoryDataView
             // 
-            this.TransactionHistoryDataView.AllowUserToAddRows = false;
-            this.TransactionHistoryDataView.AllowUserToOrderColumns = true;
-            this.TransactionHistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TransactionHistoryDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.TransactionHistoryDataView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.TransactionHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TransactionHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.TransactionHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.PurchaseHistoryDataView.AllowUserToAddRows = false;
+            this.PurchaseHistoryDataView.AllowUserToOrderColumns = true;
+            this.PurchaseHistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PurchaseHistoryDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.PurchaseHistoryDataView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.PurchaseHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PurchaseHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.PurchaseHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.TransactionHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TransactionHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PurchaseHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.PurchaseHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PurchaseHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Purchase_Date,
             this.Purchase_ID,
             this.Purchase_VendorName,
             this.Purchase_TotalPrice});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TransactionHistoryDataView.DefaultCellStyle = dataGridViewCellStyle5;
-            this.TransactionHistoryDataView.GridColor = System.Drawing.Color.Black;
-            this.TransactionHistoryDataView.Location = new System.Drawing.Point(128, 285);
-            this.TransactionHistoryDataView.MultiSelect = false;
-            this.TransactionHistoryDataView.Name = "TransactionHistoryDataView";
-            this.TransactionHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.PurchaseHistoryDataView.DefaultCellStyle = dataGridViewCellStyle5;
+            this.PurchaseHistoryDataView.GridColor = System.Drawing.Color.Black;
+            this.PurchaseHistoryDataView.Location = new System.Drawing.Point(128, 285);
+            this.PurchaseHistoryDataView.MultiSelect = false;
+            this.PurchaseHistoryDataView.Name = "PurchaseHistoryDataView";
+            this.PurchaseHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -383,12 +387,13 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.TransactionHistoryDataView.RowHeadersVisible = false;
-            this.TransactionHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.TransactionHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransactionHistoryDataView.Size = new System.Drawing.Size(903, 407);
-            this.TransactionHistoryDataView.TabIndex = 26;
+            this.PurchaseHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.PurchaseHistoryDataView.RowHeadersVisible = false;
+            this.PurchaseHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.PurchaseHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PurchaseHistoryDataView.Size = new System.Drawing.Size(903, 407);
+            this.PurchaseHistoryDataView.TabIndex = 26;
+            this.PurchaseHistoryDataView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PurchaseHistoryDataView_CellDoubleClick);
             // 
             // Purchase_Date
             // 
@@ -417,7 +422,7 @@
             // purchaseTabControl
             // 
             this.purchaseTabControl.Controls.Add(this.tab_newPurchase);
-            this.purchaseTabControl.Controls.Add(this.tab_transactionHistory);
+            this.purchaseTabControl.Controls.Add(this.tab_purchaseHistory);
             this.purchaseTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.purchaseTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purchaseTabControl.ItemSize = new System.Drawing.Size(100, 50);
@@ -844,6 +849,20 @@
             this.lbl_vendorError.Size = new System.Drawing.Size(0, 17);
             this.lbl_vendorError.TabIndex = 40;
             // 
+            // btn_ResetTransactionHistory
+            // 
+            this.btn_ResetTransactionHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ResetTransactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ResetTransactionHistory.ForeColor = System.Drawing.Color.Red;
+            this.btn_ResetTransactionHistory.Location = new System.Drawing.Point(1063, 446);
+            this.btn_ResetTransactionHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_ResetTransactionHistory.Name = "btn_ResetTransactionHistory";
+            this.btn_ResetTransactionHistory.Size = new System.Drawing.Size(175, 33);
+            this.btn_ResetTransactionHistory.TabIndex = 31;
+            this.btn_ResetTransactionHistory.Text = "RESET ";
+            this.btn_ResetTransactionHistory.UseVisualStyleBackColor = true;
+            this.btn_ResetTransactionHistory.Click += new System.EventHandler(this.btn_ResetTransactionHistory_Click);
+            // 
             // PurchaseControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -854,12 +873,12 @@
             this.Size = new System.Drawing.Size(1303, 782);
             this.Load += new System.EventHandler(this.PurchaseControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).EndInit();
-            this.tab_transactionHistory.ResumeLayout(false);
-            this.tab_transactionHistory.PerformLayout();
+            this.tab_purchaseHistory.ResumeLayout(false);
+            this.tab_purchaseHistory.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionHistoryDataView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseHistoryDataView)).EndInit();
             this.purchaseTabControl.ResumeLayout(false);
             this.tab_newPurchase.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -874,19 +893,19 @@
 
         #endregion
         public System.Windows.Forms.DataGridView Purchase_ProductsDataView;
-        private System.Windows.Forms.TabPage tab_transactionHistory;
-        public System.Windows.Forms.Label lbl_transactionError;
+        private System.Windows.Forms.TabPage tab_purchaseHistory;
+        public System.Windows.Forms.Label lbl_purchaseSearchError;
         private System.Windows.Forms.Button btn_exportToExcel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btn_searchByCustomerName;
-        public System.Windows.Forms.ComboBox cb_customerName;
+        private System.Windows.Forms.Button btn_searchByVendorName;
+        public System.Windows.Forms.ComboBox cb_VendorName_History;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_searchByDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DateTime_toDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker DateTime_fromDate;
-        public System.Windows.Forms.DataGridView TransactionHistoryDataView;
+        public System.Windows.Forms.DataGridView PurchaseHistoryDataView;
         private System.Windows.Forms.TabControl purchaseTabControl;
         private System.Windows.Forms.TabPage tab_newPurchase;
         private System.Windows.Forms.GroupBox gb_billDetails;
@@ -932,5 +951,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Discount;
         public System.Windows.Forms.Button btn_add;
         public System.Windows.Forms.Label lbl_vendorError;
+        private System.Windows.Forms.Button btn_ResetTransactionHistory;
     }
 }

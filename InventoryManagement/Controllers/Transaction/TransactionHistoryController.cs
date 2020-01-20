@@ -40,7 +40,10 @@ namespace InventoryManagement.Controllers.Transaction
 
             List<TransactionGet> transactions = DataService.GetTransactionDataController().GetByDate(DateTime.Parse(from), DateTime.Parse(to));
             if (transactions.Count == 0)
+            {
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
+                return;
+            }
             InitializeTransactionHistoryTable(transactions);
         }
 
@@ -50,7 +53,10 @@ namespace InventoryManagement.Controllers.Transaction
             int customerID = DataService.GetCustomerDataController().GetByName(name).ID;
             List<TransactionGet> transactions = DataService.GetTransactionDataController().GetByCustomerID(customerID);
             if (transactions.Count == 0)
+            {
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
+                return;
+            }
             InitializeTransactionHistoryTable(transactions);
         }
 

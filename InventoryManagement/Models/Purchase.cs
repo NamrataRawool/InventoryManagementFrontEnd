@@ -20,9 +20,9 @@ namespace InventoryManagement.Models
             BuyingPrice = buyingPrice;
         }
 
-        ProductGet Product;
-        int Quantity;
-        double BuyingPrice;
+        public ProductGet Product;
+        public int Quantity;
+        public double BuyingPrice;
     }
 
     public class PurchaseBase
@@ -66,7 +66,7 @@ namespace InventoryManagement.Models
     public class PurchaseGet : PurchaseBase
     {
 
-        public PurchaseGet(InventoryDbContext context, PurchaseDTO dto)
+        public PurchaseGet(InventoryDbContext context, PurchaseDTO dto) : base(dto)
         {
             ProductDetails = new List<PurchaseProductDetails>();
 
@@ -74,7 +74,7 @@ namespace InventoryManagement.Models
             string[] productQuantities = dto.ProductQuantities.Split(',');
             string[] buyingPrices = dto.BuyingPrices.Split(',');
 
-            if(!((productIDs.Length == productQuantities.Length) &&  (productQuantities.Length == buyingPrices.Length)))
+            if (!((productIDs.Length == productQuantities.Length) && (productQuantities.Length == buyingPrices.Length)))
                 Assert.Do("Invalid Purchase Entry!");
 
             int length = productIDs.Length;
@@ -88,10 +88,14 @@ namespace InventoryManagement.Models
                 PurchaseProductDetails detail = new PurchaseProductDetails(product, quantity, price);
                 ProductDetails.Add(detail);
             }
+            if (dto.VendorID != 0)
+                Vendor = new VendorGet(context, context.GetVendor(dto.VendorID));
 
         }
 
-        List<PurchaseProductDetails> ProductDetails;
+        public List<PurchaseProductDetails> ProductDetails { get; set; }
+
+        public VendorGet Vendor { get; set; }
     }
 
     public class PurchasePost : PurchaseBase { }
