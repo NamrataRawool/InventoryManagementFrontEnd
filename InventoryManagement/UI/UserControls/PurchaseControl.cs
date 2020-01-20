@@ -90,9 +90,6 @@ namespace InventoryManagement.UI.UserControls
         {
             m_newPurchaseController.OnAddProduct();
         }
-
-        #endregion
-
         private void Purchase_ProductsDataView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -100,5 +97,13 @@ namespace InventoryManagement.UI.UserControls
                 m_newPurchaseController.OnDeleteProduct();
             }
         }
+
+        private void btn_ViewPuchaseBill_Click(object sender, EventArgs e)
+        {
+            m_newPurchaseController.SavePurchase();
+        }
+        #endregion
+
+
     }
 }

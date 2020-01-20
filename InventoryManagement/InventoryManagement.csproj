@@ -215,6 +215,7 @@
     <Compile Include="Controllers\Product\FormController_AddProduct.cs" />
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
     <Compile Include="Controllers\Product\ProductController.cs" />
+    <Compile Include="Controllers\Purchase\FormController_ViewPurchaseBill.cs" />
     <Compile Include="Controllers\Purchase\NewPurchaseController.cs" />
     <Compile Include="Controllers\Transaction\FormController_ViewTransactionDetails.cs" />
     <Compile Include="Controllers\Transaction\NewTransactionController.cs" />
@@ -310,6 +311,12 @@
     </Compile>
     <Compile Include="UI\Product\Form_ProductDetails.Designer.cs">
       <DependentUpon>Form_ProductDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchase\Form_ViewPuchaseBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase\Form_ViewPuchaseBill.Designer.cs">
+      <DependentUpon>Form_ViewPuchaseBill.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Transaction\Form_ViewBill.cs">
       <SubType>Form</SubType>
@@ -409,6 +416,9 @@
     <EmbeddedResource Include="UI\Product\Form_ProductDetails.resx">
       <DependentUpon>Form_ProductDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase\Form_ViewPuchaseBill.resx">
+      <DependentUpon>Form_ViewPuchaseBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Transaction\Form_ViewBill.resx">
       <DependentUpon>Form_ViewBill.cs</DependentUpon>
     </EmbeddedResource>
@@ -460,7 +470,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="TODO.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\placeholder.jpg" />
   </ItemGroup>

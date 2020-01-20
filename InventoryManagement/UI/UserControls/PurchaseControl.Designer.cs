@@ -68,16 +68,14 @@
             this.gb_billDetails = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_errorAmountPaid = new System.Windows.Forms.Label();
-            this.btn_ViewPuchaseBill = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.tb_AmountPaid = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_amountDue = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.tb_totalTax = new System.Windows.Forms.TextBox();
             this.tb_totalDiscount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_add = new System.Windows.Forms.Button();
@@ -94,6 +92,7 @@
             this.tb_barCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.lbl_vendorError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).BeginInit();
             this.tab_transactionHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -119,7 +118,7 @@
             this.Purchase_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -135,7 +134,7 @@
             this.PurchaseTable_Discount});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -159,7 +158,7 @@
             this.Purchase_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.Purchase_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Purchase_ProductsDataView.Size = new System.Drawing.Size(716, 349);
-            this.Purchase_ProductsDataView.TabIndex = 25;
+            this.Purchase_ProductsDataView.TabIndex = 7;
             this.Purchase_ProductsDataView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Purchase_ProductsDataView_KeyDown);
             // 
             // PurchaseTable_ProductId
@@ -448,6 +447,7 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox4.Controls.Add(this.lbl_vendorError);
             this.groupBox4.Controls.Add(this.purchase_dateTime);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.cb_vendorName);
@@ -466,7 +466,7 @@
             this.purchase_dateTime.Location = new System.Drawing.Point(490, 45);
             this.purchase_dateTime.Name = "purchase_dateTime";
             this.purchase_dateTime.Size = new System.Drawing.Size(216, 22);
-            this.purchase_dateTime.TabIndex = 37;
+            this.purchase_dateTime.TabIndex = 2;
             // 
             // label4
             // 
@@ -482,12 +482,12 @@
             // 
             // cb_vendorName
             // 
-            this.cb_vendorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.cb_vendorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cb_vendorName.FormattingEnabled = true;
             this.cb_vendorName.Location = new System.Drawing.Point(83, 44);
             this.cb_vendorName.Name = "cb_vendorName";
-            this.cb_vendorName.Size = new System.Drawing.Size(216, 26);
-            this.cb_vendorName.TabIndex = 34;
+            this.cb_vendorName.Size = new System.Drawing.Size(216, 24);
+            this.cb_vendorName.TabIndex = 1;
             // 
             // label17
             // 
@@ -519,16 +519,14 @@
             // 
             this.gb_billDetails.Controls.Add(this.label13);
             this.gb_billDetails.Controls.Add(this.lbl_errorAmountPaid);
-            this.gb_billDetails.Controls.Add(this.btn_ViewPuchaseBill);
+            this.gb_billDetails.Controls.Add(this.btn_Save);
             this.gb_billDetails.Controls.Add(this.tb_subtotal);
             this.gb_billDetails.Controls.Add(this.tb_AmountPaid);
             this.gb_billDetails.Controls.Add(this.label5);
             this.gb_billDetails.Controls.Add(this.tb_amountDue);
             this.gb_billDetails.Controls.Add(this.label12);
-            this.gb_billDetails.Controls.Add(this.label11);
             this.gb_billDetails.Controls.Add(this.label10);
             this.gb_billDetails.Controls.Add(this.label7);
-            this.gb_billDetails.Controls.Add(this.tb_totalTax);
             this.gb_billDetails.Controls.Add(this.tb_totalDiscount);
             this.gb_billDetails.Location = new System.Drawing.Point(777, 331);
             this.gb_billDetails.Margin = new System.Windows.Forms.Padding(2);
@@ -543,7 +541,7 @@
             // 
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(163, 220);
+            this.label13.Location = new System.Drawing.Point(169, 200);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(17, 18);
@@ -560,40 +558,41 @@
             this.lbl_errorAmountPaid.Size = new System.Drawing.Size(0, 18);
             this.lbl_errorAmountPaid.TabIndex = 28;
             // 
-            // btn_ViewPuchaseBill
+            // btn_Save
             // 
-            this.btn_ViewPuchaseBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ViewPuchaseBill.Location = new System.Drawing.Point(311, 271);
-            this.btn_ViewPuchaseBill.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_ViewPuchaseBill.Name = "btn_ViewPuchaseBill";
-            this.btn_ViewPuchaseBill.Size = new System.Drawing.Size(77, 33);
-            this.btn_ViewPuchaseBill.TabIndex = 28;
-            this.btn_ViewPuchaseBill.Text = "View Bill";
-            this.btn_ViewPuchaseBill.UseVisualStyleBackColor = true;
+            this.btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Save.Location = new System.Drawing.Point(317, 251);
+            this.btn_Save.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(77, 33);
+            this.btn_Save.TabIndex = 12;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_ViewPuchaseBill_Click);
             // 
             // tb_subtotal
             // 
             this.tb_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_subtotal.Location = new System.Drawing.Point(204, 36);
+            this.tb_subtotal.Location = new System.Drawing.Point(210, 59);
             this.tb_subtotal.Margin = new System.Windows.Forms.Padding(2);
             this.tb_subtotal.Name = "tb_subtotal";
             this.tb_subtotal.ReadOnly = true;
             this.tb_subtotal.Size = new System.Drawing.Size(184, 21);
-            this.tb_subtotal.TabIndex = 23;
+            this.tb_subtotal.TabIndex = 8;
             // 
             // tb_AmountPaid
             // 
             this.tb_AmountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_AmountPaid.Location = new System.Drawing.Point(204, 220);
+            this.tb_AmountPaid.Location = new System.Drawing.Point(210, 200);
             this.tb_AmountPaid.Margin = new System.Windows.Forms.Padding(2);
             this.tb_AmountPaid.Name = "tb_AmountPaid";
             this.tb_AmountPaid.Size = new System.Drawing.Size(184, 21);
-            this.tb_AmountPaid.TabIndex = 27;
+            this.tb_AmountPaid.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(45, 220);
+            this.label5.Location = new System.Drawing.Point(51, 200);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 18);
@@ -604,17 +603,17 @@
             // tb_amountDue
             // 
             this.tb_amountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_amountDue.Location = new System.Drawing.Point(204, 174);
+            this.tb_amountDue.Location = new System.Drawing.Point(210, 153);
             this.tb_amountDue.Margin = new System.Windows.Forms.Padding(2);
             this.tb_amountDue.Name = "tb_amountDue";
             this.tb_amountDue.ReadOnly = true;
             this.tb_amountDue.Size = new System.Drawing.Size(184, 21);
-            this.tb_amountDue.TabIndex = 26;
+            this.tb_amountDue.TabIndex = 10;
             // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(42, 174);
+            this.label12.Location = new System.Drawing.Point(48, 153);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(126, 18);
@@ -622,21 +621,10 @@
             this.label12.Text = "Amount Due :";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label11
-            // 
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(64, 128);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(104, 18);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Total Tax :";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(54, 36);
+            this.label10.Location = new System.Drawing.Point(60, 59);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(114, 18);
@@ -647,7 +635,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 82);
+            this.label7.Location = new System.Drawing.Point(57, 106);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 18);
@@ -655,25 +643,15 @@
             this.label7.Text = "Total Discount :";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tb_totalTax
-            // 
-            this.tb_totalTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_totalTax.Location = new System.Drawing.Point(204, 128);
-            this.tb_totalTax.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_totalTax.Name = "tb_totalTax";
-            this.tb_totalTax.ReadOnly = true;
-            this.tb_totalTax.Size = new System.Drawing.Size(184, 21);
-            this.tb_totalTax.TabIndex = 25;
-            // 
             // tb_totalDiscount
             // 
             this.tb_totalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_totalDiscount.Location = new System.Drawing.Point(204, 82);
+            this.tb_totalDiscount.Location = new System.Drawing.Point(210, 106);
             this.tb_totalDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_totalDiscount.Name = "tb_totalDiscount";
             this.tb_totalDiscount.ReadOnly = true;
             this.tb_totalDiscount.Size = new System.Drawing.Size(184, 21);
-            this.tb_totalDiscount.TabIndex = 24;
+            this.tb_totalDiscount.TabIndex = 9;
             // 
             // groupBox1
             // 
@@ -708,7 +686,7 @@
             this.btn_add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(64, 30);
-            this.btn_add.TabIndex = 30;
+            this.btn_add.TabIndex = 6;
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -722,7 +700,7 @@
             this.tb_availableStock.Name = "tb_availableStock";
             this.tb_availableStock.ReadOnly = true;
             this.tb_availableStock.Size = new System.Drawing.Size(142, 21);
-            this.tb_availableStock.TabIndex = 38;
+            this.tb_availableStock.TabIndex = 20;
             // 
             // label6
             // 
@@ -743,7 +721,7 @@
             this.tb_discount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_discount.Name = "tb_discount";
             this.tb_discount.Size = new System.Drawing.Size(142, 21);
-            this.tb_discount.TabIndex = 1;
+            this.tb_discount.TabIndex = 3;
             // 
             // lbl_errorText
             // 
@@ -763,8 +741,7 @@
             this.cb_productName.Location = new System.Drawing.Point(150, 101);
             this.cb_productName.Name = "cb_productName";
             this.cb_productName.Size = new System.Drawing.Size(184, 24);
-            this.cb_productName.TabIndex = 37;
-            this.cb_productName.Text = "Select Product";
+            this.cb_productName.TabIndex = 2;
             this.cb_productName.SelectedValueChanged += new System.EventHandler(this.cb_productName_SelectedValueChanged);
             // 
             // tb_purchasePrice
@@ -775,7 +752,7 @@
             this.tb_purchasePrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_purchasePrice.Name = "tb_purchasePrice";
             this.tb_purchasePrice.Size = new System.Drawing.Size(143, 21);
-            this.tb_purchasePrice.TabIndex = 1;
+            this.tb_purchasePrice.TabIndex = 4;
             // 
             // label14
             // 
@@ -797,7 +774,7 @@
             this.tb_quantity.Margin = new System.Windows.Forms.Padding(2);
             this.tb_quantity.Name = "tb_quantity";
             this.tb_quantity.Size = new System.Drawing.Size(142, 21);
-            this.tb_quantity.TabIndex = 35;
+            this.tb_quantity.TabIndex = 5;
             this.tb_quantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_quantity_KeyDown);
             // 
             // label16
@@ -856,6 +833,17 @@
             this.label15.Text = "Bar Code :";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lbl_vendorError
+            // 
+            this.lbl_vendorError.AutoSize = true;
+            this.lbl_vendorError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_vendorError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_vendorError.Location = new System.Drawing.Point(16, 21);
+            this.lbl_vendorError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_vendorError.Name = "lbl_vendorError";
+            this.lbl_vendorError.Size = new System.Drawing.Size(0, 17);
+            this.lbl_vendorError.TabIndex = 40;
+            // 
             // PurchaseControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -904,16 +892,14 @@
         private System.Windows.Forms.GroupBox gb_billDetails;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label lbl_errorAmountPaid;
-        public System.Windows.Forms.Button btn_ViewPuchaseBill;
+        public System.Windows.Forms.Button btn_Save;
         public System.Windows.Forms.TextBox tb_subtotal;
         public System.Windows.Forms.TextBox tb_AmountPaid;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox tb_amountDue;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.TextBox tb_totalTax;
         public System.Windows.Forms.TextBox tb_totalDiscount;
         public System.Windows.Forms.Label lbl_errorText;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -945,5 +931,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Discount;
         public System.Windows.Forms.Button btn_add;
+        public System.Windows.Forms.Label lbl_vendorError;
     }
 }

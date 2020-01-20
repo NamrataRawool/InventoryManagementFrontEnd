@@ -99,7 +99,46 @@ namespace InventoryManagement.Controllers.Purchase
 
         public void OnDeleteProduct()
         {
+            if (GetTable().SelectedRows.Count <= 0)
+                return;
+            int rowIndex = GetTable().CurrentCell.RowIndex;
+            GetTable().Rows.RemoveAt(rowIndex);
+            UpdateUILabels();
+        }
 
+        public void SavePurchase()
+        {
+            if (GetTable().Rows.Count <= 0)
+                return;
+
+            if (string.IsNullOrEmpty(m_UIControl.cb_vendorName.Text))
+            {
+                m_UIControl.lbl_vendorError.Text = "Please select vendor!";
+                return;
+            }
+            PurchasePost purchasePost = new PurchasePost();
+            purchasePost.PurchaseDateTime = DateTime.Now;
+            var vendorId = DataService.GetVendorDataController().GetByName(m_UIControl.cb_vendorName.Text.Trim()).ID;
+            purchasePost.VendorID = vendorId;
+            string productIds = string.Empty;
+            string productQuantities = string.Empty;
+            string buyingPrices = string.Empty;
+            int i = 0;
+            for (i = 0; i < GetTable().Rows.Count - 1; ++i)
+            {
+                productIds += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value) + ",";
+                buyingPrices += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value) + ",";
+                productQuantities += Convert.ToInt32(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value) + ",";
+            }
+            productIds += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value);
+            buyingPrices += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value);
+            productQuantities += Convert.ToInt32(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value);
+
+            purchasePost.ProductIDs = productIds;
+            purchasePost.ProductQuantities = productQuantities;
+            purchasePost.BuyingPrices = buyingPrices;
+
+          
         }
 
         private void InitializeProductNameDataSource()
@@ -184,7 +223,6 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_subtotal.Text = string.Empty;
             m_UIControl.tb_totalDiscount.Text = string.Empty;
             m_UIControl.tb_amountDue.Text = string.Empty;
-            m_UIControl.tb_totalTax.Text = string.Empty;
             m_UIControl.tb_AmountPaid.Text = string.Empty;
         }
 
@@ -196,6 +234,7 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_purchasePrice.Text = string.Empty;
             m_UIControl.tb_quantity.Text = string.Empty;
             m_UIControl.tb_discount.Text = string.Empty;
+            m_UIControl.tb_barCode.Focus();
         }
 
         private void ResetProductsDataTable()

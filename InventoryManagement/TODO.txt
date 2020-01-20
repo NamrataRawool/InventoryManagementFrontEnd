@@ -1,0 +1,29 @@
+null checks in data service
+
+purchase Ui
+
+Print bill
+
+datagridview export to excel 
+
+validations
+
+Home control
+
+Fill database app 
+
+double click on data grid view row should open edit form	
+
+Edit product --> stock CRUD
+
+Edit product --> update button --> success pop up
+
+On Add/edit, Table data should be updated
+
+stock label in product edit
+
+customer add --> do not add customer with same mobile number
+
+add customer button in transaction page
+
+Entity --> Update --> Update UI table
