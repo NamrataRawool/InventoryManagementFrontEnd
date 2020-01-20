@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Product;
 using System.Drawing;
@@ -59,6 +61,11 @@ namespace InventoryManagement.Controllers.Product
             {
                 MessageBox.Show(m_UIControl, "Product Details updated successfully!");
             }
+
+            // fire entry updated event
+            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.PRODUCT, m_Product.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
+
         }
 
         private void InitializeAvailableStockLabel()

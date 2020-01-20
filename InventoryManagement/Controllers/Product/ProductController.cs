@@ -47,11 +47,36 @@ namespace InventoryManagement.Controllers
                 AddProductToTable(product);
         }
 
+        public void UpdateProductInTable(ProductGet product)
+        {
+            // find the row with this productID
+            var table = GetTable();
+
+            for(int i=0; i<table.Rows.Count; ++i)
+            {
+                DataGridViewRow row = table.Rows[i];
+                int id = int.Parse(row.Cells["ProductTableColumn_ID"].Value.ToString());
+
+                if (product.ID == id)
+                {
+                    row.Cells["ProductTableColumn_ID"].Value = product.ID;
+                    row.Cells["ProductTableColumn_Barcode"].Value = product.Barcode;
+                    row.Cells["ProductTableColumn_Name"].Value = product.Name;
+                    row.Cells["ProductTableColumn_Category"].Value = product.Category.Name;
+                    row.Cells["ProductTableColumn_RetailPrice"].Value = product.RetailPrice;
+                    row.Cells["ProductTableColumn_WholesalePrice"].Value = product.WholeSalePrice;
+
+                    return;
+                }
+            }
+
+        }
+
         public void AddProductToTable(ProductGet product)
         {
-            var Table = GetTable();
-            int Index = Table.Rows.Add();
-            DataGridViewRow NewRow = Table.Rows[Index];
+            var table = GetTable();
+            int Index = table.Rows.Add();
+            DataGridViewRow NewRow = table.Rows[Index];
             NewRow.Cells["ProductTableColumn_ID"].Value = product.ID;
             NewRow.Cells["ProductTableColumn_Barcode"].Value = product.Barcode;
             NewRow.Cells["ProductTableColumn_Name"].Value = product.Name;
@@ -127,6 +152,7 @@ namespace InventoryManagement.Controllers
         protected override void RegisterEvents()
         {
             RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
 
         private DataGridView GetTable()

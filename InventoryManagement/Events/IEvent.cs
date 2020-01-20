@@ -17,8 +17,9 @@ namespace InventoryManagement.Events
 
         // Vendor
 
-        // New Entry Added
+        // Common
         NewEntryAdded,
+        EntryUpdated,
     }
 
     public abstract class IEvent

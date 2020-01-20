@@ -231,8 +231,9 @@
     <Compile Include="EventHandlers\IEventHandler.cs" />
     <Compile Include="EventHandlers\Product\EventHandler_Product.cs" />
     <Compile Include="EventHandlers\Purchase\EventHandler_NewPurchase.cs" />
-    <Compile Include="EventHandlers\Transaction\EventHandler_Transaction.cs" />
+    <Compile Include="EventHandlers\Transaction\EventHandler_NewTransaction.cs" />
     <Compile Include="EventHandlers\Vendor\EventHandler_Vendor.cs" />
+    <Compile Include="Events\Common\Event_EntryUpdated.cs" />
     <Compile Include="Events\Common\Event_NewEntryAdded.cs" />
     <Compile Include="Events\Event_TransactionAddProduct.cs" />
     <Compile Include="Events\IEvent.cs" />

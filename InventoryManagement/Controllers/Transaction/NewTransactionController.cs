@@ -20,7 +20,7 @@ namespace InventoryManagement.Controllers.Transaction
         public NewTransactionController(TransactionControl UIControl)
             : base(UIControl)
         {
-            SetEventHandler(new EventHandler_Transaction(this));
+            SetEventHandler(new EventHandler_NewTransaction(this));
             m_transactionSession = new TransactionSession();
         }
 
@@ -219,10 +219,14 @@ namespace InventoryManagement.Controllers.Transaction
                 ResetTransaction();
             }
         }
+
         public void InitializeCustomerNameSearchBoxData()
         {
             var customers = DataService.GetCustomerDataController().GetAll();
             var searchBox = m_UIControl.tb_customerName;
+
+            searchBox.AutoCompleteCustomSource.Clear();
+
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
@@ -243,6 +247,7 @@ namespace InventoryManagement.Controllers.Transaction
         {
             var products = DataService.GetProductDataController().GetAll();
             var searchBox = m_UIControl.tb_productName;
+            searchBox.AutoCompleteCustomSource.Clear();
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
@@ -338,6 +343,8 @@ namespace InventoryManagement.Controllers.Transaction
         {
             RegisterEvent(EventType.UI_Transaction_AddProduct);
             RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
+
     }
 }

@@ -6,9 +6,9 @@ using InventoryManagement.Services.Data;
 
 namespace InventoryManagement.EventHandlers.Transaction
 {
-    public class EventHandler_Transaction : IEventHandler<NewTransactionController>
+    public class EventHandler_NewTransaction : IEventHandler<NewTransactionController>
     {
-        public EventHandler_Transaction(NewTransactionController Controller)
+        public EventHandler_NewTransaction(NewTransactionController Controller)
             : base(Controller)
         {
         }
@@ -16,7 +16,7 @@ namespace InventoryManagement.EventHandlers.Transaction
         public override void OnEvent(IEvent e)
         {
             EventType type = e.Type();
-            switch(type)
+            switch (type)
             {
                 case EventType.UI_Transaction_AddProduct:
                     var evnt = e.Cast<Event_TransactionAddProduct>();
@@ -26,6 +26,19 @@ namespace InventoryManagement.EventHandlers.Transaction
                 case EventType.NewEntryAdded:
                     HandleNewEntryAddedEvent(e.Cast<Event_NewEntryAdded>());
                     break;
+
+                case EventType.EntryUpdated:
+                    HandleEntryUpdatedEvent(e.Cast<Event_EntryUpdated>());
+                    break;
+            }
+        }
+
+        private void HandleEntryUpdatedEvent(Event_EntryUpdated e)
+        {
+            var updateEntryType = e.GetEntityType();
+            if (updateEntryType == DBEntityType.PRODUCT)
+            {
+                m_Controller.InitializProductNameSearchBoxData();
             }
         }
 
