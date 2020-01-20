@@ -1,11 +1,8 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Vendor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Vendor
@@ -16,6 +13,7 @@ namespace InventoryManagement.Controllers.Vendor
         {
             Initialize(vendorId);
         }
+
         public void Initialize(int vendorId)
         {
             InitializeVendorDetails(vendorId);
@@ -49,6 +47,10 @@ namespace InventoryManagement.Controllers.Vendor
                 MessageBox.Show("Vendor Updated Successfully");
                 ResetTextBoxes();
             }
+
+            // fire vendor updated event
+            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.VENDOR, vendorGet.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
         }
 
         private void InitializeVendorDetails(int vendorId)
@@ -64,9 +66,10 @@ namespace InventoryManagement.Controllers.Vendor
             m_UIControl.tb_city.Text = vendor.City;
             m_UIControl.tb_state.Text = vendor.State;
         }
+
         protected override void RegisterEvents()
         {
-
         }
+
     }
 }

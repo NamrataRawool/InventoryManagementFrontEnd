@@ -1,11 +1,7 @@
 ﻿using InventoryManagement.Controllers.Purchase;
 using InventoryManagement.Events;
 using InventoryManagement.Events.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using InventoryManagement.Services.Misc.Assert;
 
 namespace InventoryManagement.EventHandlers.Purchase
 {
@@ -25,6 +21,13 @@ namespace InventoryManagement.EventHandlers.Purchase
                 case EventType.NewEntryAdded:
                     HandleEvent_NewEntryEvent(e.Cast<Event_NewEntryAdded>());
                     break;
+                case EventType.EntryUpdated:
+                    HandleEvent_EntryUpdated(e.Cast<Event_EntryUpdated>());
+                    break;
+
+                default:
+                    Assert.Do("This Event Is Not Expected for this Handler!");
+                    break;
             }
         }
 
@@ -39,6 +42,19 @@ namespace InventoryManagement.EventHandlers.Purchase
             else if (entity == DBEntityType.PRODUCT)
             {
                 m_Controller.OnNewProductAdded(id);
+            }
+        }
+
+        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
+        {
+            var entity = e.GetEntityType();
+            if (entity == DBEntityType.VENDOR)
+            {
+                m_Controller.InitializeComboBox_VendorName();
+            }
+            else if (entity == DBEntityType.PRODUCT)
+            {
+                m_Controller.InitializeComboBox_ProductName();
             }
         }
 

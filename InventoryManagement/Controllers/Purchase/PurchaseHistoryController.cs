@@ -1,12 +1,11 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.EventHandlers.Purchase;
+using InventoryManagement.Events;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Purchase;
 using InventoryManagement.UI.UserControls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Purchase
@@ -15,22 +14,31 @@ namespace InventoryManagement.Controllers.Purchase
     {
         public PurchaseHistoryController(PurchaseControl UIControl) : base(UIControl)
         {
-            ResetPurchaseHistoryTable();
-            m_UIControl.cb_VendorName_History.DataSource = InitializeVendorNameDataSource();
+            SetEventHandler(new EventHandler_PurchaseHistory(this));
+
+            ResetTable_PurchaseHistory();
+            InitializeComboBox_VendorName();
         }
 
-        public List<string> InitializeVendorNameDataSource()
+        public void InitializeComboBox_VendorName()
         {
             var vendors = DataService.GetVendorDataController().GetAll();
             if (vendors == null)
-                return null;
+                return;
 
-            List<string> vendorDataSource = new List<string>();
+            var comboBox = m_UIControl.cb_VendorName_History;
+            comboBox.Items.Clear();
+
             foreach (var vendor in vendors)
-                vendorDataSource.Add(vendor.CompanyName);
-
-            return vendorDataSource;
+                comboBox.Items.Add(vendor.CompanyName);
         }
+
+        public void AddToComboBox_VendorName(string name)
+        {
+            var comboBox = m_UIControl.cb_VendorName_History;
+            comboBox.Items.Add(name);
+        }
+
         public void SearchPurchaseByVendorName(string name)
         {
             m_UIControl.lbl_purchaseSearchError.Text = string.Empty;
@@ -46,7 +54,7 @@ namespace InventoryManagement.Controllers.Purchase
                 m_UIControl.lbl_purchaseSearchError.Text = "Purchases not found!";
                 return;
             }
-            InitializePurchaseHistoryTable(purchases);
+            InitializeTable_PurchaseHistory(purchases);
         }
 
         public void SearchPurchaseByDate(string from, string to)
@@ -59,7 +67,7 @@ namespace InventoryManagement.Controllers.Purchase
                 m_UIControl.lbl_purchaseSearchError.Text = "Purchases not found!";
                 return;
             }
-            InitializePurchaseHistoryTable(purchases);
+            InitializeTable_PurchaseHistory(purchases);
         }
 
         public void OpenForm_ViewPurchaseBill()
@@ -70,9 +78,9 @@ namespace InventoryManagement.Controllers.Purchase
             viewPuchaseBill.Show();
         }
 
-        private void InitializePurchaseHistoryTable(List<PurchaseGet> purchases)
+        private void InitializeTable_PurchaseHistory(List<PurchaseGet> purchases)
         {
-            ResetPurchaseHistoryTable();
+            ResetTable_PurchaseHistory();
             foreach (var transaction in purchases)
                 AddPurchaseToHistoryTable(transaction);
         }
@@ -93,12 +101,13 @@ namespace InventoryManagement.Controllers.Purchase
             NewRow.Cells["Purchase_TotalPrice"].Value = totalPrice;
         }
 
-        public void ResetPurchaseHistoryTable()
+        public void ResetTable_PurchaseHistory()
         {
             var Table = GetPurchaseHistoryTable();
             Table.Rows.Clear();
             Table.Refresh();
         }
+
         private DataGridView GetPurchaseHistoryTable()
         {
             return m_UIControl.PurchaseHistoryDataView;
@@ -106,7 +115,8 @@ namespace InventoryManagement.Controllers.Purchase
 
         protected override void RegisterEvents()
         {
-
+            RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
     }
 }

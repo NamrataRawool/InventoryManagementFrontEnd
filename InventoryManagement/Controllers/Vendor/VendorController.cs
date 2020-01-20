@@ -114,11 +114,32 @@ namespace InventoryManagement.Controllers.Vendor
             var Table = GetTable();
             int Index = Table.Rows.Add();
             DataGridViewRow NewRow = Table.Rows[Index];
-            NewRow.Cells["VendorTable_Id"].Value = vendor.ID;
-            NewRow.Cells["VendorTable_CompanyName"].Value = vendor.CompanyName;
-            NewRow.Cells["VendorTable_Email"].Value = vendor.Email;
-            NewRow.Cells["VendorTable_MobileNumber"].Value = vendor.MobileNumber;
-            NewRow.Cells["VendorTable_Address"].Value = vendor.Address;
+            NewRow.Cells["VendorTable_Id"].Value            = vendor.ID;
+            NewRow.Cells["VendorTable_CompanyName"].Value   = vendor.CompanyName;
+            NewRow.Cells["VendorTable_Email"].Value         = vendor.Email;
+            NewRow.Cells["VendorTable_MobileNumber"].Value  = vendor.MobileNumber;
+            NewRow.Cells["VendorTable_Address"].Value       = vendor.Address;
+        }
+
+        public void UpdateTableEntry_Vendor(VendorGet vendor)
+        {
+            var table = GetTable();
+
+            for (int i = 0; i < table.Rows.Count; ++i)
+            {
+                DataGridViewRow row = table.Rows[i];
+
+                int id = int.Parse(row.Cells["VendorTable_Id"].Value.ToString());
+                if (vendor.ID == id)
+                {
+                    row.Cells["VendorTable_Id"].Value           = vendor.ID;
+                    row.Cells["VendorTable_CompanyName"].Value  = vendor.CompanyName;
+                    row.Cells["VendorTable_Email"].Value        = vendor.Email;
+                    row.Cells["VendorTable_MobileNumber"].Value = vendor.MobileNumber;
+                    row.Cells["VendorTable_Address"].Value      = vendor.Address;
+                    return;
+                }
+            }
         }
 
         private DataGridView GetTable()
@@ -129,6 +150,7 @@ namespace InventoryManagement.Controllers.Vendor
         protected override void RegisterEvents()
         {
             RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
     }
 }

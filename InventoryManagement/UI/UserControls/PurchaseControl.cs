@@ -116,7 +116,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_ResetTransactionHistory_Click(object sender, EventArgs e)
         {
-            m_purchaseHistoryController.ResetPurchaseHistoryTable();
+            m_purchaseHistoryController.ResetTable_PurchaseHistory();
         }
 
         private void btn_searchByVendorName_Click(object sender, EventArgs e)

@@ -1,20 +1,19 @@
-﻿using InventoryManagement.Controllers.Vendor;
+﻿using InventoryManagement.Controllers.Purchase;
 using InventoryManagement.Events;
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
-using InventoryManagement.Services.Misc.Assert;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryManagement.EventHandlers.Vendor
+namespace InventoryManagement.EventHandlers.Purchase
 {
-    class EventHandler_Vendor : IEventHandler<VendorController>
+    public class EventHandler_PurchaseHistory : IEventHandler<PurchaseHistoryController>
     {
-        public EventHandler_Vendor(VendorController Controller)
+        public EventHandler_PurchaseHistory(PurchaseHistoryController Controller) 
             : base(Controller)
         {
         }
@@ -23,7 +22,7 @@ namespace InventoryManagement.EventHandlers.Vendor
         {
             EventType type = e.Type();
 
-            switch (type)
+            switch(type)
             {
                 case EventType.NewEntryAdded:
                     HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
@@ -34,41 +33,25 @@ namespace InventoryManagement.EventHandlers.Vendor
             }
         }
 
-        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
-        {
-            DBEntityType entityType = e.GetEntityType();
-
-            if (entityType == DBEntityType.VENDOR)
-            {
-                VendorGet vendor = DataService.GetVendorDataController().Get(e.GetID());
-                m_Controller.UpdateTableEntry_Vendor(vendor);
-            }
-        }
-
         private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
         {
             DBEntityType entityType = e.GetEntityType();
 
             if (entityType == DBEntityType.VENDOR)
             {
-                AddVendorToTable(e.GetID());
+                VendorGet vendor = DataService.GetVendorDataController().Get(e.GetID());
+                m_Controller.AddToComboBox_VendorName(vendor.CompanyName);
             }
         }
 
-        private void AddVendorToTable(int vendorID)
+        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
         {
-            var vendor = DataService.GetVendorDataController().Get(vendorID);
-            if (vendor == null)
+            DBEntityType entityType = e.GetEntityType();
+
+            if (entityType == DBEntityType.VENDOR)
             {
-                Assert.Do("This should not have happened!");
-                return;
+                m_Controller.InitializeComboBox_VendorName();
             }
-
-            m_Controller.AddVendorToTable(vendor);
-            m_Controller.RefreshTable();
-
-            m_Controller.AddProductToAutoSearchBox(vendor.CompanyName);
         }
-
     }
 }

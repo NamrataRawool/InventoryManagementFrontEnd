@@ -26,17 +26,30 @@ namespace InventoryManagement.Controllers.Purchase
             {
                 ResetUIControls();
             }
-            InitializeVendorNameDataSource();
-            InitializeProductNameDataSource();
+            InitializeComboBox_VendorName();
+            InitializeComboBox_ProductName();
         }
 
-        private void InitializeVendorNameDataSource()
+        public void InitializeComboBox_ProductName()
+        {
+            var products = DataService.GetProductDataController().GetAll();
+            if (products == null)
+                return;
+
+            var comboBox = m_UIControl.cb_productName;
+            comboBox.Items.Clear();
+            foreach (var product in products)
+                comboBox.Items.Add(product.Name);
+        }
+
+        public void InitializeComboBox_VendorName()
         {
             var vendors = DataService.GetVendorDataController().GetAll();
             if (vendors == null)
                 return;
 
             var comboBox = m_UIControl.cb_vendorName;
+            comboBox.Items.Clear();
             foreach (var vendor in vendors)
                 comboBox.Items.Add(vendor.CompanyName);
         }
@@ -148,17 +161,6 @@ namespace InventoryManagement.Controllers.Purchase
             ResetUIControls();
         }
 
-        private void InitializeProductNameDataSource()
-        {
-            var products = DataService.GetProductDataController().GetAll();
-            if (products == null)
-                return;
-
-            var comboBox = m_UIControl.cb_productName;
-            foreach (var product in products)
-                comboBox.Items.Add(product.Name);
-        }
-
         private void UpdateUILabels()
         {
             double subtotal = 0;
@@ -260,6 +262,7 @@ namespace InventoryManagement.Controllers.Purchase
         protected override void RegisterEvents()
         {
             RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
 
     }
