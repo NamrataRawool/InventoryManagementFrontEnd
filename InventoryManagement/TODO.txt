@@ -27,3 +27,5 @@ customer add --> do not add customer with same mobile number
 add customer button in transaction page
 
 Entity --> Update --> Update UI table
+
+on product add/ edit --> Update in transaction product name data source

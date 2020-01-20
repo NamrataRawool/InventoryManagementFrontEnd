@@ -12,7 +12,7 @@ namespace InventoryManagement.Services.Data.Database
         public DbSet<CustomerDTO> Customers { get; set; }
         public DbSet<StockDTO> Stocks { get; set; }
         public DbSet<VendorDTO> Vendors { get; set; }
-        //public DbSet<PurchaseDTO> Purchases { get; set; }
+        public DbSet<PurchaseDTO> Purchases { get; set; }
 
         public ProductDTO GetProduct(int ID) { return Products.Find(ID); }
         public CategoryDTO GetCategory(int ID) { return Categories.Find(ID); }
@@ -20,7 +20,7 @@ namespace InventoryManagement.Services.Data.Database
         public CustomerDTO GetCustomer(int ID) { return Customers.Find(ID); }
         public VendorDTO GetVendor(int ID) { return Vendors.Find(ID); }
         public StockDTO GetStock(int ID) { return Stocks.Find(ID); }
-        //public PurchaseDTO GetPurchase(int ID) { return Purchases.Find(ID); }
+        public PurchaseDTO GetPurchase(int ID) { return Purchases.Find(ID); }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -49,7 +49,6 @@ namespace InventoryManagement.Services.Data.Database
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.ID).ValueGeneratedOnAdd();
             });
-            base.OnModelCreating(modelBuilder);
 
             //modelBuilder.Entity<Tax>().ToTable("Taxes");
             //modelBuilder.Entity<Tax>(entity =>
@@ -57,7 +56,6 @@ namespace InventoryManagement.Services.Data.Database
             //    entity.HasKey(e => e.TaxID);
             //    entity.Property(e => e.TaxID).ValueGeneratedOnAdd();
             //});
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<TransactionDTO>().ToTable("Transactions");
             modelBuilder.Entity<TransactionDTO>(entity =>
@@ -72,7 +70,6 @@ namespace InventoryManagement.Services.Data.Database
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.ID).ValueGeneratedOnAdd();
             });
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<StockDTO>().ToTable("Stocks");
             modelBuilder.Entity<StockDTO>(entity =>
@@ -80,6 +77,14 @@ namespace InventoryManagement.Services.Data.Database
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.ID).ValueGeneratedOnAdd();
             });
+
+            modelBuilder.Entity<PurchaseDTO>().ToTable("Purchases");
+            modelBuilder.Entity<PurchaseDTO>(entity =>
+            {
+                entity.HasKey(e => e.ID);
+                entity.Property(e => e.ID).ValueGeneratedOnAdd();
+            });
+
             base.OnModelCreating(modelBuilder);
         }
     }

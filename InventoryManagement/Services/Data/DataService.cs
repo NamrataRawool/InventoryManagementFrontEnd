@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Services.Data
 {
-   
+
     public static class DataService
     {
         public static void Initialize()
@@ -23,6 +23,7 @@ namespace InventoryManagement.Services.Data
             m_TransactionDataController = new TransactionDataController(m_Context);
             m_StockDataController = new StockDataController(m_Context);
             m_VendorDataController = new VendorDataController(m_Context);
+            m_purchaseDataController = new PurchaseDataController(m_Context);
         }
 
         public static ProductDataController GetProductDataController() { return m_ProductDataController; }
@@ -31,6 +32,7 @@ namespace InventoryManagement.Services.Data
         public static TransactionDataController GetTransactionDataController() { return m_TransactionDataController; }
         public static StockDataController GetStockDataController() { return m_StockDataController; }
         public static VendorDataController GetVendorDataController() { return m_VendorDataController; }
+        public static PurchaseDataController GetPurchaseDataController() { return m_purchaseDataController; }
 
 
         private static ProductDataController m_ProductDataController;
@@ -39,6 +41,7 @@ namespace InventoryManagement.Services.Data
         private static TransactionDataController m_TransactionDataController;
         private static StockDataController m_StockDataController;
         private static VendorDataController m_VendorDataController;
+        private static PurchaseDataController m_purchaseDataController;
 
         private static InventoryDbContext m_Context;
 

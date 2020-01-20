@@ -251,6 +251,7 @@
     <Compile Include="Services\Data\Database\SQLite\Controllers\CustomerDataController.cs" />
     <Compile Include="Services\Data\Database\SQLite\Controllers\IDataController.cs" />
     <Compile Include="Services\Data\Database\SQLite\Controllers\ProductDataController.cs" />
+    <Compile Include="Services\Data\Database\SQLite\Controllers\PurchaseDataController.cs" />
     <Compile Include="Services\Data\Database\SQLite\Controllers\StockDataController.cs" />
     <Compile Include="Services\Data\Database\SQLite\Controllers\TransactionDataController.cs" />
     <Compile Include="Services\Data\Database\SQLite\Controllers\VendorDataController.cs" />

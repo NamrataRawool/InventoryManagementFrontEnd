@@ -38,8 +38,8 @@ namespace InventoryManagement.UI.UserControls
             {
                 int selectedRowIndex = categoryDataView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = categoryDataView.Rows[selectedRowIndex];
-                editCategory.tb_categoryName.Text = selectedRow.Cells["Name"].Value.ToString(); ;
-                editCategory.tb_categoryDescription.Text = selectedRow.Cells["Description"].Value.ToString();
+                editCategory.tb_categoryName.Text = selectedRow.Cells["TableColumn_Category_Name"].Value.ToString(); ;
+                editCategory.tb_categoryDescription.Text = selectedRow.Cells["TableColumn_Category_Description"].Value.ToString();
             }
             editCategory.ShowDialog();
         }

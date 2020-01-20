@@ -138,7 +138,14 @@ namespace InventoryManagement.Controllers.Purchase
             purchasePost.ProductQuantities = productQuantities;
             purchasePost.BuyingPrices = buyingPrices;
 
-          
+            var purchase = DataService.GetPurchaseDataController().Post(purchasePost);
+            if (purchase == null)
+            {
+                MessageBox.Show("Purchase entry failed! Please try saving again.");
+                return;
+            }
+            MessageBox.Show("Purchase entry saved successfully!");
+            ResetUIControls();
         }
 
         private void InitializeProductNameDataSource()

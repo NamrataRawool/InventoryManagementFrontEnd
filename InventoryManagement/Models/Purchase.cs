@@ -71,7 +71,7 @@ namespace InventoryManagement.Models
             ProductDetails = new List<PurchaseProductDetails>();
 
             string[] productIDs = dto.ProductIDs.Split(',');
-            string[] productQuantities = dto.ProductIDs.Split(',');
+            string[] productQuantities = dto.ProductQuantities.Split(',');
             string[] buyingPrices = dto.BuyingPrices.Split(',');
 
             if(!((productIDs.Length == productQuantities.Length) &&  (productQuantities.Length == buyingPrices.Length)))

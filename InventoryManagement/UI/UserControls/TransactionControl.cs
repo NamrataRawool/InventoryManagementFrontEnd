@@ -97,8 +97,8 @@ namespace InventoryManagement.UI.UserControls
 
                 lbl_errorText.Text = string.Empty;
 
-                int productId = int.Parse(this.tb_barCode.Text);
-                var product = DataService.GetProductDataController().Get(productId);
+                string productBarCode = tb_barCode.Text.Trim();
+                var product = DataService.GetProductDataController().GetByBarcode(productBarCode);
 
                 if (product == null)
                 {
