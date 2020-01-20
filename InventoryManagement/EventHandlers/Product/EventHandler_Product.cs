@@ -27,19 +27,35 @@ namespace InventoryManagement.EventHandlers.Product
             {
                 case EventType.NewEntryAdded:
                     {
-                        var ev = e.Cast<Event_NewEntryAdded>();
-                        if (ev.GetEntityType() == DBEntityType.PRODUCT)
-                            AddProductToTable(ev.GetID());
+                        HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
                         break;
                     }
 
                 case EventType.EntryUpdated:
-                    { 
-                        var ev = e.Cast<Event_EntryUpdated>();
-                        if (ev.GetEntityType() == DBEntityType.PRODUCT)
-                            UpdateProductInTable(ev.GetID());
+                    {
+                        HandleEvent_EntryUpdated(e.Cast<Event_EntryUpdated>());
                         break;
                     }
+            }
+        }
+
+        private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
+        {
+            DBEntityType entityType = e.GetEntityType();
+
+            if (entityType == DBEntityType.PRODUCT)
+            {
+                AddProductToTable(e.GetID());
+            }
+        }
+
+        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
+        {
+            DBEntityType entityType = e.GetEntityType();
+
+            if (entityType == DBEntityType.PRODUCT)
+            {
+                UpdateProductInTable(e.GetID());
             }
         }
 

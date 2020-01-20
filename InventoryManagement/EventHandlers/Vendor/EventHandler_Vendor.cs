@@ -26,10 +26,17 @@ namespace InventoryManagement.EventHandlers.Vendor
             switch (type)
             {
                 case EventType.NewEntryAdded:
-                    var ev = e.Cast<Event_NewEntryAdded>();
-                    if(ev.GetEntityType() == DBEntityType.VENDOR)
-                        AddVendorToTable(ev.GetID());
+                    HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
                     break;
+            }
+        }
+
+        private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
+        {
+            DBEntityType entityType = e.GetEntityType();
+            if (entityType == DBEntityType.VENDOR)
+            {
+                AddVendorToTable(e.GetID());
             }
         }
 

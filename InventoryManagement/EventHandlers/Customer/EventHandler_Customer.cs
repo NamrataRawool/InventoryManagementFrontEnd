@@ -20,15 +20,15 @@ namespace InventoryManagement.EventHandlers.Customer
             switch (type)
             {
                 case EventType.NewEntryAdded:
-                    HandleNewEntryAddedEvent(e.Cast<Event_NewEntryAdded>());
+                    HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
                     break;
                 case EventType.EntryUpdated:
-                    HandleEntryUpdatedEvent(e.Cast<Event_EntryUpdated>());
+                    HandleEvent_EntryUpdated(e.Cast<Event_EntryUpdated>());
                     break;
             }
         }
 
-        private void HandleEntryUpdatedEvent(Event_EntryUpdated e)
+        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
         {
             DBEntityType entityType = e.GetEntityType();
             if (entityType == DBEntityType.CUSTOMER)
@@ -38,7 +38,7 @@ namespace InventoryManagement.EventHandlers.Customer
             }
         }
 
-        private void HandleNewEntryAddedEvent(Event_NewEntryAdded e)
+        private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
         {
             DBEntityType entityType = e.GetEntityType();
             if(entityType == DBEntityType.CUSTOMER)

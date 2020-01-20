@@ -20,20 +20,25 @@ namespace InventoryManagement.EventHandlers.Purchase
         {
             EventType type = e.Type();
 
-            if (type == EventType.NewEntryAdded)
+            switch (type)
             {
-                var evnt = e.Cast<Event_NewEntryAdded>();
-                var entity = evnt.GetEntityType();
-                int id = evnt.GetID();
-                if (entity == DBEntityType.VENDOR)
-                {
-                    m_Controller.OnNewVendorAdded(id);
-                }
-                else if (entity == DBEntityType.PRODUCT)
-                {
-                    m_Controller.OnNewProductAdded(id);
-                }
+                case EventType.NewEntryAdded:
+                    HandleEvent_NewEntryEvent(e.Cast<Event_NewEntryAdded>());
+                    break;
+            }
+        }
 
+        private void HandleEvent_NewEntryEvent(Event_NewEntryAdded e)
+        {
+            var entity = e.GetEntityType();
+            int id = e.GetID();
+            if (entity == DBEntityType.VENDOR)
+            {
+                m_Controller.OnNewVendorAdded(id);
+            }
+            else if (entity == DBEntityType.PRODUCT)
+            {
+                m_Controller.OnNewProductAdded(id);
             }
         }
 

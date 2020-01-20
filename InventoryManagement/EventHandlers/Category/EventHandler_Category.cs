@@ -15,15 +15,24 @@ namespace InventoryManagement.EventHandlers.Category
         public override void OnEvent(IEvent e)
         {
             EventType type = e.Type();
-            if (type == EventType.NewEntryAdded)
+            switch(type)
             {
-                var evnt = e.Cast<Event_NewEntryAdded>();
-                if (evnt.GetEntityType() == DBEntityType.CATEGORY)
-                {
-                    var category = DataService.GetCategoryDataController().Get(evnt.GetID());
-                    m_Controller.AddCategoryToTable(category);
-                }
+                case EventType.NewEntryAdded:
+                    HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
+                    break;
             }
         }
+
+        private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
+        {
+            DBEntityType entityType = e.GetEntityType();
+
+            if (entityType == DBEntityType.CATEGORY)
+            {
+                var category = DataService.GetCategoryDataController().Get(e.GetID());
+                m_Controller.AddCategoryToTable(category);
+            }
+        }
+
     }
 }
