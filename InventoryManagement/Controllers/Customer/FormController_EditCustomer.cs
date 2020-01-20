@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Customer;
 using InventoryManagement.Utilities;
@@ -22,6 +24,7 @@ namespace InventoryManagement.Controllers.Customer
         {
             InitializeProductDetails(customerId);
         }
+
         public void ResetTextBoxes()
         {
             m_UIControl.tb_customerId.Text = string.Empty;
@@ -34,26 +37,31 @@ namespace InventoryManagement.Controllers.Customer
 
         public void UpdateCustomer()
         {
-            if (ValidateCustomerDetails())
-            {
-                CustomerPost customerPost = new CustomerPost();
-                customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text);
-                customerPost.Name = m_UIControl.tb_customerName.Text;
-                customerPost.Email = m_UIControl.tb_customerEmail.Text;
-                customerPost.MobileNumber = m_UIControl.tb_customerMobileNumber.Text;
-                customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text);
-                customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text);
+            if (!ValidateCustomerDetails())
+                return;
 
-                var customer = DataService.GetCustomerDataController().Put(customerPost);
-                if (customer == null)
-                {
-                    m_UIControl.DialogResult = DialogResult.No;
-                    return;
-                }
-                m_UIControl.DialogResult = DialogResult.Yes;
-                ResetTextBoxes();
+            CustomerPost customerPost = new CustomerPost();
+            customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text);
+            customerPost.Name = m_UIControl.tb_customerName.Text;
+            customerPost.Email = m_UIControl.tb_customerEmail.Text;
+            customerPost.MobileNumber = m_UIControl.tb_customerMobileNumber.Text;
+            customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text);
+            customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text);
+
+            var customer = DataService.GetCustomerDataController().Put(customerPost);
+            if (customer == null)
+            {
+                m_UIControl.DialogResult = DialogResult.No;
+                return;
             }
+            m_UIControl.DialogResult = DialogResult.Yes;
+            ResetTextBoxes();
+
+            // fire customer updated event
+            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.CUSTOMER, customer.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
         }
+
         private bool ValidateCustomerDetails()
         {
             m_UIControl.lbl_customerErrorText.Text = string.Empty;
@@ -103,6 +111,7 @@ namespace InventoryManagement.Controllers.Customer
             }
             return true;
         }
+
         private void InitializeProductDetails(int customerId)
         {
             var customer = DataService.GetCustomerDataController().Get(customerId);
@@ -117,7 +126,7 @@ namespace InventoryManagement.Controllers.Customer
 
         protected override void RegisterEvents()
         {
-
         }
+
     }
 }

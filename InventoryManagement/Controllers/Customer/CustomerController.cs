@@ -92,10 +92,32 @@ namespace InventoryManagement.Controllers.Customer
             }
             return;
         }
+
         private void InitializeTable(List<CustomerGet> customers)
         {
             foreach (var customer in customers)
                 AddCustomerToTable(customer);
+        }
+
+        public void UpdateCustomerInTable(CustomerGet customer)
+        {
+            var table = GetTable();
+
+            for (int i = 0; i < table.Rows.Count; ++i)
+            {
+                DataGridViewRow row = table.Rows[i];
+                int id = int.Parse(row.Cells["CustomerTable_ID"].Value.ToString());
+
+                if (customer.ID == id)
+                {
+                    row.Cells["CustomerTable_ID"].Value = customer.ID;
+                    row.Cells["CustomerTable_Name"].Value = customer.Name;
+                    row.Cells["CustomerTable_EmailId"].Value = customer.Email;
+                    row.Cells["CustomerTable_MobileNumber"].Value = customer.MobileNumber;
+                    row.Cells["CustomerTable_PendingAmount"].Value = customer.PendingAmount;
+                    return;
+                }
+            }
         }
 
         public void AddCustomerToTable(CustomerGet customer)
@@ -122,6 +144,7 @@ namespace InventoryManagement.Controllers.Customer
 
             searchBox.AutoCompleteCustomSource = collection;
         }
+
         private void RefreshTable()
         {
             GetTable().Refresh();
@@ -142,6 +165,7 @@ namespace InventoryManagement.Controllers.Customer
         protected override void RegisterEvents()
         {
             RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
 
     }

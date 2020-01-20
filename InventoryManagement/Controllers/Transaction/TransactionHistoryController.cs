@@ -1,14 +1,13 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.EventHandlers.Transaction;
+using InventoryManagement.Events;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.Services.Export;
-using InventoryManagement.Services.Export.Exporters.Excel;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Transaction;
 using InventoryManagement.UI.UserControls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Transaction
@@ -18,20 +17,23 @@ namespace InventoryManagement.Controllers.Transaction
         public TransactionHistoryController(TransactionControl UIControl)
              : base(UIControl)
         {
-            m_UIControl.cb_customerName.DataSource = InitializeCustomerNameDatasource();
+            SetEventHandler(new EventHandler_TransactionHistory(this));
+            InitializeComboBox_CustomerName();
         }
 
-        private List<string> InitializeCustomerNameDatasource()
+        public void InitializeComboBox_CustomerName()
         {
             var customers = DataService.GetCustomerDataController().GetAll();
             if (customers == null)
-                return null;
+            {
+                Assert.Do("customers cannot be null!");
+                return;
+            }
 
-            List<string> customerDataSource = new List<string>();
+            var comboBox = m_UIControl.cb_customerName;
+            comboBox.Items.Clear();
             foreach (var customer in customers)
-                customerDataSource.Add(customer.Name);
-
-            return customerDataSource;
+                comboBox.Items.Add(customer.Name);
         }
 
         public void SearchTransactionsByDate(string from, string to)
@@ -115,6 +117,8 @@ namespace InventoryManagement.Controllers.Transaction
 
         protected override void RegisterEvents()
         {
+            RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
 
     }

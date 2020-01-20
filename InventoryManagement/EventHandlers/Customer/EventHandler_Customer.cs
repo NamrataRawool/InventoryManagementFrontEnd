@@ -1,5 +1,4 @@
-﻿using System;
-using InventoryManagement.Events;
+﻿using InventoryManagement.Events;
 using InventoryManagement.Controllers.Customer;
 using InventoryManagement.Events.Common;
 using InventoryManagement.Services.Data;
@@ -21,19 +20,35 @@ namespace InventoryManagement.EventHandlers.Customer
             switch (type)
             {
                 case EventType.NewEntryAdded:
-                    var ev = e.Cast<Event_NewEntryAdded>();
-                    if (ev.GetEntityType() == DBEntityType.CUSTOMER)
-                        AddCustomerToTable(ev.GetID());
+                    HandleNewEntryAddedEvent(e.Cast<Event_NewEntryAdded>());
+                    break;
+                case EventType.EntryUpdated:
+                    HandleEntryUpdatedEvent(e.Cast<Event_EntryUpdated>());
                     break;
             }
         }
 
-        private void AddCustomerToTable(int customerID)
+        private void HandleEntryUpdatedEvent(Event_EntryUpdated e)
         {
-            CustomerGet customer = DataService.GetCustomerDataController().Get(customerID);
-            m_Controller.AddCustomerToTable(customer);
+            DBEntityType entityType = e.GetEntityType();
+            if (entityType == DBEntityType.CUSTOMER)
+            {
+                CustomerGet customer = DataService.GetCustomerDataController().Get(e.GetID());
+                m_Controller.UpdateCustomerInTable(customer);
+            }
         }
 
+        private void HandleNewEntryAddedEvent(Event_NewEntryAdded e)
+        {
+            DBEntityType entityType = e.GetEntityType();
+            if(entityType == DBEntityType.CUSTOMER)
+            {
+                int customerID = e.GetID();
+                CustomerGet customer = DataService.GetCustomerDataController().Get(customerID);
+                m_Controller.AddCustomerToTable(customer);
+            }
+        }
+        
     }
 
 }

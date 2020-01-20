@@ -262,6 +262,8 @@ namespace InventoryManagement.Controllers.Transaction
         {
             var customers = DataService.GetCustomerDataController().GetAll();
             var searchBox = m_UIControl.tb_mobileNumber;
+            searchBox.AutoCompleteCustomSource.Clear();
+
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
@@ -271,6 +273,7 @@ namespace InventoryManagement.Controllers.Transaction
 
             searchBox.AutoCompleteCustomSource = collection;
         }
+
         private void UpdateUILabels()
         {
             double subtotal = 0;
@@ -291,6 +294,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession.totalTax = m_UIControl.tb_totalTax.Text = totalTax.ToString();
             m_transactionSession.amountDue = m_UIControl.tb_amountDue.Text = amountDue.ToString();
         }
+
         private double CalculateTotalTax(ProductGet product)
         {
             var cgst = (product.RetailPrice * product.CGST / 100) * product.Quantity;
@@ -298,6 +302,7 @@ namespace InventoryManagement.Controllers.Transaction
             double totalTax = cgst + sgst;
             return totalTax;
         }
+
         private double CalculateFinalPrice(int price, double discountRate, int quantity, double totalTax)
         {
             double discountInRupees = (price * discountRate / 100);

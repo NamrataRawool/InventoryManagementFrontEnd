@@ -1,5 +1,4 @@
-﻿using InventoryManagement.Controllers;
-using InventoryManagement.Controllers.Transaction;
+﻿using InventoryManagement.Controllers.Transaction;
 using InventoryManagement.Events;
 using InventoryManagement.Events.Common;
 using InventoryManagement.Services.Data;
@@ -24,25 +23,30 @@ namespace InventoryManagement.EventHandlers.Transaction
                     break;
 
                 case EventType.NewEntryAdded:
-                    HandleNewEntryAddedEvent(e.Cast<Event_NewEntryAdded>());
+                    HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
                     break;
 
                 case EventType.EntryUpdated:
-                    HandleEntryUpdatedEvent(e.Cast<Event_EntryUpdated>());
+                    HandleEvent_EntryUpdated(e.Cast<Event_EntryUpdated>());
                     break;
             }
         }
 
-        private void HandleEntryUpdatedEvent(Event_EntryUpdated e)
+        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
         {
-            var updateEntryType = e.GetEntityType();
-            if (updateEntryType == DBEntityType.PRODUCT)
+            var updatedEntryType = e.GetEntityType();
+            if (updatedEntryType == DBEntityType.PRODUCT)
             {
                 m_Controller.InitializProductNameSearchBoxData();
             }
+            else if (updatedEntryType == DBEntityType.CUSTOMER)
+            {
+                m_Controller.InitializeCustomerMobileNumberSearchBoxData();
+                m_Controller.InitializeCustomerNameSearchBoxData();
+            }
         }
 
-        private void HandleNewEntryAddedEvent(Event_NewEntryAdded e)
+        private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
         {
             var addedEntityType = e.GetEntityType();
             if(addedEntityType == DBEntityType.CUSTOMER)
