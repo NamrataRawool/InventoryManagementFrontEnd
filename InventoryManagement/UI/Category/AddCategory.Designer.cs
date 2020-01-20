@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagement.UI.Category
 {
-    partial class form_categoryDetails
+    partial class Form_CategoryDetails
     {
         /// <summary>
         /// Required designer variable.

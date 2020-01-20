@@ -201,6 +201,7 @@
             this.VendorsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.VendorsDataView.Size = new System.Drawing.Size(997, 486);
             this.VendorsDataView.TabIndex = 26;
+            this.VendorsDataView.DoubleClick += new System.EventHandler(this.VendorsDataView_DoubleClick);
             // 
             // VendorTable_Id
             // 

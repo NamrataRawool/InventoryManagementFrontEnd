@@ -15,6 +15,7 @@ namespace InventoryManagement.UI.UserControls
     public partial class VendorControl : UserControl
     {
         VendorController m_Controller;
+
         public VendorControl()
         {
             InitializeComponent();
@@ -48,5 +49,11 @@ namespace InventoryManagement.UI.UserControls
                 m_Controller.UpdateTableByCompanyName(tb_searchVendors.Text);
             }
         }
+
+        private void VendorsDataView_DoubleClick(object sender, EventArgs e)
+        {
+            m_Controller.OpenForm_EditVendor();
+        }
+
     }
 }

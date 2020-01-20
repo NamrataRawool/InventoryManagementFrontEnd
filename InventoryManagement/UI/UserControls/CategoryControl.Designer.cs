@@ -34,14 +34,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryControl));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.categoryDataView = new System.Windows.Forms.DataGridView();
+            this.TableColumn_Category_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableColumn_Category_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableColumn_Category_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_addCategory = new System.Windows.Forms.Button();
             this.btn_editCategory = new System.Windows.Forms.Button();
             this.tb_searchCategory = new System.Windows.Forms.TextBox();
             this.btn_searchCategory = new System.Windows.Forms.Button();
-            this.TableColumn_Category_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TableColumn_Category_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TableColumn_Category_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -117,6 +117,25 @@
             this.categoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.categoryDataView.Size = new System.Drawing.Size(997, 486);
             this.categoryDataView.TabIndex = 2;
+            this.categoryDataView.DoubleClick += new System.EventHandler(this.categoryDataView_DoubleClick);
+            // 
+            // TableColumn_Category_ID
+            // 
+            this.TableColumn_Category_ID.HeaderText = "ID";
+            this.TableColumn_Category_ID.Name = "TableColumn_Category_ID";
+            this.TableColumn_Category_ID.ReadOnly = true;
+            // 
+            // TableColumn_Category_Name
+            // 
+            this.TableColumn_Category_Name.HeaderText = "Name";
+            this.TableColumn_Category_Name.Name = "TableColumn_Category_Name";
+            this.TableColumn_Category_Name.ReadOnly = true;
+            // 
+            // TableColumn_Category_Description
+            // 
+            this.TableColumn_Category_Description.HeaderText = "Description";
+            this.TableColumn_Category_Description.Name = "TableColumn_Category_Description";
+            this.TableColumn_Category_Description.ReadOnly = true;
             // 
             // tableLayoutPanel2
             // 
@@ -194,24 +213,6 @@
             this.btn_searchCategory.TabIndex = 4;
             this.btn_searchCategory.Text = "Search";
             this.btn_searchCategory.UseVisualStyleBackColor = false;
-            // 
-            // TableColumn_Category_ID
-            // 
-            this.TableColumn_Category_ID.HeaderText = "ID";
-            this.TableColumn_Category_ID.Name = "TableColumn_Category_ID";
-            this.TableColumn_Category_ID.ReadOnly = true;
-            // 
-            // TableColumn_Category_Name
-            // 
-            this.TableColumn_Category_Name.HeaderText = "Name";
-            this.TableColumn_Category_Name.Name = "TableColumn_Category_Name";
-            this.TableColumn_Category_Name.ReadOnly = true;
-            // 
-            // TableColumn_Category_Description
-            // 
-            this.TableColumn_Category_Description.HeaderText = "Description";
-            this.TableColumn_Category_Description.Name = "TableColumn_Category_Description";
-            this.TableColumn_Category_Description.ReadOnly = true;
             // 
             // CategoryControl
             // 

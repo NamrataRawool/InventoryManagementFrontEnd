@@ -32,22 +32,18 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_editCategory_Click(object sender, EventArgs e)
         {
-            form_categoryDetails editCategory = new form_categoryDetails();
-            var rows = categoryDataView.SelectedRows;
-            if (rows.Count > 0)
-            {
-                int selectedRowIndex = categoryDataView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = categoryDataView.Rows[selectedRowIndex];
-                editCategory.tb_categoryName.Text = selectedRow.Cells["TableColumn_Category_Name"].Value.ToString(); ;
-                editCategory.tb_categoryDescription.Text = selectedRow.Cells["TableColumn_Category_Description"].Value.ToString();
-            }
-            editCategory.ShowDialog();
+            m_Controller.OpenForm_EditCategory();
         }
 
         private void btn_addCategory_Click(object sender, EventArgs e)
         {
-            form_categoryDetails addCategory = new form_categoryDetails();
+            Form_CategoryDetails addCategory = new Form_CategoryDetails();
             addCategory.ShowDialog();
+        }
+
+        private void categoryDataView_DoubleClick(object sender, EventArgs e)
+        {
+            m_Controller.OpenForm_EditCategory();
         }
 
     }
