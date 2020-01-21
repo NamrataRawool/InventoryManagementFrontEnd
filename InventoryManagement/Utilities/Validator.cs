@@ -28,6 +28,7 @@ namespace InventoryManagement.Utilities
             }
             return true;
         }
+
         public static bool IsValidString(string name)
         {
             string namePattern = @"^[A-z][A-z|\s]+$";
@@ -37,6 +38,7 @@ namespace InventoryManagement.Utilities
             }
             return true;
         }
+
         public static bool IsValidMobileNumber(string mobileNumber)
         {
             string mobileNumberPattern = @"^[0-9]{10}$";
@@ -46,14 +48,18 @@ namespace InventoryManagement.Utilities
             }
             return true;
         }
+
         public static bool IsValidEmail(string email)
         {
-            string emailPattern = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
-            if (!Regex.IsMatch(email, emailPattern))
+            try
+            {
+                var mail = new System.Net.Mail.MailAddress(email);
+                return true;
+            }
+            catch
             {
                 return false;
             }
-            return true;
         }
     }
 }
