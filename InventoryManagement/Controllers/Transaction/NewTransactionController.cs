@@ -311,6 +311,15 @@ namespace InventoryManagement.Controllers.Transaction
             return totalPrice;
         }
 
+        public void AddNewCustomer()
+        {
+            Form_AddCustomer form = new Form_AddCustomer();
+            DialogResult result = form.ShowDialog();
+
+            if (result == DialogResult.Yes)
+                MessageBox.Show("Customer Added Succesfully!");
+        }
+
         public void ResetTransaction()
         {
             m_transactionSession = new TransactionSession();
@@ -319,6 +328,7 @@ namespace InventoryManagement.Controllers.Transaction
             ResetBillProductsTable();
             ResetTextBoxes();
         }
+
         private void ResetTextBoxes()
         {
             m_UIControl.tb_productName.Text = string.Empty;
@@ -330,6 +340,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.tb_AmountPaid.Text = string.Empty;
             ResetCustomerDetails();
         }
+
         public void ResetCustomerDetails()
         {
             m_UIControl.lbl_customerError.Text = string.Empty;
@@ -337,6 +348,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.tb_pendingAmount.Text = string.Empty;
             m_UIControl.tb_mobileNumber.Text = string.Empty;
         }
+
         private void ResetBillProductsTable()
         {
             var Table = m_UIControl.Bill_ProductsDataView;

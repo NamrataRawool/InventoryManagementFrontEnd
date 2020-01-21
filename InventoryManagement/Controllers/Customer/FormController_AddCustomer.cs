@@ -33,11 +33,10 @@ namespace InventoryManagement.Controllers.Customer
             customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
             customerPost.PendingAmount = 0;
             var customer = DataService.GetCustomerDataController().Post(customerPost);
-            if (customer != null)
-                m_UIControl.DialogResult = DialogResult.Yes;
-            else
-                m_UIControl.DialogResult = DialogResult.No;
 
+            m_UIControl.DialogResult = (customer == null) ? DialogResult.No : DialogResult.Yes;
+
+            // fire customer added event
             Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CUSTOMER, customer.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
         }
