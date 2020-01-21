@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.UI.Category
 {
-    public partial class Form_CategoryDetails : Form
+    public partial class Form_AddCategory : Form
     {
-        public Form_CategoryDetails()
+        public Form_AddCategory()
         {
             InitializeComponent();
         }

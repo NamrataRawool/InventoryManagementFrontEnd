@@ -208,6 +208,7 @@
   <ItemGroup>
     <Compile Include="Broadcaster\EventBroadcaster.cs" />
     <Compile Include="Controllers\Category\CategoryController.cs" />
+    <Compile Include="Controllers\Category\FormController_EditCategory.cs" />
     <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Customer\FormController_AddCustomer.cs" />
     <Compile Include="Controllers\Customer\FormController_EditCustomer.cs" />
@@ -275,11 +276,17 @@
     <Compile Include="Services\Data\HTTP\HTTPService.cs" />
     <Compile Include="Services\Licensing\LicenseManager.cs" />
     <Compile Include="Services\Misc\Assert\Assert.cs" />
-    <Compile Include="UI\Category\AddCategory.cs">
+    <Compile Include="UI\Category\Form_AddCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Category\AddCategory.Designer.cs">
-      <DependentUpon>AddCategory.cs</DependentUpon>
+    <Compile Include="UI\Category\Form_AddCategory.Designer.cs">
+      <DependentUpon>Form_AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Category\Form_EditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Category\Form_EditCategory.Designer.cs">
+      <DependentUpon>Form_EditCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Customer\Form_AddCustomer.cs">
       <SubType>Form</SubType>
@@ -400,8 +407,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Category\AddCategory.resx">
-      <DependentUpon>AddCategory.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Category\Form_AddCategory.resx">
+      <DependentUpon>Form_AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Category\Form_EditCategory.resx">
+      <DependentUpon>Form_EditCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Customer\Form_AddCustomer.resx">
       <DependentUpon>Form_AddCustomer.cs</DependentUpon>
