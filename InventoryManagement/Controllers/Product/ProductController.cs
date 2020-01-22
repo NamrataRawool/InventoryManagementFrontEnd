@@ -121,8 +121,11 @@ namespace InventoryManagement.Controllers
             var Table = GetTable();
 
             var rows = Table.SelectedRows;
-            if (rows.Count < 0)
+            if (rows.Count <= 0)
+            {
+                // TODO: add notification
                 return;
+            }
 
             int selectedRowIndex = Table.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Table.Rows[selectedRowIndex];
