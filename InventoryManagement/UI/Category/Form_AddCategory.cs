@@ -28,11 +28,6 @@ namespace InventoryManagement.UI.Category
             tb_categoryDescription.Text = string.Empty;
         }
 
-        private void btn_cancelCategory_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btn_saveCategory_Click(object sender, EventArgs eventArgs)
         {
             string name = tb_categoryName.Text;
@@ -52,8 +47,9 @@ namespace InventoryManagement.UI.Category
             // broadcast new entry added event
             Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CATEGORY, newCategory.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
-
+            this.Close();
             MessageBox.Show("Category Added successfully!");
+           
         }
     }
 }

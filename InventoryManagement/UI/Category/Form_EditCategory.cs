@@ -23,15 +23,16 @@ namespace InventoryManagement.UI.Category
             m_Controller = new FormController_EditCategory(categoryID, this);
         }
 
-        private void btn_cancelCategory_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btn_UpdateCategory_Click(object sender, EventArgs e)
         {
             m_Controller.UpdateCategory();
         }
 
+        private void btn_resetCategory_Click(object sender, EventArgs e)
+        {
+            tb_ID.Text = string.Empty;
+            tb_categoryName.Text = string.Empty;
+            tb_categoryDescription.Text = string.Empty;
+        }
     }
 }
