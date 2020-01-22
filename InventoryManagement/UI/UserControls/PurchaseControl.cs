@@ -17,6 +17,11 @@ namespace InventoryManagement.UI.UserControls
     {
         NewPurchaseController m_newPurchaseController;
         PurchaseHistoryController m_purchaseHistoryController;
+
+        int quantity = 0;
+        double purchasePrice = 0;
+        double discountRate = 0;
+
         public PurchaseControl()
         {
             InitializeComponent();
@@ -104,6 +109,17 @@ namespace InventoryManagement.UI.UserControls
             m_newPurchaseController.SavePurchase();
         }
 
+        private void Purchase_ProductsDataView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            purchasePrice = double.Parse(Purchase_ProductsDataView.CurrentRow.Cells["PurchaseTable_PurchasePrice"].Value.ToString());
+            quantity = int.Parse(Purchase_ProductsDataView.CurrentRow.Cells["PurchaseTable_Quantity"].Value.ToString());
+            discountRate = double.Parse(Purchase_ProductsDataView.CurrentRow.Cells["PurchaseTable_DiscountRate"].Value.ToString());
+        }
+
+        private void Purchase_ProductsDataView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            m_newPurchaseController.OnUpdateProduct(quantity, purchasePrice, discountRate);
+        }
         #endregion
 
         #region Purchase History
@@ -121,7 +137,13 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_searchByVendorName_Click(object sender, EventArgs e)
         {
+            lbl_purchaseSearchError.Text = string.Empty;
             var vendorName = cb_VendorName_History.Text.Trim();
+            if(string.IsNullOrEmpty(vendorName) || vendorName.Equals("Select Vendor"))
+            {
+                lbl_purchaseSearchError.Text = "Please select vendor!";
+                return;
+            }
             m_purchaseHistoryController.SearchPurchaseByVendorName(vendorName);
         }
 
@@ -129,6 +151,8 @@ namespace InventoryManagement.UI.UserControls
         {
             m_purchaseHistoryController.OpenForm_ViewPurchaseBill();
         }
+
         #endregion
+
     }
 }

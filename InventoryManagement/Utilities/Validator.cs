@@ -12,48 +12,28 @@ namespace InventoryManagement.Utilities
         public static bool IsInteger(string integer)
         {
             string integerPattern = @"^[0-9]{1,}$";
-            if (!Regex.IsMatch(integer, integerPattern))
-            {
-                return false;
-            }
-            return true;
+            return Regex.IsMatch(integer, integerPattern);
         }
 
         public static bool IsValidDouble(string number)
         {
             string doublePattern = @"^[0-9]*(?:\.[0-9]*)?$";
-            if (!Regex.IsMatch(number, doublePattern))
-            {
-                return false;
-            }
-            return true;
+            return Regex.IsMatch(number, doublePattern);
         }
         public static bool IsValidString(string name)
         {
             string namePattern = @"^[A-z][A-z|\s]+$";
-            if (!Regex.IsMatch(name, namePattern))
-            {
-                return false;
-            }
-            return true;
+            return Regex.IsMatch(name, namePattern);
         }
         public static bool IsValidMobileNumber(string mobileNumber)
         {
             string mobileNumberPattern = @"^[0-9]{10}$";
-            if (!Regex.IsMatch(mobileNumber, mobileNumberPattern))
-            {
-                return false;
-            }
-            return true;
+            return Regex.IsMatch(mobileNumber, mobileNumberPattern);
         }
         public static bool IsValidEmail(string email)
         {
             string emailPattern = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
-            if (!Regex.IsMatch(email, emailPattern))
-            {
-                return false;
-            }
-            return true;
+            return Regex.IsMatch(email, emailPattern);
         }
     }
 }

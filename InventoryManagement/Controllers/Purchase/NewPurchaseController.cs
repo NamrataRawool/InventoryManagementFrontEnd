@@ -72,6 +72,7 @@ namespace InventoryManagement.Controllers.Purchase
         {
             ResetProductsDataTable();
             ResetTextBoxes();
+            ResetLabels();
         }
 
         public void OnAddProduct()
@@ -91,15 +92,23 @@ namespace InventoryManagement.Controllers.Purchase
             DataGridViewRow NewRow = gridView.Rows[Index];
             NewRow.Cells["PurchaseTable_ProductId"].Value = product.ID;
             NewRow.Cells["PurchaseTable_Name"].Value = product.Name;
+
             double purchasePrice = double.Parse(m_UIControl.tb_purchasePrice.Text);
             NewRow.Cells["PurchaseTable_PurchasePrice"].Value = purchasePrice;
+
             int quantity = int.Parse(m_UIControl.tb_quantity.Text);
             NewRow.Cells["PurchaseTable_Quantity"].Value = quantity;
-            double discountPerProduct = purchasePrice * double.Parse(m_UIControl.tb_discount.Text) / 100;
+
+            var discountRate = double.Parse(m_UIControl.tb_discount.Text);
+            NewRow.Cells["PurchaseTable_DiscountRate"].Value = discountRate;
+
+            double discountPerProduct = purchasePrice * discountRate / 100;
             double totalDiscount = discountPerProduct * quantity;
-            NewRow.Cells["PurchaseTable_Discount"].Value = totalDiscount;
+            NewRow.Cells["PurchaseTable_TotalDiscount"].Value = totalDiscount;
+
             UpdateUILabels();
             ResetProductDetails();
+            ResetLabels();
         }
 
         public void InitilizeTextBoxes(ProductGet product)
@@ -108,6 +117,39 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.cb_productName.Text = product.Name;
             var stock = DataService.GetStockDataController().GetByProductID(product.ID);
             m_UIControl.tb_availableStock.Text = stock.AvailableQuantity.ToString();
+        }
+
+        public void OnUpdateProduct(int oldQuantity, double oldPurchasePrice, double oldDiscountRate)
+        {
+            if (GetTable().SelectedRows.Count <= 0)
+                return;
+            string purchasePrice = GetTable().CurrentRow.Cells["PurchaseTable_PurchasePrice"].Value.ToString();
+            var quantity = GetTable().CurrentRow.Cells["PurchaseTable_Quantity"].Value.ToString();
+            var discountRate = GetTable().CurrentRow.Cells["PurchaseTable_DiscountRate"].Value.ToString();
+
+            if (!Validator.IsInteger(quantity) || !Validator.IsValidDouble(purchasePrice) || !Validator.IsValidDouble(discountRate))
+            {
+                GetTable().CurrentRow.Cells["PurchaseTable_PurchasePrice"].Value = oldPurchasePrice;
+                GetTable().CurrentRow.Cells["PurchaseTable_Quantity"].Value = oldQuantity;
+                GetTable().CurrentRow.Cells["PurchaseTable_DiscountRate"].Value = oldDiscountRate;
+                return;
+            }
+
+            var newPurchasePrice = double.Parse(purchasePrice);
+            var newQuantity = int.Parse(quantity);
+            var newDiscountRate = double.Parse(discountRate);
+
+            if (newPurchasePrice <= 0 || newQuantity <= 0)
+            {
+                GetTable().CurrentRow.Cells["PurchaseTable_PurchasePrice"].Value = oldPurchasePrice;
+                GetTable().CurrentRow.Cells["PurchaseTable_Quantity"].Value = oldQuantity;
+                return;
+            }
+           
+            double discountPerProduct = newPurchasePrice * newDiscountRate / 100;
+            double totalDiscount = discountPerProduct * newQuantity;
+            GetTable().CurrentRow.Cells["PurchaseTable_TotalDiscount"].Value = totalDiscount;
+            UpdateUILabels();
         }
 
         public void OnDeleteProduct()
@@ -124,7 +166,7 @@ namespace InventoryManagement.Controllers.Purchase
             if (GetTable().Rows.Count <= 0)
                 return;
 
-            if (string.IsNullOrEmpty(m_UIControl.cb_vendorName.Text))
+            if (string.IsNullOrEmpty(m_UIControl.cb_vendorName.Text) || m_UIControl.cb_vendorName.Text.Equals("Select Vendor"))
             {
                 m_UIControl.lbl_vendorError.Text = "Please select vendor!";
                 return;
@@ -152,6 +194,7 @@ namespace InventoryManagement.Controllers.Purchase
             purchasePost.BuyingPrices = buyingPrices;
 
             var purchase = DataService.GetPurchaseDataController().Post(purchasePost);
+
             if (purchase == null)
             {
                 MessageBox.Show("Purchase entry failed! Please try saving again.");
@@ -171,7 +214,7 @@ namespace InventoryManagement.Controllers.Purchase
                 var actualPrice = Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value);
                 var quantity = Convert.ToInt32(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value);
                 subtotal += actualPrice * quantity;
-                totalDiscount += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_Discount"].Value);
+                totalDiscount += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_TotalDiscount"].Value);
 
                 amountDue += subtotal - totalDiscount;
             }
@@ -223,6 +266,16 @@ namespace InventoryManagement.Controllers.Purchase
                 m_UIControl.lbl_errorText.Text = "Please enter valid  quantity!";
                 return false;
             }
+            if (int.Parse(m_UIControl.tb_quantity.Text) <= 0)
+            {
+                m_UIControl.lbl_errorText.Text = "Quantity should be greater than 0!";
+                return false;
+            }
+            if (double.Parse(m_UIControl.tb_purchasePrice.Text) <= 0)
+            {
+                m_UIControl.lbl_errorText.Text = "Purchase price should be greater than 0!";
+                return false;
+            }
             return true;
         }
 
@@ -232,7 +285,6 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_subtotal.Text = string.Empty;
             m_UIControl.tb_totalDiscount.Text = string.Empty;
             m_UIControl.tb_amountDue.Text = string.Empty;
-            m_UIControl.tb_AmountPaid.Text = string.Empty;
         }
 
         private void ResetProductDetails()
@@ -246,6 +298,11 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_barCode.Focus();
         }
 
+        private void ResetLabels()
+        {
+            m_UIControl.lbl_vendorError.Text = string.Empty;
+            m_UIControl.lbl_errorText.Text = string.Empty;
+        }
         private void ResetProductsDataTable()
         {
             var Table = GetTable();
