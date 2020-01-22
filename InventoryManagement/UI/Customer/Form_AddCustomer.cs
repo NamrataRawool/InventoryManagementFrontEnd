@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Controllers.Customer;
+using InventoryManagement.Models;
 using InventoryManagement.Utilities;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace InventoryManagement.UI.Customer
     public partial class Form_AddCustomer : Form
     {
         FormController_AddCustomer m_controller;
+
         public Form_AddCustomer()
         {
             InitializeComponent();
@@ -29,6 +31,11 @@ namespace InventoryManagement.UI.Customer
         private void btn_saveCustomer_Click(object sender, EventArgs e)
         {
             m_controller.SaveCustomer();
+        }
+
+        public CustomerGet GetCustomer()
+        {
+            return m_controller.GetCustomer();
         }
 
     }

@@ -16,6 +16,8 @@ namespace InventoryManagement.Controllers.Customer
 {
     public class FormController_AddCustomer : IController<Form_AddCustomer>
     {
+        private CustomerGet m_Customer;
+
         public FormController_AddCustomer(Form_AddCustomer UIControl)
            : base(UIControl)
         {
@@ -32,12 +34,12 @@ namespace InventoryManagement.Controllers.Customer
             customerPost.Name = m_UIControl.tb_CustomerName.Text;
             customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
             customerPost.PendingAmount = 0;
-            var customer = DataService.GetCustomerDataController().Post(customerPost);
+            m_Customer = DataService.GetCustomerDataController().Post(customerPost);
 
-            m_UIControl.DialogResult = (customer == null) ? DialogResult.No : DialogResult.Yes;
+            m_UIControl.DialogResult = (m_Customer == null) ? DialogResult.No : DialogResult.Yes;
 
             // fire customer added event
-            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CUSTOMER, customer.ID);
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CUSTOMER, m_Customer.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
         }
 
@@ -85,7 +87,9 @@ namespace InventoryManagement.Controllers.Customer
 
         protected override void RegisterEvents()
         {
-
         }
+
+        public CustomerGet GetCustomer() { return m_Customer; }
+
     }
 }

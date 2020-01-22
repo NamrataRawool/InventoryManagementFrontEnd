@@ -316,8 +316,16 @@ namespace InventoryManagement.Controllers.Transaction
             Form_AddCustomer form = new Form_AddCustomer();
             DialogResult result = form.ShowDialog();
 
-            if (result == DialogResult.Yes)
-                MessageBox.Show("Customer Added Succesfully!");
+            if (result != DialogResult.Yes)
+                return;
+
+            MessageBox.Show("Customer Added Succesfully!");
+
+            // fill the customer details
+            CustomerGet customer = form.GetCustomer();
+            m_UIControl.tb_customerName.Text = customer.Name;
+            m_UIControl.tb_mobileNumber.Text = customer.MobileNumber;
+            m_UIControl.tb_pendingAmount.Text = customer.PendingAmount.ToString();
         }
 
         public void ResetTransaction()
