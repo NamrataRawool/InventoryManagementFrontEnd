@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using InventoryManagement.Controllers.Purchase;
 using InventoryManagement.Utilities;
 using InventoryManagement.Services.Data;
+using InventoryManagement.UI.Vendor;
 
 namespace InventoryManagement.UI.UserControls
 {
     public partial class PurchaseControl : UserControl
     {
+
         NewPurchaseController m_newPurchaseController;
         PurchaseHistoryController m_purchaseHistoryController;
 
@@ -153,6 +155,18 @@ namespace InventoryManagement.UI.UserControls
         }
 
         #endregion
+
+        private void btn_AddNewVendor_Click(object sender, EventArgs e)
+        {
+            Form_AddVendor form = new Form_AddVendor();
+            form.ShowDialog();
+
+            if (form.DialogResult != DialogResult.OK)
+                return;
+
+            var vendor = form.GetVendor();
+            cb_vendorName.Text = vendor.CompanyName;
+        }
 
     }
 }

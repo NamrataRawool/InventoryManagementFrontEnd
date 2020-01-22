@@ -14,7 +14,10 @@ namespace InventoryManagement.UI.Vendor
 {
     public partial class Form_AddVendor : Form
     {
+
+        VendorGet m_Vendor;
         FormController_AddVendor m_controller;
+
         public Form_AddVendor()
         {
             InitializeComponent();
@@ -23,7 +26,10 @@ namespace InventoryManagement.UI.Vendor
 
         private void btn_addVendor_Click(object sender, EventArgs e)
         {
-            m_controller.AddNewVendor();
+            m_Vendor = m_controller.AddNewVendor();
         }
+
+        public VendorGet GetVendor() { return m_Vendor; }
+
     }
 }

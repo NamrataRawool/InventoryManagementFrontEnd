@@ -2,6 +2,7 @@
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Vendor;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,10 @@ namespace InventoryManagement.Controllers.Vendor
     public class FormController_AddVendor : IController<Form_AddVendor>
     {
         public FormController_AddVendor(Form_AddVendor UIcontrol) : base(UIcontrol)
-        { }
+        {
+        }
 
-        public void AddNewVendor()
+        public VendorGet AddNewVendor()
         {
             VendorPost vendor = new VendorPost();
             vendor.CompanyName = m_UIControl.tb_companyName.Text;
@@ -26,16 +28,22 @@ namespace InventoryManagement.Controllers.Vendor
             vendor.MobileNumber = m_UIControl.tb_mobileNumber.Text;
             vendor.City = m_UIControl.tb_city.Text;
             vendor.State = m_UIControl.tb_state.Text;
+
             var vendorGet = DataService.GetVendorDataController().Post(vendor);
-            if (vendorGet != null)
+            if (vendorGet == null)
             {
-                MessageBox.Show("Vendor Added Successfully");
-                ResetTextBoxes();
+                Assert.Do("Failed to add vendor");
+                return null;
             }
+
+            MessageBox.Show("Vendor Added Successfully");
+            ResetTextBoxes();
+            m_UIControl.DialogResult = DialogResult.OK;
 
             Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.VENDOR, vendorGet.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
 
+            return vendorGet;
         }
 
         private void ResetTextBoxes()
