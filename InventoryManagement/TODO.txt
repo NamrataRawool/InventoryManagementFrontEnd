@@ -15,7 +15,7 @@ transaction --> view bill --> total pending amount of customer
 
 backup and restore system
 
-
+transaction success --> update stock
 
 
 

@@ -116,6 +116,8 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.tb_barCode.Text = product.Barcode.ToString();
             m_UIControl.cb_productName.Text = product.Name;
             var stock = DataService.GetStockDataController().GetByProductID(product.ID);
+            if (stock == null)
+                return;
             m_UIControl.tb_availableStock.Text = stock.AvailableQuantity.ToString();
         }
 
@@ -145,7 +147,7 @@ namespace InventoryManagement.Controllers.Purchase
                 GetTable().CurrentRow.Cells["PurchaseTable_Quantity"].Value = oldQuantity;
                 return;
             }
-           
+
             double discountPerProduct = newPurchasePrice * newDiscountRate / 100;
             double totalDiscount = discountPerProduct * newQuantity;
             GetTable().CurrentRow.Cells["PurchaseTable_TotalDiscount"].Value = totalDiscount;
@@ -172,7 +174,7 @@ namespace InventoryManagement.Controllers.Purchase
                 return;
             }
             PurchasePost purchasePost = new PurchasePost();
-            purchasePost.PurchaseDateTime = DateTime.Now;
+            purchasePost.PurchaseDateTime = m_UIControl.purchase_dateTime.Value;
             var vendorId = DataService.GetVendorDataController().GetByName(m_UIControl.cb_vendorName.Text.Trim()).ID;
             purchasePost.VendorID = vendorId;
             string productIds = string.Empty;
@@ -181,19 +183,22 @@ namespace InventoryManagement.Controllers.Purchase
             int i = 0;
             for (i = 0; i < GetTable().Rows.Count - 1; ++i)
             {
-                productIds += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value) + ",";
-                buyingPrices += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value) + ",";
-                productQuantities += Convert.ToInt32(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value) + ",";
+                productIds += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value.ToString()) + ",";
+                buyingPrices += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value.ToString()) + ",";
+                productQuantities += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value.ToString()) + ",";
             }
-            productIds += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value);
-            buyingPrices += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value);
-            productQuantities += Convert.ToInt32(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value);
+            productIds += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value.ToString());
+            buyingPrices += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value.ToString());
+            productQuantities += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value.ToString());
 
             purchasePost.ProductIDs = productIds;
             purchasePost.ProductQuantities = productQuantities;
             purchasePost.BuyingPrices = buyingPrices;
 
             var purchase = DataService.GetPurchaseDataController().Post(purchasePost);
+
+            //Update stock details
+            UpdateStockDetails();
 
             if (purchase == null)
             {
@@ -204,6 +209,27 @@ namespace InventoryManagement.Controllers.Purchase
             ResetUIControls();
         }
 
+        public void UpdateStockDetails()
+        {
+            for (int i = 0; i < GetTable().Rows.Count; ++i)
+            {
+                int productId = int.Parse(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value.ToString());
+                int quantity = int.Parse(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value.ToString());
+
+
+                var stockGet = DataService.GetStockDataController().GetByProductID(productId);
+                if (stockGet == null)
+                    return;
+
+                StockPost stockPost = new StockPost();
+                stockPost.ID = stockGet.ID;
+                stockPost.AvailableQuantity = stockGet.AvailableQuantity + quantity;
+                stockPost.TotalQuantity = stockGet.TotalQuantity + quantity;
+                stockPost.ProductID = productId;
+
+                var stock = DataService.GetStockDataController().Put(stockPost);
+            }
+        }
         private void UpdateUILabels()
         {
             double subtotal = 0;

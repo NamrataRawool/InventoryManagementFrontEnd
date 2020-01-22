@@ -19,6 +19,7 @@ namespace InventoryManagement.Models
 
         public void CopyFrom(StockBase rhs)
         {
+            ID = rhs.ID;
             ProductID = rhs.ProductID;
             TotalQuantity = rhs.TotalQuantity;
             AvailableQuantity = rhs.AvailableQuantity;
