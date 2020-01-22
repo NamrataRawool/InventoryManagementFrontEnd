@@ -26,13 +26,21 @@ namespace InventoryManagement.UI.Category
         {
             tb_categoryName.Text = string.Empty;
             tb_categoryDescription.Text = string.Empty;
+            lbl_CategoryError.Text = string.Empty;
         }
 
         private void btn_saveCategory_Click(object sender, EventArgs eventArgs)
         {
+            lbl_CategoryError.Text = string.Empty;
             string name = tb_categoryName.Text;
             string desc = tb_categoryDescription.Text;
 
+            var category = DataService.GetCategoryDataController().GetByName(name);
+            if (category != null)
+            {
+                lbl_CategoryError.Text = "Category with same name already exists!";
+                return;
+            }
             CategoryPost categoryPost = new CategoryPost();
             categoryPost.Name = name;
             categoryPost.Description = desc;
@@ -49,7 +57,7 @@ namespace InventoryManagement.UI.Category
             EventBroadcaster.Get().BroadcastEvent(e);
             this.Close();
             MessageBox.Show("Category Added successfully!");
-           
+
         }
     }
 }

@@ -29,12 +29,18 @@ namespace InventoryManagement.Controllers.Category
 
         public void UpdateCategory()
         {
+            m_UIControl.lbl_CategoryError.Text = string.Empty;
             if (!Validate())
             {
                 MessageBox.Show("Name and Description cannot be empty!");
                 return;
             }
-
+            var category = DataService.GetCategoryDataController().GetByName(m_UIControl.tb_categoryName.Text);
+            if (category != null)
+            {
+                m_UIControl.lbl_CategoryError.Text = "Category with same name already exists!";
+                return;
+            }
             CategoryPost categoryPost = new CategoryPost();
             categoryPost.ID = int.Parse(m_UIControl.tb_ID.Text);
             categoryPost.Name = m_UIControl.tb_categoryName.Text;

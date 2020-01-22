@@ -33,6 +33,7 @@ namespace InventoryManagement.UI.Category
             tb_ID.Text = string.Empty;
             tb_categoryName.Text = string.Empty;
             tb_categoryDescription.Text = string.Empty;
+            lbl_CategoryError.Text = string.Empty;
         }
     }
 }

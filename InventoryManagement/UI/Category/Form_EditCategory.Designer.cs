@@ -39,6 +39,7 @@
             this.tb_ID = new System.Windows.Forms.TextBox();
             this.lbl_ID = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_CategoryError = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,12 +58,12 @@
             // 
             // btn_resetCategory
             // 
-            this.btn_resetCategory.BackColor = System.Drawing.Color.White;
+            this.btn_resetCategory.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btn_resetCategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_resetCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_resetCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_resetCategory.ForeColor = System.Drawing.Color.Black;
-            this.btn_resetCategory.Location = new System.Drawing.Point(144, 241);
+            this.btn_resetCategory.Location = new System.Drawing.Point(144, 275);
             this.btn_resetCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btn_resetCategory.Name = "btn_resetCategory";
             this.btn_resetCategory.Size = new System.Drawing.Size(88, 36);
@@ -89,7 +90,7 @@
             this.btn_UpdateCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_UpdateCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_UpdateCategory.ForeColor = System.Drawing.Color.Black;
-            this.btn_UpdateCategory.Location = new System.Drawing.Point(256, 241);
+            this.btn_UpdateCategory.Location = new System.Drawing.Point(256, 275);
             this.btn_UpdateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btn_UpdateCategory.Name = "btn_UpdateCategory";
             this.btn_UpdateCategory.Size = new System.Drawing.Size(88, 36);
@@ -100,9 +101,10 @@
             // 
             // tb_categoryDescription
             // 
+            this.tb_categoryDescription.BackColor = System.Drawing.SystemColors.Window;
             this.tb_categoryDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_categoryDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_categoryDescription.Location = new System.Drawing.Point(121, 102);
+            this.tb_categoryDescription.Location = new System.Drawing.Point(121, 131);
             this.tb_categoryDescription.Margin = new System.Windows.Forms.Padding(2);
             this.tb_categoryDescription.Multiline = true;
             this.tb_categoryDescription.Name = "tb_categoryDescription";
@@ -112,8 +114,9 @@
             // 
             // tb_categoryName
             // 
+            this.tb_categoryName.BackColor = System.Drawing.SystemColors.Window;
             this.tb_categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_categoryName.Location = new System.Drawing.Point(121, 57);
+            this.tb_categoryName.Location = new System.Drawing.Point(121, 86);
             this.tb_categoryName.Margin = new System.Windows.Forms.Padding(2);
             this.tb_categoryName.Multiline = true;
             this.tb_categoryName.Name = "tb_categoryName";
@@ -124,7 +127,7 @@
             // 
             this.lbl_Description.AutoSize = true;
             this.lbl_Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Description.Location = new System.Drawing.Point(12, 112);
+            this.lbl_Description.Location = new System.Drawing.Point(12, 141);
             this.lbl_Description.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Description.Name = "lbl_Description";
             this.lbl_Description.Size = new System.Drawing.Size(95, 18);
@@ -135,7 +138,7 @@
             // 
             this.lbl_Name.AutoSize = true;
             this.lbl_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Name.Location = new System.Drawing.Point(47, 59);
+            this.lbl_Name.Location = new System.Drawing.Point(47, 88);
             this.lbl_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Name.Name = "lbl_Name";
             this.lbl_Name.Size = new System.Drawing.Size(60, 18);
@@ -145,7 +148,7 @@
             // tb_ID
             // 
             this.tb_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_ID.Location = new System.Drawing.Point(121, 18);
+            this.tb_ID.Location = new System.Drawing.Point(121, 47);
             this.tb_ID.Margin = new System.Windows.Forms.Padding(2);
             this.tb_ID.Multiline = true;
             this.tb_ID.Name = "tb_ID";
@@ -157,7 +160,7 @@
             // 
             this.lbl_ID.AutoSize = true;
             this.lbl_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ID.Location = new System.Drawing.Point(69, 20);
+            this.lbl_ID.Location = new System.Drawing.Point(69, 49);
             this.lbl_ID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_ID.Name = "lbl_ID";
             this.lbl_ID.Size = new System.Drawing.Size(34, 18);
@@ -166,23 +169,35 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_CategoryError);
             this.groupBox1.Controls.Add(this.tb_ID);
             this.groupBox1.Controls.Add(this.lbl_Name);
             this.groupBox1.Controls.Add(this.lbl_ID);
             this.groupBox1.Controls.Add(this.lbl_Description);
             this.groupBox1.Controls.Add(this.tb_categoryName);
             this.groupBox1.Controls.Add(this.tb_categoryDescription);
-            this.groupBox1.Location = new System.Drawing.Point(23, 57);
+            this.groupBox1.Location = new System.Drawing.Point(23, 48);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(351, 168);
+            this.groupBox1.Size = new System.Drawing.Size(351, 204);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
+            // 
+            // lbl_CategoryError
+            // 
+            this.lbl_CategoryError.AutoSize = true;
+            this.lbl_CategoryError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CategoryError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_CategoryError.Location = new System.Drawing.Point(12, 16);
+            this.lbl_CategoryError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_CategoryError.Name = "lbl_CategoryError";
+            this.lbl_CategoryError.Size = new System.Drawing.Size(0, 16);
+            this.lbl_CategoryError.TabIndex = 51;
             // 
             // Form_EditCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 297);
+            this.ClientSize = new System.Drawing.Size(394, 344);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_resetCategory);
             this.Controls.Add(this.panel1);
@@ -211,5 +226,6 @@
         public System.Windows.Forms.TextBox tb_ID;
         private System.Windows.Forms.Label lbl_ID;
         private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label lbl_CategoryError;
     }
 }

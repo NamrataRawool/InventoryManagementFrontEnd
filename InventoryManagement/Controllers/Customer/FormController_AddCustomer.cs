@@ -29,6 +29,12 @@ namespace InventoryManagement.Controllers.Customer
             if (!ValidateCustomerDetails())
                 return;
 
+            var customer = DataService.GetCustomerDataController().GetByMobileNumber(m_UIControl.tb_customerMobile.Text);
+            if(customer!= null)
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Customer with same mobile number already exists!";
+                return;
+            }
             CustomerPost customerPost = new CustomerPost();
             customerPost.Email = m_UIControl.tb_customerEmail.Text;
             customerPost.Name = m_UIControl.tb_CustomerName.Text;
@@ -83,6 +89,7 @@ namespace InventoryManagement.Controllers.Customer
             m_UIControl.tb_customerEmail.Text = string.Empty;
             m_UIControl.tb_customerMobile.Text = string.Empty;
             m_UIControl.tb_CustomerName.Text = string.Empty;
+            m_UIControl.lbl_customerErrorText.Text = string.Empty;
         }
 
         protected override void RegisterEvents()

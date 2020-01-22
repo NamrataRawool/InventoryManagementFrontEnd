@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_CategoryError = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -110,7 +111,7 @@
             // tb_categoryName
             // 
             this.tb_categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_categoryName.Location = new System.Drawing.Point(134, 31);
+            this.tb_categoryName.Location = new System.Drawing.Point(134, 38);
             this.tb_categoryName.Margin = new System.Windows.Forms.Padding(2);
             this.tb_categoryName.Name = "tb_categoryName";
             this.tb_categoryName.Size = new System.Drawing.Size(200, 22);
@@ -130,7 +131,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 18);
@@ -140,6 +141,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_CategoryError);
             this.groupBox1.Controls.Add(this.tb_categoryName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -149,6 +151,18 @@
             this.groupBox1.Size = new System.Drawing.Size(359, 171);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
+            // 
+            // lbl_CategoryError
+            // 
+            this.lbl_CategoryError.AutoSize = true;
+            this.lbl_CategoryError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CategoryError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_CategoryError.Location = new System.Drawing.Point(22, 12);
+            this.lbl_CategoryError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_CategoryError.Name = "lbl_CategoryError";
+            this.lbl_CategoryError.Size = new System.Drawing.Size(0, 18);
+            this.lbl_CategoryError.TabIndex = 33;
+            this.lbl_CategoryError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form_AddCategory
             // 
@@ -182,5 +196,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lbl_CategoryError;
     }
 }

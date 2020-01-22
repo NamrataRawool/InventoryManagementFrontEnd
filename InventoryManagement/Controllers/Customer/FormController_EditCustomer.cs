@@ -33,12 +33,23 @@ namespace InventoryManagement.Controllers.Customer
             m_UIControl.tb_customerMobileNumber.Text = string.Empty;
             m_UIControl.tb_customerTotalPurchaseAmount.Text = string.Empty;
             m_UIControl.tb_customerPendingAmount.Text = string.Empty;
+            m_UIControl.lbl_customerErrorText.Text = string.Empty;
         }
 
         public void UpdateCustomer()
         {
+            m_UIControl.lbl_customerErrorText.Text = string.Empty;
+
             if (!ValidateCustomerDetails())
                 return;
+
+            //Check if already exists
+            var customer = DataService.GetCustomerDataController().GetByMobileNumber(m_UIControl.tb_customerMobileNumber.Text);
+            if (customer != null)
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Customer with same mobile number already exists!";
+                return;
+            }
 
             CustomerPost customerPost = new CustomerPost();
             customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text);
@@ -48,8 +59,8 @@ namespace InventoryManagement.Controllers.Customer
             customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text);
             customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text);
 
-            var customer = DataService.GetCustomerDataController().Put(customerPost);
-            if (customer == null)
+            var customerResponse = DataService.GetCustomerDataController().Put(customerPost);
+            if (customerResponse == null)
             {
                 m_UIControl.DialogResult = DialogResult.No;
                 return;
@@ -58,7 +69,7 @@ namespace InventoryManagement.Controllers.Customer
             ResetTextBoxes();
 
             // fire customer updated event
-            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.CUSTOMER, customer.ID);
+            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.CUSTOMER, customerResponse.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
         }
 
