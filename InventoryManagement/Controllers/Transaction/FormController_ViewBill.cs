@@ -46,7 +46,7 @@ namespace InventoryManagement.Controllers.Transaction
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
             var transaction = DataService.GetTransactionDataController().Post(transactionPost);
-            UpdateCustomerDetails();
+            UpdateCustomerDetails();          
         }
         private void UpdateCustomerDetails()
         {
@@ -108,6 +108,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.lbl_Date.Text = DateTime.Now.ToString();
             m_UIControl.lbl_TotalPrice.Text = m_transactionSession.amountDue;
             m_UIControl.lbl_amountPaid.Text = m_transactionSession.amountPaid;
+            m_UIControl.lbl_pendingAmount.Text = m_transactionSession.pendingAmount;
         }
         protected override void RegisterEvents()
         {

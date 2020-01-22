@@ -197,6 +197,7 @@ namespace InventoryManagement.Controllers.Transaction
             }
             double amountPaid = double.Parse(m_UIControl.tb_AmountPaid.Text);
             double amountDue = double.Parse(m_UIControl.tb_amountDue.Text);
+            double pendingAmount = 0.0;
             if (amountDue > amountPaid)
             {
                 var customer = m_transactionSession.GetCustomer();
@@ -205,7 +206,11 @@ namespace InventoryManagement.Controllers.Transaction
                     m_UIControl.lbl_errorAmountPaid.Text = "Please add customer details";
                     return;
                 }
+                pendingAmount = amountDue - amountPaid;
             }
+
+            pendingAmount += m_transactionSession.GetCustomer().PendingAmount;
+            m_transactionSession.pendingAmount = pendingAmount.ToString();
             m_transactionSession.amountPaid = amountPaid.ToString();
             Form_ViewBill viewBill = new Form_ViewBill(m_transactionSession);
             var result = viewBill.ShowDialog();

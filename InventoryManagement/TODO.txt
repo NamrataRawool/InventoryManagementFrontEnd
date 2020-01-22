@@ -11,11 +11,12 @@ category/product --> do not add with same name
 
 update pending amount of customer in datagridview after save transaction 
 
-transaction --> view bill --> total pending amount of customer
-
 backup and restore system
 
 transaction success --> update stock
+
+transaction --> add product to bill table --> what if available stock 0
+
 
 
 
