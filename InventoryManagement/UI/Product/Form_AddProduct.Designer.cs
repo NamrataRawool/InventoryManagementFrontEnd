@@ -121,12 +121,11 @@
             // tb_Name
             // 
             this.tb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Name.Location = new System.Drawing.Point(166, 26);
+            this.tb_Name.Location = new System.Drawing.Point(166, 33);
             this.tb_Name.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_Name.Multiline = true;
             this.tb_Name.Name = "tb_Name";
-            this.tb_Name.Size = new System.Drawing.Size(260, 33);
-            this.tb_Name.TabIndex = 8;
+            this.tb_Name.Size = new System.Drawing.Size(260, 22);
+            this.tb_Name.TabIndex = 2;
             // 
             // tb_Description
             // 
@@ -138,27 +137,25 @@
             this.tb_Description.Name = "tb_Description";
             this.tb_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tb_Description.Size = new System.Drawing.Size(278, 50);
-            this.tb_Description.TabIndex = 9;
+            this.tb_Description.TabIndex = 4;
             // 
             // tb_RetailPrice
             // 
             this.tb_RetailPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_RetailPrice.Location = new System.Drawing.Point(151, 24);
+            this.tb_RetailPrice.Location = new System.Drawing.Point(151, 30);
             this.tb_RetailPrice.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_RetailPrice.Multiline = true;
             this.tb_RetailPrice.Name = "tb_RetailPrice";
-            this.tb_RetailPrice.Size = new System.Drawing.Size(200, 33);
-            this.tb_RetailPrice.TabIndex = 9;
+            this.tb_RetailPrice.Size = new System.Drawing.Size(200, 22);
+            this.tb_RetailPrice.TabIndex = 7;
             // 
             // tb_WholeSalePrice
             // 
             this.tb_WholeSalePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_WholeSalePrice.Location = new System.Drawing.Point(151, 75);
+            this.tb_WholeSalePrice.Location = new System.Drawing.Point(151, 81);
             this.tb_WholeSalePrice.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_WholeSalePrice.Multiline = true;
             this.tb_WholeSalePrice.Name = "tb_WholeSalePrice";
-            this.tb_WholeSalePrice.Size = new System.Drawing.Size(200, 33);
-            this.tb_WholeSalePrice.TabIndex = 9;
+            this.tb_WholeSalePrice.Size = new System.Drawing.Size(200, 22);
+            this.tb_WholeSalePrice.TabIndex = 8;
             // 
             // cb_Category
             // 
@@ -170,27 +167,27 @@
             this.cb_Category.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Category.Name = "cb_Category";
             this.cb_Category.Size = new System.Drawing.Size(260, 24);
-            this.cb_Category.TabIndex = 10;
+            this.cb_Category.TabIndex = 5;
             // 
             // btn_saveProduct
             // 
-            this.btn_saveProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
-            this.btn_saveProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_saveProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_saveProduct.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_saveProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_saveProduct.ForeColor = System.Drawing.Color.White;
+            this.btn_saveProduct.ForeColor = System.Drawing.Color.Black;
             this.btn_saveProduct.Location = new System.Drawing.Point(612, 545);
             this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveProduct.Name = "btn_saveProduct";
             this.btn_saveProduct.Size = new System.Drawing.Size(88, 36);
-            this.btn_saveProduct.TabIndex = 20;
+            this.btn_saveProduct.TabIndex = 11;
             this.btn_saveProduct.Text = "Save";
             this.btn_saveProduct.UseVisualStyleBackColor = false;
             this.btn_saveProduct.Click += new System.EventHandler(this.btn_saveProduct_Click);
             // 
             // btn_ResetProduct
             // 
-            this.btn_ResetProduct.BackColor = System.Drawing.Color.LightGray;
+            this.btn_ResetProduct.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btn_ResetProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ResetProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ResetProduct.ForeColor = System.Drawing.Color.Black;
@@ -198,14 +195,14 @@
             this.btn_ResetProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ResetProduct.Name = "btn_ResetProduct";
             this.btn_ResetProduct.Size = new System.Drawing.Size(88, 36);
-            this.btn_ResetProduct.TabIndex = 21;
+            this.btn_ResetProduct.TabIndex = 13;
             this.btn_ResetProduct.Text = "Reset";
             this.btn_ResetProduct.UseVisualStyleBackColor = false;
             this.btn_ResetProduct.Click += new System.EventHandler(this.btn_ResetProduct_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.panel1.Controls.Add(this.label7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -219,7 +216,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(129, 9);
+            this.label7.Location = new System.Drawing.Point(421, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(172, 23);
@@ -237,7 +234,7 @@
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(88, 36);
-            this.btn_cancel.TabIndex = 23;
+            this.btn_cancel.TabIndex = 12;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -245,12 +242,11 @@
             // tb_Barcode
             // 
             this.tb_Barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Barcode.Location = new System.Drawing.Point(166, 81);
+            this.tb_Barcode.Location = new System.Drawing.Point(166, 88);
             this.tb_Barcode.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_Barcode.Multiline = true;
             this.tb_Barcode.Name = "tb_Barcode";
-            this.tb_Barcode.Size = new System.Drawing.Size(260, 33);
-            this.tb_Barcode.TabIndex = 26;
+            this.tb_Barcode.Size = new System.Drawing.Size(260, 22);
+            this.tb_Barcode.TabIndex = 3;
             // 
             // Label_Barcode
             // 
@@ -273,7 +269,7 @@
             this.gb_Pricing.Location = new System.Drawing.Point(596, 188);
             this.gb_Pricing.Name = "gb_Pricing";
             this.gb_Pricing.Size = new System.Drawing.Size(374, 141);
-            this.gb_Pricing.TabIndex = 27;
+            this.gb_Pricing.TabIndex = 2;
             this.gb_Pricing.TabStop = false;
             this.gb_Pricing.Text = "Pricing";
             // 
@@ -287,19 +283,18 @@
             this.gb_Tax.Location = new System.Drawing.Point(596, 356);
             this.gb_Tax.Name = "gb_Tax";
             this.gb_Tax.Size = new System.Drawing.Size(374, 157);
-            this.gb_Tax.TabIndex = 28;
+            this.gb_Tax.TabIndex = 3;
             this.gb_Tax.TabStop = false;
             this.gb_Tax.Text = "Tax";
             // 
             // tb_CGST
             // 
             this.tb_CGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_CGST.Location = new System.Drawing.Point(151, 45);
+            this.tb_CGST.Location = new System.Drawing.Point(151, 51);
             this.tb_CGST.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_CGST.Multiline = true;
             this.tb_CGST.Name = "tb_CGST";
-            this.tb_CGST.Size = new System.Drawing.Size(200, 33);
-            this.tb_CGST.TabIndex = 12;
+            this.tb_CGST.Size = new System.Drawing.Size(200, 22);
+            this.tb_CGST.TabIndex = 9;
             // 
             // lbl_CGST
             // 
@@ -326,22 +321,20 @@
             // tb_SGST
             // 
             this.tb_SGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_SGST.Location = new System.Drawing.Point(151, 102);
+            this.tb_SGST.Location = new System.Drawing.Point(151, 109);
             this.tb_SGST.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_SGST.Multiline = true;
             this.tb_SGST.Name = "tb_SGST";
-            this.tb_SGST.Size = new System.Drawing.Size(200, 33);
-            this.tb_SGST.TabIndex = 13;
+            this.tb_SGST.Size = new System.Drawing.Size(200, 22);
+            this.tb_SGST.TabIndex = 10;
             // 
             // tb_Discount
             // 
             this.tb_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Discount.Location = new System.Drawing.Point(166, 261);
+            this.tb_Discount.Location = new System.Drawing.Point(166, 268);
             this.tb_Discount.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_Discount.Multiline = true;
             this.tb_Discount.Name = "tb_Discount";
-            this.tb_Discount.Size = new System.Drawing.Size(260, 33);
-            this.tb_Discount.TabIndex = 30;
+            this.tb_Discount.Size = new System.Drawing.Size(260, 22);
+            this.tb_Discount.TabIndex = 6;
             // 
             // lbl_Discount
             // 
@@ -370,7 +363,7 @@
             this.gb_Details.Location = new System.Drawing.Point(41, 188);
             this.gb_Details.Name = "gb_Details";
             this.gb_Details.Size = new System.Drawing.Size(496, 325);
-            this.gb_Details.TabIndex = 31;
+            this.gb_Details.TabIndex = 1;
             this.gb_Details.TabStop = false;
             this.gb_Details.Text = "Details";
             // 
@@ -388,11 +381,12 @@
             // btn_ChangeProductImage
             // 
             this.btn_ChangeProductImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ChangeProductImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ChangeProductImage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_ChangeProductImage.Location = new System.Drawing.Point(230, 152);
             this.btn_ChangeProductImage.Name = "btn_ChangeProductImage";
             this.btn_ChangeProductImage.Size = new System.Drawing.Size(90, 30);
-            this.btn_ChangeProductImage.TabIndex = 34;
+            this.btn_ChangeProductImage.TabIndex = 50;
             this.btn_ChangeProductImage.Text = "Change";
             this.btn_ChangeProductImage.UseVisualStyleBackColor = true;
             this.btn_ChangeProductImage.Click += new System.EventHandler(this.btn_ChangeProductImage_Click);
@@ -401,7 +395,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1078, 599);
             this.Controls.Add(this.btn_ChangeProductImage);
             this.Controls.Add(this.pictureBox_Image);
