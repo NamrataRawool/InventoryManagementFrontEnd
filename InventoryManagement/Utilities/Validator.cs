@@ -33,7 +33,17 @@ namespace InventoryManagement.Utilities
         public static bool IsValidEmail(string email)
         {
             string emailPattern = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
-            return Regex.IsMatch(email, emailPattern);
+            if (!Regex.IsMatch(email, emailPattern))
+                try
+                {
+                    var mail = new System.Net.Mail.MailAddress(email);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            return true;
         }
     }
 }
