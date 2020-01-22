@@ -1,27 +1,15 @@
 
 Print bill
 
-datagridview export to excel 
-
 Home control
 
 Fill database app 
 
-Edit product --> update button --> success pop up
-
 customer add --> do not add customer with same mobile number
-
-add customer button in transaction page
 
 category/product --> do not add with same name 
 
 update pending amount of customer in datagridview after save transaction 
-
-category edit form
-
-Add new customer from transaction
-
-edit image --> make transaparent
 
 transaction --> view bill --> total pending amount of customer
 
