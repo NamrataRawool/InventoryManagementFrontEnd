@@ -45,23 +45,53 @@ namespace InventoryManagement.Controllers.Category
             NewRow.Cells["TableColumn_Category_Description"].Value = category.Description;
         }
 
+        public void UpdateCategoryInTable(CategoryGet category)
+        {
+            var table = m_UIControl.categoryDataView;
+
+            for (int i = 0; i < table.Rows.Count; ++i)
+            {
+                DataGridViewRow row = table.Rows[i];
+                int id = int.Parse(row.Cells["TableColumn_Category_ID"].Value.ToString());
+
+                if (category.ID == id)
+                {
+                    row.Cells["TableColumn_Category_ID"].Value = category.ID;
+                    row.Cells["TableColumn_Category_Name"].Value = category.Name;
+                    row.Cells["TableColumn_Category_Description"].Value = category.Description;
+                    return;
+                }
+            }
+        }
+
         public void OpenForm_EditCategory()
         {
-            Form_CategoryDetails editCategory = new Form_CategoryDetails();
-            var rows = m_UIControl.categoryDataView.SelectedRows;
-            if (rows.Count > 0)
+            var table = m_UIControl.categoryDataView;
+
+            if (table.SelectedRows.Count <= 0)
             {
-                int selectedRowIndex = m_UIControl.categoryDataView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = m_UIControl.categoryDataView.Rows[selectedRowIndex];
-                editCategory.tb_categoryName.Text = selectedRow.Cells["TableColumn_Category_Name"].Value.ToString(); ;
-                editCategory.tb_categoryDescription.Text = selectedRow.Cells["TableColumn_Category_Description"].Value.ToString();
+                MessageBox.Show("Please select an item to update!");
+                return;
             }
-            editCategory.ShowDialog();
+
+            int selectedRowIndex = table.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = table.Rows[selectedRowIndex];
+            int categoryID = int.Parse(selectedRow.Cells["TableColumn_Category_ID"].Value.ToString());
+
+            Form_EditCategory form = new Form_EditCategory(categoryID);
+            form.ShowDialog();
+        }
+
+        public void OpenForm_AddCategory()
+        {
+            Form_AddCategory addCategory = new Form_AddCategory();
+            addCategory.ShowDialog();
         }
 
         protected override void RegisterEvents()
         {
             RegisterEvent(EventType.NewEntryAdded);
+            RegisterEvent(EventType.EntryUpdated);
         }
 
     }

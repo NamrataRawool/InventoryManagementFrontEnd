@@ -238,8 +238,12 @@ namespace InventoryManagement.UI.UserControls
 
 
 
+
         #endregion
 
-
+        private void btn_AddNewCustomer_Click(object sender, EventArgs e)
+        {
+            m_newTransactionController.AddNewCustomer();
+        }
     }
 }

@@ -53,19 +53,12 @@ namespace InventoryManagement.Controllers.Product
             }
 
             m_Product = DataService.GetProductDataController().Put(product, imageModified);
-            if (m_Product == null)
-            {
-                MessageBox.Show(m_UIControl, "Failed to Update Product Details!");
-            }
-            else
-            {
-                MessageBox.Show(m_UIControl, "Product Details updated successfully!");
-            }
+            string message = (m_Product == null) ? "Failed to Update Product Details!" : "Product Details updated successfully!";
+            MessageBox.Show(m_UIControl, message);
 
             // fire entry updated event
             Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.PRODUCT, m_Product.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
-
         }
 
         private void InitializeAvailableStockLabel()

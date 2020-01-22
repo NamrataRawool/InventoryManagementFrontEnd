@@ -37,8 +37,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_addCategory_Click(object sender, EventArgs e)
         {
-            Form_CategoryDetails addCategory = new Form_CategoryDetails();
-            addCategory.ShowDialog();
+            m_Controller.OpenForm_AddCategory();
         }
 
         private void categoryDataView_DoubleClick(object sender, EventArgs e)

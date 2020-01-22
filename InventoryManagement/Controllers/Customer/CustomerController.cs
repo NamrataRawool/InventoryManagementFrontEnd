@@ -44,7 +44,6 @@ namespace InventoryManagement.Controllers.Customer
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("Customer added successfully !");
-                //Refresh Table
                 return;
             }
             else if (result == DialogResult.No)

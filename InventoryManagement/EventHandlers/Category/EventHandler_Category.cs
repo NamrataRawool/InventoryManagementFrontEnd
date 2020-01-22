@@ -20,6 +20,20 @@ namespace InventoryManagement.EventHandlers.Category
                 case EventType.NewEntryAdded:
                     HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
                     break;
+                case EventType.EntryUpdated:
+                    HandleEvent_EntryUpdated(e.Cast<Event_EntryUpdated>());
+                    break;
+            }
+        }
+
+        private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
+        {
+            DBEntityType entityType = e.GetEntityType();
+
+            if (entityType == DBEntityType.CATEGORY)
+            {
+                var category = DataService.GetCategoryDataController().Get(e.GetID());
+                m_Controller.UpdateCategoryInTable(category);
             }
         }
 
