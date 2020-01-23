@@ -45,5 +45,11 @@ namespace InventoryManagement.Utilities
                 }
             return true;
         }
+        public static bool IsValidAlphaNumeric(string text)
+        {
+            //TODO: pattern needs to be changed.
+            string pattern = @"^[a-zA-Z0-9]";
+            return Regex.IsMatch(text, pattern);
+        }
     }
 }
