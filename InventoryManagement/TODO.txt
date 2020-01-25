@@ -5,8 +5,6 @@ Home control
 
 Fill database app 
 
-category/product --> do not add with same name 
-
 update pending amount of customer in datagridview after save transaction 
 
 backup and restore system
