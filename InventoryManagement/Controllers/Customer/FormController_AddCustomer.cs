@@ -55,6 +55,7 @@ namespace InventoryManagement.Controllers.Customer
             var email = m_UIControl.tb_customerEmail.Text;
             var name = m_UIControl.tb_CustomerName.Text;
             var mobileNumber = m_UIControl.tb_customerMobile.Text;
+
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(mobileNumber))
             {
                 m_UIControl.lbl_customerErrorText.Text = "Fields cannot be empty";
@@ -81,6 +82,15 @@ namespace InventoryManagement.Controllers.Customer
                 m_UIControl.lbl_customerErrorText.Text = "Mobile Number not valid";
                 return false;
             }
+
+            // check if customer with same mobil number exists
+            CustomerGet customer = DataService.GetCustomerDataController().GetByMobileNumber(mobileNumber);
+            if (customer != null)
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Customer with same Mobile Number is already Registered!";
+                return false;
+            }
+
             return true;
         }
 

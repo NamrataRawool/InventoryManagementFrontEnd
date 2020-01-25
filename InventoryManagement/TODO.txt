@@ -5,8 +5,6 @@ Home control
 
 Fill database app 
 
-customer add --> do not add customer with same mobile number
-
 category/product --> do not add with same name 
 
 update pending amount of customer in datagridview after save transaction 
