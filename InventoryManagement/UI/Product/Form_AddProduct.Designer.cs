@@ -56,6 +56,7 @@
             this.gb_Details = new System.Windows.Forms.GroupBox();
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
+            this.lbl_Error = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -168,6 +169,7 @@
             this.cb_Category.Name = "cb_Category";
             this.cb_Category.Size = new System.Drawing.Size(260, 24);
             this.cb_Category.TabIndex = 5;
+            this.cb_Category.Text = "Select Category";
             // 
             // btn_saveProduct
             // 
@@ -391,12 +393,25 @@
             this.btn_ChangeProductImage.UseVisualStyleBackColor = true;
             this.btn_ChangeProductImage.Click += new System.EventHandler(this.btn_ChangeProductImage_Click);
             // 
+            // lbl_Error
+            // 
+            this.lbl_Error.AutoSize = true;
+            this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Error.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Error.Location = new System.Drawing.Point(422, 134);
+            this.lbl_Error.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Error.Name = "lbl_Error";
+            this.lbl_Error.Size = new System.Drawing.Size(0, 18);
+            this.lbl_Error.TabIndex = 30;
+            this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form_AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1078, 599);
+            this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.btn_ChangeProductImage);
             this.Controls.Add(this.pictureBox_Image);
             this.Controls.Add(this.gb_Details);
@@ -420,6 +435,7 @@
             this.gb_Details.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -453,5 +469,6 @@
         private System.Windows.Forms.GroupBox gb_Details;
         public System.Windows.Forms.PictureBox pictureBox_Image;
         public System.Windows.Forms.Button btn_ChangeProductImage;
+        public System.Windows.Forms.Label lbl_Error;
     }
 }

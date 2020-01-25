@@ -4,6 +4,7 @@ using InventoryManagement.Models;
 using InventoryManagement.Properties;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Product;
+using InventoryManagement.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +27,28 @@ namespace InventoryManagement.Controllers.Product
         public bool AddNewProduct()
         {
             var UI = m_UIControl;
+            UI.lbl_Error.Text = string.Empty;
+            if (!ValidateProductDetails())
+                return false;
 
+            //check if product with same name exists
+            var product = DataService.GetProductDataController().GetByName(UI.tb_Name.Text);
+            if (product != null)
+            {
+                UI.lbl_Error.Text = "Product with same name already exists!";
+                return false;
+            }
+
+            //check if product with same bar code exists
+            if (!string.IsNullOrEmpty(UI.tb_Barcode.Text))
+            {
+                var prod = DataService.GetProductDataController().GetByBarcode(UI.tb_Barcode.Text);
+                if (prod != null)
+                {
+                    UI.lbl_Error.Text = "Product with same bar code already exists!";
+                    return false;
+                }
+            }
             string categoryName = UI.cb_Category.Text;
             CategoryGet category = DataService.GetCategoryDataController().GetByName(categoryName);
 
@@ -74,10 +96,91 @@ namespace InventoryManagement.Controllers.Product
             EventBroadcaster.Get().BroadcastEvent(e);
 
             MessageBox.Show(m_UIControl, "Product Added Successfully!");
-
+            UI.Close();
             return true;
         }
 
+        private bool ValidateProductDetails()
+        {
+            var UI = m_UIControl;
+            UI.lbl_Error.Text = string.Empty;
+
+            if (string.IsNullOrEmpty(UI.tb_Name.Text))
+            {
+                UI.lbl_Error.Text = "Name field cannot be empty!";
+                return false;
+            }
+            if (!Validator.IsValidAlphaNumeric(UI.tb_Name.Text))
+            {
+                UI.lbl_Error.Text = "Name not valid!";
+                return false;
+            }
+            if (!string.IsNullOrEmpty(UI.tb_Barcode.Text))
+            {
+                if (!Validator.IsInteger(UI.tb_Barcode.Text))
+                {
+                    UI.lbl_Error.Text = "Barcode not valid!";
+                    return false;
+                }
+            }
+            if (string.IsNullOrEmpty(UI.cb_Category.Text))
+            {
+                UI.lbl_Error.Text = "Please select category!";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(UI.tb_Discount.Text))
+            {
+                UI.lbl_Error.Text = "Discount field cannot be empty!";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tb_Discount.Text))
+            {
+                UI.lbl_Error.Text = "Discount not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tb_RetailPrice.Text))
+            {
+                UI.lbl_Error.Text = "Please enter retail price!";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tb_RetailPrice.Text))
+            {
+                UI.lbl_Error.Text = "Retail Price not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tb_WholeSalePrice.Text))
+            {
+                UI.lbl_Error.Text = "Please enter wholesale price!";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tb_WholeSalePrice.Text))
+            {
+                UI.lbl_Error.Text = "Wholesale price not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tb_CGST.Text))
+            {
+                UI.lbl_Error.Text = "Please enter CGST";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tb_CGST.Text))
+            {
+                UI.lbl_Error.Text = "CGST not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tb_SGST.Text))
+            {
+                UI.lbl_Error.Text = "Please enter SGST";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tb_SGST.Text))
+            {
+                UI.lbl_Error.Text = "SGST not valid!";
+                return false;
+            }
+            return true;
+        }
         protected override void RegisterEvents()
         {
         }
