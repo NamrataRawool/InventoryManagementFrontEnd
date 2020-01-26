@@ -41,11 +41,16 @@ namespace InventoryManagement.EventHandlers.Customer
         private void HandleEvent_NewEntryAdded(Event_NewEntryAdded e)
         {
             DBEntityType entityType = e.GetEntityType();
-            if(entityType == DBEntityType.CUSTOMER)
+            int id = e.GetID();
+            if (entityType == DBEntityType.CUSTOMER)
             {
-                int customerID = e.GetID();
-                CustomerGet customer = DataService.GetCustomerDataController().Get(customerID);
+                CustomerGet customer = DataService.GetCustomerDataController().Get(id);
                 m_Controller.AddCustomerToTable(customer);
+            }
+            else if (entityType == DBEntityType.TRANSACTION)
+            {
+                TransactionGet transaction = DataService.GetTransactionDataController().Get(id);
+                m_Controller.UpdateCustomerInTable(transaction.Customer);
             }
         }
         

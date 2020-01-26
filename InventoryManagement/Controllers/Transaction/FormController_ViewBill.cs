@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Transaction;
 using System;
@@ -27,7 +29,6 @@ namespace InventoryManagement.Controllers.Transaction
             InitializeViewBillTable();
         }
 
-
         public void SaveTransaction()
         {
             TransactionPost transactionPost = new TransactionPost();
@@ -46,8 +47,13 @@ namespace InventoryManagement.Controllers.Transaction
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
             var transaction = DataService.GetTransactionDataController().Post(transactionPost);
-            UpdateCustomerDetails();          
+            UpdateCustomerDetails();
+
+            // fire new transaction added event
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.TRANSACTION, transaction.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
         }
+
         private void UpdateCustomerDetails()
         {
             //Update customer details
@@ -83,11 +89,13 @@ namespace InventoryManagement.Controllers.Transaction
             NewRow.Cells["ViewBillTable_Quantity"].Value = productDetails.Product.Quantity;
             NewRow.Cells["ViewBillTable_FinalPrice"].Value = productDetails.FinalPrice;
         }
+
         private double CalculateDiscountedPrice(ProductGet product)
         {
             double discountInRupees = product.RetailPrice * (product.Discount / 100);
             return product.RetailPrice - discountInRupees;
         }
+
         private void ResetViewBillTable()
         {
             var Table = GetViewBillTable();
@@ -99,6 +107,7 @@ namespace InventoryManagement.Controllers.Transaction
         {
             return m_UIControl.ViewBill_ProductsDataView;
         }
+
         private void InitializeLabels()
         {
             if (m_transactionSession.GetCustomer().Name == null)
@@ -110,6 +119,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.lbl_amountPaid.Text = m_transactionSession.amountPaid;
             m_UIControl.lbl_pendingAmount.Text = m_transactionSession.pendingAmount;
         }
+
         protected override void RegisterEvents()
         {
 
