@@ -22,6 +22,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession = transactionSession;
             Initialize();
         }
+
         private void Initialize()
         {
             ResetViewBillTable();
@@ -40,7 +41,7 @@ namespace InventoryManagement.Controllers.Transaction
             foreach (var product in m_transactionSession.GetRowEntries())
             {
                 productIds += product.Product.ID + ",";
-                productQuantity += product.Product.Quantity + ",";
+                productQuantity += product.Quantity + ",";
             }
 
             //Removing last comma
@@ -58,7 +59,7 @@ namespace InventoryManagement.Controllers.Transaction
         {
             //Update customer details
             var customer = m_transactionSession.GetCustomer();
-            if (customer.ID == 0)
+            if (customer == null || customer.ID == 0)
                 return;
 
             CustomerPost customerPost = new CustomerPost();
@@ -81,12 +82,13 @@ namespace InventoryManagement.Controllers.Transaction
 
         private void AddRowToViewBillTable(BillProductDetails productDetails)
         {
+            var product = productDetails.Product;
             var Table = GetViewBillTable();
             int Index = Table.Rows.Add();
             DataGridViewRow NewRow = Table.Rows[Index];
-            NewRow.Cells["ViewBillTable_ProductId"].Value = productDetails.Product.ID;
-            NewRow.Cells["ViewBillTable_ProductName"].Value = productDetails.Product.Name;
-            NewRow.Cells["ViewBillTable_Quantity"].Value = productDetails.Product.Quantity;
+            NewRow.Cells["ViewBillTable_ProductId"].Value = product.ID;
+            NewRow.Cells["ViewBillTable_ProductName"].Value = product.Name;
+            NewRow.Cells["ViewBillTable_Quantity"].Value = productDetails.Quantity;
             NewRow.Cells["ViewBillTable_FinalPrice"].Value = productDetails.FinalPrice;
         }
 

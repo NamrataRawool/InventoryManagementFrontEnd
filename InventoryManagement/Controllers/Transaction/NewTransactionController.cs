@@ -35,10 +35,62 @@ namespace InventoryManagement.Controllers.Transaction
             InitializProductNameSearchBoxData();
         }
 
-        public void OnAddProduct(ProductGet product)
+        public void OnAddProduct(BillProductDetails productDetails)
         {
-            Event_TransactionAddProduct Event = new Event_TransactionAddProduct(product);
-            EventBroadcaster.Get().BroadcastEvent(Event);
+            AddProductRowToTable(productDetails);
+        }
+
+        public void AddProductRowToTable(BillProductDetails productDetails)
+        {
+            var GridView = m_UIControl.Bill_ProductsDataView;
+            var product = productDetails.Product;
+
+            foreach (DataGridViewRow row in GridView.Rows)
+            {
+                var productId = Convert.ToInt32(row.Cells["BillTable_ProductId"].Value);
+                if (!productId.Equals(product.ID))
+                    continue;
+
+                var newQuantity = Convert.ToInt32(row.Cells["BillTable_Quantity"].Value) + 1; // add 1 to the existing quantity
+                row.Cells["BillTable_Quantity"].Value = newQuantity;
+                productDetails.Quantity = newQuantity;
+
+                double discount = (product.RetailPrice * product.Discount / 100);
+                row.Cells["BillTable_Discount"].Value = discount * newQuantity;
+
+                var totalTax = CalculateTotalTax(productDetails);
+                row.Cells["BillTable_Tax"].Value = totalTax;
+
+                double finalPrice = CalculateFinalPrice(product.RetailPrice, product.Discount, newQuantity, totalTax);
+                row.Cells["BillTable_FinalPrice"].Value = finalPrice;
+                productDetails.FinalPrice = finalPrice;
+
+                m_transactionSession.AddRowEntry(productDetails);
+                UpdateUILabels();
+                return;
+            }
+
+            int Index = GridView.Rows.Add();
+
+            DataGridViewRow NewRow = GridView.Rows[Index];
+            NewRow.Cells["BillTable_ProductId"].Value = product.ID;
+            NewRow.Cells["BillTable_Name"].Value = product.Name;
+
+            NewRow.Cells["BillTable_Price"].Value = product.RetailPrice;
+            double discountInRupees = (product.RetailPrice * product.Discount / 100);
+
+            NewRow.Cells["BillTable_Discount"].Value = discountInRupees * productDetails.Quantity;
+            NewRow.Cells["BillTable_Quantity"].Value = productDetails.Quantity;
+
+            var tax = CalculateTotalTax(productDetails);
+            NewRow.Cells["BillTable_Tax"].Value = tax;
+
+            var newFinalPrice = CalculateFinalPrice(product.RetailPrice, product.Discount, productDetails.Quantity, tax);
+            NewRow.Cells["BillTable_FinalPrice"].Value = newFinalPrice;
+            productDetails.FinalPrice = newFinalPrice;
+
+            m_transactionSession.AddRowEntry(productDetails);
+            UpdateUILabels();
         }
 
         public void OnDeleteProduct()
@@ -52,76 +104,44 @@ namespace InventoryManagement.Controllers.Transaction
             UpdateUILabels();
         }
 
-        public void AddProductRowToTable(ProductGet product)
-        {
-            var GridView = m_UIControl.Bill_ProductsDataView;
-
-            foreach (DataGridViewRow row in GridView.Rows)
-            {
-                var productId = Convert.ToInt32(row.Cells["BillTable_ProductId"].Value);
-                if (productId.Equals(product.ID))
-                {
-                    var newQuantity = Convert.ToInt32(row.Cells["BillTable_Quantity"].Value) + product.Quantity;
-                    product.Quantity = newQuantity;
-                    row.Cells["BillTable_Quantity"].Value = newQuantity;
-                    double discount = (product.RetailPrice * product.Discount / 100);
-                    row.Cells["BillTable_Discount"].Value = discount * newQuantity;
-                    var totalTax = CalculateTotalTax(product);
-                    row.Cells["BillTable_Tax"].Value = totalTax;
-                    double finalPrice = CalculateFinalPrice(product.RetailPrice, product.Discount, newQuantity, totalTax);
-                    row.Cells["BillTable_FinalPrice"].Value = finalPrice;
-                    m_transactionSession.AddRowEntry(product, finalPrice);
-                    UpdateUILabels();
-                    return;
-                }
-            }
-
-            int Index = GridView.Rows.Add();
-
-            DataGridViewRow NewRow = GridView.Rows[Index];
-            NewRow.Cells["BillTable_ProductId"].Value = product.ID;
-            NewRow.Cells["BillTable_Name"].Value = product.Name;
-            NewRow.Cells["BillTable_Price"].Value = product.RetailPrice;
-            double discountInRupees = (product.RetailPrice * product.Discount / 100);
-            NewRow.Cells["BillTable_Discount"].Value = discountInRupees * product.Quantity;
-            NewRow.Cells["BillTable_Quantity"].Value = product.Quantity;
-            var tax = CalculateTotalTax(product);
-            NewRow.Cells["BillTable_Tax"].Value = tax;
-            var newFinalPrice = CalculateFinalPrice(product.RetailPrice, product.Discount, product.Quantity, tax);
-            NewRow.Cells["BillTable_FinalPrice"].Value = newFinalPrice;
-            m_transactionSession.AddRowEntry(product, newFinalPrice);
-            UpdateUILabels();
-        }
-
         public void UpdateBillProductsDataRow()
         {
             if (m_UIControl.Bill_ProductsDataView.SelectedRows.Count <= 0)
                 return;
-            var productId = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_ProductId"].Value);
-            var rowEntry = DataService.GetProductDataController().Get(productId);
-            var newQuantity = m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value.ToString();
+
+            var currentRow = m_UIControl.Bill_ProductsDataView.CurrentRow;
+            var productId = Convert.ToInt32(currentRow.Cells["BillTable_ProductId"].Value);
+            var productGet = DataService.GetProductDataController().Get(productId);
+
+            BillProductDetails rowEntry = new BillProductDetails(productGet);
+
+            var newQuantity = currentRow.Cells["BillTable_Quantity"].Value.ToString();
+
             if (Validator.IsInteger(newQuantity))
             {
-                rowEntry.Quantity = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value);
+                rowEntry.Quantity = Convert.ToInt32(currentRow.Cells["BillTable_Quantity"].Value);
                 if (rowEntry.Quantity == 0)
                 {
-                    m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Product.Quantity;
+                    currentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
                     return;
                 }
-                double discountInRupees = (rowEntry.RetailPrice * rowEntry.Discount / 100);
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Discount"].Value = discountInRupees * rowEntry.Quantity;
+
+                double discountInRupees = (productGet.RetailPrice * productGet.Discount / 100);
+                currentRow.Cells["BillTable_Discount"].Value = discountInRupees * rowEntry.Quantity;
 
                 var tax = CalculateTotalTax(rowEntry);
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Tax"].Value = tax;
+                currentRow.Cells["BillTable_Tax"].Value = tax;
 
-                var finalPrice = CalculateFinalPrice(rowEntry.RetailPrice, rowEntry.Discount, rowEntry.Quantity, tax);
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_FinalPrice"].Value = finalPrice;
-                m_transactionSession.UpdateRowEntry(rowEntry, finalPrice);
+                var finalPrice = CalculateFinalPrice(productGet.RetailPrice, productGet.Discount, rowEntry.Quantity, tax);
+                currentRow.Cells["BillTable_FinalPrice"].Value = finalPrice;
+                rowEntry.FinalPrice = finalPrice;
+
+                m_transactionSession.UpdateRowEntry(rowEntry);
                 UpdateUILabels();
             }
             else
             {
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Product.Quantity;
+                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
                 return;
             }
         }
@@ -300,10 +320,13 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession.amountDue = m_UIControl.tb_amountDue.Text = amountDue.ToString();
         }
 
-        private double CalculateTotalTax(ProductGet product)
+        private double CalculateTotalTax(BillProductDetails productDetails)
         {
-            var cgst = (product.RetailPrice * product.CGST / 100) * product.Quantity;
-            var sgst = (product.RetailPrice * product.SGST / 100) * product.Quantity;
+            var product = productDetails.Product;
+
+            var cgst = (product.RetailPrice * product.CGST / 100) * productDetails.Quantity;
+            var sgst = (product.RetailPrice * product.SGST / 100) * productDetails.Quantity;
+
             double totalTax = cgst + sgst;
             return totalTax;
         }

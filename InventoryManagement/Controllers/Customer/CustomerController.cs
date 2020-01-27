@@ -100,6 +100,9 @@ namespace InventoryManagement.Controllers.Customer
 
         public void UpdateCustomerInTable(CustomerGet customer)
         {
+            if (customer == null)
+                return;
+
             var table = GetTable();
 
             for (int i = 0; i < table.Rows.Count; ++i)
