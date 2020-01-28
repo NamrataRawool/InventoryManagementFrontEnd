@@ -3,6 +3,7 @@ using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Product;
+using InventoryManagement.Utilities;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -28,6 +29,9 @@ namespace InventoryManagement.Controllers.Product
 
         public void UpdateProductDetails()
         {
+            if (!ValidateProductDetails())
+                return;
+
             int productID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
             ProductGet existingProduct = DataService.GetProductDataController().Get(productID);
 
@@ -60,7 +64,87 @@ namespace InventoryManagement.Controllers.Product
             Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.PRODUCT, m_Product.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
         }
+        private bool ValidateProductDetails()
+        {
+            var UI = m_UIControl;
+            UI.lbl_Error.Text = string.Empty;
 
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_ProductName.Text))
+            {
+                UI.lbl_Error.Text = "Name field cannot be empty!";
+                return false;
+            }
+            if (!Validator.IsValidAlphaNumeric(UI.tf_ProductDetails_ProductName.Text))
+            {
+                UI.lbl_Error.Text = "Name not valid!";
+                return false;
+            }
+            if (!string.IsNullOrEmpty(UI.tf_ProductDetails_Barcode.Text))
+            {
+                if (!Validator.IsInteger(UI.tf_ProductDetails_Barcode.Text))
+                {
+                    UI.lbl_Error.Text = "Barcode not valid!";
+                    return false;
+                }
+            }
+            if (string.IsNullOrEmpty(UI.cb_ProductDetails_Category.Text))
+            {
+                UI.lbl_Error.Text = "Please select category!";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_Discount.Text))
+            {
+                UI.lbl_Error.Text = "Discount field cannot be empty!";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_Discount.Text))
+            {
+                UI.lbl_Error.Text = "Discount not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_RetailPrice.Text))
+            {
+                UI.lbl_Error.Text = "Please enter retail price!";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_RetailPrice.Text))
+            {
+                UI.lbl_Error.Text = "Retail Price not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_WholesalePrice.Text))
+            {
+                UI.lbl_Error.Text = "Please enter wholesale price!";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_WholesalePrice.Text))
+            {
+                UI.lbl_Error.Text = "Wholesale price not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_CGST.Text))
+            {
+                UI.lbl_Error.Text = "Please enter CGST";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_CGST.Text))
+            {
+                UI.lbl_Error.Text = "CGST not valid!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_SGST.Text))
+            {
+                UI.lbl_Error.Text = "Please enter SGST";
+                return false;
+            }
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_SGST.Text))
+            {
+                UI.lbl_Error.Text = "SGST not valid!";
+                return false;
+            }
+            return true;
+        }
         private void InitializeAvailableStockLabel()
         {
             var stock = DataService.GetStockDataController().GetByProductID(m_Product.ID);
