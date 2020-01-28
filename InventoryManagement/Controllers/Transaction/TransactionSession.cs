@@ -1,21 +1,27 @@
 ﻿using InventoryManagement.Models;
-using System;
+using InventoryManagement.Services.Misc.Assert;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryManagement.Controllers.Transaction
 {
     public class BillProductDetails
     {
+        public BillProductDetails(ProductGet product, int quantity = 0, double finalPrice = 0)
+        {
+            Product = product;
+            Quantity = quantity;
+            FinalPrice = finalPrice;
+        }
+
         public ProductGet Product;
         public double FinalPrice;
+        public int Quantity;
     }
+
     public class TransactionSession
     {
-        private List<BillProductDetails> m_rowEntries;
-        private CustomerGet m_customer;
+        private List<BillProductDetails> m_RowEntries;
+        private CustomerGet m_Customer;
         public string subtotal;
         public string totalDiscount;
         public string totalTax;
@@ -25,76 +31,82 @@ namespace InventoryManagement.Controllers.Transaction
 
         public TransactionSession()
         {
-            m_rowEntries = new List<BillProductDetails>();
-            m_customer = new CustomerGet();
+            m_RowEntries = new List<BillProductDetails>();
+            m_Customer = new CustomerGet();
         }
 
         public List<BillProductDetails> GetRowEntries()
         {
-            return m_rowEntries;
+            return m_RowEntries;
         }
+
         public BillProductDetails GetRowEntry(int id)
         {
-            if (m_rowEntries == null)
-                return null;
-            foreach (var entry in m_rowEntries)
+            if (m_RowEntries == null || m_RowEntries.Count <= 0)
             {
-                if (entry.Product.ID == id)
-                {
-                    return entry;
-                }
+                Assert.Do("This should not have happened!");
+                return null;
             }
+
+            foreach (var entry in m_RowEntries)
+                if (entry.Product.ID == id)
+                    return entry;
+
             return null;
         }
+
         public CustomerGet GetCustomer()
         {
-            return m_customer;
+            return m_Customer;
         }
+
         public void SetCustomer(CustomerGet customer)
         {
-            m_customer = customer;
+            m_Customer = customer;
         }
 
-        public void AddRowEntry(ProductGet product, double finalPrice)
+        public void AddRowEntry(BillProductDetails productDetails)
         {
-            BillProductDetails billProduct = new BillProductDetails();
-            foreach (var p in m_rowEntries)
+            var product = productDetails.Product;
+            foreach (var p in m_RowEntries)
             {
                 if (p.Product.ID == product.ID)
                 {
-                    p.Product.Quantity += product.Quantity;
+                    p.Quantity = productDetails.Quantity;
                     p.Product = product;
-                    p.FinalPrice = finalPrice;
+                    p.FinalPrice = productDetails.FinalPrice;
                     return;
                 }
             }
-            billProduct.Product = product;
-            billProduct.FinalPrice = finalPrice;
-            m_rowEntries.Add(billProduct);
+
+            m_RowEntries.Add(productDetails);
         }
 
-        public void UpdateRowEntry(ProductGet product, double finalPrice)
+        public void UpdateRowEntry(BillProductDetails productDetails)
         {
-            foreach (var p in m_rowEntries)
+            var product = productDetails.Product;
+            foreach (var p in m_RowEntries)
             {
                 if (p.Product.ID == product.ID)
                 {
-                    p.Product.Quantity = product.Quantity;
-                    p.FinalPrice = finalPrice;
+                    p.Quantity = productDetails.Quantity;
+                    p.FinalPrice = productDetails.FinalPrice;
                     return;
                 }
             }
         }
+
         public void DeleteRowEntry(int productId)
         {
-            foreach (var entry in m_rowEntries)
+            foreach (var entry in m_RowEntries)
             {
                 if (entry.Product.ID == productId)
                 {
-                    m_rowEntries.Remove(entry);
+                    m_RowEntries.Remove(entry);
                     return;
                 }
             }
         }
+
     }
 }

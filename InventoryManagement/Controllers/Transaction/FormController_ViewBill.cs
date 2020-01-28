@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.Events.Common;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Transaction;
 using System;
@@ -20,13 +22,13 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession = transactionSession;
             Initialize();
         }
+
         private void Initialize()
         {
             ResetViewBillTable();
             InitializeLabels();
             InitializeViewBillTable();
         }
-
 
         public void SaveTransaction()
         {
@@ -39,20 +41,25 @@ namespace InventoryManagement.Controllers.Transaction
             foreach (var product in m_transactionSession.GetRowEntries())
             {
                 productIds += product.Product.ID + ",";
-                productQuantity += product.Product.Quantity + ",";
+                productQuantity += product.Quantity + ",";
             }
 
             //Removing last comma
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
             var transaction = DataService.GetTransactionDataController().Post(transactionPost);
-            UpdateCustomerDetails();          
+            UpdateCustomerDetails();
+
+            // fire new transaction added event
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.TRANSACTION, transaction.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
         }
+
         private void UpdateCustomerDetails()
         {
             //Update customer details
             var customer = m_transactionSession.GetCustomer();
-            if (customer.ID == 0)
+            if (customer == null || customer.ID == 0)
                 return;
 
             CustomerPost customerPost = new CustomerPost();
@@ -75,19 +82,22 @@ namespace InventoryManagement.Controllers.Transaction
 
         private void AddRowToViewBillTable(BillProductDetails productDetails)
         {
+            var product = productDetails.Product;
             var Table = GetViewBillTable();
             int Index = Table.Rows.Add();
             DataGridViewRow NewRow = Table.Rows[Index];
-            NewRow.Cells["ViewBillTable_ProductId"].Value = productDetails.Product.ID;
-            NewRow.Cells["ViewBillTable_ProductName"].Value = productDetails.Product.Name;
-            NewRow.Cells["ViewBillTable_Quantity"].Value = productDetails.Product.Quantity;
+            NewRow.Cells["ViewBillTable_ProductId"].Value = product.ID;
+            NewRow.Cells["ViewBillTable_ProductName"].Value = product.Name;
+            NewRow.Cells["ViewBillTable_Quantity"].Value = productDetails.Quantity;
             NewRow.Cells["ViewBillTable_FinalPrice"].Value = productDetails.FinalPrice;
         }
+
         private double CalculateDiscountedPrice(ProductGet product)
         {
             double discountInRupees = product.RetailPrice * (product.Discount / 100);
             return product.RetailPrice - discountInRupees;
         }
+
         private void ResetViewBillTable()
         {
             var Table = GetViewBillTable();
@@ -99,6 +109,7 @@ namespace InventoryManagement.Controllers.Transaction
         {
             return m_UIControl.ViewBill_ProductsDataView;
         }
+
         private void InitializeLabels()
         {
             if (m_transactionSession.GetCustomer().Name == null)
@@ -110,6 +121,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.lbl_amountPaid.Text = m_transactionSession.amountPaid;
             m_UIControl.lbl_pendingAmount.Text = m_transactionSession.pendingAmount;
         }
+
         protected override void RegisterEvents()
         {
 

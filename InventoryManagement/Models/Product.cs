@@ -81,8 +81,6 @@ namespace InventoryManagement.Models
                 Category = new CategoryGet(context, context.GetCategory(productDto.CategoryID));
         }
 
-        public int Quantity { get; set; }
-
         public CategoryGet Category { get; set; }
     }
 

@@ -31,24 +31,6 @@ namespace InventoryManagement.Controllers.Product
             if (!ValidateProductDetails())
                 return false;
 
-            //check if product with same name exists
-            var product = DataService.GetProductDataController().GetByName(UI.tb_Name.Text);
-            if (product != null)
-            {
-                UI.lbl_Error.Text = "Product with same name already exists!";
-                return false;
-            }
-
-            //check if product with same bar code exists
-            if (!string.IsNullOrEmpty(UI.tb_Barcode.Text))
-            {
-                var prod = DataService.GetProductDataController().GetByBarcode(UI.tb_Barcode.Text);
-                if (prod != null)
-                {
-                    UI.lbl_Error.Text = "Product with same bar code already exists!";
-                    return false;
-                }
-            }
             string categoryName = UI.cb_Category.Text;
             CategoryGet category = DataService.GetCategoryDataController().GetByName(categoryName);
 
@@ -105,7 +87,9 @@ namespace InventoryManagement.Controllers.Product
             var UI = m_UIControl;
             UI.lbl_Error.Text = string.Empty;
 
-            if (string.IsNullOrEmpty(UI.tb_Name.Text))
+            string name = UI.tb_Name.Text;
+
+            if (string.IsNullOrEmpty(name))
             {
                 UI.lbl_Error.Text = "Name field cannot be empty!";
                 return false;
@@ -179,8 +163,29 @@ namespace InventoryManagement.Controllers.Product
                 UI.lbl_Error.Text = "SGST not valid!";
                 return false;
             }
+
+            //check if product with same name exists
+            var product = DataService.GetProductDataController().GetByName(UI.tb_Name.Text);
+            if (product != null)
+            {
+                UI.lbl_Error.Text = "Product with same name already exists!";
+                return false;
+            }
+
+            //check if product with same bar code exists
+            if (!string.IsNullOrEmpty(UI.tb_Barcode.Text))
+            {
+                var prod = DataService.GetProductDataController().GetByBarcode(UI.tb_Barcode.Text);
+                if (prod != null)
+                {
+                    UI.lbl_Error.Text = "Product with same bar code already exists!";
+                    return false;
+                }
+            }
+
             return true;
         }
+
         protected override void RegisterEvents()
         {
         }

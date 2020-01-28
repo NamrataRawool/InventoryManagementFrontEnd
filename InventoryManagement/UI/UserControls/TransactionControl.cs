@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using InventoryManagement.Utilities;
 using InventoryManagement.Controllers.Transaction;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Models;
 
 namespace InventoryManagement.UI.UserControls
 {
@@ -32,6 +33,19 @@ namespace InventoryManagement.UI.UserControls
             m_newTransactionController.UpdateBillProductsDataRow();
         }
 
+        private void AddProductToTable(ProductGet product)
+        {
+            if (product == null)
+            {
+                lbl_errorText.Text = "Record not found";
+                return;
+            }
+
+            BillProductDetails billProductDetails = new BillProductDetails(product, 1);
+            m_newTransactionController.OnAddProduct(billProductDetails);
+            ResetTextBox();
+        }
+
         private void btn_addProductToBill_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(tb_barCode.Text) || !Validator.IsInteger(tb_barCode.Text))
@@ -41,16 +55,9 @@ namespace InventoryManagement.UI.UserControls
             }
             lbl_errorText.Text = string.Empty;
             int productId = int.Parse(this.tb_barCode.Text);
-            var product = DataService.GetProductDataController().Get(productId);
 
-            if (product == null)
-            {
-                lbl_errorText.Text = "Record not found";
-                return;
-            }
-            product.Quantity = 1;
-            m_newTransactionController.OnAddProduct(product);
-            ResetTextBox();
+            ProductGet product = DataService.GetProductDataController().Get(productId);
+            AddProductToTable(product);
         }
 
         private void btn_addProduct_ProductName_Click(object sender, EventArgs e)
@@ -62,16 +69,9 @@ namespace InventoryManagement.UI.UserControls
             }
             lbl_errorText.Text = string.Empty;
             string productName = tb_productName.Text.Trim();
-            var product = DataService.GetProductDataController().GetByName(productName);
-            if (product == null)
-            {
-                lbl_errorText.Text = "Record not found";
-                return;
-            }
-            product.Quantity = 1;
-            m_newTransactionController.OnAddProduct(product);
-            ResetTextBox();
 
+            var product = DataService.GetProductDataController().GetByName(productName);
+            AddProductToTable(product);
         }
 
         private void ResetTextBox()
@@ -98,18 +98,9 @@ namespace InventoryManagement.UI.UserControls
                 lbl_errorText.Text = string.Empty;
 
                 string productBarCode = tb_barCode.Text.Trim();
+
                 var product = DataService.GetProductDataController().GetByBarcode(productBarCode);
-
-                if (product == null)
-                {
-                    lbl_errorText.Text = "Record not found";
-                    return;
-                }
-                //default quantity while adding product
-                product.Quantity = 1;
-
-                m_newTransactionController.OnAddProduct(product);
-                ResetTextBox();
+                AddProductToTable(product);
             }
         }
 
@@ -128,22 +119,12 @@ namespace InventoryManagement.UI.UserControls
                     return;
                 }
 
-
                 lbl_errorText.Text = string.Empty;
 
                 string productName = tb_productName.Text.Trim();
-                var product = DataService.GetProductDataController().GetByName(productName);
 
-                if (product == null)
-                {
-                    lbl_errorText.Text = "Record not found";
-                    return;
-                }
-                //default quantity while adding product
-                product.Quantity = 1;
-
-                m_newTransactionController.OnAddProduct(product);
-                ResetTextBox();
+                var productGet = DataService.GetProductDataController().GetByName(productName);
+                AddProductToTable(productGet);
             }
         }
 
@@ -151,7 +132,6 @@ namespace InventoryManagement.UI.UserControls
         {
             m_newTransactionController.OnDeleteProduct();
         }
-
 
         private void btn_ViewBill_Click(object sender, EventArgs e)
         {

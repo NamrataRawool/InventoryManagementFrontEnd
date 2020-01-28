@@ -17,11 +17,6 @@ namespace InventoryManagement.EventHandlers.Transaction
             EventType type = e.Type();
             switch (type)
             {
-                case EventType.UI_Transaction_AddProduct:
-                    var evnt = e.Cast<Event_TransactionAddProduct>();
-                    m_Controller.AddProductRowToTable(evnt.GetBillRowEntry());
-                    break;
-
                 case EventType.NewEntryAdded:
                     HandleEvent_NewEntryAdded(e.Cast<Event_NewEntryAdded>());
                     break;

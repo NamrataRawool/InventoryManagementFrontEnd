@@ -15,14 +15,14 @@ namespace InventoryManagement.UI.Transaction
     public partial class Form_ViewBill : Form
     {
         private FormController_ViewBill m_Controller;
-        TransactionSession m_transactionSession;
+        private TransactionSession m_TransactionSession;
+
         public Form_ViewBill(TransactionSession transactionSession)
         {
-            m_transactionSession = transactionSession;
+            m_TransactionSession = transactionSession;
             InitializeComponent();
             m_Controller = new FormController_ViewBill(transactionSession, this);
         }
-
 
         private void Form_ViewBill_Load(object sender, EventArgs e)
         {
