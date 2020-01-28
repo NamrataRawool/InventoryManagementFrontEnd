@@ -2,6 +2,7 @@
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Transaction;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,12 @@ namespace InventoryManagement.Controllers.Transaction
 {
     public class FormController_ViewBill : IController<Form_ViewBill>
     {
-        TransactionSession m_transactionSession;
+        TransactionSession m_TransactionSession;
 
         public FormController_ViewBill(TransactionSession transactionSession, Form_ViewBill UIControl)
             : base(UIControl)
         {
-            m_transactionSession = transactionSession;
+            m_TransactionSession = transactionSession;
             Initialize();
         }
 
@@ -33,12 +34,12 @@ namespace InventoryManagement.Controllers.Transaction
         public void SaveTransaction()
         {
             TransactionPost transactionPost = new TransactionPost();
-            transactionPost.CustomerID = m_transactionSession.GetCustomer().ID;
+            transactionPost.CustomerID = m_TransactionSession.GetCustomer().ID;
             transactionPost.TransactionDateTime = DateTime.Now;
-            transactionPost.TotalPrice = double.Parse(m_transactionSession.amountDue);
+            transactionPost.TotalPrice = double.Parse(m_TransactionSession.amountDue);
             string productIds = string.Empty;
             string productQuantity = string.Empty;
-            foreach (var product in m_transactionSession.GetRowEntries())
+            foreach (var product in m_TransactionSession.GetRowEntries())
             {
                 productIds += product.Product.ID + ",";
                 productQuantity += product.Quantity + ",";
@@ -49,16 +50,35 @@ namespace InventoryManagement.Controllers.Transaction
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
             var transaction = DataService.GetTransactionDataController().Post(transactionPost);
             UpdateCustomerDetails();
+            UpdateStockDetails();
 
             // fire new transaction added event
             Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.TRANSACTION, transaction.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
         }
 
+        private void UpdateStockDetails()
+        {
+            var details = m_TransactionSession.GetRowEntries();
+            for (int i = 0; i < details.Count; ++i)
+            {
+                var productDetail = details[i];
+                int productID = productDetail.Product.ID;
+
+                StockGet stockGet = DataService.GetStockDataController().GetByProductID(productID);
+                StockPost stockPost = new StockPost(stockGet);
+                stockPost.AvailableQuantity -= productDetail.Quantity;
+
+                var updatedStock = DataService.GetStockDataController().Put(stockPost);
+                if (updatedStock == null)
+                    Assert.Do("Failed to update Stock for Product ID: " + productID);
+            }
+        }
+
         private void UpdateCustomerDetails()
         {
             //Update customer details
-            var customer = m_transactionSession.GetCustomer();
+            var customer = m_TransactionSession.GetCustomer();
             if (customer == null || customer.ID == 0)
                 return;
 
@@ -67,14 +87,14 @@ namespace InventoryManagement.Controllers.Transaction
             customerPost.MobileNumber = customer.MobileNumber;
             customerPost.Name = customer.Name;
             customerPost.Email = customer.Email;
-            customerPost.TotalAmount = customer.TotalAmount + double.Parse(m_transactionSession.amountDue);
-            customerPost.PendingAmount = customer.PendingAmount + (double.Parse(m_transactionSession.amountDue) - double.Parse(m_transactionSession.amountPaid));
+            customerPost.TotalAmount = customer.TotalAmount + double.Parse(m_TransactionSession.amountDue);
+            customerPost.PendingAmount = customer.PendingAmount + (double.Parse(m_TransactionSession.amountDue) - double.Parse(m_TransactionSession.amountPaid));
             var c = DataService.GetCustomerDataController().Put(customerPost);
         }
 
         private void InitializeViewBillTable()
         {
-            foreach (var entry in m_transactionSession.GetRowEntries())
+            foreach (var entry in m_TransactionSession.GetRowEntries())
             {
                 AddRowToViewBillTable(entry);
             }
@@ -112,14 +132,14 @@ namespace InventoryManagement.Controllers.Transaction
 
         private void InitializeLabels()
         {
-            if (m_transactionSession.GetCustomer().Name == null)
+            if (m_TransactionSession.GetCustomer().Name == null)
                 m_UIControl.lbl_CustomerName.Text = "--";
             else
-                m_UIControl.lbl_CustomerName.Text = m_transactionSession.GetCustomer().Name;
+                m_UIControl.lbl_CustomerName.Text = m_TransactionSession.GetCustomer().Name;
             m_UIControl.lbl_Date.Text = DateTime.Now.ToString();
-            m_UIControl.lbl_TotalPrice.Text = m_transactionSession.amountDue;
-            m_UIControl.lbl_amountPaid.Text = m_transactionSession.amountPaid;
-            m_UIControl.lbl_pendingAmount.Text = m_transactionSession.pendingAmount;
+            m_UIControl.lbl_TotalPrice.Text = m_TransactionSession.amountDue;
+            m_UIControl.lbl_amountPaid.Text = m_TransactionSession.amountPaid;
+            m_UIControl.lbl_pendingAmount.Text = m_TransactionSession.pendingAmount;
         }
 
         protected override void RegisterEvents()

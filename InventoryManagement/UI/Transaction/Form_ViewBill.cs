@@ -26,7 +26,6 @@ namespace InventoryManagement.UI.Transaction
 
         private void Form_ViewBill_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btn_save_Click(object sender, EventArgs e)

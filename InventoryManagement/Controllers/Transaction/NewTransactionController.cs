@@ -232,6 +232,7 @@ namespace InventoryManagement.Controllers.Transaction
             pendingAmount += m_transactionSession.GetCustomer().PendingAmount;
             m_transactionSession.pendingAmount = pendingAmount.ToString();
             m_transactionSession.amountPaid = amountPaid.ToString();
+
             Form_ViewBill viewBill = new Form_ViewBill(m_transactionSession);
             var result = viewBill.ShowDialog();
             if (result == DialogResult.Yes)
