@@ -7,9 +7,6 @@ Fill database app
 
 backup and restore system
 
-transaction --> add product to bill table --> what if available stock 0
-
-
 
 
 FUTURE SCOPE
