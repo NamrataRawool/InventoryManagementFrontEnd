@@ -68,6 +68,7 @@ namespace InventoryManagement.Controllers.Transaction
                 StockGet stockGet = DataService.GetStockDataController().GetByProductID(productID);
                 StockPost stockPost = new StockPost(stockGet);
                 stockPost.AvailableQuantity -= productDetail.Quantity;
+                stockPost.AvailableQuantity = (stockPost.AvailableQuantity < 0) ? 0 : stockPost.AvailableQuantity;
 
                 var updatedStock = DataService.GetStockDataController().Put(stockPost);
                 if (updatedStock == null)

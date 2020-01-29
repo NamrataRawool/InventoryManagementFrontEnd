@@ -37,7 +37,23 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void OnAddProduct(BillProductDetails productDetails)
         {
+            if (!CheckStockAvailability(productDetails))
+            {
+                DialogResult dialogResult = MessageBox.Show("Not Enough Stock Available? Do you still want to add", "Transaction successful !", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                    return;
+            }
             AddProductRowToTable(productDetails);
+        }
+
+        private bool CheckStockAvailability(BillProductDetails productDetails)
+        {
+            // check if stock is available
+            int productID = productDetails.Product.ID;
+            StockGet stock = DataService.GetStockDataController().GetByProductID(productID);
+            if (stock.AvailableQuantity < productDetails.Quantity)
+                return false;
+            return true;
         }
 
         public void AddProductRowToTable(BillProductDetails productDetails)
@@ -113,37 +129,42 @@ namespace InventoryManagement.Controllers.Transaction
             var productId = Convert.ToInt32(currentRow.Cells["BillTable_ProductId"].Value);
             var productGet = DataService.GetProductDataController().Get(productId);
 
-            BillProductDetails rowEntry = new BillProductDetails(productGet);
-
             var newQuantity = currentRow.Cells["BillTable_Quantity"].Value.ToString();
 
-            if (Validator.IsInteger(newQuantity))
-            {
-                rowEntry.Quantity = Convert.ToInt32(currentRow.Cells["BillTable_Quantity"].Value);
-                if (rowEntry.Quantity == 0)
-                {
-                    currentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
-                    return;
-                }
-
-                double discountInRupees = (productGet.RetailPrice * productGet.Discount / 100);
-                currentRow.Cells["BillTable_Discount"].Value = discountInRupees * rowEntry.Quantity;
-
-                var tax = CalculateTotalTax(rowEntry);
-                currentRow.Cells["BillTable_Tax"].Value = tax;
-
-                var finalPrice = CalculateFinalPrice(productGet.RetailPrice, productGet.Discount, rowEntry.Quantity, tax);
-                currentRow.Cells["BillTable_FinalPrice"].Value = finalPrice;
-                rowEntry.FinalPrice = finalPrice;
-
-                m_transactionSession.UpdateRowEntry(rowEntry);
-                UpdateUILabels();
-            }
-            else
+            if (!Validator.IsInteger(newQuantity))
             {
                 m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
                 return;
             }
+
+            BillProductDetails productDetails = new BillProductDetails(productGet);
+            productDetails.Quantity = Convert.ToInt32(currentRow.Cells["BillTable_Quantity"].Value);
+            if (productDetails.Quantity == 0)
+            {
+                currentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
+                return;
+            }
+
+            // check stock availability
+            if (!CheckStockAvailability(productDetails))
+            {
+                DialogResult dialogResult = MessageBox.Show("Not Enough Stock Available? Do you still want to add", "Transaction successful !", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                    return;
+            }
+
+            double discountInRupees = (productGet.RetailPrice * productGet.Discount / 100);
+            currentRow.Cells["BillTable_Discount"].Value = discountInRupees * productDetails.Quantity;
+
+            var tax = CalculateTotalTax(productDetails);
+            currentRow.Cells["BillTable_Tax"].Value = tax;
+
+            var finalPrice = CalculateFinalPrice(productGet.RetailPrice, productGet.Discount, productDetails.Quantity, tax);
+            currentRow.Cells["BillTable_FinalPrice"].Value = finalPrice;
+            productDetails.FinalPrice = finalPrice;
+
+            m_transactionSession.UpdateRowEntry(productDetails);
+            UpdateUILabels();
         }
 
         public void SearchCustomerByMobileNumber(string mobileNumber)
