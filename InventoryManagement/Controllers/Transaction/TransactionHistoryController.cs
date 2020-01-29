@@ -44,6 +44,7 @@ namespace InventoryManagement.Controllers.Transaction
             if (transactions.Count == 0)
             {
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
+                ResetTransactionHistoryTable();
                 return;
             }
             InitializeTransactionHistoryTable(transactions);
@@ -57,6 +58,7 @@ namespace InventoryManagement.Controllers.Transaction
             if (transactions.Count == 0)
             {
                 m_UIControl.lbl_transactionError.Text = "Transaction not found";
+                ResetTransactionHistoryTable();
                 return;
             }
             InitializeTransactionHistoryTable(transactions);

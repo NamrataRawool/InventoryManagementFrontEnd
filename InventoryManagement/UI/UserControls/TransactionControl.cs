@@ -195,6 +195,11 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_searchByCustomerName_Click(object sender, EventArgs e)
         {
+            if (cb_customerName.SelectedIndex < 0)
+            {
+                MessageBox.Show("Select a Customer!");
+                return;
+            }
             m_transactionHistoryController.SearchTransactionByCustomerName(cb_customerName.Text);
         }
 
