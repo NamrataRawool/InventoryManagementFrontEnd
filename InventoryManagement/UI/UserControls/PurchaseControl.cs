@@ -140,12 +140,12 @@ namespace InventoryManagement.UI.UserControls
         private void btn_searchByVendorName_Click(object sender, EventArgs e)
         {
             lbl_purchaseSearchError.Text = string.Empty;
-            var vendorName = cb_VendorName_History.Text.Trim();
-            if(string.IsNullOrEmpty(vendorName) || vendorName.Equals("Select Vendor"))
+            if(cb_VendorName_History.SelectedIndex < 0)
             {
                 lbl_purchaseSearchError.Text = "Please select vendor!";
                 return;
             }
+            var vendorName = cb_VendorName_History.Text.Trim();
             m_purchaseHistoryController.SearchPurchaseByVendorName(vendorName);
         }
 

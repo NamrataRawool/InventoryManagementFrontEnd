@@ -168,7 +168,7 @@ namespace InventoryManagement.Controllers.Purchase
             if (GetTable().Rows.Count <= 0)
                 return;
 
-            if (string.IsNullOrEmpty(m_UIControl.cb_vendorName.Text) || m_UIControl.cb_vendorName.Text.Equals("Select Vendor"))
+            if (m_UIControl.cb_vendorName.SelectedIndex < 0)
             {
                 m_UIControl.lbl_vendorError.Text = "Please select vendor!";
                 return;
