@@ -32,7 +32,7 @@ namespace InventoryManagement.Controllers.Category
             m_UIControl.lbl_CategoryError.Text = string.Empty;
             if (!Validate())
             {
-                MessageBox.Show("Name and Description cannot be empty!");
+                MessageBox.Show("Name cannot be empty!");
                 return;
             }
             var category = DataService.GetCategoryDataController().GetByName(m_UIControl.tb_categoryName.Text);
@@ -48,7 +48,7 @@ namespace InventoryManagement.Controllers.Category
 
             m_Category = DataService.GetCategoryDataController().Put(categoryPost);
 
-            string message = (m_Category == null) ? "Failed to Update Product Details!" : "Product Details updated successfully!";
+            string message = (m_Category == null) ? "Failed to Update Category Details!" : "Category Details updated successfully!";
             MessageBox.Show(m_UIControl, message);
 
             // fire category update event
@@ -61,9 +61,6 @@ namespace InventoryManagement.Controllers.Category
         private bool Validate()
         {
             if (string.IsNullOrEmpty(m_UIControl.tb_categoryName.Text.Trim()))
-                return false;
-
-            if (string.IsNullOrEmpty(m_UIControl.tb_categoryDescription.Text.Trim()))
                 return false;
 
             return true;
