@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_pendingAmount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lbl_amountPaid = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_back = new System.Windows.Forms.Button();
@@ -48,10 +50,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbl_pendingAmount = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewBill_ProductsDataView)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -61,9 +64,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lbl_amountPaid);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btn_back);
             this.groupBox1.Controls.Add(this.ViewBill_ProductsDataView);
-            this.groupBox1.Controls.Add(this.btn_save);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lbl_Date);
             this.groupBox1.Controls.Add(this.lbl_TotalPrice);
@@ -72,20 +73,40 @@
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(11, 23);
+            this.groupBox1.Location = new System.Drawing.Point(11, 47);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(509, 681);
+            this.groupBox1.Size = new System.Drawing.Size(509, 620);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Transaction Details";
+            // 
+            // lbl_pendingAmount
+            // 
+            this.lbl_pendingAmount.AutoSize = true;
+            this.lbl_pendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pendingAmount.Location = new System.Drawing.Point(200, 194);
+            this.lbl_pendingAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_pendingAmount.Name = "lbl_pendingAmount";
+            this.lbl_pendingAmount.Size = new System.Drawing.Size(0, 18);
+            this.lbl_pendingAmount.TabIndex = 52;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(23, 193);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(147, 18);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "Pending Amount :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_amountPaid
             // 
             this.lbl_amountPaid.AutoSize = true;
             this.lbl_amountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_amountPaid.Location = new System.Drawing.Point(200, 170);
+            this.lbl_amountPaid.Location = new System.Drawing.Point(200, 151);
             this.lbl_amountPaid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_amountPaid.Name = "lbl_amountPaid";
             this.lbl_amountPaid.Size = new System.Drawing.Size(0, 18);
@@ -94,7 +115,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 169);
+            this.label2.Location = new System.Drawing.Point(23, 150);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 18);
@@ -105,7 +126,8 @@
             // btn_back
             // 
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Location = new System.Drawing.Point(298, 630);
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.Location = new System.Drawing.Point(294, 687);
             this.btn_back.Margin = new System.Windows.Forms.Padding(2);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(77, 33);
@@ -149,7 +171,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ViewBill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.ViewBill_ProductsDataView.GridColor = System.Drawing.Color.Black;
-            this.ViewBill_ProductsDataView.Location = new System.Drawing.Point(26, 287);
+            this.ViewBill_ProductsDataView.Location = new System.Drawing.Point(26, 275);
             this.ViewBill_ProductsDataView.MultiSelect = false;
             this.ViewBill_ProductsDataView.Name = "ViewBill_ProductsDataView";
             this.ViewBill_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -193,7 +215,8 @@
             // btn_save
             // 
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Location = new System.Drawing.Point(401, 630);
+            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save.Location = new System.Drawing.Point(412, 687);
             this.btn_save.Margin = new System.Windows.Forms.Padding(2);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(77, 33);
@@ -205,7 +228,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 253);
+            this.label1.Location = new System.Drawing.Point(23, 241);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 18);
@@ -217,7 +240,7 @@
             // 
             this.lbl_Date.AutoSize = true;
             this.lbl_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Date.Location = new System.Drawing.Point(200, 84);
+            this.lbl_Date.Location = new System.Drawing.Point(200, 65);
             this.lbl_Date.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Date.Name = "lbl_Date";
             this.lbl_Date.Size = new System.Drawing.Size(0, 18);
@@ -227,7 +250,7 @@
             // 
             this.lbl_TotalPrice.AutoSize = true;
             this.lbl_TotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TotalPrice.Location = new System.Drawing.Point(200, 127);
+            this.lbl_TotalPrice.Location = new System.Drawing.Point(200, 108);
             this.lbl_TotalPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_TotalPrice.Name = "lbl_TotalPrice";
             this.lbl_TotalPrice.Size = new System.Drawing.Size(0, 18);
@@ -237,7 +260,7 @@
             // 
             this.lbl_CustomerName.AutoSize = true;
             this.lbl_CustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CustomerName.Location = new System.Drawing.Point(200, 41);
+            this.lbl_CustomerName.Location = new System.Drawing.Point(200, 22);
             this.lbl_CustomerName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_CustomerName.Name = "lbl_CustomerName";
             this.lbl_CustomerName.Size = new System.Drawing.Size(0, 18);
@@ -246,7 +269,7 @@
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(23, 40);
+            this.label13.Location = new System.Drawing.Point(23, 21);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(147, 18);
@@ -257,7 +280,7 @@
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(23, 126);
+            this.label14.Location = new System.Drawing.Point(23, 107);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(147, 18);
@@ -268,7 +291,7 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 83);
+            this.label16.Location = new System.Drawing.Point(23, 64);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(147, 18);
@@ -276,33 +299,38 @@
             this.label16.Text = "Transaction Date :";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbl_pendingAmount
+            // panel1
             // 
-            this.lbl_pendingAmount.AutoSize = true;
-            this.lbl_pendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pendingAmount.Location = new System.Drawing.Point(200, 213);
-            this.lbl_pendingAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_pendingAmount.Name = "lbl_pendingAmount";
-            this.lbl_pendingAmount.Size = new System.Drawing.Size(0, 18);
-            this.lbl_pendingAmount.TabIndex = 52;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(544, 43);
+            this.panel1.TabIndex = 33;
             // 
-            // label4
+            // label7
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 212);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(147, 18);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "Pending Amount :";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(161, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(182, 23);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Transaction Details";
             // 
             // Form_ViewBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 732);
+            this.ClientSize = new System.Drawing.Size(544, 747);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_back);
+            this.Controls.Add(this.btn_save);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_ViewBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -311,6 +339,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewBill_ProductsDataView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -336,5 +366,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ViewBillTable_FinalPrice;
         public System.Windows.Forms.Label lbl_pendingAmount;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
     }
 }

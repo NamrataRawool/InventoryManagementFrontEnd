@@ -47,7 +47,6 @@ namespace InventoryManagement.UI.Product
         private void Button_UpdateProductDetails_Click(object sender, EventArgs e)
         {
             m_Controller.UpdateProductDetails();
-            this.Close();
         }
     }
 }

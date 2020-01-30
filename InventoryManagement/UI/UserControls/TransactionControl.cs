@@ -54,9 +54,9 @@ namespace InventoryManagement.UI.UserControls
                 return;
             }
             lbl_errorText.Text = string.Empty;
-            int productId = int.Parse(this.tb_barCode.Text);
+            var barcode = this.tb_barCode.Text;
 
-            ProductGet product = DataService.GetProductDataController().Get(productId);
+            ProductGet product = DataService.GetProductDataController().GetByBarcode(barcode);
             AddProductToTable(product);
         }
 

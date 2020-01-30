@@ -44,7 +44,10 @@
             this.tb_email = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btn_updateVendor = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -64,16 +67,14 @@
             this.groupBox1.Controls.Add(this.tb_mobileNumber);
             this.groupBox1.Controls.Add(this.tb_email);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.btn_updateVendor);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(20, 20);
+            this.groupBox1.Location = new System.Drawing.Point(11, 53);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(375, 441);
+            this.groupBox1.Size = new System.Drawing.Size(375, 362);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Vendor Details";
             // 
             // tb_state
             // 
@@ -86,14 +87,15 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 311);
+            this.label1.Location = new System.Drawing.Point(23, 311);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 18);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(109, 18);
             this.label1.TabIndex = 37;
-            this.label1.Text = "State";
+            this.label1.Text = "State :";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tb_city
             // 
@@ -106,14 +108,15 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 267);
+            this.label2.Location = new System.Drawing.Point(23, 267);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 18);
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(109, 18);
             this.label2.TabIndex = 38;
-            this.label2.Text = "City";
+            this.label2.Text = "City :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tb_vendorId
             // 
@@ -128,14 +131,15 @@
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(13, 90);
+            this.label13.Location = new System.Drawing.Point(4, 90);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 18);
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label13.Size = new System.Drawing.Size(128, 18);
             this.label13.TabIndex = 26;
-            this.label13.Text = "Comapny Name";
+            this.label13.Text = "Comapny Name :";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tb_companyName
             // 
@@ -153,14 +157,15 @@
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(13, 135);
+            this.label14.Location = new System.Drawing.Point(23, 135);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 18);
+            this.label14.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label14.Size = new System.Drawing.Size(109, 18);
             this.label14.TabIndex = 25;
-            this.label14.Text = "Email";
+            this.label14.Text = "Email :";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tb_address
             // 
@@ -173,25 +178,27 @@
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(13, 45);
+            this.label15.Location = new System.Drawing.Point(23, 45);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(70, 18);
+            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label15.Size = new System.Drawing.Size(109, 18);
             this.label15.TabIndex = 33;
-            this.label15.Text = "Vendor Id";
+            this.label15.Text = "Vendor Id :";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(13, 223);
+            this.label16.Location = new System.Drawing.Point(23, 223);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 18);
+            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label16.Size = new System.Drawing.Size(109, 18);
             this.label16.TabIndex = 28;
-            this.label16.Text = "Address";
+            this.label16.Text = "Address :";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tb_mobileNumber
             // 
@@ -213,19 +220,21 @@
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(13, 179);
+            this.label17.Location = new System.Drawing.Point(7, 179);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(109, 18);
+            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label17.Size = new System.Drawing.Size(125, 18);
             this.label17.TabIndex = 31;
-            this.label17.Text = "Mobile Number";
+            this.label17.Text = "Mobile Number :";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btn_updateVendor
             // 
             this.btn_updateVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_updateVendor.Location = new System.Drawing.Point(259, 371);
+            this.btn_updateVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_updateVendor.Location = new System.Drawing.Point(270, 435);
             this.btn_updateVendor.Margin = new System.Windows.Forms.Padding(2);
             this.btn_updateVendor.Name = "btn_updateVendor";
             this.btn_updateVendor.Size = new System.Drawing.Size(77, 33);
@@ -234,19 +243,44 @@
             this.btn_updateVendor.UseVisualStyleBackColor = true;
             this.btn_updateVendor.Click += new System.EventHandler(this.btn_updateVendor_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(405, 48);
+            this.panel1.TabIndex = 47;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(127, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Vendor Details";
+            // 
             // Form_EditVendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(405, 479);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_updateVendor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_EditVendor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Vendor Details";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -269,5 +303,7 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox tb_city;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
     }
 }

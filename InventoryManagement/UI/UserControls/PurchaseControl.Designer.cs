@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Purchase_ProductsDataView = new System.Windows.Forms.DataGridView();
             this.PurchaseTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseTable_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +62,7 @@
             this.purchaseTabControl = new System.Windows.Forms.TabControl();
             this.tab_newPurchase = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_AddNewVendor = new System.Windows.Forms.Button();
             this.lbl_vendorError = new System.Windows.Forms.Label();
             this.purchase_dateTime = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.tb_barCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btn_AddNewVendor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).BeginInit();
             this.tab_purchaseHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -115,15 +115,15 @@
             this.Purchase_ProductsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Purchase_ProductsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.Purchase_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle31.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Purchase_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Purchase_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Purchase_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Purchase_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PurchaseTable_ProductId,
@@ -132,28 +132,28 @@
             this.PurchaseTable_Quantity,
             this.PurchaseTable_DiscountRate,
             this.PurchaseTable_TotalDiscount});
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle32.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Purchase_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Purchase_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.Purchase_ProductsDataView.GridColor = System.Drawing.Color.Black;
             this.Purchase_ProductsDataView.Location = new System.Drawing.Point(25, 319);
             this.Purchase_ProductsDataView.MultiSelect = false;
             this.Purchase_ProductsDataView.Name = "Purchase_ProductsDataView";
             this.Purchase_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Purchase_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Purchase_ProductsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.Purchase_ProductsDataView.RowHeadersVisible = false;
             this.Purchase_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.Purchase_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -370,43 +370,43 @@
             this.PurchaseHistoryDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PurchaseHistoryDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.PurchaseHistoryDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle34.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PurchaseHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PurchaseHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PurchaseHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PurchaseHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Purchase_Date,
             this.Purchase_ID,
             this.Purchase_VendorName,
             this.Purchase_TotalPrice});
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle35.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PurchaseHistoryDataView.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PurchaseHistoryDataView.DefaultCellStyle = dataGridViewCellStyle5;
             this.PurchaseHistoryDataView.GridColor = System.Drawing.Color.Black;
             this.PurchaseHistoryDataView.Location = new System.Drawing.Point(128, 285);
             this.PurchaseHistoryDataView.MultiSelect = false;
             this.PurchaseHistoryDataView.Name = "PurchaseHistoryDataView";
             this.PurchaseHistoryDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PurchaseHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PurchaseHistoryDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PurchaseHistoryDataView.RowHeadersVisible = false;
             this.PurchaseHistoryDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.PurchaseHistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -484,6 +484,17 @@
             this.groupBox4.Size = new System.Drawing.Size(816, 100);
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
+            // 
+            // btn_AddNewVendor
+            // 
+            this.btn_AddNewVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btn_AddNewVendor.Location = new System.Drawing.Point(176, 16);
+            this.btn_AddNewVendor.Name = "btn_AddNewVendor";
+            this.btn_AddNewVendor.Size = new System.Drawing.Size(122, 25);
+            this.btn_AddNewVendor.TabIndex = 41;
+            this.btn_AddNewVendor.Text = "Add New Vendor";
+            this.btn_AddNewVendor.UseVisualStyleBackColor = true;
+            this.btn_AddNewVendor.Click += new System.EventHandler(this.btn_AddNewVendor_Click);
             // 
             // lbl_vendorError
             // 
@@ -828,17 +839,6 @@
             this.label15.TabIndex = 33;
             this.label15.Text = "Bar Code :";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btn_AddNewVendor
-            // 
-            this.btn_AddNewVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btn_AddNewVendor.Location = new System.Drawing.Point(176, 16);
-            this.btn_AddNewVendor.Name = "btn_AddNewVendor";
-            this.btn_AddNewVendor.Size = new System.Drawing.Size(122, 25);
-            this.btn_AddNewVendor.TabIndex = 41;
-            this.btn_AddNewVendor.Text = "Add New Vendor";
-            this.btn_AddNewVendor.UseVisualStyleBackColor = true;
-            this.btn_AddNewVendor.Click += new System.EventHandler(this.btn_AddNewVendor_Click);
             // 
             // PurchaseControl
             // 
