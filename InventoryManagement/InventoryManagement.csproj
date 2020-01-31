@@ -230,6 +230,7 @@
     <Compile Include="EventHandlers\Category\EventHandler_Category.cs" />
     <Compile Include="EventHandlers\Customer\EventHandler_Customer.cs" />
     <Compile Include="EventHandlers\IEventHandler.cs" />
+    <Compile Include="EventHandlers\Product\EventHandler_AddProduct.cs" />
     <Compile Include="EventHandlers\Product\EventHandler_Product.cs" />
     <Compile Include="EventHandlers\Purchase\EventHandler_NewPurchase.cs" />
     <Compile Include="EventHandlers\Purchase\EventHandler_PurchaseHistory.cs" />
@@ -396,6 +397,7 @@
     <Compile Include="UI\Vendor\Form_EditVendor.Designer.cs">
       <DependentUpon>Form_EditVendor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\BackupRestore\BackupManager.cs" />
     <Compile Include="Utilities\Validator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

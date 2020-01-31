@@ -57,6 +57,7 @@
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
+            this.btn_AddNewCategory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -351,6 +352,7 @@
             // 
             // gb_Details
             // 
+            this.gb_Details.Controls.Add(this.btn_AddNewCategory);
             this.gb_Details.Controls.Add(this.tb_Description);
             this.gb_Details.Controls.Add(this.tb_Discount);
             this.gb_Details.Controls.Add(this.Label_Name);
@@ -404,6 +406,16 @@
             this.lbl_Error.Size = new System.Drawing.Size(0, 18);
             this.lbl_Error.TabIndex = 30;
             this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btn_AddNewCategory
+            // 
+            this.btn_AddNewCategory.Location = new System.Drawing.Point(432, 211);
+            this.btn_AddNewCategory.Name = "btn_AddNewCategory";
+            this.btn_AddNewCategory.Size = new System.Drawing.Size(26, 24);
+            this.btn_AddNewCategory.TabIndex = 30;
+            this.btn_AddNewCategory.Text = "+";
+            this.btn_AddNewCategory.UseVisualStyleBackColor = true;
+            this.btn_AddNewCategory.Click += new System.EventHandler(this.btn_AddNewCategory_Click);
             // 
             // Form_AddProduct
             // 
@@ -470,5 +482,6 @@
         public System.Windows.Forms.PictureBox pictureBox_Image;
         public System.Windows.Forms.Button btn_ChangeProductImage;
         public System.Windows.Forms.Label lbl_Error;
+        private System.Windows.Forms.Button btn_AddNewCategory;
     }
 }

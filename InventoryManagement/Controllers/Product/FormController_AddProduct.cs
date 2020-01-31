@@ -1,4 +1,6 @@
 ﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.EventHandlers.Product;
+using InventoryManagement.Events;
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Properties;
@@ -16,12 +18,13 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Product
 {
-    class FormController_AddProduct : IController<Form_AddProduct>
+    public class FormController_AddProduct : IController<Form_AddProduct>
     {
 
         public FormController_AddProduct(Form_AddProduct UIControl)
             : base(UIControl)
         {
+            SetEventHandler(new EventHandler_AddProduct(this));
         }
 
         public bool AddNewProduct()
@@ -186,8 +189,15 @@ namespace InventoryManagement.Controllers.Product
             return true;
         }
 
+        public void AddCategoryToComboBox(CategoryGet category)
+        {
+            var comboBox = m_UIControl.cb_Category;
+            comboBox.Items.Add(category.Name);
+        }
+
         protected override void RegisterEvents()
         {
+            RegisterEvent(EventType.NewEntryAdded);
         }
     }
 }

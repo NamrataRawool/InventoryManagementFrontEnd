@@ -17,6 +17,8 @@ namespace InventoryManagement.UI.Category
 {
     public partial class Form_AddCategory : Form
     {
+        private CategoryGet m_Category;
+
         public Form_AddCategory()
         {
             InitializeComponent();
@@ -45,19 +47,24 @@ namespace InventoryManagement.UI.Category
             categoryPost.Name = name;
             categoryPost.Description = desc;
 
-            var newCategory = DataService.GetCategoryDataController().Post(categoryPost);
-            if (newCategory == null)
+            m_Category = DataService.GetCategoryDataController().Post(categoryPost);
+            if (m_Category == null)
             {
                 Assert.Do("Failed to add category!");
+                DialogResult = DialogResult.Cancel;
                 return;
             }
 
+            DialogResult = DialogResult.OK;
+
             // broadcast new entry added event
-            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CATEGORY, newCategory.ID);
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CATEGORY, m_Category.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
             this.Close();
             MessageBox.Show("Category Added successfully!");
-
         }
+
+        public CategoryGet GetAddedCategory() { return m_Category; }
+
     }
 }

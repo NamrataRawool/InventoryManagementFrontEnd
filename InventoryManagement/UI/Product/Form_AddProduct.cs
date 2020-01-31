@@ -1,6 +1,7 @@
 ﻿using InventoryManagement.Controllers.Product;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.UI.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,18 +25,15 @@ namespace InventoryManagement.UI.Product
 
             m_Controller = new FormController_AddProduct(this);
 
-            cb_Category.DataSource = GetCategories();
+            InitializeComboBox();
         }
 
-        private List<string> GetCategories()
+        private void InitializeComboBox()
         {
             var categories = DataService.GetCategoryDataController().GetAll();
-            var categoryDataSource = new List<string>();
-            foreach (var category in categories)
-            {
-                categoryDataSource.Add(category.Name);
-            }
-            return categoryDataSource;
+
+            foreach(var category in categories)
+                cb_Category.Items.Add(category.Name);
         }
 
         private void ResetAll()
@@ -85,5 +83,16 @@ namespace InventoryManagement.UI.Product
             pictureBox_Image.Image = Image.FromFile(imagePath);
             pictureBox_Image.Tag = imagePath;
         }
+
+        private void btn_AddNewCategory_Click(object sender, EventArgs e)
+        {
+            Form_AddCategory form = new Form_AddCategory();
+            if (form.ShowDialog() != DialogResult.OK)
+                return;
+
+            CategoryGet category = form.GetAddedCategory();
+            cb_Category.Text = category.Name;
+        }
+
     }
 }
