@@ -29,16 +29,10 @@ namespace InventoryManagement.Controllers.Customer
             if (!ValidateCustomerDetails())
                 return;
 
-            var customer = DataService.GetCustomerDataController().GetByMobileNumber(m_UIControl.tb_customerMobile.Text);
-            if(customer!= null)
-            {
-                m_UIControl.lbl_customerErrorText.Text = "Customer with same mobile number already exists!";
-                return;
-            }
             CustomerPost customerPost = new CustomerPost();
-            customerPost.Email = m_UIControl.tb_customerEmail.Text;
-            customerPost.Name = m_UIControl.tb_CustomerName.Text;
-            customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text;
+            customerPost.Email = m_UIControl.tb_customerEmail.Text.Trim();
+            customerPost.Name = m_UIControl.tb_CustomerName.Text.Trim();
+            customerPost.MobileNumber = m_UIControl.tb_customerMobile.Text.Trim();
             customerPost.PendingAmount = 0;
             m_Customer = DataService.GetCustomerDataController().Post(customerPost);
 
@@ -52,16 +46,20 @@ namespace InventoryManagement.Controllers.Customer
         private bool ValidateCustomerDetails()
         {
             m_UIControl.lbl_customerErrorText.Text = string.Empty;
-            var email = m_UIControl.tb_customerEmail.Text;
-            var name = m_UIControl.tb_CustomerName.Text;
-            var mobileNumber = m_UIControl.tb_customerMobile.Text;
+            var email = m_UIControl.tb_customerEmail.Text.Trim();
+            var name = m_UIControl.tb_CustomerName.Text.Trim();
+            var mobileNumber = m_UIControl.tb_customerMobile.Text.Trim();
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(mobileNumber))
+            if (string.IsNullOrEmpty(name))
             {
-                m_UIControl.lbl_customerErrorText.Text = "Fields cannot be empty";
+                m_UIControl.lbl_customerErrorText.Text = "Name cannot be empty";
                 return false;
             }
-
+            if (string.IsNullOrEmpty(mobileNumber))
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Mobile number cannot be empty";
+                return false;
+            }
             if (!string.IsNullOrEmpty(email))
             {
                 if (!Validator.IsValidEmail(email))
@@ -83,14 +81,20 @@ namespace InventoryManagement.Controllers.Customer
                 return false;
             }
 
-            // check if customer with same mobil number exists
+            // check if customer with same mobile number exists
             CustomerGet customer = DataService.GetCustomerDataController().GetByMobileNumber(mobileNumber);
             if (customer != null)
             {
-                m_UIControl.lbl_customerErrorText.Text = "Customer with same Mobile Number is already Registered!";
+                m_UIControl.lbl_customerErrorText.Text = "Customer with same Mobile Number already exists!";
                 return false;
             }
 
+            var customerWithSameName = DataService.GetCustomerDataController().GetByName (m_UIControl.tb_CustomerName.Text.Trim());
+            if (customerWithSameName != null)
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Customer with same name already exists!";
+                return false;
+            }
             return true;
         }
 

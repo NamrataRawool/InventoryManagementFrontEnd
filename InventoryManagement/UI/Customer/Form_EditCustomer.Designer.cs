@@ -31,7 +31,6 @@
             this.tb_customerEmail = new System.Windows.Forms.TextBox();
             this.tb_customerMobileNumber = new System.Windows.Forms.TextBox();
             this.btn_updateCustomer = new System.Windows.Forms.Button();
-            this.btn_resetCustomer = new System.Windows.Forms.Button();
             this.tb_customerName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -83,21 +82,6 @@
             this.btn_updateCustomer.Text = "Update";
             this.btn_updateCustomer.UseVisualStyleBackColor = false;
             this.btn_updateCustomer.Click += new System.EventHandler(this.btn_updateCustomer_Click);
-            // 
-            // btn_resetCustomer
-            // 
-            this.btn_resetCustomer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_resetCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_resetCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_resetCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btn_resetCustomer.Location = new System.Drawing.Point(184, 477);
-            this.btn_resetCustomer.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_resetCustomer.Name = "btn_resetCustomer";
-            this.btn_resetCustomer.Size = new System.Drawing.Size(88, 36);
-            this.btn_resetCustomer.TabIndex = 7;
-            this.btn_resetCustomer.Text = "Reset";
-            this.btn_resetCustomer.UseVisualStyleBackColor = false;
-            this.btn_resetCustomer.Click += new System.EventHandler(this.btn_resetCustomer_Click);
             // 
             // tb_customerName
             // 
@@ -169,6 +153,7 @@
             this.tb_customerTotalPurchaseAmount.Location = new System.Drawing.Point(161, 282);
             this.tb_customerTotalPurchaseAmount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_customerTotalPurchaseAmount.Name = "tb_customerTotalPurchaseAmount";
+            this.tb_customerTotalPurchaseAmount.ReadOnly = true;
             this.tb_customerTotalPurchaseAmount.Size = new System.Drawing.Size(200, 22);
             this.tb_customerTotalPurchaseAmount.TabIndex = 5;
             // 
@@ -266,7 +251,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_updateCustomer);
-            this.Controls.Add(this.btn_resetCustomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_editCustomer";
@@ -285,7 +269,6 @@
         public System.Windows.Forms.TextBox tb_customerEmail;
         public System.Windows.Forms.TextBox tb_customerMobileNumber;
         private System.Windows.Forms.Button btn_updateCustomer;
-        private System.Windows.Forms.Button btn_resetCustomer;
         public System.Windows.Forms.TextBox tb_customerName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

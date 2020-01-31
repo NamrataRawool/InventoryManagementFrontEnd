@@ -8,37 +8,32 @@ Fill database app
 backup and restore system
 
 Priority Tasks:
-## Product Control
+## Product Control - aditya
 add --> Add new category button
 edit --> do not add product with same name and bar code (Should allow current name and bar code but should not match with any other entry in the database)
 add/edit --> trim the input text before processing
 add --> reset button--> not resetting error text to empty string
 
-##Category Control
+##Category Control - adi
 search
 add --> validation --> name is required
 add default category
 
 ##Customer Control
-add --> error text should be specific (for empty fields)
-edit --> remove reset button
-edit --> fix customer with same name and mobile number error (Should allow current name but not should not match with any other name present in db)
-add/edit --> trim the input before processing
-add --> error text for customer with same mobile number --> not fitting in the form
-add --> check cases while adding customer --> ("Namrata Rawool" and "namrata rawool" should be same customer)
+edit/add --> fix customer with same name(ignore cases) and mobile number error (Should allow current name but not should not match with any other name present in db) - aditya
 
 
-##Vendor control
+##Vendor control - namrata 
 add/edit --> validations 
 edit --> close form after update
 improve search --> search on text changed in the tb
 
-##Purchase control
+##Purchase control - namrata
 Add new product button
 
 ##Transaction control
-store buying prices and discounts of products for transaction
-checkbox for retail / wholesale price
+store buying prices and discounts of products for transaction - aditya
+checkbox for retail / wholesale price - namrata
 
 FUTURE SCOPE
 

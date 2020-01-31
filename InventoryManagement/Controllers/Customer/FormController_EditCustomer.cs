@@ -52,12 +52,12 @@ namespace InventoryManagement.Controllers.Customer
             }
 
             CustomerPost customerPost = new CustomerPost();
-            customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text);
-            customerPost.Name = m_UIControl.tb_customerName.Text;
-            customerPost.Email = m_UIControl.tb_customerEmail.Text;
-            customerPost.MobileNumber = m_UIControl.tb_customerMobileNumber.Text;
-            customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text);
-            customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text);
+            customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text.Trim());
+            customerPost.Name = m_UIControl.tb_customerName.Text.Trim();
+            customerPost.Email = m_UIControl.tb_customerEmail.Text.Trim();
+            customerPost.MobileNumber = m_UIControl.tb_customerMobileNumber.Text.Trim();
+            customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text.Trim());
+            customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text.Trim());
 
             var customerResponse = DataService.GetCustomerDataController().Put(customerPost);
             if (customerResponse == null)
@@ -76,18 +76,22 @@ namespace InventoryManagement.Controllers.Customer
         private bool ValidateCustomerDetails()
         {
             m_UIControl.lbl_customerErrorText.Text = string.Empty;
-            var email = m_UIControl.tb_customerEmail.Text;
-            var name = m_UIControl.tb_customerName.Text;
-            var mobileNumber = m_UIControl.tb_customerMobileNumber.Text;
-            var totalAmount = m_UIControl.tb_customerTotalPurchaseAmount.Text;
-            var purchaseAmount = m_UIControl.tb_customerPendingAmount.Text;
+            var email = m_UIControl.tb_customerEmail.Text.Trim();
+            var name = m_UIControl.tb_customerName.Text.Trim();
+            var mobileNumber = m_UIControl.tb_customerMobileNumber.Text.Trim();
+            var totalAmount = m_UIControl.tb_customerTotalPurchaseAmount.Text.Trim();
+            var purchaseAmount = m_UIControl.tb_customerPendingAmount.Text.Trim();
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(mobileNumber))
+            if (string.IsNullOrEmpty(name))
             {
-                m_UIControl.lbl_customerErrorText.Text = "Fields cannot be empty";
+                m_UIControl.lbl_customerErrorText.Text = "Name cannot be empty";
                 return false;
             }
-
+            if (string.IsNullOrEmpty(mobileNumber))
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Mobile number cannot be empty";
+                return false;
+            }
             if (!string.IsNullOrEmpty(email))
             {
                 if (!Validator.IsValidEmail(email))

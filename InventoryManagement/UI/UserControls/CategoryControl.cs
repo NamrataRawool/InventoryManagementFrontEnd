@@ -45,5 +45,9 @@ namespace InventoryManagement.UI.UserControls
             m_Controller.OpenForm_EditCategory();
         }
 
+        private void btn_searchCategory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

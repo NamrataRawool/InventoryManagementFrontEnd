@@ -45,7 +45,7 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
         {
             var customerDTO = m_Context.Customers
                                 .AsNoTracking()
-                                .FirstOrDefaultAsync(c => c.Name.Equals(name))
+                                .FirstOrDefaultAsync(c => c.Name.ToLower().Equals(name.ToLower()))
                                 .Result;
 
             if (customerDTO == null)
