@@ -9,8 +9,6 @@ backup and restore system
 
 Priority Tasks:
 ## Product Control - aditya
-add/edit --> trim the input text before processing
-add --> reset button--> not resetting error text to empty string
 
 ##Category Control - adi
 search
