@@ -2,6 +2,7 @@
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Vendor;
 using System.Windows.Forms;
 
@@ -42,11 +43,14 @@ namespace InventoryManagement.Controllers.Vendor
             vendorPost.State = m_UIControl.tb_state.Text;
 
             var vendorGet = DataService.GetVendorDataController().Put(vendorPost);
-            if (vendorGet != null)
+            if (vendorGet == null)
             {
-                MessageBox.Show("Vendor Updated Successfully");
-                ResetTextBoxes();
+                Assert.Do("Failed to edit vendor");
+                return;          
             }
+            MessageBox.Show("Vendor Updated Successfully");
+            ResetTextBoxes();
+            m_UIControl.DialogResult = DialogResult.OK;
 
             // fire vendor updated event
             Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.VENDOR, vendorGet.ID);

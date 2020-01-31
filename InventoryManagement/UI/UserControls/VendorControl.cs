@@ -55,5 +55,9 @@ namespace InventoryManagement.UI.UserControls
             m_Controller.OpenForm_EditVendor();
         }
 
+        private void tb_searchVendors_TextChanged(object sender, EventArgs e)
+        {
+            m_Controller.UpdateTableByCompanyName(tb_searchVendors.Text);
+        }
     }
 }
