@@ -32,21 +32,34 @@ namespace InventoryManagement.Controllers.Product
             if (!ValidateProductDetails())
                 return;
 
-            int productID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
-            ProductGet existingProduct = DataService.GetProductDataController().Get(productID);
+            string barcode = m_UIControl.tf_ProductDetails_Barcode.Text.Trim();
+            if (CheckIfBarcodeAlreadyInUse(barcode))
+            {
+                m_UIControl.lbl_Error.Text = "This Barcode is already in use!";
+                return;
+            }
+
+            string name = m_UIControl.tf_ProductDetails_ProductName.Text.Trim();
+            if (CheckIfProductNameAlreadyInUse(name))
+            {
+                m_UIControl.lbl_Error.Text = "This Name is already in use!";
+                return;
+            }
+
+            ProductGet existingProduct = m_Product;
 
             ProductPost product = new ProductPost(existingProduct);
-            product.ID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text);
-            product.Barcode = m_UIControl.tf_ProductDetails_Barcode.Text;
-            product.Name = m_UIControl.tf_ProductDetails_ProductName.Text;
-            product.Description = m_UIControl.tf_ProductDetails_Description.Text;
-            product.RetailPrice = int.Parse(m_UIControl.tf_ProductDetails_RetailPrice.Text);
-            product.WholeSalePrice = int.Parse(m_UIControl.tf_ProductDetails_WholesalePrice.Text);
-            product.Discount = double.Parse(m_UIControl.tf_ProductDetails_Discount.Text);
-            product.CGST = double.Parse(m_UIControl.tf_ProductDetails_CGST.Text);
-            product.SGST = double.Parse(m_UIControl.tf_ProductDetails_SGST.Text);
+            product.ID = int.Parse(m_UIControl.tf_ProductDetails_ProductID.Text.Trim());
+            product.Barcode = barcode;
+            product.Name = name;
+            product.Description = m_UIControl.tf_ProductDetails_Description.Text.Trim();
+            product.RetailPrice = int.Parse(m_UIControl.tf_ProductDetails_RetailPrice.Text.Trim());
+            product.WholeSalePrice = int.Parse(m_UIControl.tf_ProductDetails_WholesalePrice.Text.Trim());
+            product.Discount = double.Parse(m_UIControl.tf_ProductDetails_Discount.Text.Trim());
+            product.CGST = double.Parse(m_UIControl.tf_ProductDetails_CGST.Text.Trim());
+            product.SGST = double.Parse(m_UIControl.tf_ProductDetails_SGST.Text.Trim());
 
-            string categoryName = m_UIControl.cb_ProductDetails_Category.Text;
+            string categoryName = m_UIControl.cb_ProductDetails_Category.Text.Trim();
             product.CategoryID = DataService.GetCategoryDataController().GetByName(categoryName).ID;
 
             bool imageModified = false;
@@ -64,87 +77,101 @@ namespace InventoryManagement.Controllers.Product
             Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.PRODUCT, m_Product.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
         }
+
+        private bool CheckIfBarcodeAlreadyInUse(string barcode)
+        {
+            var product = DataService.GetProductDataController().GetByBarcode(barcode);
+            return product != null && product.ID != m_Product.ID;
+        }
+
+        private bool CheckIfProductNameAlreadyInUse(string name)
+        {
+            var product = DataService.GetProductDataController().GetByName(name);
+            return product != null && product.ID != m_Product.ID;
+        }
+
         private bool ValidateProductDetails()
         {
             var UI = m_UIControl;
             UI.lbl_Error.Text = string.Empty;
 
-            if (string.IsNullOrEmpty(UI.tf_ProductDetails_ProductName.Text))
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_ProductName.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Name field cannot be empty!";
                 return false;
             }
-            if (!Validator.IsValidAlphaNumeric(UI.tf_ProductDetails_ProductName.Text))
+            if (!Validator.IsValidAlphaNumeric(UI.tf_ProductDetails_ProductName.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Name not valid!";
                 return false;
             }
-            if (!string.IsNullOrEmpty(UI.tf_ProductDetails_Barcode.Text))
+            if (!string.IsNullOrEmpty(UI.tf_ProductDetails_Barcode.Text.Trim()))
             {
-                if (!Validator.IsInteger(UI.tf_ProductDetails_Barcode.Text))
+                if (!Validator.IsInteger(UI.tf_ProductDetails_Barcode.Text.Trim()))
                 {
                     UI.lbl_Error.Text = "Barcode not valid!";
                     return false;
                 }
             }
-            if (string.IsNullOrEmpty(UI.cb_ProductDetails_Category.Text))
+            if (string.IsNullOrEmpty(UI.cb_ProductDetails_Category.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Please select category!";
                 return false;
             }
 
-            if (string.IsNullOrEmpty(UI.tf_ProductDetails_Discount.Text))
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_Discount.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Discount field cannot be empty!";
                 return false;
             }
-            if (!Validator.IsValidDouble(UI.tf_ProductDetails_Discount.Text))
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_Discount.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Discount not valid!";
                 return false;
             }
-            if (string.IsNullOrEmpty(UI.tf_ProductDetails_RetailPrice.Text))
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_RetailPrice.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Please enter retail price!";
                 return false;
             }
-            if (!Validator.IsValidDouble(UI.tf_ProductDetails_RetailPrice.Text))
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_RetailPrice.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Retail Price not valid!";
                 return false;
             }
-            if (string.IsNullOrEmpty(UI.tf_ProductDetails_WholesalePrice.Text))
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_WholesalePrice.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Please enter wholesale price!";
                 return false;
             }
-            if (!Validator.IsValidDouble(UI.tf_ProductDetails_WholesalePrice.Text))
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_WholesalePrice.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Wholesale price not valid!";
                 return false;
             }
-            if (string.IsNullOrEmpty(UI.tf_ProductDetails_CGST.Text))
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_CGST.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Please enter CGST";
                 return false;
             }
-            if (!Validator.IsValidDouble(UI.tf_ProductDetails_CGST.Text))
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_CGST.Text.Trim()))
             {
                 UI.lbl_Error.Text = "CGST not valid!";
                 return false;
             }
-            if (string.IsNullOrEmpty(UI.tf_ProductDetails_SGST.Text))
+            if (string.IsNullOrEmpty(UI.tf_ProductDetails_SGST.Text.Trim()))
             {
                 UI.lbl_Error.Text = "Please enter SGST";
                 return false;
             }
-            if (!Validator.IsValidDouble(UI.tf_ProductDetails_SGST.Text))
+            if (!Validator.IsValidDouble(UI.tf_ProductDetails_SGST.Text.Trim()))
             {
                 UI.lbl_Error.Text = "SGST not valid!";
                 return false;
             }
             return true;
         }
+
         private void InitializeAvailableStockLabel()
         {
             var stock = DataService.GetStockDataController().GetByProductID(m_Product.ID);

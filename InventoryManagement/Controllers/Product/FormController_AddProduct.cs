@@ -34,21 +34,21 @@ namespace InventoryManagement.Controllers.Product
             if (!ValidateProductDetails())
                 return false;
 
-            string categoryName = UI.cb_Category.Text;
+            string categoryName = UI.cb_Category.Text.Trim();
             CategoryGet category = DataService.GetCategoryDataController().GetByName(categoryName);
 
             ProductPost productPost = new ProductPost();
-            productPost.Name = UI.tb_Name.Text;
-            productPost.Barcode = UI.tb_Barcode.Text;
-            productPost.Description = UI.tb_Description.Text;
-            productPost.RetailPrice = int.Parse(UI.tb_RetailPrice.Text);
-            productPost.WholeSalePrice = int.Parse(UI.tb_WholeSalePrice.Text);
+            productPost.Name = UI.tb_Name.Text.Trim();
+            productPost.Barcode = UI.tb_Barcode.Text.Trim();
+            productPost.Description = UI.tb_Description.Text.Trim();
+            productPost.RetailPrice = int.Parse(UI.tb_RetailPrice.Text.Trim());
+            productPost.WholeSalePrice = int.Parse(UI.tb_WholeSalePrice.Text.Trim());
             productPost.CategoryID = category.ID;
-            productPost.CGST = double.Parse(UI.tb_CGST.Text);
-            productPost.SGST = double.Parse(UI.tb_CGST.Text);
-            productPost.Discount = double.Parse(UI.tb_SGST.Text);
+            productPost.CGST = double.Parse(UI.tb_CGST.Text.Trim());
+            productPost.SGST = double.Parse(UI.tb_CGST.Text.Trim());
+            productPost.Discount = double.Parse(UI.tb_SGST.Text.Trim());
 
-            productPost.ImagePath = (string)UI.pictureBox_Image.Tag;
+            productPost.ImagePath = ((string)UI.pictureBox_Image.Tag).Trim();
 
             if (string.IsNullOrEmpty(productPost.ImagePath))
             {

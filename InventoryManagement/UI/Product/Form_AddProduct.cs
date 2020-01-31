@@ -34,6 +34,8 @@ namespace InventoryManagement.UI.Product
 
             foreach(var category in categories)
                 cb_Category.Items.Add(category.Name);
+
+            cb_Category.SelectedIndex = 0;
         }
 
         private void ResetAll()
