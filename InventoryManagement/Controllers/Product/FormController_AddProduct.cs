@@ -27,6 +27,25 @@ namespace InventoryManagement.Controllers.Product
             SetEventHandler(new EventHandler_AddProduct(this));
         }
 
+        public void ResetAll()
+        {
+            var UI = m_UIControl;
+
+            UI.tb_Name.Text = string.Empty;
+            UI.tb_Barcode.Text = string.Empty;
+            UI.tb_Description.Text = string.Empty;
+            UI.tb_RetailPrice.Text = string.Empty;
+            UI.tb_WholeSalePrice.Text = string.Empty;
+            UI.tb_CGST.Text = string.Empty;
+            UI.tb_SGST.Text = string.Empty;
+            UI.tb_Discount.Text = string.Empty;
+            UI.lbl_Error.Text = string.Empty;
+
+            // set category to
+            UI.cb_Category.SelectedIndex = 0;
+            UI.pictureBox_Image = new PictureBox();
+        }
+
         public bool AddNewProduct()
         {
             var UI = m_UIControl;
@@ -48,14 +67,7 @@ namespace InventoryManagement.Controllers.Product
             productPost.SGST = double.Parse(UI.tb_CGST.Text.Trim());
             productPost.Discount = double.Parse(UI.tb_SGST.Text.Trim());
 
-            productPost.ImagePath = ((string)UI.pictureBox_Image.Tag).Trim();
-
-            if (string.IsNullOrEmpty(productPost.ImagePath))
-            {
-                string runningDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string placeholderImagePath = runningDirectory + "/Resources/Images/Placeholder.png";
-                productPost.ImagePath = placeholderImagePath;
-            }
+            productPost.ImagePath = GetImagePath();
 
             var productGet = DataService.GetProductDataController().Post(productPost);
             if (productGet == null)
@@ -83,6 +95,23 @@ namespace InventoryManagement.Controllers.Product
             MessageBox.Show(m_UIControl, "Product Added Successfully!");
             UI.Close();
             return true;
+        }
+
+        private string GetImagePath()
+        {
+            string imagePath = ((string)m_UIControl.pictureBox_Image.Tag).Trim();
+
+            if (!string.IsNullOrEmpty(imagePath))
+                return imagePath;
+
+            return GetPlaceHolderImagePath();
+        }
+
+        private string GetPlaceHolderImagePath()
+        {
+            string runningDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string placeholderImagePath = runningDirectory + "/Resources/Images/Placeholder.png";
+            return placeholderImagePath;
         }
 
         private bool ValidateProductDetails()

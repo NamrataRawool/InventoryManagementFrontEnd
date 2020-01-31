@@ -38,23 +38,9 @@ namespace InventoryManagement.UI.Product
             cb_Category.SelectedIndex = 0;
         }
 
-        private void ResetAll()
-        {
-            tb_Name.Text = string.Empty;
-            tb_Barcode.Text = string.Empty;
-            tb_Description.Text = string.Empty;
-            tb_RetailPrice.Text = string.Empty;
-            tb_WholeSalePrice.Text = string.Empty;
-            cb_Category.Text = string.Empty;
-            pictureBox_Image.Image = null;
-            tb_CGST.Text = string.Empty;
-            tb_SGST.Text = string.Empty;
-            tb_Discount.Text = string.Empty;
-        }
-
         private void btn_ResetProduct_Click(object sender, EventArgs e)
         {
-            ResetAll();
+            m_Controller.ResetAll();
         }
 
         private void btn_saveProduct_Click(object sender, EventArgs e)
@@ -66,7 +52,7 @@ namespace InventoryManagement.UI.Product
                 return;
             }
 
-            ResetAll();
+            m_Controller.ResetAll();
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
