@@ -33,9 +33,12 @@ namespace InventoryManagement.UI.Category
 
         private void btn_saveCategory_Click(object sender, EventArgs eventArgs)
         {
+            if (!Validate())
+                return;
+
             lbl_CategoryError.Text = string.Empty;
-            string name = tb_categoryName.Text;
-            string desc = tb_categoryDescription.Text;
+            string name = tb_categoryName.Text.Trim();
+            string desc = tb_categoryDescription.Text.Trim();
 
             var category = DataService.GetCategoryDataController().GetByName(name);
             if (category != null)
@@ -62,6 +65,17 @@ namespace InventoryManagement.UI.Category
             EventBroadcaster.Get().BroadcastEvent(e);
             this.Close();
             MessageBox.Show("Category Added successfully!");
+        }
+
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(tb_categoryName.Text.Trim()))
+            {
+                lbl_CategoryError.Text = "Category Name cannot be empty!";
+                return false;
+            }
+
+            return true;
         }
 
         public CategoryGet GetAddedCategory() { return m_Category; }

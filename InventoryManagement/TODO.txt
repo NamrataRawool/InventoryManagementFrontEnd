@@ -12,7 +12,6 @@ Priority Tasks:
 
 ##Category Control - adi
 search
-add --> validation --> name is required
 add default category
 
 ##Customer Control
