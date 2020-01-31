@@ -110,7 +110,7 @@ namespace InventoryManagement.Controllers.Product
                     return false;
                 }
             }
-            if (string.IsNullOrEmpty(UI.cb_Category.Text))
+            if (UI.cb_Category.SelectedIndex < 0)
             {
                 UI.lbl_Error.Text = "Please select category!";
                 return false;
