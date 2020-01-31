@@ -4,6 +4,7 @@ using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Vendor;
+using InventoryManagement.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,16 @@ namespace InventoryManagement.Controllers.Vendor
 
         public VendorGet AddNewVendor()
         {
+            if (!ValidateVendorDetails())
+                return null;
+
             VendorPost vendor = new VendorPost();
-            vendor.CompanyName = m_UIControl.tb_companyName.Text;
-            vendor.Address = m_UIControl.tb_address.Text;
-            vendor.Email = m_UIControl.tb_email.Text;
-            vendor.MobileNumber = m_UIControl.tb_mobileNumber.Text;
-            vendor.City = m_UIControl.tb_city.Text;
-            vendor.State = m_UIControl.tb_state.Text;
+            vendor.CompanyName = m_UIControl.tb_companyName.Text.Trim();
+            vendor.Address = m_UIControl.tb_address.Text.Trim();
+            vendor.Email = m_UIControl.tb_email.Text.Trim();
+            vendor.MobileNumber = m_UIControl.tb_mobileNumber.Text.Trim();
+            vendor.City = m_UIControl.tb_city.Text.Trim();
+            vendor.State = m_UIControl.tb_state.Text.Trim();
 
             var vendorGet = DataService.GetVendorDataController().Post(vendor);
             if (vendorGet == null)
@@ -46,6 +50,61 @@ namespace InventoryManagement.Controllers.Vendor
             return vendorGet;
         }
 
+        private bool ValidateVendorDetails()
+        {
+            m_UIControl.lbl_ValidationError.Text = string.Empty;
+            var companyName = m_UIControl.tb_companyName.Text.Trim();
+            var address = m_UIControl.tb_address.Text.Trim();
+            var email = m_UIControl.tb_email.Text.Trim();
+            var mobileNumber = m_UIControl.tb_mobileNumber.Text.Trim();
+            var city = m_UIControl.tb_city.Text.Trim();
+            var state = m_UIControl.tb_state.Text.Trim();
+
+            if (string.IsNullOrEmpty(companyName))
+            {
+                m_UIControl.lbl_ValidationError.Text = "Company name cannot be empty!";
+                return false;
+            }
+            if (!Validator.IsValidAlphaNumeric(companyName))
+            {
+                m_UIControl.lbl_ValidationError.Text = "Company name not valid!";
+                return false;
+            }
+            if (!string.IsNullOrEmpty(email))
+            {
+                if (!Validator.IsValidEmail(email))
+                {
+                    m_UIControl.lbl_ValidationError.Text = "Email ID not valid!";
+                    return false;
+                }
+            }
+            if (!string.IsNullOrEmpty(mobileNumber))
+            {
+                if (!Validator.IsValidMobileNumber(mobileNumber))
+                {
+                    m_UIControl.lbl_ValidationError.Text = "Mobile number not valid!";
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(city))
+            {
+                if (!Validator.IsValidString(city))
+                {
+                    m_UIControl.lbl_ValidationError.Text = "City not valid!";
+                    return false;
+                }
+            }
+            if (!string.IsNullOrEmpty(state))
+            {
+                if (!Validator.IsValidString(state))
+                {
+                    m_UIControl.lbl_ValidationError.Text = "State not valid!";
+                    return false;
+                }
+            }
+            return true;
+        }
         private void ResetTextBoxes()
         {
             m_UIControl.tb_companyName.Text = string.Empty;

@@ -4,6 +4,7 @@ using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Vendor;
+using InventoryManagement.Utilities;
 using System.Windows.Forms;
 
 namespace InventoryManagement.Controllers.Vendor
@@ -33,20 +34,22 @@ namespace InventoryManagement.Controllers.Vendor
 
         public void UpdateVendor()
         {
+            if (!ValidateVendorDetails())
+                return;
             VendorPost vendorPost = new VendorPost();
-            vendorPost.ID = int.Parse(m_UIControl.tb_vendorId.Text);
-            vendorPost.CompanyName = m_UIControl.tb_companyName.Text;
-            vendorPost.Address = m_UIControl.tb_address.Text;
-            vendorPost.Email = m_UIControl.tb_email.Text;
-            vendorPost.MobileNumber = m_UIControl.tb_mobileNumber.Text;
-            vendorPost.City = m_UIControl.tb_city.Text;
-            vendorPost.State = m_UIControl.tb_state.Text;
+            vendorPost.ID = int.Parse(m_UIControl.tb_vendorId.Text.Trim());
+            vendorPost.CompanyName = m_UIControl.tb_companyName.Text.Trim();
+            vendorPost.Address = m_UIControl.tb_address.Text.Trim();
+            vendorPost.Email = m_UIControl.tb_email.Text.Trim();
+            vendorPost.MobileNumber = m_UIControl.tb_mobileNumber.Text.Trim();
+            vendorPost.City = m_UIControl.tb_city.Text.Trim();
+            vendorPost.State = m_UIControl.tb_state.Text.Trim();
 
             var vendorGet = DataService.GetVendorDataController().Put(vendorPost);
             if (vendorGet == null)
             {
                 Assert.Do("Failed to edit vendor");
-                return;          
+                return;
             }
             MessageBox.Show("Vendor Updated Successfully");
             ResetTextBoxes();
@@ -71,6 +74,60 @@ namespace InventoryManagement.Controllers.Vendor
             m_UIControl.tb_state.Text = vendor.State;
         }
 
+        private bool ValidateVendorDetails()
+        {
+            m_UIControl.lbl_valiadationError.Text = string.Empty;
+            var companyName = m_UIControl.tb_companyName.Text.Trim();
+            var address = m_UIControl.tb_address.Text.Trim();
+            var email = m_UIControl.tb_email.Text.Trim();
+            var mobileNumber = m_UIControl.tb_mobileNumber.Text.Trim();
+            var city = m_UIControl.tb_city.Text.Trim();
+            var state = m_UIControl.tb_state.Text.Trim();
+
+            if (string.IsNullOrEmpty(companyName))
+            {
+                m_UIControl.lbl_valiadationError.Text = "Company name cannot be empty";
+                return false;
+            }
+            if (!Validator.IsValidAlphaNumeric(companyName))
+            {
+                m_UIControl.lbl_valiadationError.Text = "Company name not valid!";
+                return false;
+            }
+            if (!string.IsNullOrEmpty(email))
+            {
+                if (!Validator.IsValidEmail(email))
+                {
+                    m_UIControl.lbl_valiadationError.Text = "Email ID not valid!";
+                    return false;
+                }
+            }
+            if (!string.IsNullOrEmpty(mobileNumber))
+            {
+                if (!Validator.IsValidMobileNumber(mobileNumber))
+                {
+                    m_UIControl.lbl_valiadationError.Text = "Mobile number not valid!";
+                    return false;
+                }
+            }
+            if (!string.IsNullOrEmpty(city))
+            {
+                if (!Validator.IsValidString(city))
+                {
+                    m_UIControl.lbl_valiadationError.Text = "City not valid!";
+                    return false;
+                }
+            }
+            if (!string.IsNullOrEmpty(state))
+            {
+                if (!Validator.IsValidString(state))
+                {
+                    m_UIControl.lbl_valiadationError.Text = "State not valid!";
+                    return false;
+                }
+            }
+            return true;
+        }
         protected override void RegisterEvents()
         {
         }

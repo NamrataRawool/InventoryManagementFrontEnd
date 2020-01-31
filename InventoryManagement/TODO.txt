@@ -23,7 +23,7 @@ edit/add --> fix customer with same name(ignore cases) and mobile number error (
 
 
 ##Vendor control - namrata 
-add/edit --> validations 
+
 
 ##Purchase control - namrata
 Add new product button
