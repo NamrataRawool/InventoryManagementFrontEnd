@@ -25,8 +25,6 @@ edit/add --> fix customer with same name(ignore cases) and mobile number error (
 
 ##Vendor control - namrata 
 add/edit --> validations 
-edit --> close form after update
-improve search --> search on text changed in the tb
 
 ##Purchase control - namrata
 Add new product button

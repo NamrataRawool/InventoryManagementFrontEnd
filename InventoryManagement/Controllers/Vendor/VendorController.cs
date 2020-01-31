@@ -53,8 +53,6 @@ namespace InventoryManagement.Controllers.Vendor
             int vendorId = int.Parse(selectedRow.Cells["VendorTable_Id"].Value.ToString());
             Form_EditVendor editVendor = new Form_EditVendor(vendorId);
             editVendor.ShowDialog();
-            //TODO: REfresh
-            Initialize();
         }
 
         public void UpdateTableByCompanyName(string name)

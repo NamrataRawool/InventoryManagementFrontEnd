@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_addVendor = new System.Windows.Forms.Button();
@@ -86,8 +86,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.31313F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.41414F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.34343F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(997, 99);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
@@ -100,7 +100,7 @@
             this.btn_addVendor.Image = ((System.Drawing.Image)(resources.GetObject("btn_addVendor.Image")));
             this.btn_addVendor.Location = new System.Drawing.Point(3, 27);
             this.btn_addVendor.Name = "btn_addVendor";
-            this.btn_addVendor.Size = new System.Drawing.Size(82, 37);
+            this.btn_addVendor.Size = new System.Drawing.Size(82, 34);
             this.btn_addVendor.TabIndex = 1;
             this.btn_addVendor.UseVisualStyleBackColor = false;
             this.btn_addVendor.Click += new System.EventHandler(this.btn_addVendor_Click);
@@ -114,7 +114,7 @@
             this.btn_editVendor.Image = ((System.Drawing.Image)(resources.GetObject("btn_editVendor.Image")));
             this.btn_editVendor.Location = new System.Drawing.Point(91, 27);
             this.btn_editVendor.Name = "btn_editVendor";
-            this.btn_editVendor.Size = new System.Drawing.Size(81, 37);
+            this.btn_editVendor.Size = new System.Drawing.Size(81, 34);
             this.btn_editVendor.TabIndex = 2;
             this.btn_editVendor.UseVisualStyleBackColor = false;
             this.btn_editVendor.Click += new System.EventHandler(this.btn_editVendor_Click);
@@ -123,11 +123,12 @@
             // 
             this.tb_searchVendors.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tb_searchVendors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_searchVendors.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.tb_searchVendors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_searchVendors.Location = new System.Drawing.Point(397, 27);
             this.tb_searchVendors.Name = "tb_searchVendors";
-            this.tb_searchVendors.Size = new System.Drawing.Size(290, 28);
+            this.tb_searchVendors.Size = new System.Drawing.Size(290, 26);
             this.tb_searchVendors.TabIndex = 3;
+            this.tb_searchVendors.TextChanged += new System.EventHandler(this.tb_searchVendors_TextChanged);
             this.tb_searchVendors.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_searchVendors_KeyDown);
             // 
             // btn_searchVendor
@@ -157,15 +158,15 @@
             this.VendorsDataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.VendorsDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.VendorsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.VendorsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.VendorsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.VendorsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.VendorsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.VendorTable_Id,
@@ -173,29 +174,29 @@
             this.VendorTable_Email,
             this.VendorTable_MobileNumber,
             this.VendorTable_Address});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.VendorsDataView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.VendorsDataView.DefaultCellStyle = dataGridViewCellStyle11;
             this.VendorsDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.VendorsDataView.GridColor = System.Drawing.Color.Black;
             this.VendorsDataView.Location = new System.Drawing.Point(36, 108);
             this.VendorsDataView.MultiSelect = false;
             this.VendorsDataView.Name = "VendorsDataView";
             this.VendorsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.VendorsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.VendorsDataView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.VendorsDataView.RowHeadersVisible = false;
             this.VendorsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.VendorsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
