@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Controllers;
+using InventoryManagement.Models;
 using InventoryManagement.Services.Data.Database;
 using InventoryManagement.Services.Data.Database.SQLite;
 using InventoryManagement.Services.Data.Database.SQLite.Controllers;
@@ -24,6 +25,22 @@ namespace InventoryManagement.Services.Data
             m_StockDataController = new StockDataController(m_Context);
             m_VendorDataController = new VendorDataController(m_Context);
             m_purchaseDataController = new PurchaseDataController(m_Context);
+
+            AddDefaultCategory();
+        }
+
+        private static void AddDefaultCategory()
+        {
+            int numCategories = GetCategoryDataController().GetRecordCount();
+            if (numCategories > 0)
+                return;
+
+            // add the default category
+            CategoryPost category = new CategoryPost();
+            category.Name = "Default";
+            category.Description = "This is assigned to the product if no category is selected!";
+
+            GetCategoryDataController().Post(category);
         }
 
         public static ProductDataController GetProductDataController() { return m_ProductDataController; }

@@ -78,5 +78,11 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
 
             return new CategoryGet(m_Context, categoryDTO);
         }
+
+        public int GetRecordCount()
+        {
+            return m_Context.Categories.Count();
+        }
+
     }
 }
