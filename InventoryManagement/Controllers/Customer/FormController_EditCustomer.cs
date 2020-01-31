@@ -15,14 +15,18 @@ namespace InventoryManagement.Controllers.Customer
 {
     public class FormController_EditCustomer : IController<Form_editCustomer>
     {
-        public FormController_EditCustomer(int customerId, Form_editCustomer UIControl) : base(UIControl)
+        private CustomerGet m_Customer;
+
+        public FormController_EditCustomer(int customerID, Form_editCustomer UIControl) : base(UIControl)
         {
-            Initialize(customerId);
+            Initialize(customerID);
         }
 
-        private void Initialize(int customerId)
+        private void Initialize(int customerID)
         {
-            InitializeProductDetails(customerId);
+            m_Customer = DataService.GetCustomerDataController().Get(customerID);
+
+            InitializeProductDetails(customerID);
         }
 
         public void ResetTextBoxes()
@@ -43,24 +47,31 @@ namespace InventoryManagement.Controllers.Customer
             if (!ValidateCustomerDetails())
                 return;
 
-            //Check if already exists
-            var customer = DataService.GetCustomerDataController().GetByMobileNumber(m_UIControl.tb_customerMobileNumber.Text);
-            if (customer != null)
+            string name = m_UIControl.tb_customerName.Text.Trim();
+            string mobileNumber = m_UIControl.tb_customerMobileNumber.Text.Trim();
+
+            if (CheckIfCustomerNameAlreadyExists(name))
             {
-                m_UIControl.lbl_customerErrorText.Text = "Customer with same mobile number already exists!";
+                m_UIControl.lbl_customerErrorText.Text = "Customer with the same Name already exists!";
+                return;
+            }
+
+            if (CheckIfMobileNumberAlreadyExists(mobileNumber))
+            {
+                m_UIControl.lbl_customerErrorText.Text = "Customer with the same Mobile Number already exists!";
                 return;
             }
 
             CustomerPost customerPost = new CustomerPost();
             customerPost.ID = int.Parse(m_UIControl.tb_customerId.Text.Trim());
-            customerPost.Name = m_UIControl.tb_customerName.Text.Trim();
-            customerPost.Email = m_UIControl.tb_customerEmail.Text.Trim();
-            customerPost.MobileNumber = m_UIControl.tb_customerMobileNumber.Text.Trim();
+            customerPost.Name = name;
+            customerPost.MobileNumber = mobileNumber;
+            customerPost.Email = m_UIControl.tb_customerEmail.Text.Trim(); ;
             customerPost.TotalAmount = double.Parse(m_UIControl.tb_customerTotalPurchaseAmount.Text.Trim());
             customerPost.PendingAmount = double.Parse(m_UIControl.tb_customerPendingAmount.Text.Trim());
 
-            var customerResponse = DataService.GetCustomerDataController().Put(customerPost);
-            if (customerResponse == null)
+            m_Customer = DataService.GetCustomerDataController().Put(customerPost);
+            if (m_Customer == null)
             {
                 m_UIControl.DialogResult = DialogResult.No;
                 return;
@@ -69,8 +80,20 @@ namespace InventoryManagement.Controllers.Customer
             ResetTextBoxes();
 
             // fire customer updated event
-            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.CUSTOMER, customerResponse.ID);
+            Event_EntryUpdated e = new Event_EntryUpdated(DBEntityType.CUSTOMER, m_Customer.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
+        }
+
+        private bool CheckIfCustomerNameAlreadyExists(string name)
+        {
+            CustomerGet customer = DataService.GetCustomerDataController().GetByName(name);
+            return customer != null && customer.ID != m_Customer.ID;
+        }
+
+        private bool CheckIfMobileNumberAlreadyExists(string mobileNumber)
+        {
+            CustomerGet customer = DataService.GetCustomerDataController().GetByMobileNumber(mobileNumber);
+            return customer != null && customer.ID != m_Customer.ID;
         }
 
         private bool ValidateCustomerDetails()

@@ -14,7 +14,6 @@ Priority Tasks:
 search
 
 ##Customer Control
-edit/add --> fix customer with same name(ignore cases) and mobile number error (Should allow current name but not should not match with any other name present in db) - aditya
 
 
 ##Vendor control - namrata 
