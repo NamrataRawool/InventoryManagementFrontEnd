@@ -9,7 +9,6 @@ backup and restore system
 
 Priority Tasks:
 ## Product Control - aditya
-add --> Add new category button
 edit --> do not add product with same name and bar code (Should allow current name and bar code but should not match with any other entry in the database)
 add/edit --> trim the input text before processing
 add --> reset button--> not resetting error text to empty string
