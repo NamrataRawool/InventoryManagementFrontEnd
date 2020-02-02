@@ -47,7 +47,15 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_searchCategory_Click(object sender, EventArgs e)
         {
+            m_Controller.UpdateTableByCategoryName(tb_searchCategory.Text.Trim());
+        }
 
+        private void tb_searchCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                m_Controller.UpdateTableByCategoryName(tb_searchCategory.Text.Trim());
+            }
         }
     }
 }

@@ -64,6 +64,23 @@ namespace InventoryManagement.Controllers.Category
             }
         }
 
+        public void UpdateTableByCategoryName(string name)
+        {
+            var Table = m_UIControl.categoryDataView;
+
+            foreach (DataGridViewRow row in Table.Rows)
+            {
+                bool visible = false;
+                var categoryName = row.Cells["TableColumn_Category_Name"].Value.ToString().ToLower();
+                if (categoryName.StartsWith(name.ToLower()))
+                    visible = true;
+
+                row.Visible = visible;
+            }
+            return;
+        }
+
+
         public void OpenForm_EditCategory()
         {
             var table = m_UIControl.categoryDataView;
