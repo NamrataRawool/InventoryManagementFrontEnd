@@ -57,5 +57,10 @@ namespace InventoryManagement.UI.UserControls
                 m_Controller.UpdateTableByCategoryName(tb_searchCategory.Text.Trim());
             }
         }
+
+        private void tb_searchCategory_TextChanged(object sender, EventArgs e)
+        {
+            m_Controller.UpdateTableByCategoryName(tb_searchCategory.Text.Trim());
+        }
     }
 }

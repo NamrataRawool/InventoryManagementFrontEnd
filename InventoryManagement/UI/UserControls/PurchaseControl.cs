@@ -140,7 +140,7 @@ namespace InventoryManagement.UI.UserControls
         private void btn_searchByVendorName_Click(object sender, EventArgs e)
         {
             lbl_purchaseSearchError.Text = string.Empty;
-            if(cb_VendorName_History.SelectedIndex < 0)
+            if (cb_VendorName_History.SelectedIndex < 0)
             {
                 lbl_purchaseSearchError.Text = "Please select vendor!";
                 return;
@@ -158,6 +158,7 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_AddNewVendor_Click(object sender, EventArgs e)
         {
+            lbl_vendorError.Text = string.Empty;
             Form_AddVendor form = new Form_AddVendor();
             form.ShowDialog();
 

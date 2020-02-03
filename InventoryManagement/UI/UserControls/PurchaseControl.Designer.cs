@@ -92,6 +92,7 @@
             this.tb_barCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.btn_AddNewProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).BeginInit();
             this.tab_purchaseHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -117,7 +118,7 @@
             this.Purchase_ProductsDataView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -134,7 +135,7 @@
             this.PurchaseTable_TotalDiscount});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -487,12 +488,14 @@
             // 
             // btn_AddNewVendor
             // 
+            this.btn_AddNewVendor.AutoSize = true;
             this.btn_AddNewVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btn_AddNewVendor.Location = new System.Drawing.Point(176, 16);
+            this.btn_AddNewVendor.Location = new System.Drawing.Point(314, 49);
             this.btn_AddNewVendor.Name = "btn_AddNewVendor";
-            this.btn_AddNewVendor.Size = new System.Drawing.Size(122, 25);
+            this.btn_AddNewVendor.Size = new System.Drawing.Size(30, 29);
             this.btn_AddNewVendor.TabIndex = 41;
-            this.btn_AddNewVendor.Text = "Add New Vendor";
+            this.btn_AddNewVendor.TabStop = false;
+            this.btn_AddNewVendor.Text = "+";
             this.btn_AddNewVendor.UseVisualStyleBackColor = true;
             this.btn_AddNewVendor.Click += new System.EventHandler(this.btn_AddNewVendor_Click);
             // 
@@ -584,6 +587,7 @@
             // btn_Save
             // 
             this.btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn_Save.Location = new System.Drawing.Point(317, 206);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Save.Name = "btn_Save";
@@ -602,6 +606,7 @@
             this.tb_subtotal.ReadOnly = true;
             this.tb_subtotal.Size = new System.Drawing.Size(184, 21);
             this.tb_subtotal.TabIndex = 8;
+            this.tb_subtotal.TabStop = false;
             // 
             // tb_amountDue
             // 
@@ -612,6 +617,7 @@
             this.tb_amountDue.ReadOnly = true;
             this.tb_amountDue.Size = new System.Drawing.Size(184, 21);
             this.tb_amountDue.TabIndex = 10;
+            this.tb_amountDue.TabStop = false;
             // 
             // label12
             // 
@@ -655,10 +661,12 @@
             this.tb_totalDiscount.ReadOnly = true;
             this.tb_totalDiscount.Size = new System.Drawing.Size(184, 21);
             this.tb_totalDiscount.TabIndex = 9;
+            this.tb_totalDiscount.TabStop = false;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Controls.Add(this.btn_AddNewProduct);
             this.groupBox1.Controls.Add(this.btn_add);
             this.groupBox1.Controls.Add(this.tb_availableStock);
             this.groupBox1.Controls.Add(this.label6);
@@ -685,6 +693,7 @@
             // btn_add
             // 
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn_add.Location = new System.Drawing.Point(1049, 90);
             this.btn_add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add.Name = "btn_add";
@@ -704,6 +713,7 @@
             this.tb_availableStock.ReadOnly = true;
             this.tb_availableStock.Size = new System.Drawing.Size(142, 21);
             this.tb_availableStock.TabIndex = 20;
+            this.tb_availableStock.TabStop = false;
             this.tb_availableStock.Text = "0";
             // 
             // label6
@@ -747,6 +757,7 @@
             this.cb_productName.Name = "cb_productName";
             this.cb_productName.Size = new System.Drawing.Size(184, 24);
             this.cb_productName.TabIndex = 2;
+            this.cb_productName.TabStop = false;
             this.cb_productName.Text = "Select Product";
             this.cb_productName.SelectedValueChanged += new System.EventHandler(this.cb_productName_SelectedValueChanged);
             // 
@@ -840,6 +851,18 @@
             this.label15.Text = "Bar Code :";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btn_AddNewProduct
+            // 
+            this.btn_AddNewProduct.AutoSize = true;
+            this.btn_AddNewProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btn_AddNewProduct.Location = new System.Drawing.Point(346, 52);
+            this.btn_AddNewProduct.Name = "btn_AddNewProduct";
+            this.btn_AddNewProduct.Size = new System.Drawing.Size(26, 27);
+            this.btn_AddNewProduct.TabIndex = 42;
+            this.btn_AddNewProduct.TabStop = false;
+            this.btn_AddNewProduct.Text = "+";
+            this.btn_AddNewProduct.UseVisualStyleBackColor = true;
+            // 
             // PurchaseControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -927,5 +950,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_DiscountRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_TotalDiscount;
         private System.Windows.Forms.Button btn_AddNewVendor;
+        private System.Windows.Forms.Button btn_AddNewProduct;
     }
 }

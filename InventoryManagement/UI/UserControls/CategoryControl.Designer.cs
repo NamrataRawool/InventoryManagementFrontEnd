@@ -197,6 +197,7 @@
             this.tb_searchCategory.Name = "tb_searchCategory";
             this.tb_searchCategory.Size = new System.Drawing.Size(290, 28);
             this.tb_searchCategory.TabIndex = 3;
+            this.tb_searchCategory.TextChanged += new System.EventHandler(this.tb_searchCategory_TextChanged);
             this.tb_searchCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_searchCategory_KeyDown);
             // 
             // btn_searchCategory
