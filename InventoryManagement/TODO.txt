@@ -23,8 +23,10 @@ Add new product button
 
 ##Transaction control
 store buying prices and discounts of products for transaction - aditya
-checkbox for retail / wholesale price - namrata
+
+
 
 FUTURE SCOPE
 
 transaction history --> double click to view details -> print button on that form
+checkbox for retail / wholesale price - namrata

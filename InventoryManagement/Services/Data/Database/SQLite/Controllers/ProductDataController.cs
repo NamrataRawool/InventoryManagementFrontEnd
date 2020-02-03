@@ -120,9 +120,9 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             // get the filename
 
             string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string relativePath = "/media/products/images/" + dto.ID.ToString() + "/";
+            var relativePath = Path.Combine("media\\products\\images", dto.ID.ToString());
 
-            directory += relativePath + "/";
+            directory = Path.Combine(directory, relativePath);
 
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
@@ -130,10 +130,10 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             string filename = Path.GetFileName(dto.ImagePath);
 
             // copy the image
-            var finalPath = directory + filename;
+            var finalPath = Path.Combine(directory, filename);
             File.Copy(dto.ImagePath, finalPath, true);
 
-            pathToSave = relativePath + filename;
+            pathToSave = Path.Combine(relativePath, filename);
             return pathToSave;
         }
 

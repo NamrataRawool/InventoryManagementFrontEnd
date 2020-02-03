@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddProduct));
             this.Label_Name = new System.Windows.Forms.Label();
             this.Label_Description = new System.Windows.Forms.Label();
             this.Label_Category = new System.Windows.Forms.Label();
@@ -54,10 +55,10 @@
             this.tb_Discount = new System.Windows.Forms.TextBox();
             this.lbl_Discount = new System.Windows.Forms.Label();
             this.gb_Details = new System.Windows.Forms.GroupBox();
-            this.pictureBox_Image = new System.Windows.Forms.PictureBox();
+            this.btn_AddNewCategory = new System.Windows.Forms.Button();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
-            this.btn_AddNewCategory = new System.Windows.Forms.Button();
+            this.pictureBox_Image = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -371,16 +372,16 @@
             this.gb_Details.TabStop = false;
             this.gb_Details.Text = "Details";
             // 
-            // pictureBox_Image
+            // btn_AddNewCategory
             // 
-            this.pictureBox_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_Image.Image = global::InventoryManagement.Properties.Resources.placeholder;
-            this.pictureBox_Image.Location = new System.Drawing.Point(41, 48);
-            this.pictureBox_Image.Name = "pictureBox_Image";
-            this.pictureBox_Image.Size = new System.Drawing.Size(183, 134);
-            this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Image.TabIndex = 33;
-            this.pictureBox_Image.TabStop = false;
+            this.btn_AddNewCategory.AutoSize = true;
+            this.btn_AddNewCategory.Location = new System.Drawing.Point(432, 208);
+            this.btn_AddNewCategory.Name = "btn_AddNewCategory";
+            this.btn_AddNewCategory.Size = new System.Drawing.Size(28, 30);
+            this.btn_AddNewCategory.TabIndex = 30;
+            this.btn_AddNewCategory.Text = "+";
+            this.btn_AddNewCategory.UseVisualStyleBackColor = true;
+            this.btn_AddNewCategory.Click += new System.EventHandler(this.btn_AddNewCategory_Click);
             // 
             // btn_ChangeProductImage
             // 
@@ -407,15 +408,16 @@
             this.lbl_Error.TabIndex = 30;
             this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btn_AddNewCategory
+            // pictureBox_Image
             // 
-            this.btn_AddNewCategory.Location = new System.Drawing.Point(432, 211);
-            this.btn_AddNewCategory.Name = "btn_AddNewCategory";
-            this.btn_AddNewCategory.Size = new System.Drawing.Size(26, 24);
-            this.btn_AddNewCategory.TabIndex = 30;
-            this.btn_AddNewCategory.Text = "+";
-            this.btn_AddNewCategory.UseVisualStyleBackColor = true;
-            this.btn_AddNewCategory.Click += new System.EventHandler(this.btn_AddNewCategory_Click);
+            this.pictureBox_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_Image.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Image.Image")));
+            this.pictureBox_Image.Location = new System.Drawing.Point(41, 48);
+            this.pictureBox_Image.Name = "pictureBox_Image";
+            this.pictureBox_Image.Size = new System.Drawing.Size(183, 134);
+            this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Image.TabIndex = 33;
+            this.pictureBox_Image.TabStop = false;
             // 
             // Form_AddProduct
             // 
