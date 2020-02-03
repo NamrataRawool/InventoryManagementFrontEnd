@@ -43,7 +43,7 @@ namespace InventoryManagement.Controllers.Product
 
             // set category to
             UI.cb_Category.SelectedIndex = 0;
-            UI.pictureBox_Image = new PictureBox();
+            UI.pictureBox_Image.ImageLocation = "Resources\\Images\\placeholder.jpg";
         }
 
         public bool AddNewProduct()

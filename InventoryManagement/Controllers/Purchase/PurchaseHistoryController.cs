@@ -81,8 +81,8 @@ namespace InventoryManagement.Controllers.Purchase
         private void InitializeTable_PurchaseHistory(List<PurchaseGet> purchases)
         {
             ResetTable_PurchaseHistory();
-            foreach (var transaction in purchases)
-                AddPurchaseToHistoryTable(transaction);
+            for(int i = purchases.Count - 1; i >= 0; --i)
+                AddPurchaseToHistoryTable(purchases[i]);
         }
 
         private void AddPurchaseToHistoryTable(PurchaseGet purchase)

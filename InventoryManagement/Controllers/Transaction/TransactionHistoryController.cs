@@ -75,8 +75,8 @@ namespace InventoryManagement.Controllers.Transaction
         public void InitializeTransactionHistoryTable(List<TransactionGet> transactions)
         {
             ResetTransactionHistoryTable();
-            foreach (var transaction in transactions)
-                AddTransactionToHistoryTable(transaction);
+            for (int i = transactions.Count - 1; i >= 0; --i)
+                AddTransactionToHistoryTable(transactions[i]);
         }
 
         private void AddTransactionToHistoryTable(TransactionGet transaction)

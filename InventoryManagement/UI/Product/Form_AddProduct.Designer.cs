@@ -378,6 +378,7 @@
             this.btn_AddNewCategory.Name = "btn_AddNewCategory";
             this.btn_AddNewCategory.Size = new System.Drawing.Size(28, 30);
             this.btn_AddNewCategory.TabIndex = 30;
+            this.btn_AddNewCategory.TabStop = false;
             this.btn_AddNewCategory.Text = "+";
             this.btn_AddNewCategory.UseVisualStyleBackColor = true;
             this.btn_AddNewCategory.Click += new System.EventHandler(this.btn_AddNewCategory_Click);

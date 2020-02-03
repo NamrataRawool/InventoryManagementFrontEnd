@@ -33,7 +33,7 @@ namespace InventoryManagement.Controllers.Purchase
             double totalPrice = 0.0;
             foreach (var product in purchase.ProductDetails)
             {
-                totalPrice += product.BuyingPrice;
+                totalPrice += product.BuyingPrice * product.Quantity;
             }
             m_UIControl.lbl_TotalPrice.Text = totalPrice.ToString();
         }

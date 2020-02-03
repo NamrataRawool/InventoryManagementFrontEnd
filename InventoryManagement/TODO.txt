@@ -18,15 +18,12 @@ Priority Tasks:
 ##Vendor control - namrata 
 
 
-##Purchase control - namrata
-Add new product button
+##Purchase control - aditya
+Add new product button 
 
 ##Transaction control
-store buying prices and discounts of products for transaction - aditya
-
 
 
 FUTURE SCOPE
-
 transaction history --> double click to view details -> print button on that form
 checkbox for retail / wholesale price - namrata
