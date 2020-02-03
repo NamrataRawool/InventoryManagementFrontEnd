@@ -11,15 +11,21 @@ namespace InventoryManagement.Models
     public class TransactionProductDetails
     {
 
-        public TransactionProductDetails(ProductGet p, int q)
+        public TransactionProductDetails(ProductGet product, int quantity, double buyingPrice, double discount)
         {
-            Product = p;
-            Quantity = q;
+            Product = product;
+            Quantity = quantity;
+            BuyingPrice = buyingPrice;
+            Discount = discount;
         }
 
         public ProductGet Product { get; set; }
 
         public int Quantity { get; set; }
+
+        public double BuyingPrice { get; set; }
+
+        public double Discount { get; set; }
     }
 
     public class TransactionBase
@@ -36,8 +42,11 @@ namespace InventoryManagement.Models
         {
             ID = rhs.ID;
             TotalPrice = rhs.TotalPrice;
+            TotalTax = rhs.TotalTax;
             ProductIDs = rhs.ProductIDs;
             ProductQuantity = rhs.ProductQuantity;
+            BuyingPrices = rhs.BuyingPrices;
+            Discounts = rhs.Discounts;
             TransactionDateTime = rhs.TransactionDateTime;
             CustomerID = rhs.CustomerID;
         }
@@ -46,9 +55,15 @@ namespace InventoryManagement.Models
 
         public double TotalPrice { get; set; }
 
+        public double TotalTax { get; set; }
+
         public string ProductIDs { get; set; }
 
         public string ProductQuantity { get; set; }
+
+        public string BuyingPrices { get; set; }
+
+        public string Discounts { get; set; }
 
         public DateTime TransactionDateTime { get; set; }
 
@@ -65,15 +80,21 @@ namespace InventoryManagement.Models
             // fill ProductDetails
             string[] IDs = dto.ProductIDs.Split(',');
             string[] Quantities = dto.ProductQuantity.Split(',');
+            string[] BuyingPrices = dto.BuyingPrices.Split(',');
+            string[] Discounts = dto.Discounts.Split(',');
             for (int i = 0; i < IDs.Length; ++i)
             {
                 string sID = IDs[i];
                 string sQuantity = Quantities[i];
+                string sBuyingPrice = BuyingPrices[i];
+                string sDiscount = Discounts[i];
                 if (!string.IsNullOrEmpty(sID))
                 {
                     int ID = int.Parse(sID);
                     int Quantity = int.Parse(sQuantity);
-                    ProductDetailsList.Add(new TransactionProductDetails(new ProductGet(context, context.GetProduct(ID)), Quantity));
+                    double BuyingPrice = double.Parse(sBuyingPrice);
+                    double Discount = double.Parse(sDiscount);
+                    ProductDetailsList.Add(new TransactionProductDetails(new ProductGet(context, context.GetProduct(ID)), Quantity, BuyingPrice, Discount));
                 }
             }
             if (dto.CustomerID != 0)

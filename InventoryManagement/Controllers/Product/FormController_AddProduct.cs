@@ -99,7 +99,7 @@ namespace InventoryManagement.Controllers.Product
 
         private string GetImagePath()
         {
-            string imagePath = ((string)m_UIControl.pictureBox_Image.Tag).Trim();
+            string imagePath = ((string)m_UIControl.pictureBox_Image.Tag);
 
             if (!string.IsNullOrEmpty(imagePath))
                 return imagePath;
@@ -110,7 +110,7 @@ namespace InventoryManagement.Controllers.Product
         private string GetPlaceHolderImagePath()
         {
             string runningDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string placeholderImagePath = runningDirectory + "/Resources/Images/Placeholder.png";
+            string placeholderImagePath = Path.Combine(runningDirectory, "Resources\\Images\\placeholder.jpg");
             return placeholderImagePath;
         }
 

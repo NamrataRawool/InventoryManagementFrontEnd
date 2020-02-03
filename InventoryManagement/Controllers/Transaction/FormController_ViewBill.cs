@@ -33,21 +33,33 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void SaveTransaction()
         {
-            TransactionPost transactionPost = new TransactionPost();
-            transactionPost.CustomerID = m_TransactionSession.GetCustomer().ID;
-            transactionPost.TransactionDateTime = DateTime.Now;
-            transactionPost.TotalPrice = double.Parse(m_TransactionSession.amountDue);
+            TransactionPost transactionPost = new TransactionPost
+            {
+                CustomerID = m_TransactionSession.GetCustomer().ID,
+                TransactionDateTime = DateTime.Now,
+                TotalPrice = double.Parse(m_TransactionSession.amountDue),
+                TotalTax = double.Parse(m_TransactionSession.totalTax)
+            };
             string productIds = string.Empty;
             string productQuantity = string.Empty;
-            foreach (var product in m_TransactionSession.GetRowEntries())
+            string buyingPrices = string.Empty;
+            string discounts = string.Empty;
+
+            foreach (var entry in m_TransactionSession.GetRowEntries())
             {
-                productIds += product.Product.ID + ",";
-                productQuantity += product.Quantity + ",";
+                var product = entry.Product;
+                productIds += product.ID + ",";
+                productQuantity += entry.Quantity + ",";
+                buyingPrices += product.RetailPrice + ",";
+                discounts += product.Discount + ",";
             }
 
             //Removing last comma
             transactionPost.ProductIDs = productIds.Substring(0, productIds.Length - 1);
             transactionPost.ProductQuantity = productQuantity.Substring(0, productQuantity.Length - 1);
+            transactionPost.BuyingPrices = buyingPrices.Substring(0, buyingPrices.Length - 1);
+            transactionPost.Discounts = discounts.Substring(0, discounts.Length - 1);
+
             var transaction = DataService.GetTransactionDataController().Post(transactionPost);
             UpdateCustomerDetails();
             UpdateStockDetails();

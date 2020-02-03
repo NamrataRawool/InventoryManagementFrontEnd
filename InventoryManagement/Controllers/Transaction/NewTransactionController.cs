@@ -148,7 +148,7 @@ namespace InventoryManagement.Controllers.Transaction
             // check stock availability
             if (!CheckStockAvailability(productDetails))
             {
-                DialogResult dialogResult = MessageBox.Show("Not Enough Stock Available? Do you still want to add", "Transaction successful !", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Not Enough Stock Available? Do you still want to add?", "Transaction successful !", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                     return;
             }
@@ -176,17 +176,6 @@ namespace InventoryManagement.Controllers.Transaction
                 var customer = DataService.GetCustomerDataController().GetByMobileNumber(mobileNumber);
                 if (customer == null || customer.ID == 0)
                 {
-                    //DialogResult dialogResult = MessageBox.Show("Do you want to add new customer?", "Not found !", MessageBoxButtons.YesNo);
-                    //if (dialogResult == DialogResult.Yes)
-                    //{
-                    //    Form_AddCustomer addCustomer = new Form_AddCustomer();
-                    //    addCustomer.ShowDialog();
-                    //}
-                    //else
-                    //{
-                    //    ResetCustomerDetails();
-                    //    return;
-                    //}
                     ResetCustomerDetails();
                     m_UIControl.lbl_customerError.Text = "Customer not found!";
                     return;
@@ -363,19 +352,21 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void AddNewCustomer()
         {
+            m_UIControl.lbl_customerError.Text = string.Empty;
             Form_AddCustomer form = new Form_AddCustomer();
             DialogResult result = form.ShowDialog();
 
             if (result != DialogResult.Yes)
                 return;
 
-            MessageBox.Show("Customer Added Succesfully!");
+            MessageBox.Show("Customer Added Successfully!");
 
             // fill the customer details
             CustomerGet customer = form.GetCustomer();
             m_UIControl.tb_customerName.Text = customer.Name;
             m_UIControl.tb_mobileNumber.Text = customer.MobileNumber;
             m_UIControl.tb_pendingAmount.Text = customer.PendingAmount.ToString();
+            m_transactionSession.SetCustomer(customer);
         }
 
         public void ResetTransaction()

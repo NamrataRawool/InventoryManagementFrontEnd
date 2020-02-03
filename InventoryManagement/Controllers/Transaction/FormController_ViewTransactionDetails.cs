@@ -34,7 +34,7 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.lbl_transactionNumber.Text = transaction.ID.ToString();
             m_UIControl.lbl_Date.Text = transaction.TransactionDateTime.ToString();
             m_UIControl.lbl_TotalPrice.Text = transaction.TotalPrice.ToString();
-
+            m_UIControl.lbl_totalTax.Text = transaction.TotalTax.ToString();
         }
         private DataGridView GetTable()
         {
@@ -55,14 +55,14 @@ namespace InventoryManagement.Controllers.Transaction
             NewRow.Cells["TransactionTable_ProductId"].Value = productDetails.Product.ID;
             NewRow.Cells["TransactionTable_ProductName"].Value = productDetails.Product.Name;
             NewRow.Cells["TransactionTable_Quantity"].Value = productDetails.Quantity;
-            NewRow.Cells["TransactionTable_ActualPrice"].Value = productDetails.Quantity * productDetails.Product.RetailPrice;
+            NewRow.Cells["TransactionTable_ActualPrice"].Value = productDetails.Quantity * productDetails.BuyingPrice;
             NewRow.Cells["TransactionTable_DiscountedPrice"].Value = productDetails.Quantity * CalculateDiscountedPrice(productDetails);
         }
 
         private double CalculateDiscountedPrice(TransactionProductDetails productDetails)
         {
-            double discountInRupees = productDetails.Product.RetailPrice * (productDetails.Product.Discount / 100);
-            return productDetails.Product.RetailPrice - discountInRupees;
+            double discountInRupees = productDetails.BuyingPrice * (productDetails.Discount / 100);
+            return productDetails.BuyingPrice - discountInRupees;
         }
         private void ResetTable()
         {
