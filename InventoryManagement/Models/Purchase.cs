@@ -13,16 +13,18 @@ namespace InventoryManagement.Models
     public class PurchaseProductDetails
     {
 
-        public PurchaseProductDetails(ProductGet product, int quantity, double buyingPrice)
+        public PurchaseProductDetails(ProductGet product, int quantity, double buyingPrice, double discount)
         {
             Product = product;
             Quantity = quantity;
             BuyingPrice = buyingPrice;
+            Discount = discount;
         }
 
         public ProductGet Product;
         public int Quantity;
         public double BuyingPrice;
+        public double Discount;
     }
 
     public class PurchaseBase
@@ -43,6 +45,7 @@ namespace InventoryManagement.Models
             ProductIDs = rhs.ProductIDs;
             ProductQuantities = rhs.ProductQuantities;
             BuyingPrices = rhs.BuyingPrices;
+            Discounts = rhs.Discounts;
         }
 
         public int ID { get; set; }
@@ -51,6 +54,7 @@ namespace InventoryManagement.Models
         public string ProductIDs { get; set; }
         public string ProductQuantities { get; set; }
         public string BuyingPrices { get; set; }
+        public string Discounts { get; set; }
     }
 
     public class PurchaseDTO : PurchaseBase
@@ -73,6 +77,7 @@ namespace InventoryManagement.Models
             string[] productIDs = dto.ProductIDs.Split(',');
             string[] productQuantities = dto.ProductQuantities.Split(',');
             string[] buyingPrices = dto.BuyingPrices.Split(',');
+            string[] discounts = dto.Discounts.Split(',');
 
             if (!((productIDs.Length == productQuantities.Length) && (productQuantities.Length == buyingPrices.Length)))
                 Assert.Do("Invalid Purchase Entry!");
@@ -83,9 +88,10 @@ namespace InventoryManagement.Models
                 int id = int.Parse(productIDs[i]);
                 int quantity = int.Parse(productQuantities[i]);
                 double price = double.Parse(buyingPrices[i]);
+                double discount = double.Parse(discounts[i]);
 
                 ProductGet product = DataService.GetProductDataController().Get(id);
-                PurchaseProductDetails detail = new PurchaseProductDetails(product, quantity, price);
+                PurchaseProductDetails detail = new PurchaseProductDetails(product, quantity, price, discount);
                 ProductDetails.Add(detail);
             }
             if (dto.VendorID != 0)

@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PurchaseBill_ProductsDataView = new System.Windows.Forms.DataGridView();
-            this.PurchaseTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseTable_PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_PurchaseDate = new System.Windows.Forms.Label();
             this.lbl_TotalPrice = new System.Windows.Forms.Label();
@@ -46,6 +42,15 @@
             this.label16 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.PurchaseTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_ActualPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseTable_DiscountedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_amountPaid = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_TotalDiscount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseBill_ProductsDataView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -54,6 +59,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.Controls.Add(this.lbl_TotalDiscount);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lbl_amountPaid);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.PurchaseBill_ProductsDataView);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lbl_PurchaseDate);
@@ -67,7 +76,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(509, 564);
+            this.groupBox1.Size = new System.Drawing.Size(664, 607);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             // 
@@ -95,7 +104,8 @@
             this.PurchaseTable_ProductId,
             this.PurchaseTable_ProductName,
             this.PurchaseTable_Quantity,
-            this.PurchaseTable_PurchasePrice});
+            this.PurchaseTable_ActualPrice,
+            this.PurchaseTable_DiscountedPrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -106,7 +116,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PurchaseBill_ProductsDataView.DefaultCellStyle = dataGridViewCellStyle2;
             this.PurchaseBill_ProductsDataView.GridColor = System.Drawing.Color.Black;
-            this.PurchaseBill_ProductsDataView.Location = new System.Drawing.Point(26, 223);
+            this.PurchaseBill_ProductsDataView.Location = new System.Drawing.Point(26, 273);
             this.PurchaseBill_ProductsDataView.MultiSelect = false;
             this.PurchaseBill_ProductsDataView.Name = "PurchaseBill_ProductsDataView";
             this.PurchaseBill_ProductsDataView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -121,36 +131,13 @@
             this.PurchaseBill_ProductsDataView.RowHeadersVisible = false;
             this.PurchaseBill_ProductsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.PurchaseBill_ProductsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseBill_ProductsDataView.Size = new System.Drawing.Size(452, 306);
+            this.PurchaseBill_ProductsDataView.Size = new System.Drawing.Size(608, 306);
             this.PurchaseBill_ProductsDataView.TabIndex = 45;
-            // 
-            // PurchaseTable_ProductId
-            // 
-            this.PurchaseTable_ProductId.HeaderText = "ID";
-            this.PurchaseTable_ProductId.Name = "PurchaseTable_ProductId";
-            this.PurchaseTable_ProductId.ReadOnly = true;
-            // 
-            // PurchaseTable_ProductName
-            // 
-            this.PurchaseTable_ProductName.HeaderText = "Name";
-            this.PurchaseTable_ProductName.Name = "PurchaseTable_ProductName";
-            this.PurchaseTable_ProductName.ReadOnly = true;
-            // 
-            // PurchaseTable_Quantity
-            // 
-            this.PurchaseTable_Quantity.HeaderText = "Quantity";
-            this.PurchaseTable_Quantity.Name = "PurchaseTable_Quantity";
-            // 
-            // PurchaseTable_PurchasePrice
-            // 
-            this.PurchaseTable_PurchasePrice.HeaderText = "Purchase Price";
-            this.PurchaseTable_PurchasePrice.Name = "PurchaseTable_PurchasePrice";
-            this.PurchaseTable_PurchasePrice.ReadOnly = true;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 177);
+            this.label1.Location = new System.Drawing.Point(23, 236);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 18);
@@ -162,7 +149,7 @@
             // 
             this.lbl_PurchaseDate.AutoSize = true;
             this.lbl_PurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_PurchaseDate.Location = new System.Drawing.Point(199, 72);
+            this.lbl_PurchaseDate.Location = new System.Drawing.Point(199, 66);
             this.lbl_PurchaseDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_PurchaseDate.Name = "lbl_PurchaseDate";
             this.lbl_PurchaseDate.Size = new System.Drawing.Size(0, 18);
@@ -172,7 +159,7 @@
             // 
             this.lbl_TotalPrice.AutoSize = true;
             this.lbl_TotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TotalPrice.Location = new System.Drawing.Point(199, 122);
+            this.lbl_TotalPrice.Location = new System.Drawing.Point(199, 110);
             this.lbl_TotalPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_TotalPrice.Name = "lbl_TotalPrice";
             this.lbl_TotalPrice.Size = new System.Drawing.Size(0, 18);
@@ -202,7 +189,7 @@
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(23, 121);
+            this.label14.Location = new System.Drawing.Point(23, 109);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(147, 18);
@@ -213,7 +200,7 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 71);
+            this.label16.Location = new System.Drawing.Point(23, 65);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(147, 18);
@@ -229,7 +216,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 43);
+            this.panel1.Size = new System.Drawing.Size(718, 43);
             this.panel1.TabIndex = 34;
             // 
             // label7
@@ -244,11 +231,82 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Purchase Details";
             // 
+            // PurchaseTable_ProductId
+            // 
+            this.PurchaseTable_ProductId.HeaderText = "ID";
+            this.PurchaseTable_ProductId.Name = "PurchaseTable_ProductId";
+            this.PurchaseTable_ProductId.ReadOnly = true;
+            // 
+            // PurchaseTable_ProductName
+            // 
+            this.PurchaseTable_ProductName.HeaderText = "Name";
+            this.PurchaseTable_ProductName.Name = "PurchaseTable_ProductName";
+            this.PurchaseTable_ProductName.ReadOnly = true;
+            // 
+            // PurchaseTable_Quantity
+            // 
+            this.PurchaseTable_Quantity.HeaderText = "Quantity";
+            this.PurchaseTable_Quantity.Name = "PurchaseTable_Quantity";
+            // 
+            // PurchaseTable_ActualPrice
+            // 
+            this.PurchaseTable_ActualPrice.HeaderText = "Actual Price";
+            this.PurchaseTable_ActualPrice.Name = "PurchaseTable_ActualPrice";
+            this.PurchaseTable_ActualPrice.ReadOnly = true;
+            // 
+            // PurchaseTable_DiscountedPrice
+            // 
+            this.PurchaseTable_DiscountedPrice.HeaderText = "Discounted Price";
+            this.PurchaseTable_DiscountedPrice.Name = "PurchaseTable_DiscountedPrice";
+            this.PurchaseTable_DiscountedPrice.ReadOnly = true;
+            // 
+            // lbl_amountPaid
+            // 
+            this.lbl_amountPaid.AutoSize = true;
+            this.lbl_amountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_amountPaid.Location = new System.Drawing.Point(199, 154);
+            this.lbl_amountPaid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_amountPaid.Name = "lbl_amountPaid";
+            this.lbl_amountPaid.Size = new System.Drawing.Size(0, 18);
+            this.lbl_amountPaid.TabIndex = 47;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 153);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(147, 18);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Amount Paid :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_TotalDiscount
+            // 
+            this.lbl_TotalDiscount.AutoSize = true;
+            this.lbl_TotalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TotalDiscount.Location = new System.Drawing.Point(199, 198);
+            this.lbl_TotalDiscount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_TotalDiscount.Name = "lbl_TotalDiscount";
+            this.lbl_TotalDiscount.Size = new System.Drawing.Size(0, 18);
+            this.lbl_TotalDiscount.TabIndex = 49;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(23, 197);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(147, 18);
+            this.label4.TabIndex = 48;
+            this.label4.Text = " Total Discount :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form_ViewPuchaseBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 653);
+            this.ClientSize = new System.Drawing.Size(718, 692);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_ViewPuchaseBill";
@@ -274,11 +332,16 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_PurchasePrice;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_ActualPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseTable_DiscountedPrice;
+        public System.Windows.Forms.Label lbl_amountPaid;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label lbl_TotalDiscount;
+        private System.Windows.Forms.Label label4;
     }
 }

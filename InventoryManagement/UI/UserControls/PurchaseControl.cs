@@ -169,5 +169,9 @@ namespace InventoryManagement.UI.UserControls
             cb_vendorName.Text = vendor.CompanyName;
         }
 
+        private void btn_AddNewProduct_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

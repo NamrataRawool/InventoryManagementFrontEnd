@@ -173,27 +173,35 @@ namespace InventoryManagement.Controllers.Purchase
                 m_UIControl.lbl_vendorError.Text = "Please select vendor!";
                 return;
             }
-            PurchasePost purchasePost = new PurchasePost();
-            purchasePost.PurchaseDateTime = m_UIControl.purchase_dateTime.Value;
             var vendorId = DataService.GetVendorDataController().GetByName(m_UIControl.cb_vendorName.Text.Trim()).ID;
-            purchasePost.VendorID = vendorId;
+
             string productIds = string.Empty;
             string productQuantities = string.Empty;
             string buyingPrices = string.Empty;
+            string discounts = string.Empty;
+
             int i = 0;
             for (i = 0; i < GetTable().Rows.Count - 1; ++i)
             {
                 productIds += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value.ToString()) + ",";
                 buyingPrices += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value.ToString()) + ",";
                 productQuantities += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value.ToString()) + ",";
+                discounts += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_DiscountRate"].Value.ToString()) + ",";
             }
             productIds += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_ProductId"].Value.ToString());
             buyingPrices += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_PurchasePrice"].Value.ToString());
             productQuantities += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_Quantity"].Value.ToString());
+            discounts += int.Parse(GetTable().Rows[i].Cells["PurchaseTable_DiscountRate"].Value.ToString());
 
-            purchasePost.ProductIDs = productIds;
-            purchasePost.ProductQuantities = productQuantities;
-            purchasePost.BuyingPrices = buyingPrices;
+            PurchasePost purchasePost = new PurchasePost
+            {
+                PurchaseDateTime = m_UIControl.purchase_dateTime.Value,
+                VendorID = vendorId,
+                ProductIDs = productIds,
+                ProductQuantities = productQuantities,
+                BuyingPrices = buyingPrices,
+                Discounts = discounts
+            };
 
             var purchase = DataService.GetPurchaseDataController().Post(purchasePost);
 
@@ -242,7 +250,7 @@ namespace InventoryManagement.Controllers.Purchase
                 subtotal += actualPrice * quantity;
                 totalDiscount += Convert.ToDouble(GetTable().Rows[i].Cells["PurchaseTable_TotalDiscount"].Value);
 
-                amountDue += subtotal - totalDiscount;
+                amountDue = subtotal - totalDiscount;
             }
             m_UIControl.tb_subtotal.Text = subtotal.ToString();
             m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();

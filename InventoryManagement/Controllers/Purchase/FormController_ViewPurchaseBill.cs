@@ -20,8 +20,8 @@ namespace InventoryManagement.Controllers.Purchase
         {
             var purchase = DataService.GetPurchaseDataController().Get(purchaseId);
             ResetTable();
-            InitializeLabels(purchase);
             InitializeProductDetailsTable(purchase);
+          
         }
         private void InitializeLabels(PurchaseGet purchase)
         {
@@ -31,18 +31,25 @@ namespace InventoryManagement.Controllers.Purchase
                 m_UIControl.lbl_VendorName.Text = purchase.Vendor.CompanyName;
             m_UIControl.lbl_PurchaseDate.Text = purchase.PurchaseDateTime.ToString();
             double totalPrice = 0.0;
-            foreach (var product in purchase.ProductDetails)
+            double amountPaid = 0.0;
+            for (int i = 0; i < GetTable().Rows.Count; ++i)
             {
-                totalPrice += product.BuyingPrice * product.Quantity;
+                totalPrice += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_ActualPrice"].Value.ToString());
+                amountPaid += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_DiscountedPrice"].Value.ToString());
             }
+            var totalDiscount = totalPrice - amountPaid;
+            m_UIControl.lbl_TotalDiscount.Text = totalDiscount.ToString();
             m_UIControl.lbl_TotalPrice.Text = totalPrice.ToString();
+            m_UIControl.lbl_amountPaid.Text = amountPaid.ToString();
         }
+
         private void InitializeProductDetailsTable(PurchaseGet purchase)
         {
             foreach (var productDetails in purchase.ProductDetails)
             {
                 AddRowToTable(productDetails);
             }
+            InitializeLabels(purchase);
         }
         private void AddRowToTable(PurchaseProductDetails productDetails)
         {
@@ -52,7 +59,11 @@ namespace InventoryManagement.Controllers.Purchase
             NewRow.Cells["PurchaseTable_ProductId"].Value = productDetails.Product.ID;
             NewRow.Cells["PurchaseTable_ProductName"].Value = productDetails.Product.Name;
             NewRow.Cells["PurchaseTable_Quantity"].Value = productDetails.Quantity;
-            NewRow.Cells["PurchaseTable_PurchasePrice"].Value = productDetails.BuyingPrice;
+            var actualPrice = productDetails.BuyingPrice * productDetails.Quantity;
+            NewRow.Cells["PurchaseTable_ActualPrice"].Value = actualPrice;
+            double discountPerProduct = productDetails.BuyingPrice * productDetails.Discount / 100;
+            double totalDiscount = discountPerProduct * productDetails.Quantity;
+            NewRow.Cells["PurchaseTable_DiscountedPrice"].Value = actualPrice - totalDiscount;
         }
         private void ResetTable()
         {

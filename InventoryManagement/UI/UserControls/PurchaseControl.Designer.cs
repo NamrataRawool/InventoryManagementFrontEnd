@@ -78,6 +78,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tb_totalDiscount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_AddNewProduct = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.tb_availableStock = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -92,7 +93,6 @@
             this.tb_barCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btn_AddNewProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Purchase_ProductsDataView)).BeginInit();
             this.tab_purchaseHistory.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -125,7 +125,8 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Purchase_ProductsDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.Purchase_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Purchase_ProductsDataView.ColumnHeadersHeight = 28;
+            this.Purchase_ProductsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Purchase_ProductsDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PurchaseTable_ProductId,
             this.PurchaseTable_Name,
@@ -380,7 +381,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PurchaseHistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.PurchaseHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PurchaseHistoryDataView.ColumnHeadersHeight = 30;
+            this.PurchaseHistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.PurchaseHistoryDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Purchase_Date,
             this.Purchase_ID,
@@ -690,6 +692,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product Details";
             // 
+            // btn_AddNewProduct
+            // 
+            this.btn_AddNewProduct.AutoSize = true;
+            this.btn_AddNewProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btn_AddNewProduct.Location = new System.Drawing.Point(346, 52);
+            this.btn_AddNewProduct.Name = "btn_AddNewProduct";
+            this.btn_AddNewProduct.Size = new System.Drawing.Size(26, 27);
+            this.btn_AddNewProduct.TabIndex = 42;
+            this.btn_AddNewProduct.TabStop = false;
+            this.btn_AddNewProduct.Text = "+";
+            this.btn_AddNewProduct.UseVisualStyleBackColor = true;
+            this.btn_AddNewProduct.Click += new System.EventHandler(this.btn_AddNewProduct_Click);
+            // 
             // btn_add
             // 
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -850,18 +865,6 @@
             this.label15.TabIndex = 33;
             this.label15.Text = "Bar Code :";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btn_AddNewProduct
-            // 
-            this.btn_AddNewProduct.AutoSize = true;
-            this.btn_AddNewProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btn_AddNewProduct.Location = new System.Drawing.Point(346, 52);
-            this.btn_AddNewProduct.Name = "btn_AddNewProduct";
-            this.btn_AddNewProduct.Size = new System.Drawing.Size(26, 27);
-            this.btn_AddNewProduct.TabIndex = 42;
-            this.btn_AddNewProduct.TabStop = false;
-            this.btn_AddNewProduct.Text = "+";
-            this.btn_AddNewProduct.UseVisualStyleBackColor = true;
             // 
             // PurchaseControl
             // 
