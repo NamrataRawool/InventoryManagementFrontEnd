@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddProduct));
             this.Label_Name = new System.Windows.Forms.Label();
             this.Label_Description = new System.Windows.Forms.Label();
             this.Label_Category = new System.Windows.Forms.Label();
@@ -411,7 +410,7 @@
             // pictureBox_Image
             // 
             this.pictureBox_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_Image.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Image.Image")));
+            this.pictureBox_Image.ImageLocation = "Resources\\Images\\placeholder.jpg";
             this.pictureBox_Image.Location = new System.Drawing.Point(41, 48);
             this.pictureBox_Image.Name = "pictureBox_Image";
             this.pictureBox_Image.Size = new System.Drawing.Size(183, 134);

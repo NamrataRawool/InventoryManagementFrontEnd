@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ProductDetails));
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.GroupBox_ProductDetails = new System.Windows.Forms.GroupBox();
             this.Label_Discount = new System.Windows.Forms.Label();
@@ -322,7 +321,7 @@
             // pictureBox_ProductImage
             // 
             this.pictureBox_ProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_ProductImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_ProductImage.Image")));
+            this.pictureBox_ProductImage.ImageLocation = "Resources\\Images\\placeholder.jpg";
             this.pictureBox_ProductImage.Location = new System.Drawing.Point(55, 58);
             this.pictureBox_ProductImage.Name = "pictureBox_ProductImage";
             this.pictureBox_ProductImage.Size = new System.Drawing.Size(200, 135);
