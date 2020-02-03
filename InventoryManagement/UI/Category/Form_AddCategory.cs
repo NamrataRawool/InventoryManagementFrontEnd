@@ -33,7 +33,7 @@ namespace InventoryManagement.UI.Category
 
         private void btn_saveCategory_Click(object sender, EventArgs eventArgs)
         {
-            if (!Validate())
+            if (!ValidateUI())
                 return;
 
             lbl_CategoryError.Text = string.Empty;
@@ -67,7 +67,7 @@ namespace InventoryManagement.UI.Category
             MessageBox.Show("Category Added successfully!");
         }
 
-        private bool Validate()
+        private bool ValidateUI()
         {
             if (string.IsNullOrEmpty(tb_categoryName.Text.Trim()))
             {

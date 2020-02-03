@@ -2,6 +2,7 @@
 using InventoryManagement.Events;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.UI.Product;
 using InventoryManagement.UI.UserControls;
 using InventoryManagement.Utilities;
 using System;
@@ -111,7 +112,7 @@ namespace InventoryManagement.Controllers.Purchase
             ResetLabels();
         }
 
-        public void InitilizeTextBoxes(ProductGet product)
+        public void InitializeTextBoxes(ProductGet product)
         {
             m_UIControl.tb_barCode.Text = product.Barcode.ToString();
             m_UIControl.cb_productName.Text = product.Name;
@@ -217,6 +218,15 @@ namespace InventoryManagement.Controllers.Purchase
             ResetUIControls();
         }
 
+        public ProductGet OpenForm_AddProduct()
+        {
+            Form_AddProduct form = new Form_AddProduct();
+            if (form.ShowDialog() != DialogResult.OK)
+                return null;
+
+            return form.GetProduct();
+        }
+
         public void UpdateStockDetails()
         {
             for (int i = 0; i < GetTable().Rows.Count; ++i)
@@ -238,6 +248,7 @@ namespace InventoryManagement.Controllers.Purchase
                 var stock = DataService.GetStockDataController().Put(stockPost);
             }
         }
+
         private void UpdateUILabels()
         {
             double subtotal = 0;
@@ -337,13 +348,13 @@ namespace InventoryManagement.Controllers.Purchase
             m_UIControl.lbl_vendorError.Text = string.Empty;
             m_UIControl.lbl_errorText.Text = string.Empty;
         }
+
         private void ResetProductsDataTable()
         {
             var Table = GetTable();
             Table.Rows.Clear();
             Table.Refresh();
         }
-
 
         private DataGridView GetTable()
         {

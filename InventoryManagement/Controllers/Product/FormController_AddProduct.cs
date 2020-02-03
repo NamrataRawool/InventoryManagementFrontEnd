@@ -21,6 +21,8 @@ namespace InventoryManagement.Controllers.Product
     public class FormController_AddProduct : IController<Form_AddProduct>
     {
 
+        private ProductGet m_Product;
+
         public FormController_AddProduct(Form_AddProduct UIControl)
             : base(UIControl)
         {
@@ -49,6 +51,9 @@ namespace InventoryManagement.Controllers.Product
         public bool AddNewProduct()
         {
             var UI = m_UIControl;
+
+            UI.DialogResult = DialogResult.None;
+
             UI.lbl_Error.Text = string.Empty;
             if (!ValidateProductDetails())
                 return false;
@@ -69,30 +74,33 @@ namespace InventoryManagement.Controllers.Product
 
             productPost.ImagePath = GetImagePath();
 
-            var productGet = DataService.GetProductDataController().Post(productPost);
-            if (productGet == null)
+            m_Product = DataService.GetProductDataController().Post(productPost);
+            if (m_Product == null)
             {
-                MessageBox.Show(m_UIControl, "Failed to Add Product!");
+                MessageBox.Show(UI, "Failed to Add Product!");
                 return false;
             }
 
             // post the Default details
             StockPost stock = new StockPost();
-            stock.ProductID = productGet.ID;
+            stock.ProductID = m_Product.ID;
             stock.AvailableQuantity = 0;
             stock.TotalQuantity = 0;
             var stockPost = DataService.GetStockDataController().Post(stock);
             if (stockPost == null)
             {
-                MessageBox.Show(m_UIControl, "Failed to Add Stock!");
+                MessageBox.Show(UI, "Failed to Add Stock!");
                 return false;
             }
 
             // Broadcast NewProductAdded Event
-            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.PRODUCT, productGet.ID);
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.PRODUCT, m_Product.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
 
-            MessageBox.Show(m_UIControl, "Product Added Successfully!");
+            MessageBox.Show(UI, "Product Added Successfully!");
+
+            UI.DialogResult = DialogResult.OK;
+
             UI.Close();
             return true;
         }
@@ -228,5 +236,8 @@ namespace InventoryManagement.Controllers.Product
         {
             RegisterEvent(EventType.NewEntryAdded);
         }
+
+        public ProductGet GetCustomer() { return m_Product; }
+
     }
 }

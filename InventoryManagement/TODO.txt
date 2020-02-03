@@ -19,7 +19,6 @@ Priority Tasks:
 
 
 ##Purchase control - aditya
-Add new product button 
 
 ##Transaction control
 

@@ -82,5 +82,6 @@ namespace InventoryManagement.UI.Product
             cb_Category.Text = category.Name;
         }
 
+        public ProductGet GetProduct() { return m_Controller.GetCustomer(); }
     }
 }

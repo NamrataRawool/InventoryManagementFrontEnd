@@ -66,7 +66,7 @@ namespace InventoryManagement.UI.UserControls
                     return;
                 }
 
-                m_newPurchaseController.InitilizeTextBoxes(product);
+                m_newPurchaseController.InitializeTextBoxes(product);
             }
         }
 
@@ -82,7 +82,7 @@ namespace InventoryManagement.UI.UserControls
                 lbl_errorText.Text = "Record not found";
                 return;
             }
-            m_newPurchaseController.InitilizeTextBoxes(product);
+            m_newPurchaseController.InitializeTextBoxes(product);
         }
 
         private void tb_quantity_KeyDown(object sender, KeyEventArgs e)
@@ -98,6 +98,7 @@ namespace InventoryManagement.UI.UserControls
         {
             m_newPurchaseController.OnAddProduct();
         }
+
         private void Purchase_ProductsDataView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -171,7 +172,8 @@ namespace InventoryManagement.UI.UserControls
 
         private void btn_AddNewProduct_Click(object sender, EventArgs e)
         {
-
+            var product = m_newPurchaseController.OpenForm_AddProduct();
+            m_newPurchaseController.InitializeTextBoxes(product);
         }
     }
 }
