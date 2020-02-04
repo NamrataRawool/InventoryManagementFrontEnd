@@ -6,6 +6,7 @@ using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Transaction;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -150,9 +151,13 @@ namespace InventoryManagement.Controllers.Transaction
             else
                 m_UIControl.lbl_CustomerName.Text = m_TransactionSession.GetCustomer().Name;
             m_UIControl.lbl_Date.Text = DateTime.Now.ToString();
-            m_UIControl.lbl_TotalPrice.Text = m_TransactionSession.amountDue;
-            m_UIControl.lbl_amountPaid.Text = m_TransactionSession.amountPaid;
-            m_UIControl.lbl_pendingAmount.Text = m_TransactionSession.pendingAmount;
+
+            NumberFormatInfo indianCurrency = new CultureInfo("hi-IN", false).NumberFormat;
+            indianCurrency.CurrencyPositivePattern = 2;
+
+            m_UIControl.lbl_TotalPrice.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.amountDue));
+            m_UIControl.lbl_amountPaid.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.amountPaid));
+            m_UIControl.lbl_pendingAmount.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.pendingAmount));
         }
 
         protected override void RegisterEvents()

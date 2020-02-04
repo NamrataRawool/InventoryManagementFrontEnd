@@ -3,6 +3,7 @@ using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Purchase;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace InventoryManagement.Controllers.Purchase
             var purchase = DataService.GetPurchaseDataController().Get(purchaseId);
             ResetTable();
             InitializeProductDetailsTable(purchase);
-          
+
         }
         private void InitializeLabels(PurchaseGet purchase)
         {
@@ -37,10 +38,12 @@ namespace InventoryManagement.Controllers.Purchase
                 totalPrice += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_ActualPrice"].Value.ToString());
                 amountPaid += double.Parse(GetTable().Rows[i].Cells["PurchaseTable_DiscountedPrice"].Value.ToString());
             }
+            NumberFormatInfo indianCurrency = new CultureInfo("hi-IN", false).NumberFormat;
+            indianCurrency.CurrencyPositivePattern = 2;
             var totalDiscount = totalPrice - amountPaid;
-            m_UIControl.lbl_TotalDiscount.Text = totalDiscount.ToString();
-            m_UIControl.lbl_TotalPrice.Text = totalPrice.ToString();
-            m_UIControl.lbl_amountPaid.Text = amountPaid.ToString();
+            m_UIControl.lbl_TotalDiscount.Text = String.Format(indianCurrency, "{0:c}", totalDiscount);
+            m_UIControl.lbl_TotalPrice.Text = String.Format(indianCurrency, "{0:c}", totalPrice);
+            m_UIControl.lbl_amountPaid.Text = String.Format(indianCurrency, "{0:c}", amountPaid);
         }
 
         private void InitializeProductDetailsTable(PurchaseGet purchase)

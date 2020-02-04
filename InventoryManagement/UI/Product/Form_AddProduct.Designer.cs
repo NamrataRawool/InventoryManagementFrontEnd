@@ -58,6 +58,9 @@
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -278,6 +281,8 @@
             // 
             // gb_Tax
             // 
+            this.gb_Tax.Controls.Add(this.label2);
+            this.gb_Tax.Controls.Add(this.label1);
             this.gb_Tax.Controls.Add(this.tb_CGST);
             this.gb_Tax.Controls.Add(this.lbl_CGST);
             this.gb_Tax.Controls.Add(this.lbl_SGST);
@@ -296,7 +301,7 @@
             this.tb_CGST.Location = new System.Drawing.Point(151, 51);
             this.tb_CGST.Margin = new System.Windows.Forms.Padding(2);
             this.tb_CGST.Name = "tb_CGST";
-            this.tb_CGST.Size = new System.Drawing.Size(200, 22);
+            this.tb_CGST.Size = new System.Drawing.Size(117, 22);
             this.tb_CGST.TabIndex = 9;
             // 
             // lbl_CGST
@@ -327,7 +332,7 @@
             this.tb_SGST.Location = new System.Drawing.Point(151, 109);
             this.tb_SGST.Margin = new System.Windows.Forms.Padding(2);
             this.tb_SGST.Name = "tb_SGST";
-            this.tb_SGST.Size = new System.Drawing.Size(200, 22);
+            this.tb_SGST.Size = new System.Drawing.Size(117, 22);
             this.tb_SGST.TabIndex = 10;
             // 
             // tb_Discount
@@ -336,7 +341,7 @@
             this.tb_Discount.Location = new System.Drawing.Point(166, 268);
             this.tb_Discount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Discount.Name = "tb_Discount";
-            this.tb_Discount.Size = new System.Drawing.Size(260, 22);
+            this.tb_Discount.Size = new System.Drawing.Size(152, 22);
             this.tb_Discount.TabIndex = 6;
             // 
             // lbl_Discount
@@ -352,6 +357,7 @@
             // 
             // gb_Details
             // 
+            this.gb_Details.Controls.Add(this.label5);
             this.gb_Details.Controls.Add(this.btn_AddNewCategory);
             this.gb_Details.Controls.Add(this.tb_Description);
             this.gb_Details.Controls.Add(this.tb_Discount);
@@ -419,6 +425,42 @@
             this.pictureBox_Image.TabIndex = 33;
             this.pictureBox_Image.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(322, 270);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 18);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "%";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(270, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 18);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "%";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(270, 112);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 18);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "%";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form_AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,5 +527,8 @@
         public System.Windows.Forms.Button btn_ChangeProductImage;
         public System.Windows.Forms.Label lbl_Error;
         private System.Windows.Forms.Button btn_AddNewCategory;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -3,6 +3,7 @@ using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Transaction;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,8 +34,12 @@ namespace InventoryManagement.Controllers.Transaction
                 m_UIControl.lbl_CustomerName.Text = transaction.Customer.Name;
             m_UIControl.lbl_transactionNumber.Text = transaction.ID.ToString();
             m_UIControl.lbl_Date.Text = transaction.TransactionDateTime.ToString();
-            m_UIControl.lbl_TotalPrice.Text = transaction.TotalPrice.ToString();
-            m_UIControl.lbl_totalTax.Text = transaction.TotalTax.ToString();
+
+            NumberFormatInfo indianCurrency = new CultureInfo("hi-IN", false).NumberFormat;
+            indianCurrency.CurrencyPositivePattern = 2;
+
+            m_UIControl.lbl_TotalPrice.Text = String.Format(indianCurrency, "{0:c}", transaction.TotalPrice);
+            m_UIControl.lbl_totalTax.Text = String.Format(indianCurrency, "{0:c}", transaction.TotalTax);
         }
         private DataGridView GetTable()
         {
