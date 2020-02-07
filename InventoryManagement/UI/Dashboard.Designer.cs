@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.btn_Vendors = new System.Windows.Forms.Button();
@@ -84,15 +85,15 @@
             // 
             this.btn_Vendors.FlatAppearance.BorderSize = 0;
             this.btn_Vendors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Vendors.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Vendors.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Vendors.ForeColor = System.Drawing.Color.White;
-            this.btn_Vendors.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Vendors.Image = ((System.Drawing.Image)(resources.GetObject("btn_Vendors.Image")));
             this.btn_Vendors.Location = new System.Drawing.Point(1, 619);
             this.btn_Vendors.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Vendors.Name = "btn_Vendors";
             this.btn_Vendors.Size = new System.Drawing.Size(233, 66);
             this.btn_Vendors.TabIndex = 8;
-            this.btn_Vendors.Text = "Vendors";
+            this.btn_Vendors.Text = "  Vendors";
             this.btn_Vendors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Vendors.UseVisualStyleBackColor = true;
             this.btn_Vendors.Click += new System.EventHandler(this.btn_Vendors_Click);
@@ -101,15 +102,15 @@
             // 
             this.btn_Purchase.FlatAppearance.BorderSize = 0;
             this.btn_Purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Purchase.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Purchase.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Purchase.ForeColor = System.Drawing.Color.White;
-            this.btn_Purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Purchase.Image = ((System.Drawing.Image)(resources.GetObject("btn_Purchase.Image")));
             this.btn_Purchase.Location = new System.Drawing.Point(1, 522);
             this.btn_Purchase.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Purchase.Name = "btn_Purchase";
             this.btn_Purchase.Size = new System.Drawing.Size(233, 66);
             this.btn_Purchase.TabIndex = 8;
-            this.btn_Purchase.Text = "Purchase";
+            this.btn_Purchase.Text = "  Purchase";
             this.btn_Purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Purchase.UseVisualStyleBackColor = true;
             this.btn_Purchase.Click += new System.EventHandler(this.btn_Purchase_Click);
@@ -153,15 +154,15 @@
             // 
             this.btn_Customer.FlatAppearance.BorderSize = 0;
             this.btn_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Customer.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Customer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Customer.ForeColor = System.Drawing.Color.White;
-            this.btn_Customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Customer.Image = ((System.Drawing.Image)(resources.GetObject("btn_Customer.Image")));
             this.btn_Customer.Location = new System.Drawing.Point(1, 433);
             this.btn_Customer.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Customer.Name = "btn_Customer";
             this.btn_Customer.Size = new System.Drawing.Size(233, 66);
             this.btn_Customer.TabIndex = 7;
-            this.btn_Customer.Text = "Customer";
+            this.btn_Customer.Text = "  Customer";
             this.btn_Customer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Customer.UseVisualStyleBackColor = true;
             this.btn_Customer.Click += new System.EventHandler(this.btn_Customer_Click);
@@ -170,15 +171,15 @@
             // 
             this.btn_Transaction.FlatAppearance.BorderSize = 0;
             this.btn_Transaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Transaction.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Transaction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Transaction.ForeColor = System.Drawing.Color.White;
-            this.btn_Transaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Transaction.Image = ((System.Drawing.Image)(resources.GetObject("btn_Transaction.Image")));
             this.btn_Transaction.Location = new System.Drawing.Point(1, 345);
             this.btn_Transaction.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Transaction.Name = "btn_Transaction";
             this.btn_Transaction.Size = new System.Drawing.Size(233, 66);
             this.btn_Transaction.TabIndex = 6;
-            this.btn_Transaction.Text = "Transaction";
+            this.btn_Transaction.Text = "  Transaction";
             this.btn_Transaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Transaction.UseVisualStyleBackColor = true;
             this.btn_Transaction.Click += new System.EventHandler(this.btn_Transaction_Click);
@@ -187,15 +188,15 @@
             // 
             this.btn_Category.FlatAppearance.BorderSize = 0;
             this.btn_Category.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Category.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Category.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Category.ForeColor = System.Drawing.Color.White;
-            this.btn_Category.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Category.Image = ((System.Drawing.Image)(resources.GetObject("btn_Category.Image")));
             this.btn_Category.Location = new System.Drawing.Point(1, 256);
             this.btn_Category.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Category.Name = "btn_Category";
             this.btn_Category.Size = new System.Drawing.Size(233, 66);
             this.btn_Category.TabIndex = 5;
-            this.btn_Category.Text = "Category";
+            this.btn_Category.Text = "  Category";
             this.btn_Category.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Category.UseVisualStyleBackColor = true;
             this.btn_Category.Click += new System.EventHandler(this.btn_Category_Click);
@@ -204,9 +205,9 @@
             // 
             this.btn_Product.FlatAppearance.BorderSize = 0;
             this.btn_Product.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Product.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Product.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Product.ForeColor = System.Drawing.Color.White;
-            this.btn_Product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Product.Image = ((System.Drawing.Image)(resources.GetObject("btn_Product.Image")));
             this.btn_Product.Location = new System.Drawing.Point(1, 167);
             this.btn_Product.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Product.Name = "btn_Product";
@@ -221,8 +222,9 @@
             // 
             this.btn_Home.FlatAppearance.BorderSize = 0;
             this.btn_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Home.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Home.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Home.ForeColor = System.Drawing.Color.White;
+            this.btn_Home.Image = ((System.Drawing.Image)(resources.GetObject("btn_Home.Image")));
             this.btn_Home.Location = new System.Drawing.Point(4, 82);
             this.btn_Home.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Home.Name = "btn_Home";
