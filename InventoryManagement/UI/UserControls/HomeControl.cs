@@ -22,12 +22,36 @@ namespace InventoryManagement.UI.UserControls
 
         private void HomeControl_Load(object sender, EventArgs e)
         {
-          
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             lbl_dateTime.Text = DateTime.Now.ToString();
+        }
+
+        private void btn_MoreInfo_Transactions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_MoreInfo_Purchases_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_MoreInfo_Customers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_MoreInfo_LowStock_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_MoreInfo_PendingAmount_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
