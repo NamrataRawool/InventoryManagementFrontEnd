@@ -261,12 +261,12 @@
             this.purchaseControl.Size = new System.Drawing.Size(1114, 704);
             this.purchaseControl.TabIndex = 5;
             // 
-            // customerControl1
+            // customerControl
             // 
             this.customerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.customerControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerControl.Location = new System.Drawing.Point(236, 25);
-            this.customerControl.Name = "customerControl1";
+            this.customerControl.Name = "customerControl";
             this.customerControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.customerControl.Size = new System.Drawing.Size(1114, 704);
             this.customerControl.TabIndex = 6;
@@ -299,12 +299,12 @@
             this.productControl.Size = new System.Drawing.Size(1114, 704);
             this.productControl.TabIndex = 9;
             // 
-            // homeControl1
+            // homeControl
             // 
-            this.homeControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.homeControl.BackColor = System.Drawing.Color.WhiteSmoke;
             this.homeControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeControl.Location = new System.Drawing.Point(236, 25);
-            this.homeControl.Name = "homeControl1";
+            this.homeControl.Name = "homeControl";
             this.homeControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.homeControl.Size = new System.Drawing.Size(1114, 704);
             this.homeControl.TabIndex = 10;

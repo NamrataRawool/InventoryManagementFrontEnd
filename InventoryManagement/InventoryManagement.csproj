@@ -212,6 +212,7 @@
     <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Customer\FormController_AddCustomer.cs" />
     <Compile Include="Controllers\Customer\FormController_EditCustomer.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\Product\FormController_AddProduct.cs" />
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
