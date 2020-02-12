@@ -45,6 +45,7 @@
             this.btn_editProduct = new System.Windows.Forms.Button();
             this.tb_searchProduct = new System.Windows.Forms.TextBox();
             this.btn_SearchProduct = new System.Windows.Forms.Button();
+            this.ProductTableColumn_AvailableStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.productDataView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -74,7 +75,8 @@
             this.ProductTableColumn_Name,
             this.ProductTableColumn_Category,
             this.ProductTableColumn_RetailPrice,
-            this.ProductTableColumn_WholesalePrice});
+            this.ProductTableColumn_WholesalePrice,
+            this.ProductTableColumn_AvailableStock});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -241,6 +243,12 @@
             this.btn_SearchProduct.UseVisualStyleBackColor = false;
             this.btn_SearchProduct.Click += new System.EventHandler(this.btn_SearchProduct_Click);
             // 
+            // ProductTableColumn_AvailableStock
+            // 
+            this.ProductTableColumn_AvailableStock.HeaderText = "Available Stock";
+            this.ProductTableColumn_AvailableStock.Name = "ProductTableColumn_AvailableStock";
+            this.ProductTableColumn_AvailableStock.ReadOnly = true;
+            // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,5 +282,6 @@
         public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_Category;
         public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_RetailPrice;
         public System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_WholesalePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductTableColumn_AvailableStock;
     }
 }

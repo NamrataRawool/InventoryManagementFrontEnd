@@ -67,6 +67,28 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             return new CustomerGet(m_Context, customerDTO);
         }
 
+        public CustomerGet GetTodaysAddedCustomers()
+        {
+            DateTime now = DateTime.Now;
+            DateTime today = new DateTime(now.Year, now.Month, now.Day);
+            now = now.AddDays(1);
+            DateTime tomorrow = new DateTime(now.Year, now.Month, now.Day);
+            return GetByDateAdded(today, tomorrow);
+        }
+
+        public CustomerGet GetByDateAdded(DateTime from, DateTime to)
+        {
+            var customerDTO = m_Context.Customers
+                                .AsNoTracking()
+                                .FirstOrDefaultAsync(c => (c.DateAdded >= from && c.DateAdded <= to))
+                                .Result;
+
+            if (customerDTO == null)
+                return null;
+
+            return new CustomerGet(m_Context, customerDTO);
+        }
+
         public CustomerGet Post(CustomerPost post)
         {
             var customerDTO = new CustomerDTO(post);

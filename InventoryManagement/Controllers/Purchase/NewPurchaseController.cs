@@ -1,5 +1,7 @@
-﻿using InventoryManagement.EventHandlers.Purchase;
+﻿using InventoryManagement.Broadcaster;
+using InventoryManagement.EventHandlers.Purchase;
 using InventoryManagement.Events;
+using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
 using InventoryManagement.UI.Product;
@@ -216,6 +218,9 @@ namespace InventoryManagement.Controllers.Purchase
             }
             MessageBox.Show("Purchase entry saved successfully!");
             ResetUIControls();
+
+            Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.PURCHASE, purchase.ID);
+            EventBroadcaster.Get().BroadcastEvent(e);
         }
 
         public ProductGet OpenForm_AddProduct()

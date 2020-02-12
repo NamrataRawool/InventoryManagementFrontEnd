@@ -8,20 +8,26 @@ Fill database app
 backup and restore system
 
 Priority Tasks:
-## Product Control - aditya
 
-##Category Control - adi
+- Image icons for UI.
+
+## Product Control
+- Handling of Units(kg/gram/litre/ml/packet) for the products.
+
+##Category Control
 
 ##Customer Control
+- Save Balance Amount for the customer.
 
+##Vendor control
 
-##Vendor control - namrata 
-
-
-##Purchase control - aditya
+##Purchase control
 
 ##Transaction control
+- Wholesale/Retial price selection in Transaction Table.
 
+## Home Control (Dashboard)
+- Basic UI
 
 FUTURE SCOPE
 transaction history --> double click to view details -> print button on that form

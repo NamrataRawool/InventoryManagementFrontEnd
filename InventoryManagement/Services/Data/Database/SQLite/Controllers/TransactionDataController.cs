@@ -58,6 +58,31 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             return outList;
         }
 
+        public List<TransactionGet> GetTodaysTransactions()
+        {
+            DateTime date = DateTime.Now;
+            DateTime today = new DateTime(date.Year, date.Month, date.Day);
+            date = date.AddDays(1);
+            DateTime tomorrow = new DateTime(date.Year, date.Month, date.Day);
+            return GetByDate(today, tomorrow);
+        }
+
+        public double GetTodaysTransactionAmount()
+        {
+            return GetTotalTransactionAmount(DateTime.Now, DateTime.Now);
+        }
+
+        public double GetTotalTransactionAmount(DateTime from, DateTime to)
+        {
+            double amount = 0.0;
+
+            List<TransactionGet> todaysTransaction = GetByDate(from, to);
+            foreach(TransactionGet t in todaysTransaction)
+                amount += GetTotalBuyingPrice(t);
+
+            return amount;
+        }
+
         public List<TransactionGet> GetByDate(DateTime from, DateTime to)
         {
             List<TransactionDTO> transactionsDTOs = m_Context.Transactions
@@ -102,6 +127,25 @@ namespace InventoryManagement.Services.Data.Database.SQLite.Controllers
             m_Context.SaveChanges();
 
             return new TransactionGet(m_Context, transactionDTO);
+        }
+
+        private double GetTotalBuyingPrice(TransactionGet transaction)
+        {
+            double amount = 0.0;
+
+            string[] buyingPrices = transaction.BuyingPrices.Split(',');
+            string[] quantities = transaction.ProductQuantity.Split(',');
+            string[] discounts = transaction.Discounts.Split(',');
+            for (int i = 0; i < buyingPrices.Length; ++i)
+            {
+                double price = double.Parse(buyingPrices[i]);
+                int quantity = int.Parse(quantities[i]);
+                double discount = double.Parse(discounts[i]);
+                amount += ((price * (100 - discount) / 100)) * quantity;
+            }
+            amount += transaction.TotalTax;
+
+            return amount;
         }
 
     }

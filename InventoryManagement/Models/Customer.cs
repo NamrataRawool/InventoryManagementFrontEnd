@@ -25,6 +25,7 @@ namespace InventoryManagement.Models
             MobileNumber = rhs.MobileNumber;
             PendingAmount = rhs.PendingAmount;
             TotalAmount = rhs.TotalAmount;
+            DateAdded = rhs.DateAdded;
         }
 
         public int ID { get; set; }
@@ -39,9 +40,18 @@ namespace InventoryManagement.Models
 
         public double PendingAmount { get; set; }
 
+        public DateTime DateAdded { get; protected set; }
+
     }
 
-    public class CustomerPost : CustomerBase { }
+    public class CustomerPost : CustomerBase
+    {
+        public CustomerPost() 
+            : base()
+        {
+            DateAdded = DateTime.Now;
+        }
+    }
 
     public class CustomerGet : CustomerBase
     {

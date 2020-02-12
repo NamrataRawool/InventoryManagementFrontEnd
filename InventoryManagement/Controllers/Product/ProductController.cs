@@ -22,9 +22,7 @@ namespace InventoryManagement.Controllers
         public void Initialize(bool reset = true)
         {
             if (reset)
-            {
                 ResetTable();
-            }
 
             var products = DataService.GetProductDataController().GetAll();
             if (products == null)
@@ -43,6 +41,8 @@ namespace InventoryManagement.Controllers
 
         public void InitializeTable(List<ProductGet> products)
         {
+            GetTable().Rows.Clear();
+
             foreach (var product in products)
                 AddProductToTable(product);
         }
@@ -65,6 +65,8 @@ namespace InventoryManagement.Controllers
                     row.Cells["ProductTableColumn_Category"].Value = product.Category.Name;
                     row.Cells["ProductTableColumn_RetailPrice"].Value = product.RetailPrice;
                     row.Cells["ProductTableColumn_WholesalePrice"].Value = product.WholeSalePrice;
+                    row.Cells["ProductTableColumn_AvailableStock"].Value 
+                        = DataService.GetStockDataController().GetByProductID(product.ID).AvailableQuantity;
 
                     return;
                 }
@@ -83,6 +85,9 @@ namespace InventoryManagement.Controllers
             NewRow.Cells["ProductTableColumn_Category"].Value = product.Category.Name;
             NewRow.Cells["ProductTableColumn_RetailPrice"].Value = product.RetailPrice;
             NewRow.Cells["ProductTableColumn_WholesalePrice"].Value = product.WholeSalePrice;
+            NewRow.Cells["ProductTableColumn_AvailableStock"].Value 
+                = DataService.GetStockDataController().GetByProductID(product.ID).AvailableQuantity;
+
         }
 
         public void RefreshTable()
@@ -93,6 +98,8 @@ namespace InventoryManagement.Controllers
         public void InitializeAutoSearchBox(List<ProductGet> products)
         {
             var searchBox = m_UIControl.tb_searchProduct;
+            searchBox.Clear();
+
             searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             searchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
@@ -150,6 +157,32 @@ namespace InventoryManagement.Controllers
                 row.Visible = visible;
             }
             return;
+        }
+
+        public void OnPurchaseAdded(PurchaseGet purchase)
+        {
+            string[] ids = purchase.ProductIDs.Split(',');
+
+            for (int i = 0; i < ids.Length; ++i)
+            {
+                int productID = int.Parse(ids[i]);
+
+                var availableQuantity = DataService.GetStockDataController().GetByProductID(productID).AvailableQuantity;
+
+                // go through the table rows
+                var rows = GetTable().Rows;
+                foreach (DataGridViewRow row in rows)
+                {
+                    var rowID = int.Parse(row.Cells["ProductTableColumn_ID"].Value.ToString());
+
+                    if (rowID != productID)
+                        continue;
+
+                    // found the product
+                    row.Cells["ProductTableColumn_AvailableStock"].Value = availableQuantity;
+                }
+            }
+
         }
 
         protected override void RegisterEvents()

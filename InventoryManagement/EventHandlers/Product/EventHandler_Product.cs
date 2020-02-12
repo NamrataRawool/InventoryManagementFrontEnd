@@ -47,6 +47,10 @@ namespace InventoryManagement.EventHandlers.Product
             {
                 AddProductToTable(e.GetID());
             }
+            else if (entityType == DBEntityType.PURCHASE)
+            {
+                OnPurchaseAdded(e.GetID());
+            }
         }
 
         private void HandleEvent_EntryUpdated(Event_EntryUpdated e)
@@ -57,6 +61,18 @@ namespace InventoryManagement.EventHandlers.Product
             {
                 UpdateProductInTable(e.GetID());
             }
+        }
+
+        private void OnPurchaseAdded(int id)
+        {
+            var purchase = DataService.GetPurchaseDataController().Get(id);
+            if (purchase == null)
+            {
+                Assert.Do("This should not have happened!");
+                return;
+            }
+
+            m_Controller.OnPurchaseAdded(purchase);
         }
 
         private void UpdateProductInTable(int productID)
