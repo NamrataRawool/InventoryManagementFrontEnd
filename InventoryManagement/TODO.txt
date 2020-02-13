@@ -9,8 +9,6 @@ backup and restore system
 
 Priority Tasks:
 
-- Image icons for UI.
-
 ## Product Control
 - Handling of Units(kg/gram/litre/ml/packet) for the products.
 
