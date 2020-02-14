@@ -30,7 +30,7 @@ namespace InventoryManagement.Models
 
         public int ProductID { get; set; }
 
-        public int AvailableQuantity { get; set; }
+        public double AvailableQuantity { get; set; }
 
         public int TotalQuantity { get; set; }
     }

@@ -166,23 +166,37 @@ namespace InventoryManagement.Controllers
             for (int i = 0; i < ids.Length; ++i)
             {
                 int productID = int.Parse(ids[i]);
-
-                var availableQuantity = DataService.GetStockDataController().GetByProductID(productID).AvailableQuantity;
-
-                // go through the table rows
-                var rows = GetTable().Rows;
-                foreach (DataGridViewRow row in rows)
-                {
-                    var rowID = int.Parse(row.Cells["ProductTableColumn_ID"].Value.ToString());
-
-                    if (rowID != productID)
-                        continue;
-
-                    // found the product
-                    row.Cells["ProductTableColumn_AvailableStock"].Value = availableQuantity;
-                }
+                UpdateStockInTable(productID);
             }
+        }
 
+        public void OnTransactionAdded(TransactionGet transaction)
+        {
+            string[] ids = transaction.ProductIDs.Split(',');
+
+            for (int i = 0; i < ids.Length; ++i)
+            {
+                int productID = int.Parse(ids[i]);
+                UpdateStockInTable(productID);
+            }
+        }
+
+        private void UpdateStockInTable(int productID)
+        {
+            var availableQuantity = DataService.GetStockDataController().GetByProductID(productID).AvailableQuantity;
+
+            // go through the table rows
+            var rows = GetTable().Rows;
+            foreach (DataGridViewRow row in rows)
+            {
+                var rowID = int.Parse(row.Cells["ProductTableColumn_ID"].Value.ToString());
+
+                if (rowID != productID)
+                    continue;
+
+                // found the product
+                row.Cells["ProductTableColumn_AvailableStock"].Value = availableQuantity;
+            }
         }
 
         protected override void RegisterEvents()
