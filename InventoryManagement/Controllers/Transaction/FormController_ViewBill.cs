@@ -96,13 +96,16 @@ namespace InventoryManagement.Controllers.Transaction
             if (customer == null || customer.ID == 0)
                 return;
 
+            double amountDue = double.Parse(m_TransactionSession.amountDue);
+            double amountPaid = double.Parse(m_TransactionSession.amountPaid);
+
             CustomerPost customerPost = new CustomerPost();
             customerPost.ID = customer.ID;
             customerPost.MobileNumber = customer.MobileNumber;
             customerPost.Name = customer.Name;
             customerPost.Email = customer.Email;
-            customerPost.TotalAmount = customer.TotalAmount + double.Parse(m_TransactionSession.amountDue);
-            customerPost.PendingAmount = customer.PendingAmount + (double.Parse(m_TransactionSession.amountDue) - double.Parse(m_TransactionSession.amountPaid));
+            customerPost.TotalAmount = customer.TotalAmount + amountDue;
+            customerPost.PendingAmount = amountDue - amountPaid;
             var c = DataService.GetCustomerDataController().Put(customerPost);
         }
 

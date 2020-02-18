@@ -9,13 +9,14 @@ backup and restore system
 
 Priority Tasks:
 
+******** IsValidDouble() does not support negative values *********
+
 ## Product Control
 - Handling of Units(kg/gram/litre/ml/packet) for the products.
 
 ##Category Control
 
 ##Customer Control
-- Save Balance Amount for the customer.
 
 ##Vendor control
 

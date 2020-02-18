@@ -48,13 +48,11 @@ namespace InventoryManagement.Controllers.Transaction
             var product = productDetails.Product;
             DataGridViewRow row = CheckIfProductExistInTable(product.ID);
             if (row != null)
-            {
                 UpdateProductRowInTable(row, productDetails);
-                return;
-            }
+            else 
+                AddProductRowToTable(productDetails);
 
-            // add new row
-            AddProductRowToTable(productDetails);
+            UpdateUILabels();
         }
 
         private DataGridViewRow CheckIfProductExistInTable(int id)
@@ -100,7 +98,6 @@ namespace InventoryManagement.Controllers.Transaction
             productDetails.FinalPrice = finalPrice;
 
             m_transactionSession.AddRowEntry(productDetails);
-            UpdateUILabels();
         }
 
         public void AddProductRowToTable(BillProductDetails productDetails)
@@ -129,7 +126,6 @@ namespace InventoryManagement.Controllers.Transaction
             productDetails.FinalPrice = newFinalPrice;
 
             m_transactionSession.AddRowEntry(productDetails);
-            UpdateUILabels();
         }
 
         public void OnDeleteProduct()
@@ -190,7 +186,7 @@ namespace InventoryManagement.Controllers.Transaction
             UpdateUILabels();
         }
 
-        public void SearchCustomerByMobileNumber(string mobileNumber)
+        public void UpdateCustomerDetailsByMobileNumber(string mobileNumber)
         {
             m_UIControl.tb_customerName.Text = string.Empty;
             m_UIControl.tb_pendingAmount.Text = string.Empty;
@@ -204,14 +200,13 @@ namespace InventoryManagement.Controllers.Transaction
                     return;
                 }
                 m_transactionSession.SetCustomer(customer);
-                m_UIControl.tb_customerName.Text = customer.Name;
-                m_UIControl.tb_pendingAmount.Text = customer.PendingAmount.ToString();
+                UpdateCustomerDetails(customer);
             }
             else
                 m_UIControl.lbl_customerError.Text = "Mobile number not valid !";
         }
 
-        public void SearchCustomerByName(string name)
+        public void UpdateCustomerDetailsByName(string name)
         {
             m_UIControl.tb_mobileNumber.Text = string.Empty;
             m_UIControl.tb_pendingAmount.Text = string.Empty;
@@ -225,11 +220,22 @@ namespace InventoryManagement.Controllers.Transaction
                     return;
                 }
                 m_transactionSession.SetCustomer(customer);
-                m_UIControl.tb_mobileNumber.Text = customer.MobileNumber;
-                m_UIControl.tb_pendingAmount.Text = customer.PendingAmount.ToString();
+                UpdateCustomerDetails(customer);
             }
             else
+            {
                 m_UIControl.lbl_customerError.Text = "Name not valid !";
+            }
+        }
+
+        private void UpdateCustomerDetails(CustomerGet customer)
+        {
+            m_UIControl.tb_customerName.Text = customer.Name;
+
+            double PendingAmount = customer.PendingAmount;
+            m_UIControl.lbl_CustomerAmount.Text = (PendingAmount < 0.0) ? "Balance Amount :" : "Pending Amount :";
+
+            m_UIControl.tb_pendingAmount.Text = Math.Abs(customer.PendingAmount).ToString();
         }
 
         public void OpenForm_ViewBill()
@@ -248,10 +254,11 @@ namespace InventoryManagement.Controllers.Transaction
                 m_UIControl.lbl_errorAmountPaid.Text = "Enter valid amount!";
                 return;
             }
+
             double amountPaid = double.Parse(m_UIControl.tb_AmountPaid.Text);
             double amountDue = double.Parse(m_UIControl.tb_amountDue.Text);
             double pendingAmount = 0.0;
-            if (amountDue > amountPaid)
+            if (amountDue != amountPaid)
             {
                 var customer = m_transactionSession.GetCustomer();
                 if (customer == null || customer.ID == 0)
@@ -259,6 +266,7 @@ namespace InventoryManagement.Controllers.Transaction
                     m_UIControl.lbl_errorAmountPaid.Text = "Please add customer details";
                     return;
                 }
+
                 pendingAmount = amountDue - amountPaid;
             }
 
@@ -333,7 +341,7 @@ namespace InventoryManagement.Controllers.Transaction
             searchBox.AutoCompleteCustomSource = collection;
         }
 
-        private void UpdateUILabels()
+        public void UpdateUILabels()
         {
             double subtotal = 0;
             double totalDiscount = 0;
@@ -351,7 +359,13 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession.subtotal = m_UIControl.tb_subtotal.Text = subtotal.ToString();
             m_transactionSession.totalDiscount = m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
             m_transactionSession.totalTax = m_UIControl.tb_totalTax.Text = totalTax.ToString();
-            m_transactionSession.amountDue = m_UIControl.tb_amountDue.Text = amountDue.ToString();
+
+            CustomerGet customer = m_transactionSession.GetCustomer();
+            if (customer != null)
+                amountDue = amountDue + customer.PendingAmount;
+
+            m_UIControl.tb_amountDue.Text = amountDue.ToString();
+            m_transactionSession.amountDue = amountDue.ToString();
         }
 
         private double CalculateTotalTax(BillProductDetails productDetails)
@@ -419,6 +433,8 @@ namespace InventoryManagement.Controllers.Transaction
             m_UIControl.tb_customerName.Text = string.Empty;
             m_UIControl.tb_pendingAmount.Text = string.Empty;
             m_UIControl.tb_mobileNumber.Text = string.Empty;
+
+            m_transactionSession.SetCustomer(null);
         }
 
         private void ResetBillProductsTable()

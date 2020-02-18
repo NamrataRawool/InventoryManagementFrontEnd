@@ -156,8 +156,8 @@ namespace InventoryManagement.UI.UserControls
                     m_newTransactionController.ResetCustomerDetails();
                     return;
                 }
-
-                m_newTransactionController.SearchCustomerByMobileNumber(tb_mobileNumber.Text);
+                m_newTransactionController.UpdateCustomerDetailsByMobileNumber(tb_mobileNumber.Text);
+                m_newTransactionController.UpdateUILabels();
             }
         }
 
@@ -171,7 +171,8 @@ namespace InventoryManagement.UI.UserControls
                     m_newTransactionController.ResetCustomerDetails();
                     return;
                 }
-                m_newTransactionController.SearchCustomerByName(tb_customerName.Text);
+                m_newTransactionController.UpdateCustomerDetailsByName(tb_customerName.Text);
+                m_newTransactionController.UpdateUILabels();
             }
 
         }
