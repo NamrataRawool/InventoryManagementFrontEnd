@@ -267,10 +267,10 @@ namespace InventoryManagement.Controllers.Transaction
                     return;
                 }
 
-                pendingAmount = amountDue - amountPaid;
             }
 
-            pendingAmount += m_transactionSession.GetCustomer().PendingAmount;
+            pendingAmount = amountDue - amountPaid;
+
             m_transactionSession.pendingAmount = pendingAmount.ToString();
             m_transactionSession.amountPaid = amountPaid.ToString();
 

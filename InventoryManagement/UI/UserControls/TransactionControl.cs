@@ -152,10 +152,8 @@ namespace InventoryManagement.UI.UserControls
             if (e.KeyCode == Keys.Enter)
             {
                 if (string.IsNullOrEmpty(tb_mobileNumber.Text))
-                {
                     m_newTransactionController.ResetCustomerDetails();
-                    return;
-                }
+
                 m_newTransactionController.UpdateCustomerDetailsByMobileNumber(tb_mobileNumber.Text);
                 m_newTransactionController.UpdateUILabels();
             }
@@ -167,10 +165,8 @@ namespace InventoryManagement.UI.UserControls
             if (e.KeyCode == Keys.Enter)
             {
                 if (string.IsNullOrEmpty(tb_customerName.Text))
-                {
                     m_newTransactionController.ResetCustomerDetails();
-                    return;
-                }
+
                 m_newTransactionController.UpdateCustomerDetailsByName(tb_customerName.Text);
                 m_newTransactionController.UpdateUILabels();
             }

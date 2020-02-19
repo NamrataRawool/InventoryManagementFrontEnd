@@ -149,10 +149,8 @@ namespace InventoryManagement.Controllers.Transaction
 
         private void InitializeLabels()
         {
-            if (m_TransactionSession.GetCustomer().Name == null)
-                m_UIControl.lbl_CustomerName.Text = "--";
-            else
-                m_UIControl.lbl_CustomerName.Text = m_TransactionSession.GetCustomer().Name;
+            CustomerGet customer = m_TransactionSession.GetCustomer();
+            m_UIControl.lbl_CustomerName.Text = (customer == null) ? "--" : customer.Name;
             m_UIControl.lbl_Date.Text = DateTime.Now.ToString();
 
             NumberFormatInfo indianCurrency = new CultureInfo("hi-IN", false).NumberFormat;
