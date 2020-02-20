@@ -30,6 +30,7 @@
         {
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.GroupBox_ProductDetails = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.Label_Discount = new System.Windows.Forms.Label();
             this.tf_ProductDetails_Discount = new System.Windows.Forms.TextBox();
             this.tf_ProductDetails_Description = new System.Windows.Forms.TextBox();
@@ -58,10 +59,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbl_Error = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_Error = new System.Windows.Forms.Label();
+            this.lbl_Unit = new System.Windows.Forms.Label();
+            this.cb_Unit = new System.Windows.Forms.ComboBox();
             this.GroupBox_ProductDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProductImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -84,6 +86,8 @@
             // 
             // GroupBox_ProductDetails
             // 
+            this.GroupBox_ProductDetails.Controls.Add(this.lbl_Unit);
+            this.GroupBox_ProductDetails.Controls.Add(this.cb_Unit);
             this.GroupBox_ProductDetails.Controls.Add(this.label5);
             this.GroupBox_ProductDetails.Controls.Add(this.Label_Discount);
             this.GroupBox_ProductDetails.Controls.Add(this.tf_ProductDetails_Discount);
@@ -100,16 +104,29 @@
             this.GroupBox_ProductDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox_ProductDetails.Location = new System.Drawing.Point(37, 218);
             this.GroupBox_ProductDetails.Name = "GroupBox_ProductDetails";
-            this.GroupBox_ProductDetails.Size = new System.Drawing.Size(362, 330);
+            this.GroupBox_ProductDetails.Size = new System.Drawing.Size(362, 350);
             this.GroupBox_ProductDetails.TabIndex = 1;
             this.GroupBox_ProductDetails.TabStop = false;
             this.GroupBox_ProductDetails.Text = "Product Details";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(309, 317);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 18);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "%";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Label_Discount
             // 
             this.Label_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_Discount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Label_Discount.Location = new System.Drawing.Point(16, 279);
+            this.Label_Discount.Location = new System.Drawing.Point(16, 313);
             this.Label_Discount.Name = "Label_Discount";
             this.Label_Discount.Size = new System.Drawing.Size(123, 26);
             this.Label_Discount.TabIndex = 15;
@@ -119,7 +136,7 @@
             // tf_ProductDetails_Discount
             // 
             this.tf_ProductDetails_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tf_ProductDetails_Discount.Location = new System.Drawing.Point(145, 280);
+            this.tf_ProductDetails_Discount.Location = new System.Drawing.Point(145, 314);
             this.tf_ProductDetails_Discount.Name = "tf_ProductDetails_Discount";
             this.tf_ProductDetails_Discount.Size = new System.Drawing.Size(159, 22);
             this.tf_ProductDetails_Discount.TabIndex = 6;
@@ -157,7 +174,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(15, 229);
+            this.label2.Location = new System.Drawing.Point(15, 263);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 26);
             this.label2.TabIndex = 2;
@@ -217,7 +234,7 @@
             // 
             this.cb_ProductDetails_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_ProductDetails_Category.FormattingEnabled = true;
-            this.cb_ProductDetails_Category.Location = new System.Drawing.Point(144, 229);
+            this.cb_ProductDetails_Category.Location = new System.Drawing.Point(144, 263);
             this.cb_ProductDetails_Category.Name = "cb_ProductDetails_Category";
             this.cb_ProductDetails_Category.Size = new System.Drawing.Size(186, 24);
             this.cb_ProductDetails_Category.TabIndex = 5;
@@ -392,35 +409,23 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(458, 410);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 138);
+            this.groupBox2.Size = new System.Drawing.Size(364, 158);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tax Details";
             // 
-            // lbl_Error
+            // label8
             // 
-            this.lbl_Error.AutoSize = true;
-            this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error.Location = new System.Drawing.Point(430, 175);
-            this.lbl_Error.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Error.Name = "lbl_Error";
-            this.lbl_Error.Size = new System.Drawing.Size(0, 18);
-            this.lbl_Error.TabIndex = 31;
-            this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(309, 283);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 18);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "%";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(280, 86);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(21, 18);
+            this.label8.TabIndex = 46;
+            this.label8.Text = "%";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
@@ -435,18 +440,37 @@
             this.label6.Text = "%";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label8
+            // lbl_Error
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(280, 86);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 18);
-            this.label8.TabIndex = 46;
-            this.label8.Text = "%";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_Error.AutoSize = true;
+            this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Error.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Error.Location = new System.Drawing.Point(430, 175);
+            this.lbl_Error.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Error.Name = "lbl_Error";
+            this.lbl_Error.Size = new System.Drawing.Size(0, 18);
+            this.lbl_Error.TabIndex = 31;
+            this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_Unit
+            // 
+            this.lbl_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Unit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_Unit.Location = new System.Drawing.Point(15, 220);
+            this.lbl_Unit.Name = "lbl_Unit";
+            this.lbl_Unit.Size = new System.Drawing.Size(123, 26);
+            this.lbl_Unit.TabIndex = 45;
+            this.lbl_Unit.Text = "Unit : ";
+            this.lbl_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cb_Unit
+            // 
+            this.cb_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Unit.FormattingEnabled = true;
+            this.cb_Unit.Location = new System.Drawing.Point(144, 220);
+            this.cb_Unit.Name = "cb_Unit";
+            this.cb_Unit.Size = new System.Drawing.Size(186, 24);
+            this.cb_Unit.TabIndex = 46;
             // 
             // Form_ProductDetails
             // 
@@ -519,5 +543,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label lbl_Unit;
+        public System.Windows.Forms.ComboBox cb_Unit;
     }
 }

@@ -47,6 +47,8 @@
             this.Label_Barcode = new System.Windows.Forms.Label();
             this.gb_Pricing = new System.Windows.Forms.GroupBox();
             this.gb_Tax = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tb_CGST = new System.Windows.Forms.TextBox();
             this.lbl_CGST = new System.Windows.Forms.Label();
             this.lbl_SGST = new System.Windows.Forms.Label();
@@ -54,13 +56,13 @@
             this.tb_Discount = new System.Windows.Forms.TextBox();
             this.lbl_Discount = new System.Windows.Forms.Label();
             this.gb_Details = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btn_AddNewCategory = new System.Windows.Forms.Button();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_Unit = new System.Windows.Forms.Label();
+            this.cb_Unit = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -93,7 +95,7 @@
             // Label_Category
             // 
             this.Label_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Category.Location = new System.Drawing.Point(24, 211);
+            this.Label_Category.Location = new System.Drawing.Point(24, 250);
             this.Label_Category.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Category.Name = "Label_Category";
             this.Label_Category.Size = new System.Drawing.Size(116, 24);
@@ -168,7 +170,7 @@
             this.cb_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Category.FormattingEnabled = true;
             this.cb_Category.IntegralHeight = false;
-            this.cb_Category.Location = new System.Drawing.Point(166, 211);
+            this.cb_Category.Location = new System.Drawing.Point(166, 250);
             this.cb_Category.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Category.Name = "cb_Category";
             this.cb_Category.Size = new System.Drawing.Size(260, 24);
@@ -295,6 +297,30 @@
             this.gb_Tax.TabStop = false;
             this.gb_Tax.Text = "Tax";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(270, 112);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 18);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "%";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(270, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 18);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "%";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // tb_CGST
             // 
             this.tb_CGST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -338,7 +364,7 @@
             // tb_Discount
             // 
             this.tb_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Discount.Location = new System.Drawing.Point(166, 268);
+            this.tb_Discount.Location = new System.Drawing.Point(166, 294);
             this.tb_Discount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Discount.Name = "tb_Discount";
             this.tb_Discount.Size = new System.Drawing.Size(152, 22);
@@ -347,7 +373,7 @@
             // lbl_Discount
             // 
             this.lbl_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Discount.Location = new System.Drawing.Point(24, 263);
+            this.lbl_Discount.Location = new System.Drawing.Point(24, 289);
             this.lbl_Discount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Discount.Name = "lbl_Discount";
             this.lbl_Discount.Size = new System.Drawing.Size(116, 31);
@@ -357,6 +383,8 @@
             // 
             // gb_Details
             // 
+            this.gb_Details.Controls.Add(this.lbl_Unit);
+            this.gb_Details.Controls.Add(this.cb_Unit);
             this.gb_Details.Controls.Add(this.label5);
             this.gb_Details.Controls.Add(this.btn_AddNewCategory);
             this.gb_Details.Controls.Add(this.tb_Description);
@@ -377,10 +405,22 @@
             this.gb_Details.TabStop = false;
             this.gb_Details.Text = "Details";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(322, 296);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 18);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "%";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // btn_AddNewCategory
             // 
             this.btn_AddNewCategory.AutoSize = true;
-            this.btn_AddNewCategory.Location = new System.Drawing.Point(432, 208);
+            this.btn_AddNewCategory.Location = new System.Drawing.Point(432, 247);
             this.btn_AddNewCategory.Name = "btn_AddNewCategory";
             this.btn_AddNewCategory.Size = new System.Drawing.Size(28, 30);
             this.btn_AddNewCategory.TabIndex = 30;
@@ -425,41 +465,29 @@
             this.pictureBox_Image.TabIndex = 33;
             this.pictureBox_Image.TabStop = false;
             // 
-            // label5
+            // lbl_Unit
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(322, 270);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 18);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "%";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Unit.Location = new System.Drawing.Point(24, 201);
+            this.lbl_Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Unit.Name = "lbl_Unit";
+            this.lbl_Unit.Size = new System.Drawing.Size(116, 24);
+            this.lbl_Unit.TabIndex = 45;
+            this.lbl_Unit.Text = "Unit :";
+            this.lbl_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // cb_Unit
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(270, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 18);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "%";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(270, 112);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 18);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "%";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cb_Unit.DropDownHeight = 80;
+            this.cb_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Unit.FormattingEnabled = true;
+            this.cb_Unit.IntegralHeight = false;
+            this.cb_Unit.Location = new System.Drawing.Point(166, 201);
+            this.cb_Unit.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_Unit.Name = "cb_Unit";
+            this.cb_Unit.Size = new System.Drawing.Size(260, 24);
+            this.cb_Unit.TabIndex = 46;
+            this.cb_Unit.Text = "Select Unit";
             // 
             // Form_AddProduct
             // 
@@ -530,5 +558,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Unit;
+        public System.Windows.Forms.ComboBox cb_Unit;
     }
 }

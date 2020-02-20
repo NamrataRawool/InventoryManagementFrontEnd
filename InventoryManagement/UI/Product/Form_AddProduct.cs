@@ -24,18 +24,7 @@ namespace InventoryManagement.UI.Product
             InitializeComponent();
 
             m_Controller = new FormController_AddProduct(this);
-
-            InitializeComboBox();
-        }
-
-        private void InitializeComboBox()
-        {
-            var categories = DataService.GetCategoryDataController().GetAll();
-
-            foreach(var category in categories)
-                cb_Category.Items.Add(category.Name);
-
-            cb_Category.SelectedIndex = 0;
+            m_Controller.Initialize();
         }
 
         private void btn_ResetProduct_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using InventoryManagement.Events.Common;
 using InventoryManagement.Models;
 using InventoryManagement.Services.Data;
+using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI.Product;
 using InventoryManagement.Utilities;
 using System.Drawing;
@@ -23,6 +24,8 @@ namespace InventoryManagement.Controllers.Product
 
         private void Initialize(int productID)
         {
+            m_Product = DataService.GetProductDataController().Get(productID);
+
             InitializeProductDetails(productID);
             InitializeAvailableStockLabel();
         }
@@ -53,6 +56,7 @@ namespace InventoryManagement.Controllers.Product
             product.Barcode = barcode;
             product.Name = name;
             product.Description = m_UIControl.tf_ProductDetails_Description.Text.Trim();
+            product.Unit = ProductUnit.GetUnitFromText(m_UIControl.cb_Unit.Text);
             product.RetailPrice = int.Parse(m_UIControl.tf_ProductDetails_RetailPrice.Text.Trim());
             product.WholeSalePrice = int.Parse(m_UIControl.tf_ProductDetails_WholesalePrice.Text.Trim());
             product.Discount = double.Parse(m_UIControl.tf_ProductDetails_Discount.Text.Trim());
@@ -198,8 +202,6 @@ namespace InventoryManagement.Controllers.Product
 
         private void InitializeProductDetails(int productID)
         {
-            m_Product = DataService.GetProductDataController().Get(productID);
-
             var UI = m_UIControl;
 
             UI.tf_ProductDetails_ProductID.Text = m_Product.ID.ToString();
@@ -219,13 +221,29 @@ namespace InventoryManagement.Controllers.Product
                 UI.pictureBox_ProductImage.Image = Image.FromStream(fs);
             }
 
-            // fill categories
+            InitializeCategoryComboBox();
+            InitializeUnitComboBox();
+        }
+
+        private void InitializeCategoryComboBox()
+        {
             var Categories = DataService.GetCategoryDataController().GetAll();
             foreach (var category in Categories)
-            {
-                UI.cb_ProductDetails_Category.Items.Add(category.Name);
-            }
-            UI.cb_ProductDetails_Category.SelectedItem = m_Product.Category.Name;
+                m_UIControl.cb_ProductDetails_Category.Items.Add(category.Name);
+            m_UIControl.cb_ProductDetails_Category.SelectedItem = m_Product.Category.Name;
+        }
+
+        private void InitializeUnitComboBox()
+        {
+            var comboBox = m_UIControl.cb_Unit;
+
+            comboBox.Items.Add("KG");
+            comboBox.Items.Add("Gram");
+            comboBox.Items.Add("Liter");
+            comboBox.Items.Add("MiliLiter");
+            comboBox.Items.Add("Packet");
+
+            comboBox.SelectedIndex = m_Product.Unit - 1;
         }
 
         protected override void RegisterEvents()

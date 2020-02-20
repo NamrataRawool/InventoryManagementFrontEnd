@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Services.Data.Database;
+using InventoryManagement.Services.Misc.Assert;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,35 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Models
 {
+
+    public static class ProductUnit
+    {
+        public static readonly int KG       = 1;
+        public static readonly int GRAM     = 2;
+        public static readonly int LITER    = 3;
+        public static readonly int ML       = 4;
+        public static readonly int PACKET   = 5;
+
+        public static int GetUnitFromText(string unit)
+        {
+            switch (unit)
+            {
+                case "KG":
+                    return KG;
+                case "Gram":
+                    return GRAM;
+                case "Liter":
+                    return LITER;
+                case "MiliLiter":
+                    return ML;
+                case "Packet":
+                    return PACKET;
+            }
+
+            Assert.Do(null);
+            return -1;
+        }
+    }
 
     public class ProductBase
     {
@@ -26,6 +56,7 @@ namespace InventoryManagement.Models
             Barcode = rhs.Barcode;
             Name = rhs.Name;
             Description = rhs.Description;
+            Unit = rhs.Unit;
             RetailPrice = rhs.RetailPrice;
             WholeSalePrice = rhs.WholeSalePrice;
             ImagePath = rhs.ImagePath;
@@ -41,6 +72,8 @@ namespace InventoryManagement.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public int Unit { get; set; }
 
         public int RetailPrice { get; set; }
 

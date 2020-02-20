@@ -29,6 +29,36 @@ namespace InventoryManagement.Controllers.Product
             SetEventHandler(new EventHandler_AddProduct(this));
         }
 
+        public void Initialize()
+        {
+            InitializeCategoryComboBox();
+            InitializeUnitComboBox();
+        }
+
+        private void InitializeUnitComboBox()
+        {
+            var comboBox = m_UIControl.cb_Unit;
+
+            comboBox.Items.Add("KG");
+            comboBox.Items.Add("Gram");
+            comboBox.Items.Add("Liter");
+            comboBox.Items.Add("MiliLiter");
+            comboBox.Items.Add("Packet");
+
+            comboBox.SelectedIndex = 0;
+        }
+
+        private void InitializeCategoryComboBox()
+        {
+            var categories = DataService.GetCategoryDataController().GetAll();
+            var comboBox = m_UIControl.cb_Category;
+
+            foreach (var category in categories)
+                comboBox.Items.Add(category.Name);
+
+            comboBox.SelectedIndex = 0;
+        }
+
         public void ResetAll()
         {
             var UI = m_UIControl;
@@ -61,10 +91,13 @@ namespace InventoryManagement.Controllers.Product
             string categoryName = UI.cb_Category.Text.Trim();
             CategoryGet category = DataService.GetCategoryDataController().GetByName(categoryName);
 
+            int unit = UI.cb_Unit.SelectedIndex + 1;
+
             ProductPost productPost = new ProductPost();
             productPost.Name = UI.tb_Name.Text.Trim();
             productPost.Barcode = UI.tb_Barcode.Text.Trim();
             productPost.Description = UI.tb_Description.Text.Trim();
+            productPost.Unit = unit;
             productPost.RetailPrice = int.Parse(UI.tb_RetailPrice.Text.Trim());
             productPost.WholeSalePrice = int.Parse(UI.tb_WholeSalePrice.Text.Trim());
             productPost.CategoryID = category.ID;
