@@ -35,9 +35,9 @@ namespace InventoryManagement.Controllers.Transaction
             InitializProductNameSearchBoxData();
         }
 
-        public void OnAddProduct(BillProductDetails productDetails)
+        public void OnAddProduct( BillProductDetails productDetails)
         {
-            if (!CheckStockAvailability(productDetails))
+            if (!IsStockAvailable(productDetails))
             {
                 DialogResult dialogResult = MessageBox.Show("Not Enough Stock Available? Do you still want to add", "Transaction successful !", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
@@ -49,7 +49,7 @@ namespace InventoryManagement.Controllers.Transaction
             DataGridViewRow row = CheckIfProductExistInTable(product.ID);
             if (row != null)
                 UpdateProductRowInTable(row, productDetails);
-            else 
+            else
                 AddProductRowToTable(productDetails);
 
             UpdateUILabels();
@@ -68,7 +68,7 @@ namespace InventoryManagement.Controllers.Transaction
             return null;
         }
 
-        private bool CheckStockAvailability(BillProductDetails productDetails)
+        private bool IsStockAvailable(BillProductDetails productDetails)
         {
             // check if stock is available
             int productID = productDetails.Product.ID;
@@ -82,18 +82,22 @@ namespace InventoryManagement.Controllers.Transaction
         {
             var product = productDetails.Product;
 
+            var checkBoxCell = row.Cells["BillTable_useWholeSalePrice"] as DataGridViewCheckBoxCell;
+            bool useWholeSalePrice = checkBoxCell.Value != null && (bool)checkBoxCell.Value;
+
+            double productPrice = useWholeSalePrice ? product.WholeSalePrice : product.RetailPrice;
+
             var newQuantity = Convert.ToInt32(row.Cells["BillTable_Quantity"].Value) + 1; // add 1 to the existing quantity
             row.Cells["BillTable_Quantity"].Value = newQuantity;
             productDetails.Quantity = newQuantity;
 
-            double discount = (product.RetailPrice * product.Discount / 100);
+            double discount = (productPrice * product.Discount / 100);
             row.Cells["BillTable_Discount"].Value = discount * newQuantity;
 
-            var totalTax = CalculateTotalTax(productDetails);
+            var totalTax = CalculateTotalTax(productPrice, product.CGST, product.SGST, productDetails.Quantity);
             row.Cells["BillTable_Tax"].Value = totalTax;
 
-            int priceToUse = product.RetailPrice;
-            double finalPrice = CalculateFinalPrice(priceToUse, product.Discount, newQuantity, totalTax);
+            double finalPrice = CalculateFinalPrice(productPrice, product.Discount, newQuantity, totalTax);
             row.Cells["BillTable_FinalPrice"].Value = finalPrice;
             productDetails.FinalPrice = finalPrice;
 
@@ -117,7 +121,7 @@ namespace InventoryManagement.Controllers.Transaction
             newRow.Cells["BillTable_Discount"].Value = discountInRupees * productDetails.Quantity;
             newRow.Cells["BillTable_Quantity"].Value = productDetails.Quantity;
 
-            var tax = CalculateTotalTax(productDetails);
+            var tax = CalculateTotalTax(product.RetailPrice, product.CGST, product.SGST, productDetails.Quantity);
             newRow.Cells["BillTable_Tax"].Value = tax;
 
             int priceToUse = product.RetailPrice;
@@ -139,7 +143,7 @@ namespace InventoryManagement.Controllers.Transaction
             UpdateUILabels();
         }
 
-        public void UpdateBillProductsDataRow()
+        public void UpdateBillProductsDataRow(bool useWholeSalePrice, bool checkStock)
         {
             if (m_UIControl.Bill_ProductsDataView.SelectedRows.Count <= 0)
                 return;
@@ -148,11 +152,14 @@ namespace InventoryManagement.Controllers.Transaction
             var productId = Convert.ToInt32(currentRow.Cells["BillTable_ProductId"].Value);
             var productGet = DataService.GetProductDataController().Get(productId);
 
+            double productPrice = useWholeSalePrice ? productGet.WholeSalePrice : productGet.RetailPrice;
+            currentRow.Cells["BillTable_Price"].Value = productPrice;
+
             var newQuantity = currentRow.Cells["BillTable_Quantity"].Value.ToString();
 
             if (!Validator.IsInteger(newQuantity))
             {
-                m_UIControl.Bill_ProductsDataView.CurrentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
+                currentRow.Cells["BillTable_Quantity"].Value = m_transactionSession.GetRowEntry(productId).Quantity;
                 return;
             }
 
@@ -165,20 +172,20 @@ namespace InventoryManagement.Controllers.Transaction
             }
 
             // check stock availability
-            if (!CheckStockAvailability(productDetails))
+            if (checkStock && !IsStockAvailable(productDetails))
             {
                 DialogResult dialogResult = MessageBox.Show("Not Enough Stock Available? Do you still want to add?", "Transaction successful !", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                     return;
             }
 
-            double discountInRupees = (productGet.RetailPrice * productGet.Discount / 100);
+            double discountInRupees = (productPrice * productGet.Discount / 100);
             currentRow.Cells["BillTable_Discount"].Value = discountInRupees * productDetails.Quantity;
 
-            var tax = CalculateTotalTax(productDetails);
+            var tax = CalculateTotalTax(productPrice, productGet.CGST, productGet.SGST, productDetails.Quantity);
             currentRow.Cells["BillTable_Tax"].Value = tax;
 
-            var finalPrice = CalculateFinalPrice(productGet.RetailPrice, productGet.Discount, productDetails.Quantity, tax);
+            var finalPrice = CalculateFinalPrice(productPrice, productGet.Discount, productDetails.Quantity, tax);
             currentRow.Cells["BillTable_FinalPrice"].Value = finalPrice;
             productDetails.FinalPrice = finalPrice;
 
@@ -368,18 +375,16 @@ namespace InventoryManagement.Controllers.Transaction
             m_transactionSession.amountDue = amountDue.ToString();
         }
 
-        private double CalculateTotalTax(BillProductDetails productDetails)
+        private double CalculateTotalTax(double price, double CGST, double SGST, int quantity)
         {
-            var product = productDetails.Product;
-
-            var cgst = (product.RetailPrice * product.CGST / 100) * productDetails.Quantity;
-            var sgst = (product.RetailPrice * product.SGST / 100) * productDetails.Quantity;
+            var cgst = (price * CGST / 100) * quantity;
+            var sgst = (price * SGST / 100) * quantity;
 
             double totalTax = cgst + sgst;
             return totalTax;
         }
 
-        private double CalculateFinalPrice(int price, double discountRate, int quantity, double totalTax)
+        private double CalculateFinalPrice(double price, double discountRate, int quantity, double totalTax)
         {
             double discountInRupees = (price * discountRate / 100);
             double discountedPrice = price - discountInRupees;

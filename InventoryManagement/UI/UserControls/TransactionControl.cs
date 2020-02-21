@@ -30,9 +30,28 @@ namespace InventoryManagement.UI.UserControls
 
         private void Bill_ProductsDataView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            m_newTransactionController.UpdateBillProductsDataRow();
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            {
+                m_newTransactionController.UpdateBillProductsDataRow(UseWholeSalePrice(), true);
+            }
         }
 
+        private void Bill_ProductsDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0)
+            {
+                this.Bill_ProductsDataView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                m_newTransactionController.UpdateBillProductsDataRow(UseWholeSalePrice(), false);
+            }
+        }
+        private bool UseWholeSalePrice()
+        {
+            if (this.Bill_ProductsDataView.Rows.Count <= 0)
+                return false;
+
+            var checkBoxCell = this.Bill_ProductsDataView.CurrentRow.Cells["BillTable_useWholeSalePrice"] as DataGridViewCheckBoxCell;
+            return checkBoxCell.Value != null && (bool)checkBoxCell.Value;
+        }
         private void AddProductToTable(ProductGet product)
         {
             if (product == null)
