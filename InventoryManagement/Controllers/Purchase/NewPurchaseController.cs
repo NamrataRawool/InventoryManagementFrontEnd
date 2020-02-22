@@ -226,6 +226,7 @@ namespace InventoryManagement.Controllers.Purchase
         public ProductGet OpenForm_AddProduct()
         {
             Form_AddProduct form = new Form_AddProduct();
+            form.DisableAddAnotherFunctionality();
             if (form.ShowDialog() != DialogResult.OK)
                 return null;
 

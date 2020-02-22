@@ -29,6 +29,12 @@ namespace InventoryManagement.UI.Vendor
             m_Vendor = m_controller.AddNewVendor();
         }
 
+        public void DisableAddAnotherFunctionality()
+        {
+            checkBox_AddAnotherVendor.CheckState = CheckState.Unchecked;
+            checkBox_AddAnotherVendor.Enabled = false;
+        }
+
         public VendorGet GetVendor() { return m_Vendor; }
 
     }

@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbl_CategoryError = new System.Windows.Forms.Label();
+            this.checkBox_AddAnotherCategory = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +73,7 @@
             this.btn_saveCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saveCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saveCategory.ForeColor = System.Drawing.Color.Black;
-            this.btn_saveCategory.Location = new System.Drawing.Point(262, 239);
+            this.btn_saveCategory.Location = new System.Drawing.Point(183, 237);
             this.btn_saveCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveCategory.Name = "btn_saveCategory";
             this.btn_saveCategory.Size = new System.Drawing.Size(88, 36);
@@ -87,7 +88,7 @@
             this.btn_ResetCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ResetCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ResetCategory.ForeColor = System.Drawing.Color.Black;
-            this.btn_ResetCategory.Location = new System.Drawing.Point(150, 239);
+            this.btn_ResetCategory.Location = new System.Drawing.Point(71, 237);
             this.btn_ResetCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ResetCategory.Name = "btn_ResetCategory";
             this.btn_ResetCategory.Size = new System.Drawing.Size(88, 36);
@@ -164,11 +165,24 @@
             this.lbl_CategoryError.TabIndex = 33;
             this.lbl_CategoryError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // checkBox_AddAnotherCategory
+            // 
+            this.checkBox_AddAnotherCategory.Checked = true;
+            this.checkBox_AddAnotherCategory.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_AddAnotherCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.checkBox_AddAnotherCategory.Location = new System.Drawing.Point(287, 245);
+            this.checkBox_AddAnotherCategory.Name = "checkBox_AddAnotherCategory";
+            this.checkBox_AddAnotherCategory.Size = new System.Drawing.Size(116, 24);
+            this.checkBox_AddAnotherCategory.TabIndex = 41;
+            this.checkBox_AddAnotherCategory.Text = "Add Another";
+            this.checkBox_AddAnotherCategory.UseVisualStyleBackColor = true;
+            // 
             // Form_AddCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 298);
+            this.Controls.Add(this.checkBox_AddAnotherCategory);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_saveCategory);
@@ -197,5 +211,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbl_CategoryError;
+        private System.Windows.Forms.CheckBox checkBox_AddAnotherCategory;
     }
 }

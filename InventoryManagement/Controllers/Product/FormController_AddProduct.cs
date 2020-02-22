@@ -132,9 +132,12 @@ namespace InventoryManagement.Controllers.Product
 
             MessageBox.Show(UI, "Product Added Successfully!");
 
-            UI.DialogResult = DialogResult.OK;
+            if (!m_UIControl.checkBox_AddAnotherProduct.Checked)
+            {
+                UI.DialogResult = DialogResult.OK;
+                UI.Close();
+            }
 
-            UI.Close();
             return true;
         }
 

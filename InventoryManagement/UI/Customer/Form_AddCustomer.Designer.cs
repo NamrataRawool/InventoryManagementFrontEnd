@@ -37,11 +37,11 @@
             this.tb_customerMobile = new System.Windows.Forms.TextBox();
             this.tb_customerEmail = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.lbl_customerErrorText = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +53,7 @@
             this.btn_saveCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saveCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saveCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btn_saveCustomer.Location = new System.Drawing.Point(283, 282);
+            this.btn_saveCustomer.Location = new System.Drawing.Point(193, 282);
             this.btn_saveCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveCustomer.Name = "btn_saveCustomer";
             this.btn_saveCustomer.Size = new System.Drawing.Size(88, 36);
@@ -68,7 +68,7 @@
             this.btn_ResetCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ResetCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ResetCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btn_ResetCustomer.Location = new System.Drawing.Point(160, 282);
+            this.btn_ResetCustomer.Location = new System.Drawing.Point(70, 282);
             this.btn_ResetCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ResetCustomer.Name = "btn_ResetCustomer";
             this.btn_ResetCustomer.Size = new System.Drawing.Size(88, 36);
@@ -155,6 +155,30 @@
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(124, 106);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 10);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "*";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(124, 49);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 10);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "*";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lbl_customerErrorText
             // 
             this.lbl_customerErrorText.AutoSize = true;
@@ -187,30 +211,6 @@
             this.label4.Size = new System.Drawing.Size(147, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Customer Details";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(124, 49);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(10, 10);
-            this.label5.TabIndex = 45;
-            this.label5.Text = "*";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(124, 106);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(10, 10);
-            this.label6.TabIndex = 46;
-            this.label6.Text = "*";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form_AddCustomer
             // 

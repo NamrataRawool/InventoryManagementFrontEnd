@@ -56,13 +56,14 @@
             this.tb_Discount = new System.Windows.Forms.TextBox();
             this.lbl_Discount = new System.Windows.Forms.Label();
             this.gb_Details = new System.Windows.Forms.GroupBox();
+            this.lbl_Unit = new System.Windows.Forms.Label();
+            this.cb_Unit = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_AddNewCategory = new System.Windows.Forms.Button();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
-            this.lbl_Unit = new System.Windows.Forms.Label();
-            this.cb_Unit = new System.Windows.Forms.ComboBox();
+            this.checkBox_AddAnotherProduct = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -405,6 +406,30 @@
             this.gb_Details.TabStop = false;
             this.gb_Details.Text = "Details";
             // 
+            // lbl_Unit
+            // 
+            this.lbl_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Unit.Location = new System.Drawing.Point(24, 201);
+            this.lbl_Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Unit.Name = "lbl_Unit";
+            this.lbl_Unit.Size = new System.Drawing.Size(116, 24);
+            this.lbl_Unit.TabIndex = 45;
+            this.lbl_Unit.Text = "Unit :";
+            this.lbl_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cb_Unit
+            // 
+            this.cb_Unit.DropDownHeight = 80;
+            this.cb_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Unit.FormattingEnabled = true;
+            this.cb_Unit.IntegralHeight = false;
+            this.cb_Unit.Location = new System.Drawing.Point(166, 201);
+            this.cb_Unit.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_Unit.Name = "cb_Unit";
+            this.cb_Unit.Size = new System.Drawing.Size(260, 24);
+            this.cb_Unit.TabIndex = 46;
+            this.cb_Unit.Text = "Select Unit";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -465,29 +490,17 @@
             this.pictureBox_Image.TabIndex = 33;
             this.pictureBox_Image.TabStop = false;
             // 
-            // lbl_Unit
+            // checkBox_AddAnotherProduct
             // 
-            this.lbl_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Unit.Location = new System.Drawing.Point(24, 201);
-            this.lbl_Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Unit.Name = "lbl_Unit";
-            this.lbl_Unit.Size = new System.Drawing.Size(116, 24);
-            this.lbl_Unit.TabIndex = 45;
-            this.lbl_Unit.Text = "Unit :";
-            this.lbl_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cb_Unit
-            // 
-            this.cb_Unit.DropDownHeight = 80;
-            this.cb_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_Unit.FormattingEnabled = true;
-            this.cb_Unit.IntegralHeight = false;
-            this.cb_Unit.Location = new System.Drawing.Point(166, 201);
-            this.cb_Unit.Margin = new System.Windows.Forms.Padding(2);
-            this.cb_Unit.Name = "cb_Unit";
-            this.cb_Unit.Size = new System.Drawing.Size(260, 24);
-            this.cb_Unit.TabIndex = 46;
-            this.cb_Unit.Text = "Select Unit";
+            this.checkBox_AddAnotherProduct.Checked = true;
+            this.checkBox_AddAnotherProduct.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_AddAnotherProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.checkBox_AddAnotherProduct.Location = new System.Drawing.Point(784, 545);
+            this.checkBox_AddAnotherProduct.Name = "checkBox_AddAnotherProduct";
+            this.checkBox_AddAnotherProduct.Size = new System.Drawing.Size(186, 24);
+            this.checkBox_AddAnotherProduct.TabIndex = 53;
+            this.checkBox_AddAnotherProduct.Text = "Add Another Product";
+            this.checkBox_AddAnotherProduct.UseVisualStyleBackColor = true;
             // 
             // Form_AddProduct
             // 
@@ -495,6 +508,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1078, 599);
+            this.Controls.Add(this.checkBox_AddAnotherProduct);
             this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.btn_ChangeProductImage);
             this.Controls.Add(this.pictureBox_Image);
@@ -560,5 +574,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_Unit;
         public System.Windows.Forms.ComboBox cb_Unit;
+        public System.Windows.Forms.CheckBox checkBox_AddAnotherProduct;
     }
 }
