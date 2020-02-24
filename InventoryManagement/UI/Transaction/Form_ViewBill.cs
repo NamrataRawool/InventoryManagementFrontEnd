@@ -28,7 +28,7 @@ namespace InventoryManagement.UI.Transaction
         {
         }
 
-        private void btn_save_Click(object sender, EventArgs e)
+        private void btn_print_Click(object sender, EventArgs e)
         {
             m_Controller.SaveTransaction();
             this.DialogResult = DialogResult.Yes;

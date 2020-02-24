@@ -36,20 +36,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_amountPaid = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_back = new System.Windows.Forms.Button();
             this.ViewBill_ProductsDataView = new System.Windows.Forms.DataGridView();
             this.ViewBillTable_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewBillTable_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewBillTable_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewBillTable_FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Date = new System.Windows.Forms.Label();
-            this.lbl_TotalPrice = new System.Windows.Forms.Label();
+            this.lbl_amountDue = new System.Windows.Forms.Label();
+            this.lbl_subtotal = new System.Windows.Forms.Label();
             this.lbl_CustomerName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.btn_back = new System.Windows.Forms.Button();
+            this.btn_print = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -67,9 +69,11 @@
             this.groupBox1.Controls.Add(this.ViewBill_ProductsDataView);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lbl_Date);
-            this.groupBox1.Controls.Add(this.lbl_TotalPrice);
+            this.groupBox1.Controls.Add(this.lbl_amountDue);
+            this.groupBox1.Controls.Add(this.lbl_subtotal);
             this.groupBox1.Controls.Add(this.lbl_CustomerName);
             this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,7 +89,7 @@
             // 
             this.lbl_pendingAmount.AutoSize = true;
             this.lbl_pendingAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pendingAmount.Location = new System.Drawing.Point(200, 194);
+            this.lbl_pendingAmount.Location = new System.Drawing.Point(200, 192);
             this.lbl_pendingAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_pendingAmount.Name = "lbl_pendingAmount";
             this.lbl_pendingAmount.Size = new System.Drawing.Size(0, 18);
@@ -94,7 +98,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 193);
+            this.label4.Location = new System.Drawing.Point(23, 191);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 18);
@@ -106,7 +110,7 @@
             // 
             this.lbl_amountPaid.AutoSize = true;
             this.lbl_amountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_amountPaid.Location = new System.Drawing.Point(200, 151);
+            this.lbl_amountPaid.Location = new System.Drawing.Point(200, 158);
             this.lbl_amountPaid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_amountPaid.Name = "lbl_amountPaid";
             this.lbl_amountPaid.Size = new System.Drawing.Size(0, 18);
@@ -115,26 +119,13 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 150);
+            this.label2.Location = new System.Drawing.Point(23, 157);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 18);
             this.label2.TabIndex = 49;
-            this.label2.Text = "Amount Paid :";
+            this.label2.Text = "Paid Amount :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btn_back
-            // 
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.Location = new System.Drawing.Point(294, 687);
-            this.btn_back.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(77, 33);
-            this.btn_back.TabIndex = 48;
-            this.btn_back.Text = "Back";
-            this.btn_back.UseVisualStyleBackColor = true;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // ViewBill_ProductsDataView
             // 
@@ -212,19 +203,6 @@
             this.ViewBillTable_FinalPrice.Name = "ViewBillTable_FinalPrice";
             this.ViewBillTable_FinalPrice.ReadOnly = true;
             // 
-            // btn_save
-            // 
-            this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(412, 687);
-            this.btn_save.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(77, 33);
-            this.btn_save.TabIndex = 44;
-            this.btn_save.Text = "Save";
-            this.btn_save.UseVisualStyleBackColor = true;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,21 +218,31 @@
             // 
             this.lbl_Date.AutoSize = true;
             this.lbl_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Date.Location = new System.Drawing.Point(200, 65);
+            this.lbl_Date.Location = new System.Drawing.Point(200, 56);
             this.lbl_Date.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Date.Name = "lbl_Date";
             this.lbl_Date.Size = new System.Drawing.Size(0, 18);
             this.lbl_Date.TabIndex = 42;
             // 
-            // lbl_TotalPrice
+            // lbl_amountDue
             // 
-            this.lbl_TotalPrice.AutoSize = true;
-            this.lbl_TotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TotalPrice.Location = new System.Drawing.Point(200, 108);
-            this.lbl_TotalPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_TotalPrice.Name = "lbl_TotalPrice";
-            this.lbl_TotalPrice.Size = new System.Drawing.Size(0, 18);
-            this.lbl_TotalPrice.TabIndex = 40;
+            this.lbl_amountDue.AutoSize = true;
+            this.lbl_amountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_amountDue.Location = new System.Drawing.Point(200, 124);
+            this.lbl_amountDue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_amountDue.Name = "lbl_amountDue";
+            this.lbl_amountDue.Size = new System.Drawing.Size(0, 18);
+            this.lbl_amountDue.TabIndex = 40;
+            // 
+            // lbl_subtotal
+            // 
+            this.lbl_subtotal.AutoSize = true;
+            this.lbl_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_subtotal.Location = new System.Drawing.Point(200, 90);
+            this.lbl_subtotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_subtotal.Name = "lbl_subtotal";
+            this.lbl_subtotal.Size = new System.Drawing.Size(0, 18);
+            this.lbl_subtotal.TabIndex = 40;
             // 
             // lbl_CustomerName
             // 
@@ -277,27 +265,64 @@
             this.label13.Text = "Customer Name :";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 123);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(147, 18);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Amount Due :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(23, 107);
+            this.label14.Location = new System.Drawing.Point(23, 89);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(147, 18);
             this.label14.TabIndex = 25;
-            this.label14.Text = "Total Price :";
+            this.label14.Text = "Subtotal :";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 64);
+            this.label16.Location = new System.Drawing.Point(23, 55);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(147, 18);
             this.label16.TabIndex = 28;
             this.label16.Text = "Transaction Date :";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btn_back
+            // 
+            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.Location = new System.Drawing.Point(294, 687);
+            this.btn_back.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(77, 33);
+            this.btn_back.TabIndex = 48;
+            this.btn_back.Text = "Back";
+            this.btn_back.UseVisualStyleBackColor = true;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            // 
+            // btn_print
+            // 
+            this.btn_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_print.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_print.Location = new System.Drawing.Point(412, 687);
+            this.btn_print.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_print.Name = "btn_print";
+            this.btn_print.Size = new System.Drawing.Size(77, 33);
+            this.btn_print.TabIndex = 44;
+            this.btn_print.Text = "Print";
+            this.btn_print.UseVisualStyleBackColor = true;
+            this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // panel1
             // 
@@ -330,7 +355,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_back);
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.btn_print);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_ViewBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -352,10 +377,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.Label lbl_CustomerName;
-        public System.Windows.Forms.Label lbl_TotalPrice;
+        public System.Windows.Forms.Label lbl_subtotal;
         public System.Windows.Forms.Label lbl_Date;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button btn_save;
+        public System.Windows.Forms.Button btn_print;
         public System.Windows.Forms.DataGridView ViewBill_ProductsDataView;
         public System.Windows.Forms.Button btn_back;
         public System.Windows.Forms.Label lbl_amountPaid;
@@ -368,5 +393,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label lbl_amountDue;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -56,13 +56,13 @@
             this.tb_Discount = new System.Windows.Forms.TextBox();
             this.lbl_Discount = new System.Windows.Forms.Label();
             this.gb_Details = new System.Windows.Forms.GroupBox();
+            this.lbl_Unit = new System.Windows.Forms.Label();
+            this.cb_Unit = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_AddNewCategory = new System.Windows.Forms.Button();
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
-            this.lbl_Unit = new System.Windows.Forms.Label();
-            this.cb_Unit = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -153,7 +153,7 @@
             this.tb_RetailPrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_RetailPrice.Name = "tb_RetailPrice";
             this.tb_RetailPrice.Size = new System.Drawing.Size(200, 22);
-            this.tb_RetailPrice.TabIndex = 7;
+            this.tb_RetailPrice.TabIndex = 8;
             // 
             // tb_WholeSalePrice
             // 
@@ -162,7 +162,7 @@
             this.tb_WholeSalePrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_WholeSalePrice.Name = "tb_WholeSalePrice";
             this.tb_WholeSalePrice.Size = new System.Drawing.Size(200, 22);
-            this.tb_WholeSalePrice.TabIndex = 8;
+            this.tb_WholeSalePrice.TabIndex = 9;
             // 
             // cb_Category
             // 
@@ -174,7 +174,7 @@
             this.cb_Category.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Category.Name = "cb_Category";
             this.cb_Category.Size = new System.Drawing.Size(260, 24);
-            this.cb_Category.TabIndex = 5;
+            this.cb_Category.TabIndex = 6;
             this.cb_Category.Text = "Select Category";
             // 
             // btn_saveProduct
@@ -188,7 +188,7 @@
             this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveProduct.Name = "btn_saveProduct";
             this.btn_saveProduct.Size = new System.Drawing.Size(88, 36);
-            this.btn_saveProduct.TabIndex = 11;
+            this.btn_saveProduct.TabIndex = 12;
             this.btn_saveProduct.Text = "Save";
             this.btn_saveProduct.UseVisualStyleBackColor = false;
             this.btn_saveProduct.Click += new System.EventHandler(this.btn_saveProduct_Click);
@@ -242,7 +242,7 @@
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(88, 36);
-            this.btn_cancel.TabIndex = 12;
+            this.btn_cancel.TabIndex = 14;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -328,7 +328,7 @@
             this.tb_CGST.Margin = new System.Windows.Forms.Padding(2);
             this.tb_CGST.Name = "tb_CGST";
             this.tb_CGST.Size = new System.Drawing.Size(117, 22);
-            this.tb_CGST.TabIndex = 9;
+            this.tb_CGST.TabIndex = 10;
             // 
             // lbl_CGST
             // 
@@ -359,7 +359,7 @@
             this.tb_SGST.Margin = new System.Windows.Forms.Padding(2);
             this.tb_SGST.Name = "tb_SGST";
             this.tb_SGST.Size = new System.Drawing.Size(117, 22);
-            this.tb_SGST.TabIndex = 10;
+            this.tb_SGST.TabIndex = 11;
             // 
             // tb_Discount
             // 
@@ -368,7 +368,7 @@
             this.tb_Discount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Discount.Name = "tb_Discount";
             this.tb_Discount.Size = new System.Drawing.Size(152, 22);
-            this.tb_Discount.TabIndex = 6;
+            this.tb_Discount.TabIndex = 7;
             // 
             // lbl_Discount
             // 
@@ -404,6 +404,30 @@
             this.gb_Details.TabIndex = 1;
             this.gb_Details.TabStop = false;
             this.gb_Details.Text = "Details";
+            // 
+            // lbl_Unit
+            // 
+            this.lbl_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Unit.Location = new System.Drawing.Point(24, 201);
+            this.lbl_Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Unit.Name = "lbl_Unit";
+            this.lbl_Unit.Size = new System.Drawing.Size(116, 24);
+            this.lbl_Unit.TabIndex = 45;
+            this.lbl_Unit.Text = "Unit :";
+            this.lbl_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cb_Unit
+            // 
+            this.cb_Unit.DropDownHeight = 80;
+            this.cb_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Unit.FormattingEnabled = true;
+            this.cb_Unit.IntegralHeight = false;
+            this.cb_Unit.Location = new System.Drawing.Point(166, 201);
+            this.cb_Unit.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_Unit.Name = "cb_Unit";
+            this.cb_Unit.Size = new System.Drawing.Size(260, 24);
+            this.cb_Unit.TabIndex = 5;
+            this.cb_Unit.Text = "Select Unit";
             // 
             // label5
             // 
@@ -464,30 +488,6 @@
             this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Image.TabIndex = 33;
             this.pictureBox_Image.TabStop = false;
-            // 
-            // lbl_Unit
-            // 
-            this.lbl_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Unit.Location = new System.Drawing.Point(24, 201);
-            this.lbl_Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Unit.Name = "lbl_Unit";
-            this.lbl_Unit.Size = new System.Drawing.Size(116, 24);
-            this.lbl_Unit.TabIndex = 45;
-            this.lbl_Unit.Text = "Unit :";
-            this.lbl_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cb_Unit
-            // 
-            this.cb_Unit.DropDownHeight = 80;
-            this.cb_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_Unit.FormattingEnabled = true;
-            this.cb_Unit.IntegralHeight = false;
-            this.cb_Unit.Location = new System.Drawing.Point(166, 201);
-            this.cb_Unit.Margin = new System.Windows.Forms.Padding(2);
-            this.cb_Unit.Name = "cb_Unit";
-            this.cb_Unit.Size = new System.Drawing.Size(260, 24);
-            this.cb_Unit.TabIndex = 46;
-            this.cb_Unit.Text = "Select Unit";
             // 
             // Form_AddProduct
             // 

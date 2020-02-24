@@ -35,7 +35,7 @@ namespace InventoryManagement.Controllers.Transaction
             InitializProductNameSearchBoxData();
         }
 
-        public void OnAddProduct( BillProductDetails productDetails)
+        public void OnAddProduct(BillProductDetails productDetails)
         {
             if (!IsStockAvailable(productDetails))
             {
@@ -251,18 +251,18 @@ namespace InventoryManagement.Controllers.Transaction
             if (m_UIControl.Bill_ProductsDataView.Rows.Count <= 0)
                 return;
 
-            if (string.IsNullOrEmpty(m_UIControl.tb_AmountPaid.Text))
+            if (string.IsNullOrEmpty(m_UIControl.tb_amountPaid.Text))
             {
                 m_UIControl.lbl_errorAmountPaid.Text = "Please enter amount paid";
                 return;
             }
-            if (!Validator.IsValidDouble(m_UIControl.tb_AmountPaid.Text.Trim()))
+            if (!Validator.IsValidDouble(m_UIControl.tb_amountPaid.Text.Trim()))
             {
                 m_UIControl.lbl_errorAmountPaid.Text = "Enter valid amount!";
                 return;
             }
 
-            double amountPaid = double.Parse(m_UIControl.tb_AmountPaid.Text);
+            double amountPaid = double.Parse(m_UIControl.tb_amountPaid.Text);
             double amountDue = double.Parse(m_UIControl.tb_amountDue.Text);
             double pendingAmount = 0.0;
             if (amountDue != amountPaid)
@@ -350,28 +350,29 @@ namespace InventoryManagement.Controllers.Transaction
 
         public void UpdateUILabels()
         {
+            double actualPrice = 0;
             double subtotal = 0;
             double totalDiscount = 0;
             double totalTax = 0;
             double amountDue = 0;
             for (int i = 0; i < m_UIControl.Bill_ProductsDataView.Rows.Count; ++i)
             {
-                var actualPrice = Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Price"].Value);
+                var price = Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Price"].Value);
                 var quantity = Convert.ToInt32(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Quantity"].Value);
-                subtotal += actualPrice * quantity;
+                actualPrice += price * quantity;
                 totalDiscount += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Discount"].Value);
                 totalTax += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Tax"].Value);
                 amountDue += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_FinalPrice"].Value);
             }
-            m_transactionSession.subtotal = m_UIControl.tb_subtotal.Text = subtotal.ToString();
+            m_transactionSession.actualPrice = m_UIControl.tb_actualPrice.Text = actualPrice.ToString();
             m_transactionSession.totalDiscount = m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
             m_transactionSession.totalTax = m_UIControl.tb_totalTax.Text = totalTax.ToString();
-
+            m_transactionSession.subtotal = m_UIControl.tb_subtotal.Text = amountDue.ToString();
             CustomerGet customer = m_transactionSession.GetCustomer();
             if (customer != null)
                 amountDue = amountDue + customer.PendingAmount;
 
-            m_UIControl.tb_amountDue.Text = amountDue.ToString();
+            m_UIControl.tb_amountPaid.Text = m_UIControl.tb_amountDue.Text = amountDue.ToString();
             m_transactionSession.amountDue = amountDue.ToString();
         }
 
@@ -424,11 +425,11 @@ namespace InventoryManagement.Controllers.Transaction
         {
             m_UIControl.tb_productName.Text = string.Empty;
             m_UIControl.tb_barCode.Text = string.Empty;
-            m_UIControl.tb_subtotal.Text = string.Empty;
+            m_UIControl.tb_actualPrice.Text = string.Empty;
             m_UIControl.tb_totalDiscount.Text = string.Empty;
             m_UIControl.tb_amountDue.Text = string.Empty;
             m_UIControl.tb_totalTax.Text = string.Empty;
-            m_UIControl.tb_AmountPaid.Text = string.Empty;
+            m_UIControl.tb_subtotal.Text = string.Empty;
             ResetCustomerDetails();
         }
 

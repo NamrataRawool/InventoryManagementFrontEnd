@@ -22,6 +22,7 @@ namespace InventoryManagement.Controllers.Transaction
     {
         private List<BillProductDetails> m_RowEntries;
         private CustomerGet m_Customer;
+        public string actualPrice;
         public string subtotal;
         public string totalDiscount;
         public string totalTax;

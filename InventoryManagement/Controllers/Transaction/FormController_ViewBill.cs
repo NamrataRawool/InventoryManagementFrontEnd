@@ -156,7 +156,8 @@ namespace InventoryManagement.Controllers.Transaction
             NumberFormatInfo indianCurrency = new CultureInfo("hi-IN", false).NumberFormat;
             indianCurrency.CurrencyPositivePattern = 2;
 
-            m_UIControl.lbl_TotalPrice.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.amountDue));
+            m_UIControl.lbl_subtotal.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.subtotal));
+            m_UIControl.lbl_amountDue.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.amountDue));
             m_UIControl.lbl_amountPaid.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.amountPaid));
             m_UIControl.lbl_pendingAmount.Text = string.Format(indianCurrency, "{0:c}", double.Parse(m_TransactionSession.pendingAmount));
         }

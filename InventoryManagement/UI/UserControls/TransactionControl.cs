@@ -152,7 +152,7 @@ namespace InventoryManagement.UI.UserControls
             m_newTransactionController.OnDeleteProduct();
         }
 
-        private void btn_ViewBill_Click(object sender, EventArgs e)
+        private void btn_PayBill_Click(object sender, EventArgs e)
         {
             m_newTransactionController.OpenForm_ViewBill();
         }
