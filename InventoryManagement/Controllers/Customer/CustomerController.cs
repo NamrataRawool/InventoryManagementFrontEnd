@@ -39,8 +39,8 @@ namespace InventoryManagement.Controllers.Customer
 
         public void OpenForm_AddCustomer()
         {
-            Form_AddCustomer addCustomer = new Form_AddCustomer();
-            var result = addCustomer.ShowDialog();
+            Form_AddCustomer form = new Form_AddCustomer();
+            var result = form.ShowDialog();
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("Customer added successfully !");

@@ -63,6 +63,7 @@
             this.btn_ChangeProductImage = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
             this.pictureBox_Image = new System.Windows.Forms.PictureBox();
+            this.checkBox_AddAnotherProduct = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.gb_Pricing.SuspendLayout();
             this.gb_Tax.SuspendLayout();
@@ -153,7 +154,7 @@
             this.tb_RetailPrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_RetailPrice.Name = "tb_RetailPrice";
             this.tb_RetailPrice.Size = new System.Drawing.Size(200, 22);
-            this.tb_RetailPrice.TabIndex = 8;
+            this.tb_RetailPrice.TabIndex = 7;
             // 
             // tb_WholeSalePrice
             // 
@@ -162,7 +163,7 @@
             this.tb_WholeSalePrice.Margin = new System.Windows.Forms.Padding(2);
             this.tb_WholeSalePrice.Name = "tb_WholeSalePrice";
             this.tb_WholeSalePrice.Size = new System.Drawing.Size(200, 22);
-            this.tb_WholeSalePrice.TabIndex = 9;
+            this.tb_WholeSalePrice.TabIndex = 8;
             // 
             // cb_Category
             // 
@@ -174,7 +175,7 @@
             this.cb_Category.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Category.Name = "cb_Category";
             this.cb_Category.Size = new System.Drawing.Size(260, 24);
-            this.cb_Category.TabIndex = 6;
+            this.cb_Category.TabIndex = 5;
             this.cb_Category.Text = "Select Category";
             // 
             // btn_saveProduct
@@ -188,7 +189,7 @@
             this.btn_saveProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveProduct.Name = "btn_saveProduct";
             this.btn_saveProduct.Size = new System.Drawing.Size(88, 36);
-            this.btn_saveProduct.TabIndex = 12;
+            this.btn_saveProduct.TabIndex = 11;
             this.btn_saveProduct.Text = "Save";
             this.btn_saveProduct.UseVisualStyleBackColor = false;
             this.btn_saveProduct.Click += new System.EventHandler(this.btn_saveProduct_Click);
@@ -242,7 +243,7 @@
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(88, 36);
-            this.btn_cancel.TabIndex = 14;
+            this.btn_cancel.TabIndex = 12;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -328,7 +329,7 @@
             this.tb_CGST.Margin = new System.Windows.Forms.Padding(2);
             this.tb_CGST.Name = "tb_CGST";
             this.tb_CGST.Size = new System.Drawing.Size(117, 22);
-            this.tb_CGST.TabIndex = 10;
+            this.tb_CGST.TabIndex = 9;
             // 
             // lbl_CGST
             // 
@@ -359,7 +360,7 @@
             this.tb_SGST.Margin = new System.Windows.Forms.Padding(2);
             this.tb_SGST.Name = "tb_SGST";
             this.tb_SGST.Size = new System.Drawing.Size(117, 22);
-            this.tb_SGST.TabIndex = 11;
+            this.tb_SGST.TabIndex = 10;
             // 
             // tb_Discount
             // 
@@ -368,7 +369,7 @@
             this.tb_Discount.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Discount.Name = "tb_Discount";
             this.tb_Discount.Size = new System.Drawing.Size(152, 22);
-            this.tb_Discount.TabIndex = 7;
+            this.tb_Discount.TabIndex = 6;
             // 
             // lbl_Discount
             // 
@@ -426,7 +427,7 @@
             this.cb_Unit.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Unit.Name = "cb_Unit";
             this.cb_Unit.Size = new System.Drawing.Size(260, 24);
-            this.cb_Unit.TabIndex = 5;
+            this.cb_Unit.TabIndex = 46;
             this.cb_Unit.Text = "Select Unit";
             // 
             // label5
@@ -489,12 +490,25 @@
             this.pictureBox_Image.TabIndex = 33;
             this.pictureBox_Image.TabStop = false;
             // 
+            // checkBox_AddAnotherProduct
+            // 
+            this.checkBox_AddAnotherProduct.Checked = true;
+            this.checkBox_AddAnotherProduct.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_AddAnotherProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.checkBox_AddAnotherProduct.Location = new System.Drawing.Point(784, 545);
+            this.checkBox_AddAnotherProduct.Name = "checkBox_AddAnotherProduct";
+            this.checkBox_AddAnotherProduct.Size = new System.Drawing.Size(186, 24);
+            this.checkBox_AddAnotherProduct.TabIndex = 53;
+            this.checkBox_AddAnotherProduct.Text = "Add Another Product";
+            this.checkBox_AddAnotherProduct.UseVisualStyleBackColor = true;
+            // 
             // Form_AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1078, 599);
+            this.Controls.Add(this.checkBox_AddAnotherProduct);
             this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.btn_ChangeProductImage);
             this.Controls.Add(this.pictureBox_Image);
@@ -560,5 +574,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_Unit;
         public System.Windows.Forms.ComboBox cb_Unit;
+        public System.Windows.Forms.CheckBox checkBox_AddAnotherProduct;
     }
 }

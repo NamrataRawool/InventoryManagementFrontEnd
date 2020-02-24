@@ -58,13 +58,25 @@ namespace InventoryManagement.UI.Category
                 return;
             }
 
-            DialogResult = DialogResult.OK;
 
             // broadcast new entry added event
             Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.CATEGORY, m_Category.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
-            this.Close();
             MessageBox.Show("Category Added successfully!");
+
+            ResetAll();
+
+            if (!checkBox_AddAnotherCategory.Checked)
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        private void ResetAll()
+        {
+            tb_categoryDescription.Text = "";
+            tb_categoryName.Text = "";
         }
 
         private bool ValidateUI()
@@ -76,6 +88,12 @@ namespace InventoryManagement.UI.Category
             }
 
             return true;
+        }
+
+        public void DisableAddAnotherFunctionality()
+        {
+            checkBox_AddAnotherCategory.CheckState = CheckState.Unchecked;
+            checkBox_AddAnotherCategory.Enabled = false;
         }
 
         public CategoryGet GetAddedCategory() { return m_Category; }

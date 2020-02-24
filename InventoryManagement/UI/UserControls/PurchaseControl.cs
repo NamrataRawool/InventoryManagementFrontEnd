@@ -161,6 +161,7 @@ namespace InventoryManagement.UI.UserControls
         {
             lbl_vendorError.Text = string.Empty;
             Form_AddVendor form = new Form_AddVendor();
+            form.DisableAddAnotherFunctionality();
             form.ShowDialog();
 
             if (form.DialogResult != DialogResult.OK)

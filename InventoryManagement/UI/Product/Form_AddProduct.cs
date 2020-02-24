@@ -64,11 +64,19 @@ namespace InventoryManagement.UI.Product
         private void btn_AddNewCategory_Click(object sender, EventArgs e)
         {
             Form_AddCategory form = new Form_AddCategory();
+            form.DisableAddAnotherFunctionality();
+
             if (form.ShowDialog() != DialogResult.OK)
                 return;
 
             CategoryGet category = form.GetAddedCategory();
             cb_Category.Text = category.Name;
+        }
+
+        public void DisableAddAnotherFunctionality()
+        {
+            checkBox_AddAnotherProduct.CheckState = CheckState.Unchecked;
+            checkBox_AddAnotherProduct.Enabled = false;
         }
 
         public ProductGet GetProduct() { return m_Controller.GetCustomer(); }

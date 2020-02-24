@@ -42,10 +42,15 @@ namespace InventoryManagement.Controllers.Vendor
 
             MessageBox.Show("Vendor Added Successfully");
             ResetTextBoxes();
-            m_UIControl.DialogResult = DialogResult.OK;
 
             Event_NewEntryAdded e = new Event_NewEntryAdded(DBEntityType.VENDOR, vendorGet.ID);
             EventBroadcaster.Get().BroadcastEvent(e);
+
+            if (!m_UIControl.checkBox_AddAnotherVendor.Checked)
+            {
+                m_UIControl.DialogResult = DialogResult.OK;
+                m_UIControl.Close();
+            }
 
             return vendorGet;
         }

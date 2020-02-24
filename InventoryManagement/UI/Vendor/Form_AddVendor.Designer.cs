@@ -46,6 +46,7 @@
             this.btn_addVendor = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.checkBox_AddAnotherVendor = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -228,7 +229,7 @@
             // 
             this.btn_addVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addVendor.Location = new System.Drawing.Point(290, 381);
+            this.btn_addVendor.Location = new System.Drawing.Point(149, 381);
             this.btn_addVendor.Margin = new System.Windows.Forms.Padding(2);
             this.btn_addVendor.Name = "btn_addVendor";
             this.btn_addVendor.Size = new System.Drawing.Size(77, 33);
@@ -258,11 +259,24 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Vendor Details";
             // 
+            // checkBox_AddAnotherVendor
+            // 
+            this.checkBox_AddAnotherVendor.Checked = true;
+            this.checkBox_AddAnotherVendor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_AddAnotherVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.checkBox_AddAnotherVendor.Location = new System.Drawing.Point(277, 381);
+            this.checkBox_AddAnotherVendor.Name = "checkBox_AddAnotherVendor";
+            this.checkBox_AddAnotherVendor.Size = new System.Drawing.Size(116, 24);
+            this.checkBox_AddAnotherVendor.TabIndex = 47;
+            this.checkBox_AddAnotherVendor.Text = "Add Another";
+            this.checkBox_AddAnotherVendor.UseVisualStyleBackColor = true;
+            // 
             // Form_AddVendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 425);
+            this.Controls.Add(this.checkBox_AddAnotherVendor);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_addVendor);
@@ -298,5 +312,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label lbl_ValidationError;
         public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.CheckBox checkBox_AddAnotherVendor;
     }
 }
