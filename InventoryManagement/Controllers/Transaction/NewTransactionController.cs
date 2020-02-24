@@ -362,15 +362,17 @@ namespace InventoryManagement.Controllers.Transaction
                 actualPrice += price * quantity;
                 totalDiscount += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Discount"].Value);
                 totalTax += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_Tax"].Value);
-                amountDue += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_FinalPrice"].Value);
+                subtotal += Convert.ToDouble(m_UIControl.Bill_ProductsDataView.Rows[i].Cells["BillTable_FinalPrice"].Value);
             }
             m_transactionSession.actualPrice = m_UIControl.tb_actualPrice.Text = actualPrice.ToString();
             m_transactionSession.totalDiscount = m_UIControl.tb_totalDiscount.Text = totalDiscount.ToString();
             m_transactionSession.totalTax = m_UIControl.tb_totalTax.Text = totalTax.ToString();
-            m_transactionSession.subtotal = m_UIControl.tb_subtotal.Text = amountDue.ToString();
+            m_transactionSession.subtotal = m_UIControl.tb_subtotal.Text = subtotal.ToString();
+            amountDue = subtotal;
+
             CustomerGet customer = m_transactionSession.GetCustomer();
             if (customer != null)
-                amountDue = amountDue + customer.PendingAmount;
+                amountDue += customer.PendingAmount;
 
             m_UIControl.tb_amountPaid.Text = m_UIControl.tb_amountDue.Text = amountDue.ToString();
             m_transactionSession.amountDue = amountDue.ToString();
