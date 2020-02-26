@@ -14,6 +14,11 @@ namespace InventoryManagement.Services.Data.Database
         public DbSet<VendorDTO> Vendors { get; set; }
         public DbSet<PurchaseDTO> Purchases { get; set; }
 
+        public void Initialize()
+        {
+            Database.EnsureCreated();
+        }
+
         public ProductDTO GetProduct(int ID) { return Products.Find(ID); }
         public CategoryDTO GetCategory(int ID) { return Categories.Find(ID); }
         public TransactionDTO GetTransaction(int ID) { return Transactions.Find(ID); }
@@ -49,13 +54,6 @@ namespace InventoryManagement.Services.Data.Database
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.ID).ValueGeneratedOnAdd();
             });
-
-            //modelBuilder.Entity<Tax>().ToTable("Taxes");
-            //modelBuilder.Entity<Tax>(entity =>
-            //{
-            //    entity.HasKey(e => e.TaxID);
-            //    entity.Property(e => e.TaxID).ValueGeneratedOnAdd();
-            //});
 
             modelBuilder.Entity<TransactionDTO>().ToTable("Transactions");
             modelBuilder.Entity<TransactionDTO>(entity =>
