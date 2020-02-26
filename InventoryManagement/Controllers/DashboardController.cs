@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Controllers
 {
-    public class HomeController : IController<HomeControl>
+    public class DashboardController : IController<DashboardControl>
     {
-        public HomeController(HomeControl UIControl) : base(UIControl)
+        public DashboardController(DashboardControl UIControl) : base(UIControl)
         {
             Initialize();
         }

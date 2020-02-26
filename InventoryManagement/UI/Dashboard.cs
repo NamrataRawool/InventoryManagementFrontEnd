@@ -22,6 +22,12 @@ namespace InventoryManagement.UI
             homeControl.BringToFront();
         }
 
+        private void btn_Dashboard_Click(object sender, EventArgs e)
+        {
+            UpdateSidePanel(btn_Dashboard);
+            dashboardControl.BringToFront();
+        }
+
         private void btn_Product_Click(object sender, EventArgs e)
         {
             UpdateSidePanel(btn_Product);

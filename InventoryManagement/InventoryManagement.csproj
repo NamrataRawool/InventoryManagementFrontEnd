@@ -212,7 +212,7 @@
     <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Customer\FormController_AddCustomer.cs" />
     <Compile Include="Controllers\Customer\FormController_EditCustomer.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\Product\FormController_AddProduct.cs" />
     <Compile Include="Controllers\Product\FormController_ProductDetails.cs" />
@@ -344,6 +344,12 @@
     <Compile Include="UI\Transaction\Form_ViewTransactionDetails.Designer.cs">
       <DependentUpon>Form_ViewTransactionDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\HomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\HomeControl.Designer.cs">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -362,11 +368,11 @@
     <Compile Include="UI\UserControls\CustomerControl.Designer.cs">
       <DependentUpon>CustomerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControls\HomeControl.cs">
+    <Compile Include="UI\UserControls\DashboardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\UserControls\HomeControl.Designer.cs">
-      <DependentUpon>HomeControl.cs</DependentUpon>
+    <Compile Include="UI\UserControls\DashboardControl.Designer.cs">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserControls\PurchaseControl.cs">
       <SubType>UserControl</SubType>
@@ -443,6 +449,9 @@
     <EmbeddedResource Include="UI\Transaction\Form_ViewTransactionDetails.resx">
       <DependentUpon>Form_ViewTransactionDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControls\HomeControl.resx">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -452,8 +461,8 @@
     <EmbeddedResource Include="UI\UserControls\CustomerControl.resx">
       <DependentUpon>CustomerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControls\HomeControl.resx">
-      <DependentUpon>HomeControl.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\DashboardControl.resx">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControls\PurchaseControl.resx">
       <DependentUpon>PurchaseControl.cs</DependentUpon>
