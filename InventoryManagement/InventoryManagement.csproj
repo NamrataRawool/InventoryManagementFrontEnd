@@ -277,6 +277,9 @@
     <Compile Include="Services\Export\Exporters\IExporter.cs" />
     <Compile Include="Services\Data\HTTP\HTTPService.cs" />
     <Compile Include="Services\Licensing\LicenseManager.cs" />
+    <Compile Include="Services\Logging\ILogger.cs" />
+    <Compile Include="Services\Logging\Logger.cs" />
+    <Compile Include="Services\Logging\TextFileLogger.cs" />
     <Compile Include="Services\Misc\Assert\Assert.cs" />
     <Compile Include="UI\Category\Form_AddCategory.cs">
       <SubType>Form</SubType>

@@ -2,6 +2,7 @@
 using InventoryManagement.Services.Data;
 using InventoryManagement.Services.Export;
 using InventoryManagement.Services.Licensing;
+using InventoryManagement.Services.Logging;
 using InventoryManagement.Services.Misc.Assert;
 using InventoryManagement.UI;
 using System;
@@ -29,7 +30,7 @@ namespace InventoryManagement
         private static void Initialize()
         {
             Assert.Enable();
-
+            Logger.Initialize(LoggerType.TextFile);
             DataService.Initialize();
         }
 
